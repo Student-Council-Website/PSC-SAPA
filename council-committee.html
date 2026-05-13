@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทำเนียบคณะสภานักเรียน - Pioneer Party</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://PioneerParty.com/">
+    <meta property="og:title" content="Pioneer Party - สภานักเรียน">
+    <meta property="og:description" content="พรรค Pioneer - ผู้บุกเบิกพัฒนา รับฟังทุกปัญหา พร้อมแก้ไขไปด้วยกัน">
+    <meta property="og:image" content="images/Pioneer logo 2.png">
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e3a8a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Pioneer">
+    <link rel="apple-touch-icon" href="images/Pioneer logo 2.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        tailwind.config = { 
+            darkMode: 'class', 
+            theme: {
+                extend: {
+                    colors: { 
+                        partyBlue: '#1e3a8a', 
+                        partyDarkBlue: '#172554',
+                        partyYellow: '#f472b6', // Standardized to index.html's pinkish-yellow
+                        partyPink: '#f472b6',   // Added for consistency
+                        offWhite: '#fdfbf7',
+                        darkBg: '#0f172a'
+                    },
+                    fontFamily: {
+                        anakotmai: ['Anakotmai', 'sans-serif'],
+                        dancing: ['DancingScript', 'cursive'],
+                        marker: ['Permanent Marker', 'cursive'],
+                    },
+                    boxShadow: {
+                        'pop': '6px 6px 0px 0px rgba(30, 58, 138, 1)',
+                        'pop-hover': '2px 2px 0px 0px rgba(30, 58, 138, 1)',
+                        'pop-yellow': '6px 6px 0px 0px rgba(244, 114, 182, 1)',
+                        'pop-yellow-hover': '2px 2px 0px 0px rgba(244, 114, 182, 1)',
+                        'pop-white': '4px 4px 0px 0px #ffffff',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'bounce-x': 'bounceX 1s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @font-face { font-family: 'Anakotmai'; src: url('Fonts/Anakotmai-Light.ttf') format('truetype'); font-weight: 300; }
+        @font-face { font-family: 'Anakotmai'; src: url('Fonts/Anakotmai-Medium.ttf') format('truetype'); font-weight: 500; }
+        @font-face { font-family: 'Anakotmai'; src: url('Fonts/Anakotmai-Bold.ttf') format('truetype'); font-weight: 700; }
+        @font-face { font-family: 'DancingScript'; src: url('Fonts/DancingScript-VariableFont_wght.ttf') format('truetype'); font-weight: 400 700; }
+
+        body { font-family: 'Anakotmai', sans-serif; }
+        .font-dancing { font-family: 'DancingScript', cursive; }
+        .font-marker { font-family: 'Permanent Marker', cursive; }
+        
+        .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* Scrollbar & Cursor */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        
+        #cursor {
+            position: fixed; top: 0; left: 0; width: 20px; height: 20px;
+            background-color: rgba(244, 114, 182, 0.6); border-radius: 50%;
+            pointer-events: none; transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s; z-index: 9999;
+        }
+        #cursor.hovered { width: 50px; height: 50px; background-color: rgba(244, 114, 182, 0.3); border: 2px solid #f472b6; }
+
+        /* Glass Navbar (เหมือน Index) */
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+        .dark .glass-nav { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); }
+        
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(30, 58, 138, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(30, 58, 138, 0.05) 1px, transparent 1px);
+        }
+        .dark .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(244, 114, 182, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(244, 114, 182, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-offWhite dark:bg-darkBg transition-colors duration-300 bg-grid-pattern selection:bg-partyYellow selection:text-partyBlue">
+
+    <!-- Modern Loader -->
+    <div id="app-loader">
+        <div class="loader-content">
+            <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Pioneer" class="loader-logo">
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <p class="font-black text-partyBlue dark:text-partyPink text-sm tracking-widest uppercase animate-pulse">Pioneer Council</p>
+        </div>
+    </div>
+
+    
+    <div class="bg-noise opacity-30 mix-blend-overlay fixed inset-0 pointer-events-none z-0"></div>
+    <div id="cursor" class="hidden md:block"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-[60] glass-nav border-b-4 border-partyBlue dark:border-gray-800 shadow-sm transition-transform duration-300 h-[68px] md:h-[76px]" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative z-20 h-full">
+            <a href="index.html" class="flex items-center gap-2 md:gap-3 group z-20 hover-trigger">
+                <div class="rounded-full p-1 bg-white border-2 border-partyBlue shadow-sm group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Panthong_Saphanupathamnd.png" alt="School Logo" class="h-8 w-8 md:h-10 md:w-10 object-contain">
+                </div>
+                <div class="rounded-full p-1 bg-white border-2 border-partyBlue group-hover:border-partyPink transition-all duration-300 transform group-hover:rotate-3 shadow-sm flex-shrink-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="h-8 w-8 md:h-10 md:w-10 object-contain">
+                </div>
+                <div class="flex flex-col leading-tight font-anakotmai ml-1">
+                    <span class="text-base md:text-xl font-black text-partyBlue dark:text-partyPink tracking-tight group-hover:translate-x-1 transition-transform duration-300">สภานักเรียน</span>
+                    <span class="text-[10px] md:text-xs font-bold text-gray-600 dark:text-gray-300 truncate max-w-[150px] md:max-w-xs transition-transform duration-300">โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                </div>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 items-center font-anakotmai">
+                <li><a href="index.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">หน้าหลัก</a></li>
+                <li><a href="council-committee.html" class="nav-link-active text-partyBlue dark:text-white font-bold px-3 py-1 border-b-4 border-partyYellow transition-colors hover-trigger">คณะสภานักเรียน</a></li>
+                <li><a href="pathway.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">แผนการทำงาน</a></li>
+                <li>
+                    <a href="policy.html" class="bg-partyBlue text-white border-2 border-partyBlue px-6 py-2 font-bold shadow-[4px_4px_0px_0px_#f472b6] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block rounded-sm hover:bg-partyDarkBlue hover-trigger">
+                        ดูนโยบาย
+                    </a>
+                </li>
+                <li>
+                    <button onclick="toggleTheme()" class="hover-trigger bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyYellow transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
+                        <svg class="sun-icon absolute w-5 h-5 text-partyYellow transform translate-y-12 dark:translate-y-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="moon-icon absolute w-5 h-5 text-partyBlue dark:translate-y-12 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                </li>
+            </ul>
+
+            <button id="mobile-menu-btn" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-900 border-t-2 border-partyYellow shadow-xl z-10 flex flex-col p-4 space-y-3 font-anakotmai">
+            <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🏠</span> หน้าหลัก</a>
+            <a href="council-committee.html" class="block text-partyYellow font-bold text-xl py-2 border-b border-white/10 pl-2 border-l-4 border-l-partyYellow">คณะสภานักเรียน</a>
+            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🗺️</span> แผนการทำงาน</a>
+            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]"><span>📋</span> ดูนโยบาย</a>
+            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-xl py-3 group pl-2">
+                <span>สลับโหมด มืด/สว่าง</span>
+                <div class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-full bg-white/10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mt-[68px] md:mt-[76px] bg-gradient-to-r from-partyBlue via-partyDarkBlue to-partyBlue dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-b-4 border-partyYellow py-3 md:py-4 z-40 relative shadow-md transition-colors duration-300 overflow-hidden">
+        <div class="absolute inset-0 bg-dot-pattern opacity-10 animate-pulse-slow"></div>
+        <div class="container mx-auto px-4 max-w-7xl relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+                <div class="flex flex-col md:flex-row items-center gap-3 md:gap-4">
+                    <div class="bg-white p-1 rounded-full shadow-md hidden sm:block">
+                        <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="h-8 w-8 drop-shadow-sm">
+                    </div>
+                    
+                    <div class="bg-partyYellow text-partyBlue font-black px-3 py-1 text-sm md:text-base uppercase tracking-wider flex items-center gap-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.4)] transform hover:scale-105 transition-transform">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+                        </span>
+                        OFFICIAL
+                    </div>
+                    <h2 class="text-white font-bold text-sm md:text-lg tracking-wide md:border-l-2 md:border-white/30 md:pl-4">
+                        คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ประจำปีการศึกษา 2569
+                    </h2>
+                </div>
+                
+                <div class="text-partyYellow font-bold text-sm md:text-base tracking-wider flex items-center gap-2 bg-white/10 px-3 py-1 rounded-sm backdrop-blur-sm">
+                    <span class="font-mono text-white">READY TO SERVE</span> 
+                    <span class="text-partyYellow animate-pulse">●</span> 
+                    <span>พร้อมปฏิบัติหน้าที่</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="pt-16 pb-8 text-center container mx-auto px-4 reveal-on-scroll">
+        <div class="inline-block relative hover-trigger">
+            <div class="absolute -inset-2 border-2 border-partyBlue dark:border-partyYellow rotate-1 opacity-30"></div>
+            <div class="absolute -inset-2 border-2 border-partyYellow dark:border-partyBlue -rotate-1 opacity-30"></div>
+            <div class="relative bg-white dark:bg-gray-800 px-6 py-4 md:px-8 md:py-4 border-4 border-partyBlue dark:border-partyYellow shadow-pop dark:shadow-pop-yellow transform hover:-translate-y-1 transition-transform">
+                <h1 class="text-3xl md:text-6xl font-black text-partyBlue dark:text-partyYellow uppercase tracking-tighter">
+                    Student Council
+                </h1>
+                <p class="text-lg md:text-2xl font-bold text-partyBlue dark:text-white mt-1 md:mt-2">ทำเนียบคณะสภานักเรียน</p>
+            </div>
+        </div>
+
+        <div class="mt-12 flex justify-center px-4 reveal-on-scroll">
+            <div class="max-w-2xl w-full bg-pink-50 dark:bg-gray-800 border-l-8 border-partyYellow p-4 md:p-6 rounded-r-lg shadow-sm border-y-2 border-r-2 border-partyBlue dark:border-gray-700 relative overflow-hidden">
+                <div class="flex items-start gap-4 relative z-10 text-left">
+                    <div class="bg-partyBlue text-white p-2 rounded-full shrink-0 animate-bounce shadow-md border-2 border-partyYellow hidden md:block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-partyBlue dark:text-partyYellow text-base md:text-lg mb-1 uppercase flex items-center gap-2">
+                            <span class="md:hidden animate-bounce text-xl">⚠️</span> Work in Progress
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300 text-xs md:text-base leading-relaxed">
+                            <span class="font-bold">หมายเหตุ :</span> ขณะนี้อยู่ในระหว่างการจัดเตรียมรูปภาพและอัปเดตข้อมูลคณะกรรมการสภานักเรียนให้ครบทั้ง 44 ตำแหน่ง
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container mx-auto px-4 pb-20 mt-6 md:mt-10">
+        <div id="directory-container" class="flex flex-col items-center">
+            </div>
+    </section>
+
+    <footer class="bg-partyBlue dark:bg-gray-950 text-white py-16 relative shadow-[0_-10px_40px_rgba(0,0,0,0.3)] z-50 overflow-hidden transition-colors duration-300">
+        <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-partyYellow via-orange-400 to-partyYellow"></div>
+        <div class="absolute -right-10 -bottom-20 w-80 h-80 border-8 border-partyYellow rounded-full opacity-10"></div>
+        <div class="absolute left-10 top-20 w-32 h-32 border-4 border-white rounded-full opacity-5"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 relative z-10"> 
+            
+            <div class="flex-shrink-0 order-2 md:order-1 flex items-center justify-center hover-trigger group">
+                <div class="bg-white p-2 rounded-full -rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_#ffffff] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 relative z-10">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="w-full h-full object-contain drop-shadow-sm">
+                </div>
+                <div class="bg-white p-3 rounded-xl rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 -ml-6 md:-ml-8 relative z-0">
+                    <img src="images/Pioneer logo 3.png" alt="Pioneer Logo" class="w-full h-full object-contain">
+                </div>
+            </div>
+            
+            <div class="text-center order-1 md:order-2 flex-grow">
+                <h3 class="font-dancing text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Pioneering development, listening to every problem</h3>
+                <p class="font-dancing text-partyPink text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">and ready to solve them together</p>
+                <div class="flex justify-center gap-3 mt-6 mb-4">
+                     <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0s"></span>
+                     <span class="w-3 h-3 bg-partyYellow rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                     <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
+                </div>
+                <p class="text-sm opacity-60 mt-6 text-gray-300 font-mono tracking-widest uppercase">System Version <span id="app-version"></span></p>
+            </div>
+            
+            <div class="flex flex-col items-center md:items-end gap-3 order-3 md:order-3 flex-shrink-0">
+
+                <span class="text-xs md:text-sm font-black text-partyBlue uppercase tracking-widest bg-white px-4 py-1 rounded-sm shadow-sm mt-4">สภานักเรียนพานทองฯ</span>
+                
+                <a href="https://www.instagram.com/deksapa.psc/" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Instagram</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                </a>
+                
+                <a href="https://www.facebook.com/profile.php?id=100063788612433" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Facebook Page</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </div>
+                </a>
+
+                <a href="https://www.tiktok.com/@deksapa.psc" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">TikTok</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                    </div>
+                </a>
+
+            </div>
+            
+        </div>
+    </footer>
+
+    <script>
+        // --- Core Logic & Theme ---
+        const html = document.documentElement;
+        function updateIcons(isDark) {
+            document.querySelectorAll('.sun-icon').forEach(el => isDark ? el.classList.remove('hidden') : el.classList.add('hidden'));
+            document.querySelectorAll('.moon-icon').forEach(el => isDark ? el.classList.add('hidden') : el.classList.remove('hidden'));
+        };
+
+        function attachCursorEvents() {
+            if (!cursor) return;
+            document.querySelectorAll('.hover-trigger, a, button, .cursor-pointer').forEach(trigger => {
+                trigger.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+                trigger.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+            });
+        }
+        function checkTheme() {
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark'); updateIcons(true);
+            } else {
+                html.classList.remove('dark'); updateIcons(false);
+            }
+        }
+        checkTheme();
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateIcons(false);
+            } else {
+                html.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateIcons(true);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Scroll Reveal Animation ---
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+            
+            // --- Navbar Glass Effect on Scroll (if needed, currently handled by CSS) ---
+            // const navbar = document.getElementById('navbar');
+            // window.addEventListener('scroll', () => {
+            //     if (window.scrollY > 50) {
+            //         navbar.classList.add('shadow-md');
+            //     } else {
+            //         navbar.classList.remove('shadow-md');
+            //     }
+            // });
+        });
+
+        function handleScroll() {
+            const reveals = document.querySelectorAll('.reveal-on-scroll');
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('is-visible');
+            });
+        }
+
+        // --- UI Interactions (Custom Cursor) ---
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            if(cursor) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+        });
+        document.querySelectorAll('a, button, .hover-trigger, input, select, textarea').forEach(trigger => {
+            trigger.addEventListener('mouseenter', () => cursor && cursor.classList.add('hovered'));
+            trigger.addEventListener('mouseleave', () => cursor && cursor.classList.remove('hovered'));
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+
+        // Loader logic
+        function hideLoader() {
+            const loader = document.getElementById('app-loader');
+            if (!loader) return;
+            loader.style.opacity = '0';
+            loader.style.pointerEvents = 'none';
+            setTimeout(() => { loader.style.display = 'none'; }, 600);
+        }
+        window.addEventListener('load', () => {
+            const delay = sessionStorage.getItem('visited_council') ? 500 : 1500;
+            setTimeout(() => { hideLoader(); sessionStorage.setItem('visited_council', 'true'); }, delay);
+        });
+        // Failsafe: บังคับปิดหลัง 5 วิ
+        setTimeout(hideLoader, 5000);
+
+        // --- ตั้งค่า System Version ---
+        const versionEl = document.getElementById('app-version');
+        if(versionEl) versionEl.innerText = "3.0.0";
+
+        const councilData = [
+            // --- ฝ่ายบริหาร (Executive) ---
+            { id: '1', role: 'ประธานสภานักเรียน', name: 'นางสาวพาขวัญ นวลสำลี', img: 'images/student_council_group_background/Student_Council_President_.png', group: 'executive' },
+            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', img: '', group: 'executive' },
+            { id: '3', role: 'รองประธานสภานักเรียน', name: 'นางสาวธัญญรัตน์ หมื่นรัตน์', img: '', group: 'executive' },
+
+            // --- ฝ่ายสนับสนุน (Admin) ---
+            { id: '4', role: 'เลขานุการ', name: 'นางสาวปรียากาญจน์ ใจกล้า', img: '', group: 'admin' },
+            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวอชิริญา หารภูมิ', img: '', group: 'admin' },
+            { id: '6', role: 'พัสดุ', name: 'นางสาวชญานิศ บุญมา', img: '', group: 'admin' },
+            { id: '7', role: 'ผู้ช่วยพัสดุ', name: 'นางสาวพิมพ์ลภัส สุขนิธิกุลวงศ์', img: '', group: 'admin' },
+            { id: '8', role: 'เหรัญญิก', name: 'นางสาวธนัญญา ตันประเสริฐ', img: '', group: 'admin' },
+            { id: '9', role: 'ผู้ช่วยเหรัญญิก', name: 'นางสาวเขมิกา ศักด์เสรีกุล', img: '', group: 'admin' },
+
+            // --- ฝ่ายสารวัตร (Discipline) ---
+            { id: '10', role: 'หัวหน้าฝ่ายสารวัตร', name: 'นายสิทธิ โชค แสงสว่าง', img: '', group: 'discipline' },
+            { id: '11', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวกนกวรรณ แสงเกิด', img: '', group: 'discipline' },
+            { id: '12', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวธัญชนก ธนวุฒิคติวรกุล', img: '', group: 'discipline' },
+            { id: '13', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวอุษา ยิ้ม', img: '', group: 'discipline' },
+            { id: '14', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาววีรดา พูลสมบัติ', img: '', group: 'discipline' },
+            { id: '15', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวสุพิชญา กลิ่นเกลี้ยง', img: '', group: 'discipline' },
+            { id: '16', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'รนายแทนคุณ เบญมาตย์', img: '', group: 'discipline' },
+
+            // --- ฝ่ายการเรียน (Academic) ---
+            { id: '17', role: 'หัวหน้าฝ่ายการเรียน', name: 'นางสาวฐานิดา รื่นเริง', img: '', group: 'academic' },
+            { id: '18', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวกัญญารัตน์ แสงสว่าง', img: '', group: 'academic' },
+            { id: '19', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาววรพัชราศรีบุญเรือง', img: '', group: 'academic' },
+            { id: '20', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวฐิตาภา พวงพิศ', img: '', group: 'academic' },
+            { id: '21', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายรัฐภูมิ ลีทอง', img: '', group: 'academic' },
+            { id: '22', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายตรีรัตน์ ปิติไพศาลกุล', img: '', group: 'academic' },
+            { id: '23', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพิชามญช์ หาญอาสา', img: '', group: 'academic' },
+
+            // --- ฝ่ายกิจกรรม (Activity) ---
+            { id: '24', role: 'หัวหน้าฝ่ายกิจกรรม', name: 'นางสาววาศิณี ปู่ไข่', img: '', group: 'activity' },
+            { id: '25', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวอารีรัตน์ บัวทอง', img: '', group: 'activity' },
+            { id: '26', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวดิรัชญา ขาวผ่อง', img: '', group: 'activity' },
+            { id: '27', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวภควดี หมื่นพล', img: '', group: 'activity' },
+            { id: '28', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายปภังกร ปัญญาใส', img: '', group: 'activity' },
+            { id: '29', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายจักรเพ็ชร บุญโสม', img: '', group: 'activity' },
+            { id: '30', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวชุติกาญจน์ กันยาเนียม', img: '', group: 'activity' },
+            // --- ฝ่ายการงาน (Works) ---
+            { id: '31', role: 'หัวหน้าฝ่ายการงาน', name: 'นายพชร กาเผือก', img: '', group: 'works' },
+            { id: '32', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายพิชญะ วงศรีแก้ว', img: '', group: 'works' },
+            { id: '33', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวอริยา จันทร์สว่าง', img: '', group: 'works' },
+            { id: '34', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายเจริญชัย ทองแพง', img: '', group: 'works' },
+            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', img: '', group: 'works' },
+            { id: '36', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพัทธ์ เชื่อเมืองพาน', img: '', group: 'works' },
+            { id: '37', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวพณิตา ทองสว่างแจ้ง', img: '', group: 'works' },
+
+            // --- ฝ่ายประชาสัมพันธ์ (PR) ---
+            { id: '38', role: 'หัวหน้าฝ่ายประชาสัมพันธ์', name: 'นายธนกฤต สุวรรณาวุธ', img: '', group: 'pr' },
+            { id: '39', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนพรัตน์ สารรัตน์', img: '', group: 'pr' },
+            { id: '40', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอภิญญาภรณ์ บุญหนา', img: '', group: 'pr' },
+            { id: '41', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวศศิธร หงษา', img: '', group: 'pr' },
+            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวฐานิดา พลอารีย์', img: '', group: 'pr' },
+            { id: '43', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนภัสสร ประทุมมา', img: '', group: 'pr' },
+            { id: '44', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวกฤตยากร วงค์สงคราม', img: '', group: 'pr' }
+        ];
+
+        const groupsConfig = [
+            { id: 'executive', title: '⭐ คณะผู้บริหาร' },
+            { id: 'admin', title: '📝 ฝ่ายบริหารงานทั่วไป (เลขาฯ, พัสดุ, เหรัญญิก)' },
+            { id: 'discipline', title: '🛡️ ฝ่ายสารวัตรนักเรียน' },
+            { id: 'academic', title: '📚 ฝ่ายการเรียน' },
+            { id: 'activity', title: '🎨 ฝ่ายกิจกรรม' },
+            { id: 'works', title: '🛠️ ฝ่ายการงาน' },
+            { id: 'pr', title: '📢 ฝ่ายประชาสัมพันธ์' }
+        ];
+
+        // --- ฟังก์ชันวาดการ์ด (รองรับมือถือ) ---
+        function generateCard(member, isPresident = false, isHead = false, isSmall = false, extraClass = "") {
+            const hasImg = member.img !== '';
+            
+            // ขนาดการ์ดปรับตามหน้าจอ: มือถือให้กะทัดรัด (2 คอลัมน์) คอมพิวเตอร์ใหญ่เต็มตา
+            let cardSizeClass = "w-[calc(50%-0.5rem)] md:w-64"; 
+            let borderClass = "border-partyBlue";
+            let shadowClass = "shadow-[4px_4px_0px_0px_rgba(30,58,138,1)] md:shadow-pop hover:shadow-none";
+            
+            if (isPresident) {
+                cardSizeClass = "w-[85%] max-w-[320px] z-20";
+                borderClass = "border-partyYellow";
+                shadowClass = "shadow-[6px_6px_0px_0px_rgba(244,114,182,1)] md:shadow-[8px_8px_0px_0px_rgba(244,114,182,1)] hover:shadow-none";
+            } else if (isHead) {
+                cardSizeClass = "w-[75%] max-w-[280px] z-10";
+            } else if (isSmall) {
+                // กรรมการ: บังคับ 2 คอลัมน์บนมือถือ
+                cardSizeClass = "w-[calc(50%-0.5rem)] md:w-56";
+            }
+
+            const imgBox = hasImg 
+                ? `<img src="${member.img}" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">`
+                : `<div class="absolute inset-0 flex flex-col items-center justify-center bg-gray-200 dark:bg-gray-700 p-2 md:p-4 text-center">
+                    <svg class="w-8 h-8 md:w-12 md:h-12 text-gray-400 mb-1 md:mb-2 group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span class="font-black text-gray-400 text-[10px] md:text-sm tracking-widest leading-tight group-hover:scale-110 transition-transform">WAITING<br>PHOTO</span>
+                   </div>`;
+
+            const crown = isPresident ? `<div class="absolute -top-5 -right-5 md:-top-6 md:-right-6 text-5xl md:text-7xl animate-bounce z-30 filter drop-shadow-md">👑</div>` : '';
+            const star = isHead ? `<div class="absolute -top-3 -right-3 md:-top-4 md:-right-4 text-4xl md:text-5xl animate-pulse z-30 filter drop-shadow-md">⭐</div>` : '';
+
+            const overlayBtnColor = isPresident ? "bg-partyBlue text-white" : "bg-partyYellow text-partyBlue";
+            const overlayBg = isPresident ? "bg-partyYellow/90" : "bg-partyBlue/80";
+            
+            // ปรับขนาดฟอนต์ให้สมดุลขึ้น เพื่อรับมือกับชื่อที่ยาว
+            const titleSize = isPresident ? "text-lg md:text-2xl" : (isSmall ? "text-xs md:text-sm" : "text-sm md:text-base");
+            const roleBadge = isPresident 
+                ? `<div class="bg-partyYellow text-partyBlue px-3 py-1 md:px-6 md:py-1 mt-1 md:mt-2 inline-block transform -rotate-2 border border-black font-black text-xs md:text-base shadow-sm">${member.role}</div>`
+                : `<p class="text-partyYellow text-[9px] md:text-xs font-bold uppercase mt-1 px-1 leading-tight">${member.role}</p>`;
+
+            return `
+                <div class="${cardSizeClass} ${extraClass} bg-white dark:bg-gray-800 border-2 md:border-4 ${borderClass} p-1.5 md:p-2 ${shadowClass} transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 group relative cursor-pointer hover-trigger" onclick="window.location.href='profile.council-committee.html?id=${member.id}'">
+                    ${crown}
+                    ${star}
+                    <div class="aspect-[4/5] bg-gray-300 mb-1.5 md:mb-2 border md:border-2 border-black overflow-hidden relative">
+                        ${imgBox}
+                        <div class="absolute inset-0 ${overlayBg} flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm z-20">
+                            <span class="${overlayBtnColor} font-black px-4 md:px-6 py-1 md:py-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none group-hover:translate-x-1 group-hover:translate-y-1 transition-all uppercase text-[10px] md:text-sm">
+                                อ่านประวัติ
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bg-partyBlue text-white text-center py-2 md:py-3 border md:border-2 border-black h-auto min-h-[4.5rem] md:min-h-[6.5rem] flex flex-col justify-center items-center">
+                        <h3 class="${titleSize} font-black uppercase tracking-tighter leading-tight w-full break-words px-1 md:px-2">${member.name}</h3>
+                        ${roleBadge}
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- ระบบกาง/หด รายชื่อสมาชิก (สำหรับมือถือ) ---
+        window.toggleMembers = function(groupId) {
+            const membersDiv = document.getElementById(`members-${groupId}`);
+            const icon = document.getElementById(`icon-${groupId}`);
+            if (membersDiv.classList.contains('hidden')) {
+                membersDiv.classList.remove('hidden');
+                membersDiv.classList.add('flex');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                membersDiv.classList.add('hidden');
+                membersDiv.classList.remove('flex');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function renderDirectory() {
+            const container = document.getElementById('directory-container');
+            let htmlContent = '';
+
+            groupsConfig.forEach(group => {
+                const membersInGroup = councilData.filter(m => m.group === group.id);
+                if (membersInGroup.length === 0) return;
+
+                htmlContent += `
+                    <div class="mb-16 md:mb-24 reveal-on-scroll w-full flex flex-col items-center">
+                        <div class="text-center mb-8 md:mb-12 relative z-10">
+                            <h2 class="inline-block bg-partyYellow text-partyBlue font-black text-xl md:text-3xl px-6 py-2 md:px-8 md:py-3 border-2 md:border-4 border-partyBlue shadow-pop transform -rotate-1 relative hover-trigger hover:rotate-0 transition-transform">
+                                ${group.title}
+                            </h2>
+                        </div>
+                `;
+
+                // 1. คณะผู้บริหาร (บังคับให้ประธานอยู่บนสุดบนมือถือ โดยใช้ order-1)
+                if (group.id === 'executive') {
+                    const pres = membersInGroup.find(m => m.id === '1');
+                    const vp1 = membersInGroup.find(m => m.id === '2');
+                    const vp2 = membersInGroup.find(m => m.id === '3');
+                    
+                    htmlContent += `<div class="flex flex-col md:flex-row justify-center items-center md:items-end gap-6 md:gap-10 w-full">`;
+                    if(vp1) htmlContent += generateCard(vp1, false, false, false, "order-2 md:order-1");
+                    if(pres) htmlContent += generateCard(pres, true, false, false, "order-1 md:order-2 mb-2 md:mb-0");
+                    if(vp2) htmlContent += generateCard(vp2, false, false, false, "order-3 md:order-3");
+                    htmlContent += `</div>`;
+                } 
+                // 2. ฝ่ายอำนวยการ (เลขา, พัสดุ, เหรัญญิก) แบ่ง 2 คอลัมน์สวยๆ
+                else if (group.id === 'admin') {
+                    htmlContent += `<div class="flex flex-wrap justify-center items-stretch gap-4 md:gap-8 max-w-5xl px-2 w-full">`;
+                    membersInGroup.forEach(m => {
+                        htmlContent += generateCard(m, false, false, true); 
+                    });
+                    htmlContent += `</div>`;
+                } 
+                // 3. ฝ่ายอื่นๆ (มีหัวหน้าฝ่าย)
+                else {
+                    const head = membersInGroup.find(m => m.role.includes('หัวหน้า'));
+                    const members = membersInGroup.filter(m => !m.role.includes('หัวหน้า'));
+
+                    htmlContent += `<div class="flex flex-col items-center w-full max-w-5xl">`;
+                    
+                    // แสดงหัวหน้าเสมอ
+                    if (head) {
+                        htmlContent += `<div class="flex justify-center w-full mb-6">`;
+                        htmlContent += generateCard(head, false, true, false); 
+                        htmlContent += `</div>`;
+                    }
+
+                    // ปุ่มกดกางสมาชิก (โชว์เฉพาะบนมือถือ)
+                    if (members.length > 0) {
+                        htmlContent += `
+                            <button onclick="toggleMembers('${group.id}')" class="md:hidden bg-white text-partyBlue font-black px-6 py-2 border-2 border-partyBlue shadow-[4px_4px_0px_0px_#f472b6] hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-2 mb-6 text-sm hover-trigger rounded-full">
+                                ดูสมาชิกฝ่าย <span id="icon-${group.id}" class="transition-transform duration-300 inline-block text-lg">🔽</span>
+                            </button>
+                        `;
+                    }
+
+                    // คอนเทนเนอร์เก็บสมาชิก (ซ่อนในมือถือตอนแรก, กางเสมอในคอม)
+                    htmlContent += `<div id="members-${group.id}" class="hidden md:flex flex-wrap justify-center gap-4 md:gap-8 w-full px-2">`;
+                    members.forEach(m => {
+                        htmlContent += generateCard(m, false, false, true); 
+                    });
+                    htmlContent += `</div></div>`;
+                }
+
+                htmlContent += `</div>`;
+            });
+
+            container.innerHTML = htmlContent;
+            attachCursorEvents(); // ใส่ไว้ตามโค้ดของคุณ
+        }
+
+        // --- System Events พื้นฐาน (ไม่ให้โครงสร้างเดิมพัง) ---
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal-on-scroll');
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) el.classList.add('is-visible');
+            });
+        });
+
+        function toggleTheme() { document.documentElement.classList.toggle('dark'); }
+        
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+            // Logic for mobile menu toggle
+        });
+
+        // --- Initial Load ---
+        window.addEventListener('DOMContentLoaded', () => {
+            renderDirectory();
+            const versionEl = document.getElementById('app-version');
+            if(versionEl) versionEl.innerText = "3.0.0";
+            setTimeout(() => window.dispatchEvent(new Event('scroll')), 200);
+        });
+</script>
+</body>
+</html>

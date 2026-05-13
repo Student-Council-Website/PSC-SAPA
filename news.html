@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รวมวารสารและประกาศ - Pioneer Party</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e3a8a">
+    <link rel="apple-touch-icon" href="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://Council.com/">
+    <meta property="og:title" content="สภานักเรียน - โรงเรียนพานทองสภาชนูปถัมภ์">
+    <meta property="og:description" content="สภานักเรียน - ผู้บุกเบิกพัฒนา รับฟังทุกปัญหา พร้อมแก้ไขไปด้วยกัน">
+    <meta property="og:image" content="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <script>
+        tailwind.config = { 
+            darkMode: 'class', 
+            theme: {
+                extend: {
+                    colors: { 
+                        partyBlue: '#1e3a8a', 
+                        partyDarkBlue: '#172554',
+                        partyYellow: '#f472b6', // Ensure consistency
+                        partyPink: '#f472b6',   // Added for consistency
+                        offWhite: '#fdfbf7',
+                        darkBg: '#0f172a',
+                        offWhite: '#fdfbf7' 
+                    },
+                    fontFamily: {
+                        anakotmai: ['Anakotmai', 'sans-serif'],
+                        dancing: ['DancingScript', 'cursive'],
+                        marker: ['Permanent Marker', 'cursive'],
+                    },
+                    boxShadow: {
+                        'pop': '6px 6px 0px 0px rgba(30, 58, 138, 1)',
+                        'pop-hover': '2px 2px 0px 0px rgba(30, 58, 138, 1)',
+                        'pop-yellow': '6px 6px 0px 0px rgba(244, 114, 182, 1)',
+                        'pop-yellow-hover': '2px 2px 0px 0px rgba(244, 114, 182, 1)',
+                        'pop-white': '4px 4px 0px 0px #ffffff',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'marquee': 'marquee 25s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'bounce-x': 'bounceX 1s infinite',
+                        'shimmer': 'shimmer 2.5s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
+        .dark .glass-nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
+
+
+    <!-- Modern Loader -->
+    <div id="app-loader">
+        <div class="loader-content">
+            <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Pioneer" class="loader-logo">
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <p class="font-black text-partyBlue dark:text-partyPink text-sm tracking-widest uppercase animate-pulse">Pioneer News</p>
+        </div>
+    </div>
+
+
+    <div class="bg-noise opacity-30 mix-blend-overlay fixed inset-0 pointer-events-none z-0"></div>
+    <div id="cursor" class="hidden md:block"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-[60] glass-nav border-b-4 border-partyBlue dark:border-gray-800 shadow-sm transition-transform duration-300 h-[68px] md:h-[76px]" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative z-20 h-full">
+            <a href="index.html" class="flex items-center gap-2 md:gap-3 group z-20 hover-trigger">
+                <div class="rounded-full p-1 bg-white border-2 border-partyBlue shadow-sm group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Panthong_Saphanupathamnd.png" alt="School Logo" class="h-8 w-8 md:h-10 md:w-10 object-contain">
+                </div>
+                <div class="rounded-full p-1 bg-white border-2 border-partyBlue group-hover:border-partyYellow transition-all duration-300 transform group-hover:rotate-3 shadow-sm flex-shrink-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="h-8 w-8 md:h-10 md:w-10 object-contain">
+                </div>
+                <div class="flex flex-col leading-tight font-anakotmai ml-1">
+                    <span class="text-base md:text-xl font-black text-partyBlue dark:text-partyYellow tracking-tight group-hover:translate-x-1 transition-transform duration-300">สภานักเรียน</span>
+                    <span class="text-[10px] md:text-xs font-bold text-gray-600 dark:text-gray-300 truncate max-w-[150px] md:max-w-xs transition-transform duration-300">โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                </div>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 items-center font-anakotmai">
+                <li><a href="index.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">หน้าหลัก</a></li>
+                <li><a href="council-committee.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">คณะสภานักเรียน</a></li>
+                <li><a href="pathway.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">แผนการทำงาน</a></li>
+                <li>
+                    <a href="policy.html" class="bg-partyBlue text-white border-2 border-partyBlue px-6 py-2 font-bold shadow-[4px_4px_0px_0px_#f472b6] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block rounded-sm hover:bg-partyDarkBlue hover-trigger">
+                        ดูนโยบาย
+                    </a>
+                </li>
+                <li>
+                    <button onclick="toggleTheme()" class="hover-trigger bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyYellow transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
+                        <svg class="sun-icon absolute w-5 h-5 text-pink-400 transform translate-y-12 dark:translate-y-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="moon-icon absolute w-5 h-5 text-partyBlue dark:translate-y-12 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                </li>
+            </ul>
+
+            <button id="mobile-menu-btn" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20 hover-trigger">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-900 border-t-2 border-partyYellow shadow-xl z-10 flex flex-col p-4 space-y-3 font-anakotmai">
+            <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🏠</span> หน้าหลัก</a>
+            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>👥</span> คณะสภานักเรียน</a>
+            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🗺️</span> แผนการทำงาน</a>
+            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]"><span>📋</span> ดูนโยบาย</a>
+            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-xl py-3 group pl-2">
+                <span>สลับโหมด มืด/สว่าง</span>
+                <div class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-full bg-white/10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-12 bg-gradient-to-br from-partyBlue to-partyDarkBlue text-white relative overflow-hidden shadow-md">
+        <div class="absolute inset-0 bg-noise opacity-20 mix-blend-overlay"></div>
+        
+        <!-- Decorative floating elements -->
+        <div class="absolute top-20 right-10 w-32 h-32 border-8 border-partyYellow rounded-full opacity-10 animate-float hidden md:block"></div>
+        <div class="absolute bottom-20 left-10 w-24 h-24 bg-partyBlue opacity-10 transform rotate-45 animate-float-delayed hidden md:block"></div>
+        <div class="absolute left-[-10%] bottom-[-10%] w-64 h-64 bg-partyYellow rounded-full opacity-10 blur-3xl animate-pulse-slow"></div>
+        
+        <div class="container mx-auto px-4 max-w-7xl relative z-10 text-center flex flex-col items-center">
+            <a href="index.html" class="hover-trigger inline-flex items-center gap-2 bg-white/10 hover:bg-partyYellow hover:text-partyBlue px-4 py-2 rounded-full font-bold transition-colors mb-6 text-sm backdrop-blur-sm border border-white/20 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                กลับหน้าหลัก
+            </a>
+            <h1 class="font-black text-partyYellow leading-[0.9] tracking-tighter mb-4 drop-shadow-md">
+                <span class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl block mb-2 opacity-90">📢</span>
+                <span class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl block mb-2">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-partyYellow to-pink-300 relative inline-block">
+                        <span class="absolute inset-0 translate-x-1 translate-y-1 text-partyBlue z-[-1] opacity-50" style="-webkit-text-stroke: 0px;">วารสาร</span>
+                        <span style="-webkit-text-stroke: 2px #f472b6;" class="dark:[-webkit-text-stroke:2px_#f472b6]">วารสาร และ ประกาศ</span>
+                    </span>
+                </span>
+            </h1>
+            <p class="text-base md:text-xl max-w-2xl mx-auto opacity-90 font-medium border-l-4 border-partyYellow pl-4 py-2 bg-white/10 rounded-r-lg">
+                รวบรวมผลงาน กิจกรรม และข่าวสารประชาสัมพันธ์จากคณะกรรมการสภานักเรียน
+            </p>
+        </div>
+    </header>
+
+    <main class="py-12 md:py-16 relative container mx-auto px-4 max-w-7xl min-h-[50vh]">
+        
+        <div id="news-list-view">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="news-grid-container">
+                </div>
+        </div>
+
+        <div id="news-reader-view" class="hidden max-w-4xl mx-auto">
+            
+            <button onclick="closeNewsReader()" class="hover-trigger inline-flex items-center gap-2 text-partyBlue dark:text-partyYellow font-bold hover:underline mb-8 group bg-white dark:bg-gray-800 px-6 py-3 border-2 border-partyBlue shadow-[4px_4px_0px_0px_#1e3a8a] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                กลับไปหน้ารวมวารสาร
+            </button>
+
+            <article class="bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyYellow shadow-[8px_8px_0px_0px_#f472b6] dark:shadow-[8px_8px_0px_0px_#1e3a8a] p-6 md:p-12 relative animate-slide-up">
+                
+                <div id="reader-date" class="bg-partyYellow text-partyBlue font-black px-4 py-1 text-sm inline-block mb-4 border-2 border-partyBlue shadow-sm transform -rotate-1 hover:rotate-0 transition-transform">
+                </div>
+
+                <h1 id="reader-title" class="text-2xl md:text-4xl lg:text-5xl font-black text-partyBlue dark:text-white mb-8 leading-tight break-words">
+                </h1>
+
+                <div class="w-full mb-10 border-4 border-partyBlue dark:border-partyYellow bg-gray-100 dark:bg-gray-700 flex justify-center p-2 shadow-md">
+                    <img id="reader-image" src="" alt="รูปข่าว" class="max-w-full object-contain max-h-[800px] shadow-sm">
+                </div>
+
+                <div id="reader-content" class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 font-medium leading-relaxed break-words overflow-hidden">
+                </div>
+                
+            </article>
+        </div>
+
+    </main>
+
+    <footer class="bg-partyBlue dark:bg-gray-950 text-white py-16 relative shadow-[0_-10px_40px_rgba(0,0,0,0.3)] z-50 overflow-hidden transition-colors duration-300">
+        <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-partyYellow via-pink-300 to-partyYellow"></div>
+        <div class="absolute -right-10 -bottom-20 w-80 h-80 border-8 border-partyYellow rounded-full opacity-10"></div>
+        <div class="absolute left-10 top-20 w-32 h-32 border-4 border-white rounded-full opacity-5"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 relative z-10"> 
+            
+            <div class="flex-shrink-0 order-2 md:order-1 flex items-center justify-center hover-trigger group">
+                <div class="bg-white p-2 rounded-full -rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_#ffffff] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 relative z-10">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Panthong_Saphanupathamnd.png" alt="School Logo" class="w-full h-full object-contain drop-shadow-sm">
+                </div>
+                <div class="bg-white p-2 rounded-full rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 -ml-6 md:-ml-8 relative z-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="w-full h-full object-contain drop-shadow-sm">
+                </div>
+            </div>
+            
+            <div class="text-center order-1 md:order-2 flex-grow">
+                <h3 class="font-dancing text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Pioneering development, listening to every problem</h3>
+                <p class="font-dancing text-partyPink text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">and ready to solve them together</p>
+                <div class="flex justify-center gap-3 mt-6">
+                     <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0s"></span>
+                     <span class="w-3 h-3 bg-partyYellow rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                     <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
+                </div>
+                <p class="text-sm opacity-60 mt-6 text-gray-300 font-mono tracking-widest uppercase">System Version <span id="app-version"></span></p>
+            </div>
+            
+            <div class="flex flex-col items-center md:items-end gap-3 order-3 md:order-3 flex-shrink-0">
+
+                <span class="text-xs md:text-sm font-black text-partyBlue uppercase tracking-widest bg-white px-4 py-1 rounded-sm shadow-sm mt-4 mb-1">สภานักเรียนพานทองฯ</span>
+                
+                <a href="https://www.instagram.com/deksapa.psc/" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Instagram</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                </a>
+                
+                <a href="https://www.facebook.com/profile.php?id=100063788612433" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Facebook Page</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </div>
+                </a>
+
+                <a href="https://www.tiktok.com/@deksapa.psc" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">TikTok</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                    </div>
+                </a>
+
+            </div>
+            
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // --- 2. ข้อมูลวารสาร ---
+        // *** ให้คุณเอาข้อมูล newsData ที่คุณมี มาใส่ตรงนี้ได้เลยครับ ***
+        const newsData = [
+            {
+                id: 1,
+                date: "27 ก.พ. - 1 มี.ค. 2569",
+                title: "วารสารฉบับที่ 1: งานประจำปี ปิดทองหลวงพ่อโต วัดพานทอง",
+                shortDesc: "งานประจำปี ปิดทองหลวงพ่อโต ณ วัดพานทอง อ.พานทอง จ.ชลบุรี",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _1_.png",
+                content: `
+                    <p class="mb-4">เมื่อวันที่ 27 กุมภาพันธ์ – 1 มีนาคม 2569 ที่ผ่านมา คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ได้มีโอกาสปฏิบัติหน้าที่อำนวยความสะดวกให้แก่ประชาชน ในงานประจำปี <strong>"ปิดทองหลวงพ่อโต"</strong> ณ วัดพานทอง อ.พานทอง จ.ชลบุรี</p>
+                    <p class="mb-2">พวกเราเหล่าตัวแทนนักเรียนได้ร่วมทำหน้าที่เป็น <strong>"สะพานบุญ"</strong> คอยดูแลและอำนวยความสะดวกในจุดกิจกรรมต่างๆ ทั่วบริเวณวัด ไม่ว่าจะเป็น:</p>
+                    <ul class="list-disc pl-8 mb-4 space-y-1">
+                        <li>กิจกรรมทำบุญผ้าป่าลอยฟ้า</li>
+                        <li>กิจกรรมทำบุญพระประจำวัน</li>
+                        <li>จุดถวายสังฆทานและกิจกรรมบุญอื่นๆ</li>
+                    </ul>
+                    <p class="mb-4">การเข้าร่วมกิจกรรมในครั้งนี้ นอกจากความอิ่มเอมใจที่ได้เป็นส่วนหนึ่งของงานบุญใหญ่ประจำอำเภอแล้ว พวกเรายังได้ฝึกทักษะการทำงานจิตอาสา การประสานงาน และการอยู่ร่วมกับชุมชน เพื่อสืบสานวัฒนธรรมและประเพณีอันดีงามของชาวพานทองให้คงอยู่สืบไป</p>
+                    <p class="mb-8">ทางคณะกรรมการสภานักเรียน ขออนุโมทนาบุญร่วมกับทุกท่านที่มาร่วมงานในครั้งนี้ 🙏</p>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1B9tWbDRGg/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DVlUp59EcbJ/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                date: "9 มีนาคม 2569",
+                title: "วารสารฉบับที่ 2: ต้อนรับคณะศึกษาดูงาน โรงเรียนบ้านกรวดวิทยาคาร",
+                shortDesc: "ร่วมให้การต้อนรับคณะผู้บริหาร ครู และสภานักเรียนจากโรงเรียนบ้านกรวดวิทยาคาร จ.บุรีรัมย์",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _2_.png",
+                content: `
+                    <p class="mb-4">เมื่อวันที่ 9 มีนาคม 2569 สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ พร้อมด้วยคณะผู้บริหารและคณะครู ร่วมให้การต้อนรับคณะผู้บริหาร ครู และสภานักเรียนจาก <strong>โรงเรียนบ้านกรวดวิทยาคาร จ.บุรีรัมย์</strong> ในโอกาสเข้าศึกษาดูงาน</p>
+                    <p class="mb-8">โดยร่วมแลกเปลี่ยนแนวทางการบริหารงานสภานักเรียน การส่งเสริมประชาธิปไตยในโรงเรียน และสร้างเครือข่ายผู้นำเยาวชน เพื่อนำประสบการณ์ที่ได้ไปพัฒนาศักยภาพการทำงานของสภานักเรียนให้เกิดประโยชน์สูงสุดต่อไป</p>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1EfiBkmS2W/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DVxL7dCkUjK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                date: "20 มีนาคม 2569",
+                title: "วารสารฉบับที่ 3: กิจกรรมขับเคลื่อนเครือข่ายพิทักษ์สถาบันหลักแห่งชาติฯ",
+                shortDesc: "กิจกรรมมวลชนร่วมใจอนุรักษ์ธรรมชาติ (ป่าชายเลน) ศูนย์ศึกษาธรรมชาติฯ อ.เมืองชลบุรี",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _3_.png",
+                content: `
+                    <p class="mb-4">เมื่อวันที่ 20 มีนาคม 2569 คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ได้เข้าร่วมกิจกรรมขับเคลื่อนเครือข่ายพิทักษ์สถาบันหลักแห่งชาติ และกิจกรรม <strong>“มวลชนร่วมใจอนุรักษ์ธรรมชาติ (ป่าชายเลน)”</strong> ณ ศูนย์ศึกษาธรรมชาติและอนุรักษ์ป่าชายเลนเพื่อการท่องเที่ยวเชิงนิเวศ ต.เสม็ด อ.เมืองชลบุรี จ.ชลบุรี โดยมี นายสราวุธ สุโพธิ์ ผู้อำนวยการสำนักงานทรัพยากรธรรมชาติและสิ่งแวดล้อมจังหวัดชลบุรี ให้เกียรติเป็นประธานในพิธี</p>
+                    <p class="mb-6">ในการนี้ ทีมสภานักเรียนได้ร่วมเป็นส่วนหนึ่งของเครือข่ายเยาวชนและมวลชนจิตอาสากว่า 200 คน ในการทำกิจกรรมเพื่อสังคมและสิ่งแวดล้อม ไม่ว่าจะเป็นการรับชมการแสดงชุด “ศึกศิลป์ สืบสายสยาม” กิจกรรมปล่อยปูคืนสู่ธรรมชาติ และการเดินสำรวจเรียนรู้ระบบนิเวศป่าชายเลน เพื่อเป็นการปลูกฝังจิตสำนึกในการหวงแหนทรัพยากรธรรมชาติ ตลอดจนสร้างเครือข่ายเยาวชนที่เข้มแข็งในการทำประโยชน์เพื่อส่วนรวมต่อไป</p>
+                    
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#มวลชนร่วมใจอนุรักษ์ธรรมชาติป่าชายเลน</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#พานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1BvxErVHeG/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DWItET4kVgF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                date: "สงกรานต์จังหวัดชลบุรี ประจำปี 2569",
+                title: "วารสารฉบับที่ 4: ขอแสดงความยินดีกับพี่คณะกรรมการสภานักเรียน ปีการศึกษา 2562",
+                shortDesc: "การประกวดนางสงกรานต์จังหวัดชลบุรี ประจำปี 2569 ",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _4_.png",
+                content: `
+                    <p class="mb-4 text-center text-lg font-bold">🎉 ขอแสดงความยินดี 🎉</p>
+                    <p class="mb-4">สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอร่วมแสดงความยินดีเป็นอย่างยิ่งกับ <strong>พี่คณะกรรมการสภานักเรียน ปีการศึกษา 2562</strong></p>
+        
+                    <div class="mb-6 text-center">
+                        <p class="text-xl font-bold text-partyBlue dark:text-partyYellow">นางสาวปริมฤดี ยืนยั่ง</p>
+                        <p class="mt-2">ที่ได้รับรางวัล <span class="text-lg font-bold text-red-600">“รองชนะเลิศอันดับ 2”</span></p>
+                        <p>จากการประกวด <strong>นางสงกรานต์จังหวัดชลบุรี ประจำปี 2569</strong></p>
+                        <p class="text-sm italic">ในงานนมัสการพระพุทธสิหิงค์และงานสงกรานต์จังหวัดชลบุรี</p>
+                    </div>
+
+                    <p class="mb-6">ความสำเร็จในครั้งนี้ ถือเป็นอีกหนึ่งความภาคภูมิใจของพวกเราชาวสภานักเรียน และเป็นแรงบันดาลใจให้กับรุ่นน้องทุกคน ขอให้พี่ประสบความสำเร็จในทุกเส้นทาง และเปล่งประกายต่อไปอย่างงดงาม</p>
+        
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สงกรานต์จังหวัดชลบุรีประจำปี2569</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#พานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1EteFCs3SW/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DW-9Bt8kZuM/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div> 
+                `
+            },
+            {
+                id: 5,
+                date: "1 เมษายน 2569",
+                title: "วารสารฉบับที่ 5: การเข้ารับการฝึกอบรมหลักสูตรจิตอาสา 904",
+                shortDesc: "คณะกรรมการสภานักเรียน เข้ารับการฝึกอบรมหลักสูตรจิตอาสา 904 หลักสูตรพื้นฐาน (ภาค 1) รุ่นที่ 8/2569 ณ ค่ายพระรามหก",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _5_.png",
+                content: `
+                    <p class="mb-4"><strong>นางสาวธนิษฐา อินทมาตยากูล</strong> หัวหน้างานคณะกรรมการสภานักเรียน ส่งเสริมประชาธิปไตยในโรงเรียน พร้อมด้วยคณะกรรมการสภานักเรียน ได้เข้ารับการฝึกอบรม <strong>หลักสูตรจิตอาสา 904 หลักสูตรพื้นฐาน (ภาค 1) รุ่นที่ 8/2569</strong></p>
+                    
+                    <p class="mb-4 text-center bg-gray-100 dark:bg-gray-800 py-3 rounded-sm border-l-4 border-partyBlue">
+                        ระหว่างวันที่ 15 มีนาคม – 1 เมษายน พ.ศ. 2569 <br>
+                        ณ ค่ายพระรามหก จังหวัดเพชรบุรี
+                    </p>
+
+                    <p class="mb-4">บัดนี้ นักเรียนได้ผ่านการฝึกอบรมดังกล่าวเป็นที่เรียบร้อยแล้ว ซึ่งการเข้ารับการฝึกอบรมในครั้งนี้ เป็นการเสริมสร้างคุณลักษณะด้านจิตอาสา ความมีวินัย ความเสียสละ และความรับผิดชอบต่อสังคม นับเป็นประสบการณ์ที่มีคุณค่า และเป็นประโยชน์ต่อการพัฒนาตนเอง รวมถึงการเป็นพลเมืองที่ดีของสังคมต่อไป</p>
+                    
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#ฝึกอบรมหลักสูตรจิตอาสา904</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#พานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1E3DVgsau1/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DXABsYZkp5T/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 6,
+                date: "โรงเรียนต้นแบบสภานักเรียน” ระดับ สพม.ชลบุรี ระยอง ประจำปี 2569",
+                title: "ประกาศ: โรงเรียนต้นแบบสภานักเรียน ระดับเขตพื้นที่การศึกษาฯ",
+                shortDesc: "พานทองสภาชนูปถัมภ์ ได้รับคัดเลือกเป็น “โรงเรียนต้นแบบสภานักเรียน” ระดับ สพม.ชลบุรี ระยอง ประจำปี 2569",
+                image: "images/วารสาร/PSC_SAPA_NEWS_โรงเรียนต้นแบบ.jpg",
+                content: `
+                    <p class="mb-4 text-center text-lg font-bold text-partyBlue dark:text-partyYellow">✨ อีกหนึ่งความภาคภูมิใจ ✨</p>
+                    <p class="mb-4">สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ได้รับการคัดเลือกเป็น <strong>“โรงเรียนต้นแบบสภานักเรียน”</strong> ระดับเขตพื้นที่การศึกษามัธยมศึกษาชลบุรี ระยอง เพื่อเป็นตัวแทนเขตพื้นที่การศึกษาไปแข่งขันโรงเรียนต้นแบบสภานักเรียน ระดับเขตตรวจราชการ ประจำปี 2569</p>
+                    
+                    <div class="mb-6 p-4 bg-partyBlue/5 dark:bg-partyYellow/5 border-2 border-dashed border-partyBlue/30 dark:border-partyYellow/30 rounded-md text-center">
+                        <p class="text-lg">รางวัลในครั้งนี้ถือเป็นอีกหนึ่งความภาคภูมิใจของพวกเราชาวสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ และสะท้อนถึงพลังของเยาวชนในการขับเคลื่อนประชาธิปไตยในโรงเรียน</p>
+                    </div>
+
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#ความภาคภูมิใจของพวกเรา</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#พานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1BJ8ruRe6C/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DYA-j-7EumL/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 7,
+                date: "6 พฤษภาคม 2569",
+                title: "วารสารฉบับที่ 6: กิจกรรมค่ายพัฒนาศักยภาพผู้นำนักเรียน ประจำปีการศึกษา 2569",
+                shortDesc: "ค่ายพัฒนาศักยภาพผู้นำนักเรียน เรียนรู้ PSC Model และ Student Council Blueprint เพื่อสานต่อการปฏิบัติหน้าที่สภานักเรียน",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _6_.png",
+                content: `
+                    <p class="mb-4">เมื่อวันพุธที่ 6 พฤษภาคม พ.ศ. 2569 สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ได้จัดกิจกรรม <strong>“ค่ายพัฒนาศักยภาพผู้นำนักเรียน ประจำปีการศึกษา 2569”</strong> เพื่อเตรียมความพร้อมและเสริมสร้างทักษะการทำงานให้กับคณะกรรมการชุดใหม่</p>
+                    
+                    <p class="mb-4">ภายในงานมีกิจกรรมการเรียนรู้ที่เข้มข้น อาทิ กิจกรรม <strong>PSC Model</strong> และกิจกรรม <strong>Student Council Blueprint</strong> รวมถึงกิจกรรมสร้างสรรค์อื่น ๆ โดยได้รับเกียรติจาก <strong>ผู้อำนวยการครรชิต ก้อนพรหม</strong> พร้อมด้วยพี่ ๆ สภานักเรียนประจำปีการศึกษา 2568 มาร่วมเป็นวิทยากรถ่ายทอดประสบการณ์และส่งต่อแรงบันดาลใจ</p>
+
+                    <p class="mb-6">พวกเราสภานักเรียนประจำปีการศึกษา 2569 จะขอนำประสบการณ์และความรู้ที่ได้รับในครั้งนี้ ไปสานต่อในการปฏิบัติหน้าที่คณะกรรมการสภานักเรียน เพื่อพัฒนาโรงเรียนของเราอย่างเต็มกำลังความสามารถต่อไป</p>
+                    
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#กิจกรรมค่ายพัฒนาศักยภาพผู้นำนักเรียน</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1AGhNhSDka/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DYCxAbnk5sy/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 8,
+                date: "7 พฤษภาคม 2569",
+                title: "วารสารฉบับที่ 7: ศึกษาดูงานและลงนามบันทึกข้อตกลง",
+                shortDesc: "สภานักเรียนฯ ศึกษาดูงานแลกเปลี่ยนเรียนรู้ และลงนาม MOU เชื่อมความสัมพันธ์สภานักเรียนต้นแบบ ณ โรงเรียนวัดทรงธรรม จ.สมุทรปราการ",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _7_.png",
+                content: `
+                    <p class="mb-4">เมื่อวันพฤหัสบดีที่ 7 พฤษภาคม 2569 คณะกรรมการสภานักเรียน โรงเรียนพานทองสภาชนูปถัมภ์ นำโดย <strong>นายรณชัย กิ่งแก้ว</strong> รองผู้อำนวยการกลุ่มบริหารงานกิจการนักเรียน และคณะครูที่ปรึกษา ได้มีโอกาสเข้าศึกษาดูงานและแลกเปลี่ยนเรียนรู้ ณ โรงเรียนวัดทรงธรรม จังหวัดสมุทรปราการ</p>
+                    
+                    <div class="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-partyBlue rounded-r-md">
+                        <p class="font-bold text-partyBlue dark:text-blue-300 mb-2">🤝 การร่วมลงนามบันทึกข้อตกลง (MOU)</p>
+                        <p>การเดินทางในครั้งนี้ พวกเราได้ร่วมลงนามบันทึกข้อตกลง (MOU) เพื่อเชื่อมความสัมพันธ์และร่วมกันขับเคลื่อน <strong>"สภานักเรียนต้นแบบ"</strong> ให้มีความเข้มแข็งและยั่งยืนยิ่งขึ้น</p>
+                    </div>
+
+                    <p class="mb-6">พวกเราสภานักเรียนฯ จะนำความรู้และประสบการณ์ดี ๆ ที่ได้รับจากการแลกเปลี่ยนเรียนรู้ในครั้งนี้ มาปรับใช้ในการพัฒนากิจกรรมและระบบการทำงานภายในโรงเรียนของเราให้ดียิ่งขึ้นต่อไป</p>
+                    
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนวัดทรงธรรม</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#พานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1CiVvSAXDN/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DYC0X86E1Op/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                <div class="text-gray-800 dark:text-gray-200">
+                    <p class="text-lg md:text-xl leading-relaxed mb-8 indent-8">
+                        เก็บตกภาพบรรยากาศกิจกรรมที่ผ่านมา ทุกภาพที่ถูกบันทึกไว้ คือหลักฐานของความสุขในวันนั้น สามารถรับชมคลิปวิดีโอเต็มๆ ได้ที่ช่องทาง Official ของพวกเราด้านล่างนี้เลย! 👇
+                    </p>
+                    
+                    <div class="flex flex-col md:flex-row gap-8 justify-center items-start mt-8">
+                        
+                        <div class="w-full md:w-1/2 flex justify-center overflow-hidden rounded-xl shadow-md">
+                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYC1rKZzIjb/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                                </blockquote>
+                        </div>
+
+                        <div class="w-full md:w-1/2 flex justify-center overflow-hidden rounded-xl shadow-md">
+                            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@deksapa.psc/video/7637191816122469652" data-video-id="7637191816122469652" style="max-width: 605px;min-width: 325px;"> 
+                                <section> 
+                                    <a target="_blank" title="@deksapa.psc" href="https://www.tiktok.com/@deksapa.psc?refer=embed">@deksapa.psc</a> 
+                                    </section> 
+                            </blockquote> 
+                        </div>
+
+                    </div>
+                </div>
+            `
+            },
+            {
+                id: 9,
+                date: "4 พฤษภาคม 2569",
+                title: "ยินดีต้อนรับสมาชิกใหม่เข้าสู่รั้ว น้ำเงิน-ชมพู! 💙💗",
+                shortDesc: "งานปฐมนิเทศนักเรียนใหม่ และกิจกรรมรับน้องใหม่ ประจำปีการศึกษา 2569 “หัวใจผูกพัน เราพี่น้องกัน”",
+                image: "images/วารสาร/PSC_ปฐมนิเทศ69.png",
+                content: `
+                    <p class="mb-4 text-lg font-bold text-center text-partyBlue dark:text-partyYellow">💙💗 ยินดีต้อนรับสมาชิกใหม่เข้าสู่รั้ว น้ำเงิน-ชมพู! 💙💗</p>
+                    
+                    <p class="mb-4">เตรียมตัวให้พร้อม! กับงาน <strong>"ปฐมนิเทศนักเรียนใหม่ และกิจกรรมรับน้องใหม่"</strong> ประจำปีการศึกษา 2569 ถึงเวลาที่เราจะมาสร้างสายสัมพันธ์ <strong>"หัวใจผูกพัน เราพี่น้องกัน"</strong> ให้แน่นแฟ้นยิ่งขึ้น</p>
+                    
+                    <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md">
+                        <p class="font-bold mb-2">📌 นัดหมายสำคัญ:</p>
+                        <ul class="list-none space-y-1">
+                            <li>🗓 <strong>วันพฤหัสบดีที่ 14 พฤษภาคม พ.ศ. 2569</strong></li>
+                            <li>⏰ <strong>เวลา 07.30 น. – 15.40 น.</strong></li>
+                            <li>📍 <strong>ณ โรงเรียนพานทองสภาชนูปถัมภ์</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-6 p-4 bg-red-50 dark:bg-red-900/10 border-l-4 border-red-500 rounded-r-md">
+                        <p class="font-bold text-red-600 dark:text-red-400 mb-1">⚠️ ข้อเน้นย้ำเรื่องการแต่งกาย:</p>
+                        <p>ขอให้น้อง ๆ ทุกคน แต่งกายด้วย<strong>ชุดนักเรียนของโรงเรียนพานทองสภาชนูปถัมภ์ให้ถูกต้องตามระเบียบเท่านั้น!</strong> เพื่อความเป็นระเบียบเรียบร้อยและพร้อมเข้าสู่แก๊งน้ำเงิน-ชมพูอย่างเป็นทางการ</p>
+                    </div>
+
+                    <p class="mb-6 text-center font-bold">แล้วเจอกันนะน้องใหม่ทุกคน พี่ ๆ สภานักเรียนรอรับอยู่นะ! 🚌✨</p>
+                    
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#รับน้องใหม่</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#ปฐมนิเทศ69</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#พานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.instagram.com/p/DX34xBXEWfb/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 10,
+                date: "15 พฤษภาคม 2569",
+                title: "สิ้นสุดการรอคอย! ต้อนรับการเปิดภาคเรียนที่ 1/2569 🎒🏫",
+                shortDesc: "รถเมล์สายพานทองสภาฯ ออกเดินทางแล้ว! เตรียมตัวให้พร้อมกับการเปิดเทอมวันแรก 15 พฤษภาคมนี้",
+                image: "images/วารสาร/PSC_เปิดเทอม1_69.png",
+                content: `
+                    <p class="mb-4 text-lg font-bold text-center text-partyBlue dark:text-partyYellow">🚌 รถเมล์สายพานทองสภาฯ กำลังจะออกเดินทาง! 🚌</p>
+                    
+                    <p class="mb-4 text-center text-xl font-bold">เปิดภาคเรียนที่ 1/2569 <br>ในวันที่ 15 พฤษภาคมนี้!</p>
+
+                    <p class="mb-6">เตรียมกระเป๋าและชุดนักเรียนให้พร้อม เทอมใหม่ เป้าหมายใหม่ ใครที่เคยบอกว่าจะเริ่มตั้งใจเรียน... โอกาสมาถึงแล้ว! ขอให้นักเรียนทุกคนมีความสุขกับการเรียนรู้และมิตรภาพใหม่ ๆ ในรั้วน้ำเงิน-ชมพูของเรา</p>
+                    
+                    <div class="mb-8 p-4 bg-partyBlue/5 dark:bg-partyYellow/5 border-2 border-dashed border-partyBlue/30 dark:border-partyYellow/30 rounded-md text-center">
+                        <p class="text-lg font-bold text-partyBlue dark:text-partyYellow italic">"แล้วเจอกันที่โรงเรียนนะเพื่อน ๆ 💙🩷"</p>
+                    </div>
+
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#เปิดเทอม</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#พานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.instagram.com/p/DYEfdlfE08O/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            }
+];
+
+        function renderNewsGrid() {
+            const container = document.getElementById('news-grid-container');
+            if(!container) return; // ดักจับ Error
+            container.innerHTML = ''; 
+
+            const sortedNews = [...newsData].sort((a, b) => b.id - a.id);
+
+            sortedNews.forEach(news => {
+                const cardHTML = `
+                    <div class="hover-trigger bg-white dark:bg-gray-800 border-2 border-partyBlue flex flex-col shadow-pop hover:-translate-y-3 hover:shadow-[8px_8px_0px_0px_rgba(244,114,182,1)] transition-all duration-300 group cursor-pointer" onclick="openNewsReader(${news.id})">
+                        <div class="w-full aspect-[1587/2245] overflow-hidden border-b-2 border-partyBlue bg-gray-200">
+                            <img src="${news.image}" alt="${news.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <span class="inline-block text-gray-500 text-sm font-bold mb-2 flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>${news.date}</span>
+                            <h3 class="text-xl font-black text-partyBlue dark:text-white mb-3 line-clamp-2 group-hover:text-partyYellow transition-colors">${news.title}</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 text-sm leading-relaxed">${news.shortDesc}</p>
+                        </div>
+                        <div class="p-6 pt-0 mt-auto">
+                            <button class="inline-block text-partyBlue dark:text-partyYellow font-bold border-b-2 border-partyBlue dark:border-partyYellow pb-1 group-hover:bg-partyYellow group-hover:text-partyBlue group-hover:border-transparent transition-all w-full text-center py-2 border-2">
+                                อ่านฉบับนี้ ➔
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+            attachCursorEvents();
+        }
+
+        // --- ระบบเปิดอ่านข่าว, ปรับขนาดฟอนต์ และกระตุ้นวิดีโอ ---
+        function openNewsReader(id) {
+            const news = newsData.find(n => n.id === id);
+            if(!news) return;
+
+            document.getElementById('reader-date').innerText = news.date;
+            
+            // --- ปรับขนาดตัวอักษรหัวข้อข่าว (Auto Font Size) ---
+            const titleEl = document.getElementById('reader-title');
+            titleEl.innerText = news.title;
+            if (news.title.length > 50) {
+                // ถ้าหัวข้อยาวมาก
+                titleEl.className = "text-xl md:text-3xl lg:text-4xl font-black text-partyBlue dark:text-white mb-8 leading-tight break-words";
+            } else if (news.title.length > 30) {
+                // ถ้าหัวข้อยาวปานกลาง
+                titleEl.className = "text-2xl md:text-4xl lg:text-5xl font-black text-partyBlue dark:text-white mb-8 leading-tight break-words";
+            } else {
+                // ปกติ
+                titleEl.className = "text-3xl md:text-5xl lg:text-6xl font-black text-partyBlue dark:text-white mb-8 leading-tight break-words";
+            }
+
+            document.getElementById('reader-image').src = news.image;
+            document.getElementById('reader-content').innerHTML = news.content;
+
+            document.getElementById('news-list-view').classList.add('hidden');
+            document.getElementById('news-reader-view').classList.remove('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            setTimeout(() => {
+                attachCursorEvents(); 
+
+                if (typeof window.instgrm !== 'undefined') {
+                    window.instgrm.Embeds.process();
+                }
+
+                const oldTiktok = document.getElementById('tiktok-dynamic-script');
+                if (oldTiktok) oldTiktok.remove();
+                
+                const script = document.createElement('script');
+                script.src = "https://www.tiktok.com/embed.js";
+                script.id = "tiktok-dynamic-script";
+                script.async = true;
+                document.body.appendChild(script);
+
+            }, 200);
+        }
+
+        function closeNewsReader() {
+            document.getElementById('news-reader-view').classList.add('hidden');
+            document.getElementById('news-list-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderNewsGrid();
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const newsId = urlParams.get('id');
+
+            if (newsId) {
+                setTimeout(() => {
+                    openNewsReader(parseInt(newsId)); 
+                }, 500);
+            }
+        });
+        
+    </script>
+    
+    <script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>

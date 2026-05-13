@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นโยบายพรรค - Pioneer Party</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e3a8a"> 
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Pioneer">
+    <link rel="apple-touch-icon" href="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        partyBlue: '#1e3a8a',
+                        partyDarkBlue: '#172554',
+                        partyYellow: '#f472b6', // Standardized to index.html's pinkish-yellow
+                        partyPink: '#f472b6', // Ensure consistency
+                        offWhite: '#fdfbf7',
+                        darkBg: '#0f172a',
+                        quoteGray: '#374151'
+                    },
+                    boxShadow: {
+                        'pop': '6px 6px 0px 0px rgba(30, 58, 138, 1)',
+                        'pop-hover': '2px 2px 0px 0px rgba(30, 58, 138, 1)',
+                        'pop-yellow': '6px 6px 0px 0px rgba(250, 204, 21, 1)',
+                        'pop-yellow-hover': '2px 2px 0px 0px rgba(244, 114, 182, 1)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'marquee': 'marquee 25s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'bounce-x': 'bounceX 1s infinite',
+                        'shimmer': 'shimmer 2.5s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%': { transform: 'translateY(0px) rotate(0deg);' },
+                            '50%': { transform: 'translateY(-20px) rotate(2deg);' },
+                            '100%': { transform: 'translateY(0px) rotate(0deg);' },
+                        },
+                        bounceX: {
+                            '0%, 100%': { transform: 'translateX(-25%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' },
+                            '50%': { transform: 'none', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' },
+                        },
+                        shimmer: {
+                            '0%': { left: '-100%' }, '100%': { left: '200%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
+        .dark .glass-nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden flex flex-col min-h-screen transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
+
+    <!-- Modern Loader -->
+    <div id="app-loader">
+        <div class="loader-content">
+            <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Pioneer" class="loader-logo">
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <p class="font-black text-partyBlue dark:text-partyPink text-sm tracking-widest uppercase animate-pulse">Pioneer Policy</p>
+        </div>
+    </div>
+
+    <div class="bg-noise opacity-30 mix-blend-overlay fixed inset-0 pointer-events-none z-0"></div>
+    <div id="cursor" class="hidden md:block"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-[60] glass-nav border-b-4 border-partyBlue dark:border-gray-800 shadow-sm transition-transform duration-300 h-[68px] md:h-[76px]" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative z-20 bg-white dark:bg-gray-900 h-full">
+            <a href="index.html" class="flex items-center gap-2 md:gap-3 group z-20 hover-trigger">
+                <div class="rounded-full p-1 bg-white border-2 border-partyBlue shadow-sm group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Panthong_Saphanupathamnd.png" alt="School Logo" class="h-8 w-8 md:h-10 md:w-10 object-contain">
+                </div>
+                <div class="rounded-full p-1 bg-white border-2 border-partyBlue group-hover:border-partyYellow transition-all duration-300 transform group-hover:rotate-3 shadow-sm flex-shrink-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="h-8 w-8 md:h-10 md:w-10 object-contain">
+                </div>
+                <div class="flex flex-col leading-tight font-anakotmai ml-1">
+                    <span class="text-base md:text-xl font-black text-partyBlue dark:text-partyYellow tracking-tight group-hover:translate-x-1 transition-transform duration-300">สภานักเรียน</span>
+                    <span class="text-[10px] md:text-xs font-bold text-gray-600 dark:text-gray-300 truncate max-w-[150px] md:max-w-xs transition-transform duration-300">โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                </div>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 items-center font-anakotmai">
+                <li><a href="index.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">หน้าหลัก</a></li>
+                <li><a href="council-committee.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">คณะสภานักเรียน</a></li>
+                <li><a href="pathway.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">แผนการทำงาน</a></li>
+                <li>
+                    <a href="policy.html" class="nav-link-active bg-partyYellow text-partyBlue shadow-[4px_4px_0px_0px_#1e3a8a] dark:text-partyBlue font-bold px-3 py-1 border-b-4 border-partyYellow transition-colors hover-trigger">
+                        อ่านนโยบาย
+                    </a>
+                </li>
+                <li>
+                    <button onclick="toggleTheme()" class="hover-trigger bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyYellow transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
+                        <svg class="sun-icon absolute w-5 h-5 text-pink-400 transform translate-y-12 dark:translate-y-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="moon-icon absolute w-5 h-5 text-partyBlue dark:translate-y-12 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                </li>
+            </ul>
+
+            <button id="mobile-menu-btn" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20 hover-trigger">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-950 border-t-2 border-partyYellow shadow-2xl z-10 flex flex-col p-5 space-y-2 font-anakotmai">
+            <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🏠</span> หน้าหลัก</a>
+            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>👥</span> คณะสภานักเรียน</a>
+            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🗺️</span> แผนการทำงาน</a>
+            <a href="policy.html" class="block text-partyYellow font-bold text-xl py-2 border-b border-white/10 pl-2 border-l-4 border-l-partyYellow bg-white/10">ดูนโยบาย</a>
+            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-xl py-3 group pl-2">
+                <span>สลับโหมด มืด/สว่าง</span>
+                <div class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-full bg-white/10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center pt-28 pb-20 px-4 relative z-10 font-anakotmai">
+        <div class="max-w-3xl w-full text-center reveal-on-scroll">
+            <div class="inline-block relative mb-8">
+                <div class="absolute -inset-4 border-4 border-partyBlue dark:border-partyYellow opacity-20 rotate-3 rounded-xl animate-pulse"></div>
+                <div class="absolute -inset-4 border-4 border-partyYellow dark:border-partyBlue opacity-20 -rotate-3 rounded-xl"></div>
+                
+                <div class="relative bg-white dark:bg-gray-800 p-8 md:p-12 border-4 border-partyBlue dark:border-partyYellow shadow-pop dark:shadow-pop-yellow flex flex-col items-center">
+                    <div class="text-7xl md:text-8xl mb-6 animate-bounce">🚧</div>
+                    <h1 class="text-3xl md:text-5xl font-black text-partyBlue dark:text-white mb-4 uppercase tracking-tighter">
+                        ขออภัย! หน้านี้กำลัง<br class="md:hidden">อยู่ระหว่างการพัฒนา
+                    </h1>
+                    <div class="w-20 h-2 bg-partyYellow mb-6 rounded-full"></div>
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 font-bold leading-relaxed mb-8">
+                        เรากำลังปรับปรุงหน้า "นโยบายพรรค (Policy)" ให้สวยงามและข้อมูลถูกต้องที่สุด เพื่อให้เพื่อนๆ ได้ติดตามการทำงานของสภาฯ ได้อย่างชัดเจน พบกันเร็วๆ นี้!
+                    </p>
+                    <a href="index.html" class="hover-trigger bg-partyBlue text-white px-8 py-4 font-black text-xl shadow-pop-yellow hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all border-2 border-partyBlue flex items-center gap-3">
+                        <span>กลับไปหน้าหลัก</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button id="install-pwa-btn" class="hidden fixed bottom-4 left-4 z-50 bg-partyYellow text-partyBlue border-2 border-partyBlue dark:border-white px-4 py-2 font-black shadow-pop rounded-lg animate-bounce hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">⬇️ ติดตั้งแอป</button>
+
+    <footer class="bg-partyBlue dark:bg-gray-950 text-white py-16 relative shadow-[0_-10px_40px_rgba(0,0,0,0.3)] z-50 overflow-hidden transition-colors duration-300">
+        <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-partyYellow via-pink-300 to-partyYellow"></div>
+        <div class="absolute -right-10 -bottom-20 w-80 h-80 border-8 border-partyYellow rounded-full opacity-10"></div>
+        <div class="absolute left-10 top-20 w-32 h-32 border-4 border-white rounded-full opacity-5"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 relative z-10"> 
+            
+            <div class="flex-shrink-0 order-2 md:order-1 flex items-center justify-center hover-trigger group">
+                <div class="bg-white p-2 rounded-full -rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_#ffffff] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 relative z-10">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Panthong_Saphanupathamnd.png" alt="School Logo" class="w-full h-full object-contain drop-shadow-sm">
+                </div>
+                <div class="bg-white p-2 rounded-full rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 -ml-6 md:-ml-8 relative z-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="w-full h-full object-contain drop-shadow-sm">
+                </div>
+            </div>
+            
+            <div class="text-center order-1 md:order-2 flex-grow">
+                <h3 class="font-marker text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Pioneering development, listening to every problem</h3>
+                <p class="font-marker text-partyPink text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">and ready to solve them together</p>
+                <div class="flex justify-center gap-3 mt-6">
+                     <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0s"></span>
+                     <span class="w-3 h-3 bg-partyYellow rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                     <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
+                </div>
+                <p class="text-sm opacity-60 mt-6 text-gray-300 font-mono tracking-widest uppercase">System Version <span id="app-version"></span></p>
+            </div>
+            
+            <div class="flex flex-col items-center md:items-end gap-3 order-3 md:order-3 flex-shrink-0">
+
+                <span class="text-xs md:text-sm font-black text-partyBlue uppercase tracking-widest bg-white px-4 py-1 rounded-sm shadow-sm mt-4 mb-1">สภานักเรียนพานทองฯ</span>
+                
+                <a href="https://www.instagram.com/deksapa.psc/" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Instagram</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                </a>
+                
+                <a href="https://www.facebook.com/profile.php?id=100063788612433" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Facebook Page</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </div>
+                </a>
+
+                <a href="https://www.tiktok.com/@deksapa.psc" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">TikTok</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                    </div>
+                </a>
+
+            </div>
+            
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+
+        // --- Policies Data ---
+        const policies = [
+            {
+                id: 1,
+                title: "Loud & Clear",
+                image: "images/รูปประกอบนโยบาย/Loud-Clear.png",
+                icon: "📢",
+                concept: "นโยบายพัฒนาระบบการสื่อสารของโรงเรียน เพื่อให้ข่าวสาร ประกาศ ข้อมูลสำคัญได้อย่างชัดเจนและทั่วถึง",
+                how: ["เสนอแนวทางปรับปรุงคุณภาพลำโพง ให้เสียงชัดขึ้นในพื้นที่ที่มีปัญหา", "เมื่อมีการประกาศทางเสียงตามสาย จะพิมพ์ข้อความซ้ำในกลุ่ม 'สายใยพี่น้อง'", "เพื่อให้นักเรียนที่ฟังไม่ทันหรืออยู่ในจุดอับเสียงได้รับข้อมูลครบถ้วน"],
+                slogan: "เสียงชัด ข่าวถึงทุกคน",
+                benefits: ["นักเรียนได้รับข้อมูล ทั้งจากเสียงและข้อความ", "ลดปัญหาฟังไม่ชัด พลาดข่าวสำคัญ", "การสื่อสารของโรงเรียนมีความเป็นระบบมากขึ้น", "นักเรียนรู้สึกว่าโรงเรียนใส่ใจการสื่อสารจริง ๆ"]
+            },
+            {
+                id: 2,
+                title: "Continuity Policy",
+                image: "images/รูปประกอบนโยบาย/Continuity-Policy.png",
+                icon: "🔄", 
+                concept: "การคงไว้และต่อยอดนโยบายหรือโครงการจากสภานักเรียนชุดก่อน ที่เป็นประโยชน์ต่อนักเรียนและโรงเรียน เพื่อให้เกิดการพัฒนาอย่างต่อเนื่อง",
+                how: ["ศึกษาและรวบรวมนโยบายของสภานักเรียนชุดก่อน", "คัดเลือกนโยบายที่ยังเหมาะสมและใช้งานได้จริง", "รับฟังความคิดเห็นจากนักเรียนเพื่อนำมาปรับปรุง", "ดำเนินการต่อภายใต้การดูแลของคุณครูที่ปรึกษา", "ติดตามและประเมินผลเพื่อพัฒนาอย่างเหมาะสม"],
+                slogan: "สานต่อนโยบายรุ่นพี่",
+                benefits: ["นโยบายดี ๆ จากรุ่นพี่จะยังคงดำเนินต่อไป", "นักเรียนได้รับประโยชน์อย่างต่อเนื่อง", "โรงเรียนมีทิศทางการพัฒนาที่ชัดเจน", "สร้างวัฒนธรรมความร่วมมือและการเคารพซึ่งกันและกัน", "สภานักเรียนทำงานได้อย่างมีเสถียรภาพมากขึ้น"],
+                extra: {
+                    title: "📌 ตัวอย่างนโยบายที่จะสานต่อ",
+                    type: "list",
+                    data: ["การแข่งขัน E-SPORTS", "สมุนไพรดับกลิ่นห้องน้ำ", "กระดาษรียูสห่อผ้าอนามัย", "ลานน้ำเงินชมพู","ผ้าอนามัยฉุกเฉิน"]
+                }
+            },
+            {
+                id: 3,
+                title: "Pathway to Future",
+                image: "images/รูปประกอบนโยบาย/Pathway-to-Future.png",
+                icon: "🚀",
+                concept: "นโยบายรวบรวมข้อมูลการศึกษาต่ออย่างเป็นระบบ เพื่อให้นักเรียนสามารถวางแผนอนาคตได้ง่ายและชัดเจน",
+                how: ["รวบรวมลิงก์ค่าย / Open House จากมหาวิทยาลัยต่าง ๆ", "สรุปเกณฑ์การรับเข้าแต่ละคณะ แบบเข้าใจง่าย", "จัดหมวดหมู่ตามสายการเรียน (วิทย์–คณิต / ศิลป์) และคณะยอดนิยม", "เผยแพร่ผ่านเว็บไซต์สภานักเรียน, QR Code และกลุ่มสายใยพี่น้อง"],
+                slogan: "เส้นทางการเรียนที่ชัดเจน",
+                benefits: ["นักเรียนเข้าถึงข้อมูลโอกาสทางการศึกษาได้สะดวก", "ลดความสับสนในการเลือกคณะและการเตรียมพอร์ต", "ช่วยให้นักเรียนวางแผนอนาคตได้เร็วและชัดเจนขึ้น", "สร้างแรงบันดาลใจและเป้าหมายในการเรียน"]
+            },
+            {
+                id: 4,
+                title: "Smart Parking",
+                image: "images/รูปประกอบนโยบาย/Smart-Parking.png",
+                icon: "🅿️",
+                concept: "นโยบายปรับปรุงและจัดระเบียบพื้นที่จอดรถภายในโรงเรียน เพื่อให้การจอดรถเป็นระบบ ปลอดภัย และเป็นธรรมต่อผู้ใช้งานทุกคน โดยคำนึงถึงขนาดรถและพื้นที่อย่างเหมาะสม",
+                how: ["แบ่งโซนที่จอดรถตามประเภทและขนาดรถ (เช่น รถจักรยานยนต์ทั่วไป / คันใหญ่)", "ปรับผังการจอดให้เป็นระเบียบ ลดการจอดซ้อนหรือกีดขวางทางสัญจร", "ติดป้ายและเส้นสัญลักษณ์ให้ชัดเจน", "ประชาสัมพันธ์แนวทางการจอดรถที่ถูกต้องแก่ผู้ใช้งาน", "ประสานงานกับคุณครูและฝ่ายที่เกี่ยวข้องในการดูแลความเรียบร้อย"],
+                slogan: "จอดเป็นระบบ ใช้งานสะดวก",
+                benefits: ["พื้นที่จอดรถถูกใช้อย่างคุ้มค่าและเป็นระบบมากขึ้น", "ลดปัญหาการจอดรถไม่เป็นระเบียบและความแออัด", "เพิ่มความปลอดภัยในการเข้า–ออกพื้นที่จอดรถ", "นักเรียนใช้งานได้สะดวกและเป็นธรรมมากขึ้น"]
+            },
+            {
+                id: 5,
+                title: "No More Wait",
+                image: "images/รูปประกอบนโยบาย/No-More-Wait.png",
+                icon: "🚽",
+                concept: "นโยบายเปิดใช้งานห้องน้ำใต้ตึก 4-5 เพื่ออำนวยความสะดวกแก่นักเรียนทุกคน ลดปัญหาการเดินไกล และการต้องรอห้องน้ำเป็นเวลานาน",
+                how: ["เปิดใช้งานห้องน้ำใต้ตึก 4-5 อย่างเป็นทางการ", "กำหนดกติกาการใช้งานอย่างชัดเจน", "รณรงค์การใช้ห้องน้ำอย่างเหมาะสมและรับผิดชอบร่วมกัน", "ประสานงานกับคุณครูและฝ่ายที่เกี่ยวข้องในการดูแลความเรียบร้อย"],
+                slogan: "ไม่ต้องรอ ไม่ต้องกลั้น",
+                benefits: ["นักเรียนใช้ชีวิตในโรงเรียนได้สะดวกขึ้น", "ลดปัญหาการอั้นปัสสาวะ ซึ่งส่งผลต่อสุขภาพ", "โรงเรียนมีการจัดสรรพื้นที่ที่ตอบโจทย์การใช้งานจริง", "ส่งเสริมวินัยและความรับผิดชอบร่วมกันของนักเรียน"],
+                extra: {
+                    title: "⚠️ กฎระเบียบและข้อควรปฏิบัติ",
+                    type: "rules",
+                    rules: ["ใช้ห้องน้ำด้วยความสุภาพและเหมาะสม", "เข้าใช้ตามความจำเป็น ไม่ใช้เป็นพื้นที่รวมกลุ่ม", "รักษาความสะอาดก่อนและหลังใช้งาน", "ห้ามสูบบุหรี่ บุหรี่ไฟฟ้า หรือสิ่งเสพติดทุกชนิด", "ห้ามทำลายหรือเขียนขีดข่วนอุปกรณ์ภายในห้องน้ำ", "ไม่ส่งเสียงดังหรือก่อความรบกวน", "ใช้ห้องน้ำตามช่วงเวลาที่โรงเรียนกำหนด", "ให้ความร่วมมือกับคุณครูและผู้ดูแลพื้นที่", "หากพบพฤติกรรมไม่เหมาะสม ให้แจ้งคุณครูหรือสภานักเรียน", "การใช้ห้องน้ำเป็นความรับผิดชอบร่วมกันของนักเรียนทุกคน"],
+                    note: "หมายเหตุ: หากมีการใช้งานผิดวัตถุประสงค์ เช่น การสูบบุหรี่หรือการกระทำร้ายแรง โรงเรียนอาจพิจารณา **ปิดการใช้งานห้องน้ำชั่วคราว 1 ภาคเรียน**",
+                    dos: ["กด/ราด โถส้วมทุกครั้งหลังใช้งาน", "สแกน QR code ทุกครั้งที่พบปัญหาผิดปกติ"],
+                    donts: ["สูบบุหรี่/พอต ในห้องน้ำ", "ใช้เป็นจุดรวมพล"]
+                }
+            }
+        ];
+
+        const secondaryPolicies = [
+            {
+                id: 101,
+                title: "ลานน้ำเงินชมพู x งานวัด",
+                icon: "🎡",
+                image: "images/รูปประกอบนโยบาย/ลานน้ำเงินชมพู x งานวัด.png",
+                concept: "ส่งเสริมให้นักเรียนใช้เวลาว่างอย่างสร้างสรรค์ ผ่านกิจกรรมลานน้ำเงินชมพูในรูปแบบงานวัดร่วมสมัย เพื่อสร้างความสามัคคี ผ่อนคลายความเครียด และเปิดพื้นที่แสดงความสามารถของนักเรียน",
+                how: ["จัดกิจกรรมงานวัดภายในลานน้ำเงินชมพู (เช่น เทอมละ 1 ครั้ง)", "จัดซุ้มเกมมหาสนุกต่างๆ เพื่อความบันเทิง", "เปิดเวทีการแสดงดนตรีและความสามารถพิเศษ", "เปิดโซนร้านค้า Market ให้พี่น้องนักเรียนได้มาขายของ"],
+                slogan: "พื้นที่ความสุข สนุกแบบสร้างสรรค์",
+                benefits: ["เกิดความสุข ความสามัคคีในหมู่คณะ", "ฝึกทักษะการทำงานเป็นทีมและการบริหารจัดการ", "นักเรียนกล้าแสดงออกในทางที่สร้างสรรค์", "เรียนรู้การใช้เวลาว่างอย่างมีคุณค่า"],
+                extra: {
+                    title: "🎯 กิจกรรมภายในงาน",
+                    type: "list",
+                    data: ["ซุ้มเกมงานวัด", "ดนตรีสด (Folk Song)", "ร้านค้า DIY นักเรียน", "จุด Check-in ถ่ายรูป"]
+                }
+            }
+        ];
+
+        // --- Render Policies ---
+        function renderPolicies(data, containerId) {
+            const container = document.getElementById(containerId);
+            data.forEach((policy) => {
+                const card = document.createElement('div');
+                card.className = "group bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyYellow shadow-pop hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all cursor-pointer reveal-on-scroll relative overflow-hidden";
+                card.onclick = () => openModal(policy);
+                card.innerHTML = `
+                    <div class="h-48 overflow-hidden relative border-b-4 border-partyBlue dark:border-partyYellow">
+                        <div class="absolute top-2 right-2 bg-partyYellow text-3xl p-2 rounded-full border-2 border-black z-10 shadow-sm">${policy.icon}</div>
+                        <img src="${policy.image}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-black text-partyBlue dark:text-white mb-2 uppercase">${policy.title}</h3>
+                        <p class="text-gray-600 dark:text-gray-300 line-clamp-2 font-medium">${policy.concept}</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-partyBlue dark:text-partyYellow text-sm font-bold bg-partyYellow/20 px-2 py-1 border border-partyYellow">อ่านรายละเอียด +</span>
+                        </div>
+                    </div>`;
+                container.appendChild(card);
+            });
+        }
+        renderPolicies(policies, 'policy-container');
+        renderPolicies(secondaryPolicies, 'secondary-policy-container');
+
+        // --- Modal Logic ---
+        function openModal(policy) {
+            const modal = document.getElementById('policy-modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            let extraHTML = '';
+            if (policy.extra) {
+                if (policy.extra.type === 'list') {
+                    extraHTML = `<div class="bg-offWhite dark:bg-gray-700 p-6 rounded-lg border-2 border-dashed border-partyBlue/30 mt-6">
+                        <h4 class="font-black text-xl text-partyBlue dark:text-partyYellow mb-4">${policy.extra.title}</h4>
+                        <div class="flex flex-wrap gap-2">${policy.extra.data.map(item => `<span class="bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-500 px-3 py-1 text-sm font-bold text-gray-700 dark:text-white shadow-sm">${item}</span>`).join('')}</div>
+                    </div>`;
+                } else if (policy.extra.type === 'rules') {
+                    extraHTML = `<div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500 mt-6">
+                        <h4 class="font-black text-xl text-red-600 dark:text-red-400 mb-4">${policy.extra.title}</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300 mb-4 text-sm">${policy.extra.rules.map(r => `<li>${r}</li>`).join('')}</ul>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <div class="bg-green-100 dark:bg-green-900/30 p-3 rounded border border-green-300 dark:border-green-800">
+                                <h5 class="font-bold text-green-700 dark:text-green-400 mb-2">✅ Dos</h5>
+                                <ul class="list-none space-y-1 text-sm text-green-800 dark:text-green-300">${policy.extra.dos.map(d => `<li>✓ ${d}</li>`).join('')}</ul>
+                            </div>
+                            <div class="bg-red-100 dark:bg-red-900/30 p-3 rounded border border-red-300 dark:border-red-800">
+                                <h5 class="font-bold text-red-700 dark:text-red-400 mb-2">❌ Don'ts</h5>
+                                <ul class="list-none space-y-1 text-sm text-red-800 dark:text-red-300">${policy.extra.donts.map(d => `<li>✕ ${d}</li>`).join('')}</ul>
+                            </div>
+                        </div>
+                        <p class="text-xs text-red-500 mt-4 font-bold ">${policy.extra.note}</p>
+                    </div>`;
+                }
+            }
+
+            modalBody.innerHTML = `
+                <div class="relative">
+                    <div class="h-64 md:h-80 overflow-hidden relative">
+                        <img src="${policy.image}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-partyBlue via-transparent to-transparent opacity-90"></div> 
+                        <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+                            <div class="flex items-center gap-4 mb-2">
+                                <span class="text-4xl md:text-5xl">${policy.icon}</span>
+                                <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter drop-shadow-md">${policy.title}</h2>
+                            </div>
+                            <p class="text-partyYellow font-bold text-xl md:text-2xl bg-partyBlue/50 inline-block px-2 backdrop-blur-sm">"${policy.slogan}"</p> 
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-10 max-h-[60vh] overflow-y-auto">
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-black text-partyBlue dark:text-yellow-400 mb-3 flex items-center gap-2"><span class="w-2 h-8 bg-partyYellow block"></span> แนวคิด (Concept)</h3>
+                            <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed font-medium">${policy.concept}</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                            <div>
+                                <h3 class="text-xl font-black text-partyBlue dark:text-yellow-400 mb-3 border-b-2 border-gray-200 dark:border-gray-600 pb-1">วิธีการ (How)</h3>
+                                <ul class="space-y-3">${policy.how.map(h => `<li class="flex items-start gap-3"><span class="bg-partyBlue dark:bg-yellow-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">step</span><span class="text-gray-700 dark:text-gray-300">${h}</span></li>`).join('')}</ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-black text-partyBlue dark:text-yellow-400 mb-3 border-b-2 border-gray-200 dark:border-gray-600 pb-1">ประโยชน์ (Benefits)</h3>
+                                <ul class="space-y-2">${policy.benefits.map(b => `<li class="flex items-start gap-2 text-green-700 dark:text-green-400 font-bold"><svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg><span>${b}</span></li>`).join('')}</ul>
+                            </div>
+                        </div>
+                        ${extraHTML}
+                    </div>
+                </div>`;
+            modal.classList.remove('hidden');
+            attachCursorEvents(); // Re-attach cursor events for new modal content
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal
+        document.getElementById('close-modal')?.addEventListener('click', () => {
+            document.getElementById('policy-modal')?.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+        document.getElementById('policy-modal')?.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('policy-modal')) {
+                document.getElementById('policy-modal').classList.add('hidden');
+                document.body.style.overflow = '';
+            } 
+        });
+
+    </script>
+</body>
+</html>

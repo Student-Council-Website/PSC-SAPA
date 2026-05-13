@@ -1,0 +1,21 @@
+{
+  "name": "Pioneer Party",
+  "short_name": "Pioneer Party App",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fdfbf7",
+  "theme_color": "#1e3a8a",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "images/Pioneer logo 2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/Pioneer logo 2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
