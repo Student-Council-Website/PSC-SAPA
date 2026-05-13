@@ -88,7 +88,7 @@ setTimeout(() => {
 // --- PWA & Version ---
 document.addEventListener('DOMContentLoaded', () => {
     const versionEl = document.getElementById('app-version');
-    if (versionEl) versionEl.innerText = "3.0.0";
+    if (versionEl) versionEl.innerText = "beta 0.10";
 
     let deferredPrompt;
     const installBtn = document.getElementById('install-pwa-btn');
