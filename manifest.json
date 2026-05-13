@@ -1,6 +1,6 @@
 {
-  "name": "Pioneer Party",
-  "short_name": "Pioneer Party App",
+  "name": "Student-Council-Website",
+  "short_name": "PSC-SAPA App",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#fdfbf7",
@@ -8,12 +8,12 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "images/Pioneer logo 2.png",
+      "src": "images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "images/Pioneer logo 2.png",
+      "src": "images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png",
       "sizes": "512x512",
       "type": "image/png"
     }
