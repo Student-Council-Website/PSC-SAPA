@@ -335,61 +335,61 @@
         // --- ส่วนฐานข้อมูลและการแสดงผลโปรไฟล์ ---
         const councilData = [
             // --- คณะผู้บริหาร (Executive) ---
-            { id: '1', role: 'ประธานสภานักเรียน', name: 'นางสาวพาขวัญ นวลสำลี', nickname: 'นุกนิก', room: 'ม.5/2', birthday: '16', skills: 'คฑากร รำ', dept: 'Executive / ผู้บริหาร', img: 'images/student_council_group_background/Student_Council_President_.png', motto: 'ความเจ็บปวดในวันวาน คือความแข็งแกร่งในวันนี้', ig: '@pxkxn_nkk' },
-            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Executive / ผู้บริหาร', img: '', motto: '-', ig: '-' },
-            { id: '3', role: 'รองประธานสภานักเรียน', name: 'นางสาวธัญญรัตน์ หมื่นรัตน์', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Executive / ผู้บริหาร', img: '', motto: '-', ig: '-' },
+            { id: '1', role: 'ประธานสภานักเรียน', name: 'นางสาวพาขวัญ นวลสำลี', nickname: 'นุกนิก', room: 'ม.5/2', birthday: '16', skills: 'คฑากร รำ', dept: 'Executive / ประธานนักเรียน', img: 'images/student_council_group_background/Student_Council_President_.png', motto: 'ความเจ็บปวดในวันวาน คือความแข็งแกร่งในวันนี้', ig: '@pxkxn_nkk' },
+            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Executive / รองประธานนักเรียน', img: '', motto: '-', ig: '-' },
+            { id: '3', role: 'รองประธานสภานักเรียน', name: 'นางสาวธัญญรัตน์ หมื่นรัตน์', nickname: 'หนิง', room: '5/1', birthday: '16', skills: 'รอบรู้ทุกเรื่องและเข้าใจอะไรได้ง่าย', dept: 'Executive / รองประธานนักเรียน', img: '', motto: 'หากวันนี้ผิดพรุ่งนี้พร้อมแก้เสมอ', ig: '@thanyaratmunrat ' },
 
             // --- ฝ่ายสนับสนุน (Admin) ---
-            { id: '4', role: 'เลขานุการ', name: 'นางสาวปรียากาญจน์ ใจกล้า', nickname: '-', room: '-', birthday: '-', skills: '', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: '-', ig: '-' },
-            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวอชิริญา หารภูมิ', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: '-', ig: '-' },
+            { id: '4', role: 'เลขานุการ', name: 'นางสาวปรียากาญจน์ ใจกล้า', nickname: 'ไอติม', room: '5/2', birthday: '16', skills: 'มีทักษะด้านการออกแบบกราฟฟิก', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: 'พัฒนาตัวเองในทุก ๆ วัน เพื่อเป็นเวอร์ชันที่ดีที่สุดของตัวเอง', ig: '@iisakuerem' },
+            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวอชิริญา หารภูมิ', nickname: 'เอเชีย', room: '5/2', birthday: '16', skills: 'กล้าแสดงออกด้านกิจกรรมมีความคิดสร้างสรรค์ในการแสดงหรือกิจกรรม', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: 'อยากเป็นพลังงานบวกให้ทุกๆคน', ig: '@snniriiya' },
             { id: '6', role: 'พัสดุ', name: 'นางสาวชญานิศ บุญมา', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: '-', ig: '-' },
-            { id: '7', role: 'ผู้ช่วยพัสดุ', name: 'นางสาวพิมพ์ลภัส สุขนิธิกุลวงศ์', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: '-', ig: '-' },
-            { id: '8', role: 'เหรัญญิก', name: 'นางสาวธนัญญา ตันประเสริฐ', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: '-', ig: '-' },
-            { id: '9', role: 'ผู้ช่วยเหรัญญิก', name: 'นางสาวเขมิกา ศักด์เสรีกุล', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: '-', ig: '-' },
+            { id: '7', role: 'ผู้ช่วยพัสดุ', name: 'นางสาวพิมพ์ลภัส สุขนิธิกุลวงศ์', nickname: 'มิ้ง', room: '5/2', birthday: '16', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: '-', ig: '-' },
+            { id: '8', role: 'เหรัญญิก', name: 'นางสาวธนัญญา ตันประเสริฐ', nickname: 'ชมพู่', room: '5/4', birthday: '17', skills: 'สื่อสารและทำงานร่วมกับผู้อื่นได้ดี', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: 'อนาคตที่ดี เริ่มจากการตั้งใจทำหน้าที่วันนี้ให้ดีที่สุด', ig: '@than.ks880' },
+            { id: '9', role: 'ผู้ช่วยเหรัญญิก', name: 'นางสาวเขมิกา ศักด์เสรีกุล', nickname: 'คิมมิ่', room: '5/2', birthday: '16', skills: 'เล่นวอลเลย์บอล', dept: 'Admin / บริหารงานทั่วไป', img: '', motto: 'ทุก ๆ อย่างต้องใช้เวลา', ig: '@Khemika_q' },
 
             // --- ฝ่ายสารวัตร (Discipline) ---
-            { id: '10', role: 'หัวหน้าฝ่ายสารวัตร', name: 'นายสิทธิโชค แสงสว่าง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: '-', ig: '-' },
-            { id: '11', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวกนกวรรณ แสงเกิด', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: '-', ig: '-' },
-            { id: '12', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวธัญชนก ธนวุฒิคติวรกุล', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: '-', ig: '-' },
-            { id: '13', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวอุษา ยิ้ม', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: '-', ig: '-' },
-            { id: '14', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาววีรดา พูลสมบัติ', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: '-', ig: '-' },
+            { id: '10', role: 'หัวหน้าฝ่ายสารวัตร', name: 'นายสิทธิโชค แสงสว่าง', nickname: 'โฟม', room: '5/2', birthday: '16', skills: 'เรียนรู้ได้ไว', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: 'เราต้องการความถูกต้อง ไม่ใช่ถูกใจ', ig: '@foxm_sx' },
+            { id: '11', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายชัยภัทร นรสาร', nickname: 'ออโต้', room: '5/3', birthday: '16', skills: 'มีความรับผิดชอบ', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: 'อย่าคิดว่าทำไมาได้ถ้ายังไม่ลงมือทำ', ig: '@iisakuerem' },
+            { id: '12', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวธัญชนก ธนวุฒิคติวรกุล', nickname: 'มิ้นท์', room: '5/2', birthday: '16', skills: 'การเรียนรู้ไว ปรับตัวเข้ากับคนอื่นได้', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: 'ความสุขอยู่ในสิ่งเล็กๆรอบตัวเรา', ig: '@5mnthxn' },
+            { id: '13', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวอุษา ยิ้ม', nickname: 'โฟม', room: '5/4', birthday: '16', skills: 'วาดรูป', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: 'มุมมองต่อโลกขึ้นอยู่กับตัวเรา', ig: '@fxxm.mmx' },
+            { id: '14', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาววีรดา พูลสมบัติ', nickname: 'ออกัส', room: '5/2', birthday: '16', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: 'อย่ากลัวในสิ่งที่เราสามารถสู้หรือเปลี่ยนแปลงมันได้', ig: '@cqxzy7_y' },
             { id: '15', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวสุพิชญา กลิ่นเกลี้ยง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: '-', ig: '-' },
-            { id: '16', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายแทนคุณ เบญมาตย์', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: '-', ig: '-' },
+            { id: '16', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายแทนคุณ เบญมาตย์', nickname: 'ตะวัน', room: '5/1', birthday: '16', skills: 'ความสามารถในปรับตัวในการเล่นกีฬาบางชนิด', dept: 'Discipline / สารวัตรนักเรียน', img: '', motto: 'เอาที่ตัวเองไหว ถ้าเหนื่อยก็พัก ท้อได้แต่ห้ามถอย', ig: '@tx_w_an' },
 
             // --- ฝ่ายการเรียน (Academic) ---
-            { id: '17', role: 'หัวหน้าฝ่ายการเรียน', name: 'นางสาวฐานิดา รื่นเริง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Academic / การเรียน', img: '', motto: '-', ig: '-' },
+            { id: '17', role: 'หัวหน้าฝ่ายการเรียน', name: 'นางสาวฐานิดา รื่นเริง', nickname: 'ข้าวฟ่าง', room: '5/2', birthday: '16', skills: '-', dept: 'Academic / การเรียน', img: '', motto: 'Live like what you are', ig: '@thaldaa' },
             { id: '18', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวกัญญารัตน์ แสงสว่าง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Academic / การเรียน', img: '', motto: '-', ig: '-' },
-            { id: '19', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาววรพัชรา ศรีบุญเรือง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Academic / การเรียน', img: '', motto: '-', ig: '-' },
-            { id: '20', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวฐิตาภา พวงพิศ', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Academic / การเรียน', img: '', motto: '-', ig: '-' },
+            { id: '19', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาววรพัชรา ศรีบุญเรือง', nickname: 'เอิร์น', room: '5/2', birthday: '17', skills: 'วาดภาพ', dept: 'Academic / การเรียน', img: '', motto: 'อย่ากลัวความผิดพลาด ถ้ายังไม่ได้ลองทำ', ig: '@3xrnpz._ S' },
+            { id: '20', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวฐิตาภา พวงพิศ', nickname: 'ไอเดีย', room: '5/1', birthday: '16', skills: 'วาดรูป', dept: 'Academic / การเรียน', img: '', motto: 'ให้อภัยคนอื่นคือการปลดปล่อยตัวเองจากความโกรธ', ig: '@dearthitapa' },
             { id: '21', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพลอยปภัส นัยวิจารณ์', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Academic / การเรียน', img: '', motto: '-', ig: '-' },
-            { id: '22', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายตรีรัตน์ ปิติไพศาลกุล', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Academic / การเรียน', img: '', motto: '-', ig: '-' },
-            { id: '23', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพิชามญช์ หาญอาสา', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Academic / การเรียน', img: '', motto: '-', ig: '-' },
+            { id: '22', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายตรีรัตน์ ปิติไพศาลกุล', nickname: 'เพรช', room: '5/1', birthday: '17', skills: 'นักปราชญ์ เล่นกีฬาเก่ง ร้องเพลงเพราะครับ ', dept: 'Academic / การเรียน', img: '', motto: 'คล้อยตามคือสามัญ ฝืนทวนคือเซียน', ig: '@petchcff_dcs' },
+            { id: '23', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพิชามญช์ หาญอาสา', nickname: 'ไอด้า', room: '5/6', birthday: '16', skills: 'Note-taking skill ', dept: 'Academic / การเรียน', img: '', motto: 'ไม่จำเป็นต้อง perfect แค่ยอมรับความไม่สมบูรณ์แบบของตัวเอง', ig: '@penessien' },
 
             // --- ฝ่ายกิจกรรม (Activity) ---
-            { id: '24', role: 'หัวหน้าฝ่ายกิจกรรม', name: 'นางสาววาศิณี ปู่ไข่', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: '', motto: '-', ig: '-' },
+            { id: '24', role: 'หัวหน้าฝ่ายกิจกรรม', name: 'นางสาววาศิณี ปู่ไข่', nickname: 'เนย', room: '5/2', birthday: '17', skills: 'เข้ากับคนง่าย,เอเนอจี้สูง', dept: 'Activity / กิจกรรม', img: '', motto: 'กระทำตัวให้เท่กว่าเมื่อวาน', ig: '@buttermilk_0' },
             { id: '25', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวอารีรัตน์ บัวทอง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: '', motto: '-', ig: '-' },
             { id: '26', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวดิรัชญา ขาวผ่อง', nickname: 'ดีน', room: '5/2', birthday: '17', skills: 'กล้าแสดงออก', dept: 'Activity / กิจกรรม', img: '', motto: 'มุ่งมั่นแล้วไปต่อ', ig: '@d1_dunier' },
-            { id: '27', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวภควดี หมื่นพล', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: '', motto: '-', ig: '-' },
+            { id: '27', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวภควดี หมื่นพล', nickname: 'กำไร', room: '5/2', birthday: '17', skills: 'ความสามารถด้านดนตรีไทย กล้าแสดงออกด้านการพูด', dept: 'Activity / กิจกรรม', img: '', motto: 'เคล็ดลับของความสุขคือทำในสิ่งที่รัก ส่วนเคล็ดลับของความสำเร็จคือรักในสิ่งที่ทำ', ig: '@_klpkwd' },
             { id: '28', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายปภังกร ปัญญาใส', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: '', motto: '-', ig: '-' },
             { id: '29', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายจักรเพ็ชร บุญโสม', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: '', motto: '-', ig: '-' },
-            { id: '30', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวชุติกาญจน์ กันยาเนียม', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: '', motto: '-', ig: '-' },
+            { id: '30', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวชุติกาญจน์ กันยาเนียม', nickname: 'น้ำขิง', room: '5/3', birthday: '17', skills: 'รับฟังผู้อื่น เห็นอกเห็นใจ ', dept: 'Activity / กิจกรรม', img: '', motto: 'อย่าพึ่งบอกว่ายาก ถ้ายังไม่ลองทำ', ig: '@n_mkxxngg' },
 
             // --- ฝ่ายการงาน (Works) ---
-            { id: '31', role: 'หัวหน้าฝ่ายการงาน', name: 'นายพชร กาเผือก', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: '', motto: '-', ig: '-' },
-            { id: '32', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายพิชญะ วงศรีแก้ว', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: '', motto: '-', ig: '-' },
-            { id: '33', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายรัฐภูมิ ลีทอง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: '', motto: '-', ig: '-' },
+            { id: '31', role: 'หัวหน้าฝ่ายการงาน', name: 'นายพชร กาเผือก', nickname: 'ไกด์', room: '5/1', birthday: '16', skills: 'สื่อสารดี กล้าแสดงออก ทำงานเป็นทีมเริ่ด', dept: 'Works / การงาน', img: '', motto: 'มีชีวิตครั้งเดียว ต้องใช้ให้คุ้ม', ig: '@gxide_g' },
+            { id: '32', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายพิชญะ วงศรีแก้ว', nickname: 'กาฟิวส์', room: '5/1', birthday: '17', skills: 'ตีกลอง,งานช่างต่างๆ', dept: 'Works / การงาน', img: '', motto: 'ไม่พยายาม ก็ไม่โต', ig: '@pichaya._.ss' },
+            { id: '33', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายรัฐภูมิ ลีทอง', nickname: 'ภูมิ', room: '5/1', birthday: '-', skills: '-', dept: 'Works / การงาน', img: '', motto: '-', ig: '@ratthaphumleethong' },
             { id: '34', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายเจริญชัย ทองแพง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: '', motto: '-', ig: '-' },
-            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: '', motto: '-', ig: '-' },
+            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', nickname: 'เกื้อ', room: '5/4', birthday: '16', skills: 'เล่นกีฬา', dept: 'Works / การงาน', img: '', motto: 'พอใจเท่าที่มี ยินดีเท่าที่ได้', ig: '@Kuea' },
             { id: '36', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพัทธ์ เชื่อเมืองพาน', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: '', motto: '-', ig: '-' },
-            { id: '37', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวพณิตา ทองสว่างแจ้ง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: '', motto: '-', ig: '-' },
+            { id: '37', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวพณิตา ทองสว่างแจ้ง', nickname: 'เอม', room: '5/5', birthday: '16', skills: 'มีรับผิดชอบในงาน หรือหน้าที่ต่างๆที่ได้รับมอบหมาย', dept: 'Works / การงาน', img: '', motto: 'ข้างหน้าคือความฝัน ข้างหลัง คือบทเรียน', ig: '@axm_.ore' },
 
             // --- ฝ่ายประชาสัมพันธ์ (PR) ---
-            { id: '38', role: 'หัวหน้าฝ่ายประชาสัมพันธ์', name: 'นายธนกฤต สุวรรณาวุธ', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: '', motto: '-', ig: '-' },
-            { id: '39', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนพรัตน์ สารรัตน์', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: '', motto: '-', ig: '-' },
-            { id: '40', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอภิญญาภรณ์ บุญหนา', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: '', motto: '-', ig: '-' },
-            { id: '41', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวศศิธร หงษา', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: '', motto: '-', ig: '-' },
-            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวฐานิดา พลอารีย์', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: '', motto: '-', ig: '-' },
-            { id: '43', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนภัสสร ประทุมมา', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: '', motto: '-', ig: '-' },
+            { id: '38', role: 'หัวหน้าฝ่ายประชาสัมพันธ์', name: 'นายธนกฤต สุวรรณาวุธ', nickname: 'โปเต้', room: '5/2', birthday: '16', skills: 'เขียนโค้ด', dept: 'PR / ประชาสัมพันธ์', img: '', motto: 'สิ่งใดที่ปล่อยได้ก็ปล่อย', ig: '@mr.potae.potato' },
+            { id: '39', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนพรัตน์ สารรัตน์', nickname: 'แน็ค', room: '5/2', birthday: '17', skills: 'เรียนรู้เร็ว', dept: 'PR / ประชาสัมพันธ์', img: '', motto: 'Love yourself and be who you want to be.', ig: '@npr.srt' },
+            { id: '40', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอภิญญาภรณ์ บุญหนา', nickname: 'แบม', room: '5/1', birthday: '16', skills: 'ด้านการพูด การสื่อสาร', dept: 'PR / ประชาสัมพันธ์', img: '', motto: 'End of beginning ', ig: '@nuldeas' },
+            { id: '41', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวศศิธร หงษา', nickname: 'จอย', room: '5/1', birthday: '16', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: '', motto: 'ข่าวสารไว ใส่ใจทุกคน', ig: '@ssithrnhgsaa' },
+            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวฐานิดา พลอารีย์', nickname: 'แตม', room: '5/1', birthday: '16', skills: 'เรียนรู้ได้เร็ว', dept: 'PR / ประชาสัมพันธ์', img: '', motto: 'อย่าเก็บอดีตมาทำร้ายตนเอง แต่จงหัดที่จะเรียนรู้จากมัน', ig: '@t.thanidaa_' },
+            { id: '43', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนภัสสร ประทุมมา', nickname: 'นุ๊ก', room: '5/3', birthday: '16', skills: 'ร้องเพลง นาฏศิลป์ เต้น', dept: 'PR / ประชาสัมพันธ์', img: '', motto: 'ความสุขอยู่ที่เราคิด ชีวิตอยู่ที่เราสร้าง', ig: '@nongpedkaka ' },
             { id: '44', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวกฤตยากร วงค์สงคราม', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: '', motto: '-', ig: '-' }
         ];
 
