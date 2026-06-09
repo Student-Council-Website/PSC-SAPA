@@ -55,16 +55,46 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 window.attachCursorEvents = attachCursorEvents; // Make it globally accessible for dynamic content
 
-// Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', () => {
+// Mobile Menu Drawer
+function initMobileMenuDrawer() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    if (!mobileMenuBtn || !mobileMenu) return;
+
+    const openMenu = () => {
+        mobileMenu.classList.remove('hidden');
+        backdrop?.classList.remove('hidden');
+        document.body.classList.add('mobile-menu-is-open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        requestAnimationFrame(() => {
+            mobileMenu.classList.add('is-open');
+            backdrop?.classList.add('is-open');
         });
-    }
-});
+    };
+
+    const closeMenu = () => {
+        mobileMenu.classList.remove('is-open');
+        backdrop?.classList.remove('is-open');
+        document.body.classList.remove('mobile-menu-is-open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        window.setTimeout(() => {
+            if (!mobileMenu.classList.contains('is-open')) mobileMenu.classList.add('hidden');
+            if (!backdrop?.classList.contains('is-open')) backdrop?.classList.add('hidden');
+        }, 280);
+    };
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
+    });
+
+    backdrop?.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+    });
+}
+document.addEventListener('DOMContentLoaded', initMobileMenuDrawer);
 
 // --- Loader Logic ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -88,7 +118,7 @@ setTimeout(() => {
 // --- PWA & Version ---
 document.addEventListener('DOMContentLoaded', () => {
     const versionEl = document.getElementById('app-version');
-    if (versionEl) versionEl.innerText = "beta 0.10";
+    if (versionEl) versionEl.innerText = "beta 0.50";
 
     let deferredPrompt;
     const installBtn = document.getElementById('install-pwa-btn');
@@ -113,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- Scroll Reveal Animation ---
-document.addEventListener('DOMContentLoaded', () => {
+function initRevealOnScroll() {
     const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
@@ -126,5 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, observerOptions);
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-});
+    document.querySelectorAll('.reveal-on-scroll:not(.is-visible)').forEach(el => observer.observe(el));
+}
+window.initRevealOnScroll = initRevealOnScroll;
+document.addEventListener('DOMContentLoaded', initRevealOnScroll);
