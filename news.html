@@ -9,6 +9,7 @@
     <meta name="theme-color" content="#1e3a8a">
     <link rel="apple-touch-icon" href="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="theme-config.js"></script>
     <link rel="stylesheet" href="style.css">
     
     <meta property="og:type" content="website">
@@ -18,48 +19,6 @@
     <meta property="og:image" content="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
-    <script>
-        tailwind.config = { 
-            darkMode: 'class', 
-            theme: {
-                extend: {
-                    colors: { 
-                        partyBlue: '#1e3a8a', 
-                        partyDarkBlue: '#172554',
-                        partyYellow: '#f472b6', // Ensure consistency
-                        partyPink: '#f472b6',   // Added for consistency
-                        offWhite: '#fdfbf7',
-                        darkBg: '#0f172a',
-                        offWhite: '#fdfbf7' 
-                    },
-                    fontFamily: {
-                        anakotmai: ['Anakotmai', 'sans-serif'],
-                        dancing: ['DancingScript', 'cursive'],
-                        marker: ['Permanent Marker', 'cursive'],
-                    },
-                    boxShadow: {
-                        'pop': '6px 6px 0px 0px rgba(30, 58, 138, 1)',
-                        'pop-hover': '2px 2px 0px 0px rgba(30, 58, 138, 1)',
-                        'pop-yellow': '6px 6px 0px 0px rgba(244, 114, 182, 1)',
-                        'pop-yellow-hover': '2px 2px 0px 0px rgba(244, 114, 182, 1)',
-                        'pop-white': '4px 4px 0px 0px #ffffff',
-                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
-                    },
-                    animation: {
-                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'marquee': 'marquee 25s linear infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'float-delayed': 'float 6s ease-in-out 3s infinite',
-                        'bounce-x': 'bounceX 1s infinite',
-                        'shimmer': 'shimmer 2.5s infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'spin-slow': 'spin 12s linear infinite',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
         .dark .glass-nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
@@ -115,10 +74,12 @@
                 </li>
             </ul>
 
-            <button id="mobile-menu-btn" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20 hover-trigger">
+            <button id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20 hover-trigger">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
         </div>
+
+        <div id="mobile-menu-backdrop" class="hidden md:hidden"></div>
 
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-900 border-t-2 border-partyYellow shadow-xl z-10 flex flex-col p-4 space-y-3 font-anakotmai">
             <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🏠</span> หน้าหลัก</a>
@@ -197,8 +158,8 @@
     </main>
 
     <footer class="bg-partyBlue dark:bg-gray-950 text-white py-16 relative shadow-[0_-10px_40px_rgba(0,0,0,0.3)] z-50 overflow-hidden transition-colors duration-300">
-        <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-partyYellow via-pink-300 to-partyYellow"></div>
-        <div class="absolute -right-10 -bottom-20 w-80 h-80 border-8 border-partyYellow rounded-full opacity-10"></div>
+        <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-partyPink via-orange-400 to-partyPink"></div>
+        <div class="absolute -right-10 -bottom-20 w-80 h-80 border-8 border-partyPink rounded-full opacity-10"></div>
         <div class="absolute left-10 top-20 w-32 h-32 border-4 border-white rounded-full opacity-5"></div>
         
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 relative z-10"> 
@@ -213,8 +174,8 @@
             </div>
             
             <div class="text-center order-1 md:order-2 flex-grow">
-                <h3 class="font-dancing text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Pioneering development, listening to every problem</h3>
-                <p class="font-dancing text-partyPink text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">and ready to solve them together</p>
+                <h3 class="font-marker text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Pioneering development, listening to every problem</h3>
+                <p class="font-marker text-partyPink text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">and ready to solve them together</p>
                 <div class="flex justify-center gap-3 mt-6">
                      <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0s"></span>
                      <span class="w-3 h-3 bg-partyYellow rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
@@ -690,6 +651,250 @@
                                 Facebook
                             </a>
                             <a href="https://www.instagram.com/p/DYUhqp-kfo_/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 12,
+                date: "12 พฤษภาคม 2569",
+                title: "สภานักเรียนพานทองสภาฯ คว้าชัย! รางวัลชนะเลิศระดับภูมิภาค การแข่งขันทักษะทางวิชาการด้านกฎหมายแห่งประเทศไทย ⚖️🏆",
+                shortDesc: "คณะกรรมการสภานักเรียนคว้ารางวัลชนะเลิศอันดับ 1 รอบคัดเลือก ณ มธ.รังสิต พร้อมเป็นตัวแทนทะลุสู่รอบชิงแชมป์ประเทศ",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _9_.png", 
+                content: `
+                    <p class="mb-4">เมื่อวันอังคารที่ 12 พฤษภาคม พ.ศ. 2569 สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอแสดงความยินดีกับความสำเร็จอันน่าภาคภูมิใจของคณะกรรมการสภานักเรียน ที่ได้เป็นตัวแทนเข้าร่วมการประลองความรู้ใน <strong>"การแข่งขันทักษะทางวิชาการด้านกฎหมายแห่งประเทศไทย"</strong> รอบคัดเลือกระดับภูมิภาค ณ คณะนิติศาสตร์ มหาวิทยาลัยธรรมศาสตร์ (ศูนย์รังสิต) ที่ผ่านมา</p>
+                    
+                    <div class="mb-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-partyYellow rounded-r-md">
+                        <p class="font-bold text-partyBlue dark:text-yellow-300 mb-1">🎉 ผลการแข่งขัน</p>
+                        <p class="text-xl font-bold text-amber-600 dark:text-amber-400">คว้า "รางวัลชนะเลิศระดับภูมิภาค" มาครองได้สำเร็จ!</p>
+                    </div>
+
+                    <p class="mb-6 leading-relaxed">จากผลงานอันยอดเยี่ยมในครั้งนี้ ทำให้ทีมตัวแทนโรงเรียนพานทองสภาชนูปถัมภ์ ได้รับสิทธิ์ผ่านเข้ารอบชิงชนะเลิศระดับประเทศ ในฐานะ <strong>ตัวแทนภาคกลางและภาคตะวันออก</strong> เพื่อไปแข่งขันต่อในระดับประเทศต่อไป</p>
+
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#แข่งขันทักษะกฎหมาย</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/18jr2yeEfQ/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 13,
+                date: "27 พฤษภาคม 2569",
+                title: "สภานักเรียนพานทองสภาฯ คว้าชัย! รางวัลระดับเหรียญทอง การประกวดผลการดำเนินงานสภานักเรียน ระดับภาคตะวันออก 🏅✨",
+                shortDesc: "คณะผู้บริหาร ครูที่ปรึกษา และสภานักเรียนฯ ร่วมประกวดผลงานระดับภาค ครั้งที่ 2 พร้อมเซ็น MOU เครือข่ายและคว้าเหรียญทองมาครองได้สำเร็จ",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _10_.png", 
+                content: `
+                    <p class="mb-4">เมื่อวันที่ 26-27 พฤษภาคม พ.ศ. 2569 คณะผู้บริหาร ครูที่ปรึกษา และคณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ได้เข้าร่วมการประกวดผลการดำเนินงานสภานักเรียน ระดับภาคตะวันออก ครั้งที่ 2 (ประจำปีการศึกษา 2568) พร้อมร่วมลงนามบันทึกข้อตกลงความร่วมมือ (MOU) ร่วมกับโรงเรียนเครือข่าย</p>
+                    
+                    <div class="mb-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-partyYellow rounded-r-md">
+                        <p class="font-bold text-partyBlue dark:text-yellow-300 mb-1">🎉 ผลการประกวด</p>
+                        <p class="text-xl font-bold text-amber-600 dark:text-amber-400">สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ได้รับ "รางวัลระดับเหรียญทอง"</p>
+                    </div>
+
+                    <p class="mb-4">โดยได้รับเกียรติจาก <strong>นางจีรนันท์ เพ่งพินิจ</strong> (ผู้ตรวจราชการกระทรวงศึกษาธิการ รักษาการในตำแหน่งศึกษาธิการภาค สำนักงานศึกษาธิการภาค) เป็นผู้มอบรางวัลเพื่อเชิดชูเกียรติในครั้งนี้</p>
+                    
+                    <p class="mb-6 leading-relaxed">พวกเราสภานักเรียนจะมุ่งมั่นพัฒนาและขับเคลื่อนงานสภานักเรียนให้เข้มแข็ง เพื่อเป็นแบบอย่างที่ดีและสร้างชื่อเสียงให้โรงเรียนของเราต่อไป</p>
+
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#การประกวดผลการดำเนินงานสภานักเรียน</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1BK5RSddFc/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DZAYsNPEtiR/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 14,
+                date: "29 พฤษภาคม 2569",
+                title: "สภานักเรียนจิตอาสาเฉลิมพระเกียรติ ครั้งที่ 1 บำเพ็ญประโยชน์ ณ วัดโคกท่าเจริญ 🧹🙏",
+                shortDesc: "คณะกรรมการสภานักเรียนร่วมใจเดินเก็บขยะจากหน้าโรงเรียนสู่ชุมชน และทำความสะอาดศาสนสถาน เนื่องในโอกาสวันเฉลิมพระชนมพรรษาฯ และวันวิสาขบูชา",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _11_.png",
+                content: `
+                    <p class="mb-4">เมื่อวันศุกร์ที่ 29 พฤษภาคม พ.ศ. 2569 คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ได้เข้าร่วม <strong>"โครงการสภานักเรียนจิตอาสาเฉลิมพระเกียรติ ครั้งที่ 1 ประจำปีการศึกษา 2569"</strong> เนื่องในโอกาสวันเฉลิมพระชนมพรรษา สมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี และวันวิสาขบูชา</p>
+                    
+                    <p class="mb-4">ในกิจกรรมนี้ คณะกรรมการสภานักเรียนได้ร่วมแรง ร่วมใจ และรวมพลังจิตอาสา เดินเก็บขยะตลอดเส้นทางตั้งแต่บริเวณหน้าโรงเรียนพานทองสภาชนูปถัมภ์ ไปจนถึงวัดโคกท่าเจริญ เพื่อช่วยรักษาความสะอาดและสร้างสภาพแวดล้อมที่น่าอยู่ให้กับชุมชน</p>
+
+                    <div class="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-partyBlue rounded-r-md">
+                        <p class="font-bold text-partyBlue dark:text-blue-300 mb-1">✨ การบำเพ็ญประโยชน์ ณ วัดโคกท่าเจริญ</p>
+                        <p class="text-sm md:text-base">ร่วมกันทำความสะอาดสถานที่ต่าง ๆ ภายในวัดเพื่อสร้างจิตสาธารณะ อาทิ การกวาดลานวัด ทำความสะอาดห้องน้ำ รวมถึงเก็บกวาดและปรับปรุงภูมิทัศน์โดยรอบให้ระเบียบเรียบร้อย</p>
+                    </div>
+                    
+                    <p class="mb-6 leading-relaxed">กิจกรรมในครั้งนี้เป็นการปลูกฝังจิตสาธารณะ ความรับผิดชอบต่อสังคม และส่งเสริมการทำความดีเพื่อส่วนรวม อีกทั้งยังเป็นการแสดงออกถึงความจงรักภักดีและสำนึกในพระมหากรุณาธิคุณอย่างพร้อมเพรียงกัน</p>
+
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนจิตอาสาเฉลิมพระเกียรติ</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/18xKeZFA4n/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DY_hbZOkZ7O/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 15,
+                date: "25 พฤษภาคม 2569",
+                title: "พิธีประดับเข็มคณะสภานักเรียน ปีการศึกษา 2569 และมอบเกียรติบัตรเชิดชูเกียรติ 🎖️🏫",
+                shortDesc: "โรงเรียนพานทองสภาชนูปถัมภ์ จัดพิธีประดับเข็มสภานักเรียนชุดใหม่ พร้อมมอบเกียรติบัตรแก่สภานักเรียนชุดเดิมและครูที่ปรึกษา เพื่อสร้างขวัญกำลังใจและส่งเสริมภาวะผู้นำ",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _12_.png",
+                content: `
+                    <p class="mb-4">เมื่อวันที่ 25 พฤษภาคม พ.ศ. 2569 โรงเรียนพานทองสภาชนูปถัมภ์ ได้จัดพิธีประดับเข็มให้แก่คณะสภานักเรียน ประจำปีการศึกษา 2569 พร้อมทั้งมอบเกียรติบัตรให้แก่คณะสภานักเรียน ประจำปีการศึกษา 2568 และคณะครูที่ปรึกษาสภานักเรียน โดยได้รับเกียรติจาก <strong>นางสาวสมพร หิรัญลักษณ์สุต</strong> ผู้อำนวยการโรงเรียนพานทองสภาชนูปถัมภ์ เป็นประธานในพิธี</p>
+                    
+                    <div class="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-partyBlue rounded-r-md">
+                        <p class="font-bold text-partyBlue dark:text-blue-300 mb-1">✨ วัตถุประสงค์ของพิธี</p>
+                        <p class="text-sm md:text-base">จัดขึ้นเพื่อเชิดชูเกียรติและสร้างขวัญกำลังใจแก่คณะสภานักเรียน ตลอดจนส่งเสริมบทบาทภาวะผู้นำและความรับผิดชอบในการทำงาน ร่วมขับเคลื่อนและพัฒนาสถานศึกษาให้ก้าวหน้าอย่างยั่งยืนต่อไป</p>
+                    </div>
+
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียน2569</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#ผู้นำนักเรียน</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1Cw5R8AKb5/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DZPP4qEEfvx/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 16,
+                date: "4 มิถุนายน 2569",
+                title: "ต้อนรับคณะกรรมการประเมินโรงเรียนต้นแบบสภานักเรียน ระดับเขตตรวจราชการ ประจำปี 2569 🏫🔎",
+                shortDesc: "โรงเรียนพานทองสภาชนูปถัมภ์ รับการตรวจเยี่ยมและประเมินผลการดำเนินงานสภานักเรียน มุ่งยกระดับสู่การเป็นโรงเรียนต้นแบบในระดับประเทศต่อไป",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _13_.png",
+                content: `
+                    <p class="mb-4">เมื่อวันพฤหัสบดีที่ 4 มิถุนายน พ.ศ. 2569 โรงเรียนพานทองสภาชนูปถัมภ์ ได้รับเกียรติจากคณะกรรมการคัดเลือกโรงเรียนต้นแบบสภานักเรียนระดับเขตตรวจราชการ ประจำปีการศึกษา 2569 เข้าดำเนินการตรวจเยี่ยมและประเมินผลการดำเนินงานของสภานักเรียน ณ โรงเรียนพานทองสภาชนูปถัมภ์</p>
+                    
+                    <div class="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-partyBlue rounded-r-md">
+                        <p class="font-bold text-partyBlue dark:text-blue-300 mb-1">📋 รายละเอียดการประเมิน</p>
+                        <p class="text-sm md:text-base">คณะกรรมการได้พิจารณาผลการดำเนินงานด้านสภานักเรียน ทั้งในด้านการบริหารจัดการองค์กรนักเรียน ตลอดจนกิจกรรมส่งเสริมภาวะผู้นำและประชาธิปไตยในโรงเรียน เพื่อคัดเลือกสถานศึกษาที่มีความโดดเด่นเข้าสู่การพิจารณาเป็นโรงเรียนต้นแบบสภานักเรียนในระดับประเทศต่อไป</p>
+                    </div>
+                    
+                    <p class="mb-6 leading-relaxed">การดำเนินงานครั้งนี้นับเป็นส่วนสำคัญในการยกระดับคุณภาพงานสภานักเรียน และส่งเสริมให้นักเรียนมีบทบาทในการพัฒนาสถานศึกษาอย่างเข้มแข็งและยั่งยืน</p>
+
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#การคัดเลือกโรงเรียนต้นแบบสภานักเรียนระดับเขตตรวจราชการ</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1Cy1zdrqAD/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DZPRef6ESXr/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 17,
+                date: "5 มิถุนายน 2569",
+                title: "ต้อนรับ 3 โรงเรียนภาคีเครือข่าย ร่วมแลกเปลี่ยนเรียนรู้และลงนาม MOU สภานักเรียน 🤝✨",
+                shortDesc: "โรงเรียนพานทองสภาชนูปถัมภ์ ต้อนรับคณะศึกษาดูงานจากโรงเรียนสุรศักดิ์วิทยาคม, โรงเรียนเกาะโพธิ์ถ้วยงามวิทยา และโรงเรียนทุ่งเหียงพิทยาคม มุ่งสร้างเครือข่ายผู้นำอย่างยั่งยืน",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _14_.png",
+                content: `
+                    <p class="mb-4">เมื่อวันศุกร์ที่ 5 มิถุนายน พ.ศ. 2569 สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ พร้อมด้วยคณะผู้บริหารและคณะครู ได้ให้การต้อนรับคณะผู้บริหาร ครู และสภานักเรียนจาก <strong>โรงเรียนสุรศักดิ์วิทยาคม, โรงเรียนเกาะโพธิ์ถ้วยงามวิทยา และโรงเรียนทุ่งเหียงพิทยาคม</strong> ในโอกาสเข้าศึกษาดูงานและแลกเปลี่ยนเรียนรู้ด้านการดำเนินงานสภานักเรียน ณ โรงเรียนพานทองสภาชนูปถัมภ์</p>
+                    
+                    <p class="mb-4">ในการนี้ ทั้งสามโรงเรียนได้ร่วมแลกเปลี่ยนแนวทางการบริหารงานสภานักเรียน การส่งเสริมประชาธิปไตยในสถานศึกษา และการพัฒนาศักยภาพผู้นำเยาวชน เพื่อเสริมสร้างเครือข่ายความร่วมมือระหว่างสภานักเรียน อันจะนำไปสู่การพัฒนางานสภานักเรียนให้มีประสิทธิภาพและเกิดประโยชน์สูงสุดต่อผู้เรียน</p>
+
+                    <div class="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-partyBlue rounded-r-md">
+                        <p class="font-bold text-partyBlue dark:text-blue-300 mb-1">📝 ร่วมลงนามบันทึกความเข้าใจ (MOU)</p>
+                        <p class="text-sm md:text-base">ได้มีการลงนามบันทึกความเข้าใจ (MOU) ว่าด้วยความร่วมมือด้านการสร้างเครือข่ายและการมีส่วนร่วมของสภานักเรียน เพื่อเป็นแนวทางในการพัฒนาความร่วมมือและขับเคลื่อนกิจกรรมร่วมกันอย่างยั่งยืนต่อไป</p>
+                    </div>
+
+                    <div class="mb-8 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนสุรศักดิ์วิทยาคม</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนเกาะโพธิ์ถ้วยงามวิทยา</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนทุ่งเหียงพิทยาคม</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#แลกเปลี่ยนแนวทางการบริหารงานสภานักเรียน</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <div class="text-gray-800 dark:text-gray-200">
+                        <p class="text-lg md:text-xl leading-relaxed mb-8 indent-8">
+                            เก็บตกภาพบรรยากาศความสนุกและการแลกเปลี่ยนเรียนรู้ร่วมกันของพวกเราทั้ง 4 โรงเรียน สามารถรับชมคลิปวิดีโอแบบเต็มๆ ได้ที่ช่องทางโซเชียลมีเดียเลยครับ! 👇
+                        </p>
+                        
+                        <div class="flex flex-col md:flex-row gap-8 justify-center items-start mt-8">
+                            <div class="w-full md:w-1/2 flex justify-center overflow-hidden rounded-xl shadow-md">
+                                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZPSeI8xPY0/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                                </blockquote>
+                            </div>
+
+                            <div class="w-full md:w-1/2 flex justify-center overflow-hidden rounded-xl shadow-md">
+                                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@deksapa.psc/video/7647901190839160084" data-video-id="7647901190839160084" style="max-width: 605px;min-width: 325px;"> 
+                                    <section> 
+                                        <a target="_blank" title="@deksapa.psc" href="https://www.tiktok.com/@deksapa.psc?refer=embed">@deksapa.psc</a> 
+                                    </section> 
+                                </blockquote> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">แหล่งที่มา / อ่านเพิ่มเติม:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.facebook.com/share/p/1CrAQ1DFPf/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.instagram.com/p/DZPSEzEERmI/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                                 Instagram
                             </a>
