@@ -3,71 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pathway to Future | สภานักเรียน</title>
+    <title>Pathway to Future | Pioneer Party</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="theme-config.js"></script>
     
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class', 
-            theme: {
-                extend: {
-                    colors: { 
-                        partyBlue: '#1e3a8a', 
-                        partyDarkBlue: '#172554',
-                        partyYellow: '#f472b6', // ปรับเป็นสีชมพูตาม index.html
-                        partyPink: '#f472b6', // Ensure consistency
-                        offWhite: '#fdfbf7',
-                        darkBg: '#0f172a'
-                    },
-                    fontFamily: { 
-                        anakotmai: ['Anakotmai', 'sans-serif'],
-                        dancing: ['DancingScript', 'cursive'],
-                        marker: ['DancingScript', 'cursive']
-                    },
-                    boxShadow: {
-                        'pop': '6px 6px 0px 0px rgba(30, 58, 138, 1)',
-                        'pop-hover': '2px 2px 0px 0px rgba(30, 58, 138, 1)',
-                        'pop-yellow': '6px 6px 0px 0px rgba(244, 114, 182, 1)',
-                        'pop-white': '4px 4px 0px 0px #ffffff',
-                    },
-                    animation: {
-                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'marquee': 'marquee 25s linear infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'bounce-x': 'bounceX 1s infinite',
-                        'shimmer': 'shimmer 2.5s infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'spin-slow': 'spin 12s linear infinite',
-                    },
-                    keyframes: {
-                        slideUp: {
-                            '0%': { transform: 'translateY(50px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
-                        float: {
-                            '0%': { transform: 'translateY(0px) rotate(0deg);' },
-                            '50%': { transform: 'translateY(-20px) rotate(2deg);' },
-                            '100%': { transform: 'translateY(0px) rotate(0deg);' },
-                        },
-                        bounceX: {
-                            '0%, 100%': { transform: 'translateX(-25%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' },
-                            '50%': { transform: 'none', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' },
-                        },
-                        shimmer: {
-                            '0%': { left: '-100%' }, '100%': { left: '200%' }
-                        }
-                    },
-                    backgroundImage: {
-                        'dot-pattern': 'radial-gradient(#1e3a8a 1px, transparent 1px)',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
         .dark .glass-nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
@@ -121,10 +63,12 @@
                 </li>
             </ul>
 
-            <button id="mobile-menu-btn" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20 hover-trigger">
+            <button id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20 hover-trigger">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
         </div>
+
+        <div id="mobile-menu-backdrop" class="hidden md:hidden"></div>
 
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-950 border-t-2 border-partyYellow shadow-2xl z-10 flex flex-col p-5 space-y-2 font-anakotmai">
             <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🏠</span> หน้าหลัก</a>
@@ -161,8 +105,7 @@
                     </a>
                 </div>
             </div>
-            
-            <p class="text-sm font-mono opacity-50 uppercase tracking-widest text-gray-500">Scheduled for Update: Academic Year 2026</p>
+
         </div>
     </main>
 
@@ -183,8 +126,8 @@
             </div>
             
             <div class="text-center order-1 md:order-2 flex-grow">
-                <h3 class="font-dancing text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Pioneering development, listening to every problem</h3>
-                <p class="font-dancing text-partyPink text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">and ready to solve them together</p>
+                <h3 class="font-marker text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Pioneering development, listening to every problem</h3>
+                <p class="font-marker text-partyPink text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">and ready to solve them together</p>
                 <div class="flex justify-center gap-3 mt-6">
                      <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0s"></span>
                      <span class="w-3 h-3 bg-partyYellow rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
@@ -223,105 +166,6 @@
         </div>
     </footer>
 
-    <script>
-        // --- Core Logic & Theme ---
-        const html = document.documentElement;
-        function updateIcons(isDark) {
-            document.querySelectorAll('.sun-icon').forEach(el => isDark ? el.classList.remove('hidden') : el.classList.add('hidden'));
-            document.querySelectorAll('.moon-icon').forEach(el => isDark ? el.classList.add('hidden') : el.classList.remove('hidden'));
-        }
-        function checkTheme() {
-            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                html.classList.add('dark'); updateIcons(true);
-            } else {
-                html.classList.remove('dark'); updateIcons(false);
-            }
-        }
-        checkTheme();
-        function toggleTheme() {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateIcons(false);
-            } else {
-                html.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateIcons(true);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Scroll Reveal Animation ---
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Reveal once
-                    }
-                });
-            }, observerOptions);
-            document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-            
-            // --- Navbar Glass Effect on Scroll (if needed, currently handled by CSS) ---
-            // const navbar = document.getElementById('navbar');
-            // window.addEventListener('scroll', () => {
-            //     if (window.scrollY > 50) {
-            //         navbar.classList.add('shadow-md');
-            //     } else {
-            //         navbar.classList.remove('shadow-md');
-            //     }
-            // });
-        });
-
-        // --- UI Interactions (Custom Cursor) ---
-        const cursor = document.getElementById('cursor');
-        if (window.matchMedia("(min-width: 768px)").matches) {
-            document.addEventListener('mousemove', (e) => {
-                if(cursor) {
-                    cursor.style.left = e.clientX + 'px';
-                    cursor.style.top = e.clientY + 'px';
-                }
-            });
-            
-            document.querySelectorAll('.hover-trigger, a, button, input, select, textarea').forEach(el => {
-                el.addEventListener('mouseenter', () => cursor && cursor.classList.add('hovered'));
-                el.addEventListener('mouseleave', () => cursor && cursor.classList.remove('hovered'));
-            });
-        }
-
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
-
-        // Loader logic
-        function hideLoader() {
-            const loader = document.getElementById('app-loader');
-            if (!loader) return;
-            loader.style.opacity = '0';
-            loader.style.pointerEvents = 'none';
-            setTimeout(() => { loader.style.display = 'none'; }, 600);
-        }
-        window.addEventListener('load', () => {
-            const hasSeenLoader = sessionStorage.getItem('pioneer_loader_seen');
-            const delay = hasSeenLoader ? 0 : 1500;
-            setTimeout(() => { hideLoader(); sessionStorage.setItem('pioneer_loader_seen', 'true'); }, delay);
-        });
-        // Failsafe: บังคับปิดหลัง 5 วิ
-        setTimeout(hideLoader, 5000);
-
-        // PWA & Version
-        const versionEl = document.getElementById('app-version');
-        if(versionEl) versionEl.innerText = "3.0.0";
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            const btn = document.getElementById('install-pwa-btn');
-            if(btn) btn.classList.remove('hidden');
-        });
-        const installBtn = document.getElementById('install-pwa-btn');
-        if(installBtn) {
-            installBtn.addEventListener('click', () => { deferredPrompt.prompt(); });
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
