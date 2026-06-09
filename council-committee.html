@@ -19,45 +19,10 @@
     <link rel="apple-touch-icon" href="images/Pioneer logo 2.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="theme-config.js"></script>
     <link rel="stylesheet" href="style.css">
-    
-    <script>
-        tailwind.config = { 
-            darkMode: 'class', 
-            theme: {
-                extend: {
-                    colors: { 
-                        partyBlue: '#1e3a8a', 
-                        partyDarkBlue: '#172554',
-                        partyYellow: '#f472b6', // Standardized to index.html's pinkish-yellow
-                        partyPink: '#f472b6',   // Added for consistency
-                        offWhite: '#fdfbf7',
-                        darkBg: '#0f172a'
-                    },
-                    fontFamily: {
-                        anakotmai: ['Anakotmai', 'sans-serif'],
-                        dancing: ['DancingScript', 'cursive'],
-                        marker: ['Permanent Marker', 'cursive'],
-                    },
-                    boxShadow: {
-                        'pop': '6px 6px 0px 0px rgba(30, 58, 138, 1)',
-                        'pop-hover': '2px 2px 0px 0px rgba(30, 58, 138, 1)',
-                        'pop-yellow': '6px 6px 0px 0px rgba(244, 114, 182, 1)',
-                        'pop-yellow-hover': '2px 2px 0px 0px rgba(244, 114, 182, 1)',
-                        'pop-white': '4px 4px 0px 0px #ffffff',
-                    },
-                    animation: {
-                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'bounce-x': 'bounceX 1s infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
-                }
-            }
-        }
-    </script>
 
     <style>
-        @font-face { font-family: 'Anakotmai'; src: url('Fonts/Anakotmai-Light.ttf') format('truetype'); font-weight: 300; }
         @font-face { font-family: 'Anakotmai'; src: url('Fonts/Anakotmai-Medium.ttf') format('truetype'); font-weight: 500; }
         @font-face { font-family: 'Anakotmai'; src: url('Fonts/Anakotmai-Bold.ttf') format('truetype'); font-weight: 700; }
         @font-face { font-family: 'DancingScript'; src: url('Fonts/DancingScript-VariableFont_wght.ttf') format('truetype'); font-weight: 400 700; }
@@ -96,7 +61,7 @@
         }
     </style>
 </head>
-<body class="bg-offWhite dark:bg-darkBg transition-colors duration-300 bg-grid-pattern selection:bg-partyYellow selection:text-partyBlue">
+<body class="bg-offWhite dark:bg-darkBg text-gray-900 dark:text-gray-100 overflow-x-hidden relative transition-colors duration-300 bg-grid-pattern selection:bg-partyYellow selection:text-partyBlue">
 
     <!-- Modern Loader -->
     <div id="app-loader">
@@ -145,10 +110,12 @@
                 </li>
             </ul>
 
-            <button id="mobile-menu-btn" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20">
+            <button id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
         </div>
+
+        <div id="mobile-menu-backdrop" class="hidden md:hidden"></div>
 
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-900 border-t-2 border-partyYellow shadow-xl z-10 flex flex-col p-4 space-y-3 font-anakotmai">
             <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🏠</span> หน้าหลัก</a>
@@ -224,70 +191,83 @@
             </div>
         </div>
     </header>
+    <section class="container mx-auto px-4 mt-6 md:mt-10 reveal-on-scroll">
+        <div class="committee-search-panel max-w-5xl mx-auto bg-white/95 dark:bg-gray-900/95 border-4 border-partyBlue dark:border-partyPink shadow-[8px_8px_0px_0px_rgba(244,114,182,0.9)] p-4 md:p-6 relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+            <div class="relative z-10 flex flex-col lg:flex-row gap-4 lg:items-end">
+                <div class="flex-1 text-left">
+                    <span class="inline-flex items-center gap-2 bg-partyBlue text-white dark:bg-partyPink dark:text-partyBlue px-3 py-1 text-xs font-black uppercase tracking-widest mb-3 shadow-[2px_2px_0px_0px_rgba(30,58,138,0.45)]">
+                        Directory Search
+                    </span>
+                    <h2 class="text-2xl md:text-3xl font-black text-partyBlue dark:text-white leading-tight">ค้นหาคณะสภานักเรียน</h2>
+                    <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 font-bold mt-1">เลือกฝ่ายเพื่อเลื่อนไปยังหมวดนั้น หรือค้นหาชื่อ/ตำแหน่งแล้วกดเข้าโปรไฟล์ได้ทันที</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-3 w-full lg:w-[560px]">
+                    <select id="committee-group-filter" class="committee-search-control">
+                        <option value="">เลือกฝ่าย</option>
+                    </select>
+                    <input id="committee-search-input" class="committee-search-control" list="committee-name-list" type="search" placeholder="พิมพ์ชื่อ ตำแหน่ง หรือชื่อเล่น">
+                    <datalist id="committee-name-list"></datalist>
+                </div>
+            </div>
+            <div id="committee-search-results" class="relative z-10 mt-5 hidden"></div>
+        </div>
+    </section>
 
-    <section class="container mx-auto px-4 pb-20 mt-6 md:mt-10">
+    <section class="container mx-auto px-4 pb-20 mt-10 md:mt-14">
         <div id="directory-container" class="flex flex-col items-center">
             </div>
     </section>
 
     <footer class="bg-partyBlue dark:bg-gray-950 text-white py-16 relative shadow-[0_-10px_40px_rgba(0,0,0,0.3)] z-50 overflow-hidden transition-colors duration-300">
-        <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-partyYellow via-orange-400 to-partyYellow"></div>
-        <div class="absolute -right-10 -bottom-20 w-80 h-80 border-8 border-partyYellow rounded-full opacity-10"></div>
+        <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-partyPink via-orange-400 to-partyPink"></div>
+        <div class="absolute -right-10 -bottom-20 w-80 h-80 border-8 border-partyPink rounded-full opacity-10"></div>
         <div class="absolute left-10 top-20 w-32 h-32 border-4 border-white rounded-full opacity-5"></div>
         
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 relative z-10"> 
             
             <div class="flex-shrink-0 order-2 md:order-1 flex items-center justify-center hover-trigger group">
                 <div class="bg-white p-2 rounded-full -rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_#ffffff] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 relative z-10">
-                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="w-full h-full object-contain drop-shadow-sm">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Panthong_Saphanupathamnd.png" alt="School Logo" class="w-full h-full object-contain drop-shadow-sm">
                 </div>
-                <div class="bg-white p-3 rounded-xl rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 -ml-6 md:-ml-8 relative z-0">
-                    <img src="images/Pioneer logo 3.png" alt="Pioneer Logo" class="w-full h-full object-contain">
+                <div class="bg-white p-2 rounded-full rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 -ml-6 md:-ml-8 relative z-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="w-full h-full object-contain drop-shadow-sm">
                 </div>
             </div>
             
             <div class="text-center order-1 md:order-2 flex-grow">
-                <h3 class="font-dancing text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Follow us & get to know Pioneer</h3>
-                <p class="font-dancing text-partyYellow text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">Because every voice matters</p>
-                <div class="flex justify-center gap-3 mt-6 mb-4">
+                <h3 class="font-dancing text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Pioneering development, listening to every problem</h3>
+                <p class="font-dancing text-partyPink text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">and ready to solve them together</p>
+                <div class="flex justify-center gap-3 mt-6">
                      <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0s"></span>
-                     <span class="w-3 h-3 bg-partyYellow rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                     <span class="w-3 h-3 bg-partyPink rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
                      <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
                 </div>
                 <p class="text-sm opacity-60 mt-6 text-gray-300 font-mono tracking-widest uppercase">System Version <span id="app-version"></span></p>
             </div>
             
             <div class="flex flex-col items-center md:items-end gap-3 order-3 md:order-3 flex-shrink-0">
-                
-                <span class="text-xs md:text-sm font-black text-partyBlue uppercase tracking-widest bg-partyYellow px-4 py-1 rounded-sm shadow-sm mt-4">พรรค Pioneer</span>
-                
-                <a href="https://instagram.com/thepioneerpsc" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
-                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">thepioneerpsc</span>
-                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_#f472b6] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    </div>
-                </a>
-                
-                <a href="https://tiktok.com/@thepioneerpsc" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
-                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">thepioneerpsc</span>
-                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_#f472b6] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
-                    </div>
-                </a>
 
-                <span class="text-xs md:text-sm font-black text-partyBlue uppercase tracking-widest bg-white px-4 py-1 rounded-sm shadow-sm mt-4">สภานักเรียนพานทองฯ</span>
+                <span class="text-xs md:text-sm font-black text-partyBlue uppercase tracking-widest bg-white px-4 py-1 rounded-sm shadow-sm mt-4 mb-1">สภานักเรียนพานทองฯ</span>
                 
                 <a href="https://www.instagram.com/deksapa.psc/" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
-                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">deksapa.psc</span>
-                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_#f472b6] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Instagram</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </div>
                 </a>
                 
                 <a href="https://www.facebook.com/profile.php?id=100063788612433" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
                     <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Facebook Page</span>
-                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_#f472b6] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </div>
+                </a>
+
+                <a href="https://www.tiktok.com/@deksapa.psc" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">TikTok</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
                     </div>
                 </a>
 
@@ -295,151 +275,65 @@
             
         </div>
     </footer>
-
+    <script src="main.js"></script>
     <script>
-        // --- Core Logic & Theme ---
-        const html = document.documentElement;
-        function updateIcons(isDark) {
-            document.querySelectorAll('.sun-icon').forEach(el => isDark ? el.classList.remove('hidden') : el.classList.add('hidden'));
-            document.querySelectorAll('.moon-icon').forEach(el => isDark ? el.classList.add('hidden') : el.classList.remove('hidden'));
-        };
-
-        function attachCursorEvents() {
-            if (!cursor) return;
-            document.querySelectorAll('.hover-trigger, a, button, .cursor-pointer').forEach(trigger => {
-                trigger.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-                trigger.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-            });
-        }
-        function checkTheme() {
-            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                html.classList.add('dark'); updateIcons(true);
-            } else {
-                html.classList.remove('dark'); updateIcons(false);
-            }
-        }
-        checkTheme();
-        function toggleTheme() {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateIcons(false);
-            } else {
-                html.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateIcons(true);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Scroll Reveal Animation ---
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-            document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
-            
-            // --- Navbar Glass Effect on Scroll (if needed, currently handled by CSS) ---
-            // const navbar = document.getElementById('navbar');
-            // window.addEventListener('scroll', () => {
-            //     if (window.scrollY > 50) {
-            //         navbar.classList.add('shadow-md');
-            //     } else {
-            //         navbar.classList.remove('shadow-md');
-            //     }
-            // });
-        });
-
-        function handleScroll() {
-            const reveals = document.querySelectorAll('.reveal-on-scroll');
-            reveals.forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('is-visible');
-            });
-        }
-
-        // --- UI Interactions (Custom Cursor) ---
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            if(cursor) {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            }
-        });
-        document.querySelectorAll('a, button, .hover-trigger, input, select, textarea').forEach(trigger => {
-            trigger.addEventListener('mouseenter', () => cursor && cursor.classList.add('hovered'));
-            trigger.addEventListener('mouseleave', () => cursor && cursor.classList.remove('hovered'));
-        });
-
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
-
-        // Loader logic
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('app-loader');
-            const delay = sessionStorage.getItem('visited_council') ? 500 : 1500;
-            setTimeout(() => { if(loader) loader.classList.add('opacity-0', 'pointer-events-none'); sessionStorage.setItem('visited_council', 'true'); }, delay);
-        });
-
-        // --- ตั้งค่า System Version ---
-        const versionEl = document.getElementById('app-version');
-        if(versionEl) versionEl.innerText = "3.0.0";
-
         const councilData = [
             // --- ฝ่ายบริหาร (Executive) ---
-            { id: '1', role: 'ประธานสภานักเรียน', name: 'นางสาวพาขวัญ นวลสำลี', img: 'images/student_council_group_background/Student_Council_President_.png', group: 'executive' },
-            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', img: '', group: 'executive' },
-            { id: '3', role: 'รองประธานสภานักเรียน', name: 'นางสาวธัญญรัตน์ หมื่นรัตน์', img: '', group: 'executive' },
+            { id: '1', role: 'ประธานสภานักเรียน', name: 'นางสาวพาขวัญ นวลสำลี', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/1.png', group: 'executive' },
+            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/2.png', group: 'executive' },
+            { id: '3', role: 'รองประธานสภานักเรียน', name: 'นางสาวธัญญรัตน์ หมื่นรัตน์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/3.png', group: 'executive' },
 
             // --- ฝ่ายสนับสนุน (Admin) ---
-            { id: '4', role: 'เลขานุการ', name: 'นางสาวปรียากาญจน์ ใจกล้า', img: '', group: 'admin' },
-            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวอชิริญา หารภูมิ', img: '', group: 'admin' },
-            { id: '6', role: 'พัสดุ', name: 'นางสาวชญานิศ บุญมา', img: '', group: 'admin' },
-            { id: '7', role: 'ผู้ช่วยพัสดุ', name: 'นางสาวพิมพ์ลภัส สุขนิธิกุลวงศ์', img: '', group: 'admin' },
-            { id: '8', role: 'เหรัญญิก', name: 'นางสาวธนัญญา ตันประเสริฐ', img: '', group: 'admin' },
-            { id: '9', role: 'ผู้ช่วยเหรัญญิก', name: 'นางสาวเขมิกา ศักด์เสรีกุล', img: '', group: 'admin' },
+            { id: '4', role: 'เลขานุการ', name: 'นางสาวปรียากาญจน์ ใจกล้า', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/4.png', group: 'admin' },
+            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวอชิริญา หารภูมิ', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/5.png', group: 'admin' },
+            { id: '6', role: 'พัสดุ', name: 'นางสาวชญานิศ บุญมา', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/6.png', group: 'admin' },
+            { id: '7', role: 'ผู้ช่วยพัสดุ', name: 'นางสาวพิมพ์ลภัส สุขนิธิกุลวงศ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/7.png', group: 'admin' },
+            { id: '8', role: 'เหรัญญิก', name: 'นางสาวธนัญญา ตันประเสริฐ', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/8.png', group: 'admin' },
+            { id: '9', role: 'ผู้ช่วยเหรัญญิก', name: 'นางสาวเขมิกา ศักด์เสรีกุล', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/9.png', group: 'admin' },
 
             // --- ฝ่ายสารวัตร (Discipline) ---
-            { id: '10', role: 'หัวหน้าฝ่ายสารวัตร', name: 'นายสิทธิ โชค แสงสว่าง', img: '', group: 'discipline' },
-            { id: '11', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายชัยภัทร นรสาร', img: '', group: 'discipline' },
-            { id: '12', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวธัญชนก ธนวุฒิคติวรกุล', img: '', group: 'discipline' },
-            { id: '13', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวอุษา ยิ้ม', img: '', group: 'discipline' },
-            { id: '14', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาววีรดา พูลสมบัติ', img: '', group: 'discipline' },
-            { id: '15', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวสุพิชญา กลิ่นเกลี้ยง', img: '', group: 'discipline' },
-            { id: '16', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'รนายแทนคุณ เบญมาตย์', img: '', group: 'discipline' },
+            { id: '10', role: 'หัวหน้าฝ่ายสารวัตร', name: 'นายสิทธิ โชค แสงสว่าง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/10.png', group: 'discipline' },
+            { id: '11', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายชัยภัทร นรสาร', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/11.png', group: 'discipline' },
+            { id: '12', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวธัญชนก ธนวุฒิคติวรกุล', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/12.png', group: 'discipline' },
+            { id: '13', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวอุษา ยิ้ม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/13.png', group: 'discipline' },
+            { id: '14', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาววีรดา พูลสมบัติ', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/14.png', group: 'discipline' },
+            { id: '15', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวสุพิชญา กลิ่นเกลี้ยง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/15.png', group: 'discipline' },
+            { id: '16', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'รนายแทนคุณ เบญมาตย์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/16.png', group: 'discipline' },
 
             // --- ฝ่ายการเรียน (Academic) ---
-            { id: '17', role: 'หัวหน้าฝ่ายการเรียน', name: 'นางสาวฐานิดา รื่นเริง', img: '', group: 'academic' },
-            { id: '18', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวกัญญารัตน์ แสงสว่าง', img: '', group: 'academic' },
-            { id: '19', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาววรพัชรา ศรีบุญเรือง', img: '', group: 'academic' },
-            { id: '20', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวฐิตาภา พวงพิศ', img: '', group: 'academic' },
-            { id: '21', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพลอยปภัส นัยวิจารณ์', img: '', group: 'academic' },
-            { id: '22', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายตรีรัตน์ ปิติไพศาลกุล', img: '', group: 'academic' },
-            { id: '23', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพิชามญช์ หาญอาสา', img: '', group: 'academic' },
+            { id: '17', role: 'หัวหน้าฝ่ายการเรียน', name: 'นางสาวฐานิดา รื่นเริง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/17.png', group: 'academic' },
+            { id: '18', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวกัญญารัตน์ แสงสว่าง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/18.png', group: 'academic' },
+            { id: '19', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาววรพัชรา ศรีบุญเรือง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/19.png', group: 'academic' },
+            { id: '20', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวฐิตาภา พวงพิศ', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/20.png', group: 'academic' },
+            { id: '21', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพลอยปภัส นัยวิจารณ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/21.png', group: 'academic' },
+            { id: '22', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายตรีรัตน์ ปิติไพศาลกุล', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/22.png', group: 'academic' },
+            { id: '23', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพิชามญช์ หาญอาสา', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/23.png', group: 'academic' },
 
             // --- ฝ่ายกิจกรรม (Activity) ---
-            { id: '24', role: 'หัวหน้าฝ่ายกิจกรรม', name: 'นางสาววาศิณี ปู่ไข่', img: '', group: 'activity' },
-            { id: '25', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวอารีรัตน์ บัวทอง', img: '', group: 'activity' },
-            { id: '26', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวดิรัชญา ขาวผ่อง', img: '', group: 'activity' },
-            { id: '27', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวภควดี หมื่นพล', img: '', group: 'activity' },
-            { id: '28', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายปภังกร ปัญญาใส', img: '', group: 'activity' },
-            { id: '29', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายจักรเพ็ชร บุญโสม', img: '', group: 'activity' },
-            { id: '30', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวชุติกาญจน์ กันยาเนียม', img: '', group: 'activity' },
+            { id: '24', role: 'หัวหน้าฝ่ายกิจกรรม', name: 'นางสาววาศิณี ปู่ไข่', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/24.png', group: 'activity' },
+            { id: '25', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวอารีรัตน์ บัวทอง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/25.png', group: 'activity' },
+            { id: '26', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวดิรัชญา ขาวผ่อง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/26.png', group: 'activity' },
+            { id: '27', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวภควดี หมื่นพล', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/27.png', group: 'activity' },
+            { id: '28', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายปภังกร ปัญญาใส', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/28.png', group: 'activity' },
+            { id: '29', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายจักรเพ็ชร บุญโสม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/29.png', group: 'activity' },
+            { id: '30', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวชุติกาญจน์ กันยาเนียม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/30.png', group: 'activity' },
             // --- ฝ่ายการงาน (Works) ---
-            { id: '31', role: 'หัวหน้าฝ่ายการงาน', name: 'นายพชร กาเผือก', img: '', group: 'works' },
-            { id: '32', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายพิชญะ วงศรีแก้ว', img: '', group: 'works' },
-            { id: '33', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายรัฐภูมิ ลีทอง', img: '', group: 'works' },
-            { id: '34', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายเจริญชัย ทองแพง', img: '', group: 'works' },
-            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', img: '', group: 'works' },
-            { id: '36', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพัทธ์ เชื่อเมืองพาน', img: '', group: 'works' },
-            { id: '37', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวพณิตา ทองสว่างแจ้ง', img: '', group: 'works' },
+            { id: '31', role: 'หัวหน้าฝ่ายการงาน', name: 'นายพชร กาเผือก', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/31.png', group: 'works' },
+            { id: '32', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายพิชญะ วงศรีแก้ว', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/32.png', group: 'works' },
+            { id: '33', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายรัฐภูมิ ลีทอง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/33.png', group: 'works' },
+            { id: '34', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายเจริญชัย ทองแพง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/34.png', group: 'works' },
+            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/35.png', group: 'works' },
+            { id: '36', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพัทธ์ เชื่อเมืองพาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/36.png', group: 'works' },
+            { id: '37', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวพณิตา ทองสว่างแจ้ง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/37.png', group: 'works' },
 
             // --- ฝ่ายประชาสัมพันธ์ (PR) ---
-            { id: '38', role: 'หัวหน้าฝ่ายประชาสัมพันธ์', name: 'นายธนกฤต สุวรรณาวุธ', img: '', group: 'pr' },
-            { id: '39', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนพรัตน์ สารรัตน์', img: '', group: 'pr' },
-            { id: '40', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอภิญญาภรณ์ บุญหนา', img: '', group: 'pr' },
-            { id: '41', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวศศิธร หงษา', img: '', group: 'pr' },
-            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวฐานิดา พลอารีย์', img: '', group: 'pr' },
-            { id: '43', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนภัสสร ประทุมมา', img: '', group: 'pr' },
-            { id: '44', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวกฤตยากร วงค์สงคราม', img: '', group: 'pr' }
+            { id: '38', role: 'หัวหน้าฝ่ายประชาสัมพันธ์', name: 'นายธนกฤต สุวรรณาวุธ', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/38.png', group: 'pr' },
+            { id: '39', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนพรัตน์ สารรัตน์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/39.png', group: 'pr' },
+            { id: '40', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอภิญญาภรณ์ บุญหนา', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/40.png', group: 'pr' },
+            { id: '41', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวศศิธร หงษา', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/41.png', group: 'pr' },
+            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวฐานิดา พลอารีย์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/42.png', group: 'pr' },
+            { id: '43', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนภัสสร ประทุมมา', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/43.png', group: 'pr' },
+            { id: '44', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวกฤตยากร วงค์สงคราม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/44.png', group: 'pr' }
         ];
 
         const groupsConfig = [
@@ -526,6 +420,32 @@
             }
         }
 
+                function getGroupTitle(groupId) {
+            return groupsConfig.find(group => group.id === groupId)?.title || groupId;
+        }
+
+        function openMembers(groupId) {
+            const membersDiv = document.getElementById(`members-${groupId}`);
+            const icon = document.getElementById(`icon-${groupId}`);
+            if (!membersDiv) return;
+            membersDiv.classList.remove('hidden');
+            membersDiv.classList.add('flex');
+            if (icon) icon.style.transform = 'rotate(180deg)';
+        }
+
+        function renderGroupMembers(groupId, members) {
+            if (members.length === 0) return '';
+            return `
+                <button onclick="toggleMembers('${groupId}')" class="md:hidden bg-white dark:bg-gray-900 text-partyBlue dark:text-partyPink font-black px-6 py-2 border-2 border-partyBlue dark:border-partyPink shadow-[4px_4px_0px_0px_#f472b6] hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-2 mb-6 text-sm hover-trigger rounded-full">
+                    ดูสมาชิกเพิ่มเติม <span class="bg-partyBlue text-white dark:bg-partyPink dark:text-partyBlue rounded-full px-2 py-0.5 text-xs">${members.length}</span>
+                    <span id="icon-${groupId}" class="transition-transform duration-300 inline-block text-lg">🔽</span>
+                </button>
+                <div id="members-${groupId}" class="hidden md:flex flex-wrap justify-center gap-4 md:gap-8 w-full px-2">
+                    ${members.map(m => generateCard(m, false, false, true)).join('')}
+                </div>
+            `;
+        }
+
         function renderDirectory() {
             const container = document.getElementById('directory-container');
             let htmlContent = '';
@@ -535,7 +455,7 @@
                 if (membersInGroup.length === 0) return;
 
                 htmlContent += `
-                    <div class="mb-16 md:mb-24 reveal-on-scroll w-full flex flex-col items-center">
+                    <div id="group-${group.id}" class="committee-group mb-16 md:mb-24 reveal-on-scroll w-full flex flex-col items-center scroll-mt-28">
                         <div class="text-center mb-8 md:mb-12 relative z-10">
                             <h2 class="inline-block bg-partyYellow text-partyBlue font-black text-xl md:text-3xl px-6 py-2 md:px-8 md:py-3 border-2 md:border-4 border-partyBlue shadow-pop transform -rotate-1 relative hover-trigger hover:rotate-0 transition-transform">
                                 ${group.title}
@@ -543,82 +463,117 @@
                         </div>
                 `;
 
-                // 1. คณะผู้บริหาร (บังคับให้ประธานอยู่บนสุดบนมือถือ โดยใช้ order-1)
                 if (group.id === 'executive') {
-                    const pres = membersInGroup.find(m => m.id === '1');
-                    const vp1 = membersInGroup.find(m => m.id === '2');
-                    const vp2 = membersInGroup.find(m => m.id === '3');
-                    
-                    htmlContent += `<div class="flex flex-col md:flex-row justify-center items-center md:items-end gap-6 md:gap-10 w-full">`;
-                    if(vp1) htmlContent += generateCard(vp1, false, false, false, "order-2 md:order-1");
-                    if(pres) htmlContent += generateCard(pres, true, false, false, "order-1 md:order-2 mb-2 md:mb-0");
-                    if(vp2) htmlContent += generateCard(vp2, false, false, false, "order-3 md:order-3");
-                    htmlContent += `</div>`;
-                } 
-                // 2. ฝ่ายอำนวยการ (เลขา, พัสดุ, เหรัญญิก) แบ่ง 2 คอลัมน์สวยๆ
-                else if (group.id === 'admin') {
-                    htmlContent += `<div class="flex flex-wrap justify-center items-stretch gap-4 md:gap-8 max-w-5xl px-2 w-full">`;
-                    membersInGroup.forEach(m => {
-                        htmlContent += generateCard(m, false, false, true); 
-                    });
-                    htmlContent += `</div>`;
-                } 
-                // 3. ฝ่ายอื่นๆ (มีหัวหน้าฝ่าย)
-                else {
-                    const head = membersInGroup.find(m => m.role.includes('หัวหน้า'));
-                    const members = membersInGroup.filter(m => !m.role.includes('หัวหน้า'));
-
+                    const pres = membersInGroup.find(m => m.id === '1') || membersInGroup[0];
+                    const vicePresidents = membersInGroup.filter(m => m.id !== pres.id);
                     htmlContent += `<div class="flex flex-col items-center w-full max-w-5xl">`;
-                    
-                    // แสดงหัวหน้าเสมอ
-                    if (head) {
+                    if (pres) {
                         htmlContent += `<div class="flex justify-center w-full mb-6">`;
-                        htmlContent += generateCard(head, false, true, false); 
+                        htmlContent += generateCard(pres, true, false, false);
                         htmlContent += `</div>`;
                     }
+                    htmlContent += renderGroupMembers(group.id, vicePresidents);
+                    htmlContent += `</div>`;
+                } else {
+                    const head = membersInGroup.find(m => m.role.includes('หัวหน้า')) || membersInGroup[0];
+                    const members = membersInGroup.filter(m => m.id !== head.id);
+                    const headIsRealHead = head.role.includes('หัวหน้า');
 
-                    // ปุ่มกดกางสมาชิก (โชว์เฉพาะบนมือถือ)
-                    if (members.length > 0) {
-                        htmlContent += `
-                            <button onclick="toggleMembers('${group.id}')" class="md:hidden bg-white text-partyBlue font-black px-6 py-2 border-2 border-partyBlue shadow-[4px_4px_0px_0px_#f472b6] hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-2 mb-6 text-sm hover-trigger rounded-full">
-                                ดูสมาชิกฝ่าย <span id="icon-${group.id}" class="transition-transform duration-300 inline-block text-lg">🔽</span>
-                            </button>
-                        `;
+                    htmlContent += `<div class="flex flex-col items-center w-full max-w-5xl">`;
+                    if (head) {
+                        htmlContent += `<div class="flex justify-center w-full mb-6">`;
+                        htmlContent += generateCard(head, false, headIsRealHead, false);
+                        htmlContent += `</div>`;
                     }
-
-                    // คอนเทนเนอร์เก็บสมาชิก (ซ่อนในมือถือตอนแรก, กางเสมอในคอม)
-                    htmlContent += `<div id="members-${group.id}" class="hidden md:flex flex-wrap justify-center gap-4 md:gap-8 w-full px-2">`;
-                    members.forEach(m => {
-                        htmlContent += generateCard(m, false, false, true); 
-                    });
-                    htmlContent += `</div></div>`;
+                    htmlContent += renderGroupMembers(group.id, members);
+                    htmlContent += `</div>`;
                 }
 
                 htmlContent += `</div>`;
             });
 
             container.innerHTML = htmlContent;
-            attachCursorEvents(); // ใส่ไว้ตามโค้ดของคุณ
+            attachCursorEvents();
         }
 
-        // --- System Events พื้นฐาน (ไม่ให้โครงสร้างเดิมพัง) ---
-        window.addEventListener('scroll', () => {
-            const reveals = document.querySelectorAll('.reveal-on-scroll');
-            reveals.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) el.classList.add('is-visible');
-            });
-        });
+        function initCommitteeSearch() {
+            const groupSelect = document.getElementById('committee-group-filter');
+            const searchInput = document.getElementById('committee-search-input');
+            const nameList = document.getElementById('committee-name-list');
+            const results = document.getElementById('committee-search-results');
+            if (!groupSelect || !searchInput || !nameList || !results) return;
 
-        function toggleTheme() { document.documentElement.classList.toggle('dark'); }
-        
-        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-            // Logic for mobile menu toggle
-        });
+            groupSelect.innerHTML = '<option value="">เลือกฝ่าย</option>' + groupsConfig.map(group =>
+                `<option value="${group.id}">${group.title}</option>`
+            ).join('');
+
+            nameList.innerHTML = councilData.map(member =>
+                `<option value="${member.name}">${member.role}</option>`
+            ).join('');
+
+            const goToGroup = (groupId) => {
+                const target = document.getElementById(`group-${groupId}`);
+                if (!target) return;
+                openMembers(groupId);
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                target.classList.add('committee-group-highlight');
+                window.setTimeout(() => target.classList.remove('committee-group-highlight'), 1200);
+            };
+
+            groupSelect.addEventListener('change', () => {
+                searchInput.value = '';
+                results.classList.add('hidden');
+                results.innerHTML = '';
+                if (groupSelect.value) goToGroup(groupSelect.value);
+            });
+
+            const renderSearchResults = () => {
+                const query = searchInput.value.trim().toLowerCase();
+                groupSelect.value = '';
+                if (!query) {
+                    results.classList.add('hidden');
+                    results.innerHTML = '';
+                    return;
+                }
+
+                const matched = councilData.filter(member => {
+                    const haystack = `${member.name} ${member.role} ${getGroupTitle(member.group)}`.toLowerCase();
+                    return haystack.includes(query);
+                }).slice(0, 8);
+
+                if (matched.length === 0) {
+                    results.classList.remove('hidden');
+                    results.innerHTML = `<div class="bg-partyBlue/5 dark:bg-white/5 border-2 border-dashed border-partyBlue/40 dark:border-partyPink/40 text-partyBlue dark:text-partyPink font-black p-4 text-center">ไม่พบรายชื่อที่ตรงกับคำค้น</div>`;
+                    return;
+                }
+
+                results.classList.remove('hidden');
+                results.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    ${matched.map(member => `
+                        <button type="button" onclick="window.location.href='profile.council-committee.html?id=${member.id}'" class="committee-result-card hover-trigger text-left bg-white dark:bg-gray-800 border-2 border-partyBlue dark:border-partyPink p-3 shadow-[3px_3px_0px_0px_rgba(244,114,182,0.85)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+                            <span class="block text-xs font-black text-partyPink uppercase tracking-widest mb-1">${getGroupTitle(member.group)}</span>
+                            <span class="block text-partyBlue dark:text-white font-black leading-tight">${member.name}</span>
+                            <span class="block text-gray-500 dark:text-gray-300 text-xs font-bold mt-1 leading-tight">${member.role}</span>
+                        </button>
+                    `).join('')}
+                </div>`;
+                attachCursorEvents();
+            };
+
+            searchInput.addEventListener('input', renderSearchResults);
+            searchInput.addEventListener('keydown', (event) => {
+                if (event.key !== 'Enter') return;
+                const query = searchInput.value.trim().toLowerCase();
+                const exact = councilData.find(member => member.name.toLowerCase() === query);
+                if (exact) window.location.href = `profile.council-committee.html?id=${exact.id}`;
+            });
+        }
 
         // --- Initial Load ---
         window.addEventListener('DOMContentLoaded', () => {
             renderDirectory();
+            initCommitteeSearch();
+            window.initRevealOnScroll?.();
             const versionEl = document.getElementById('app-version');
             if(versionEl) versionEl.innerText = "3.0.0";
             setTimeout(() => window.dispatchEvent(new Event('scroll')), 200);
