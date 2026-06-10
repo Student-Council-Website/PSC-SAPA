@@ -135,7 +135,7 @@
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 flex-grow flex flex-col justify-center items-center relative z-10 pt-28 pb-20 animate-fade-in-up">
+    <main class="profile-main container mx-auto px-4 flex-grow flex flex-col justify-center items-center relative z-10 pt-28 pb-20 animate-fade-in-up">
         
         <div class="absolute top-1/4 left-0 w-96 h-96 bg-partyPink/20 rounded-full blur-3xl mix-blend-multiply pointer-events-none"></div>
         <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-partyBlue/10 rounded-full blur-3xl mix-blend-multiply pointer-events-none"></div>
@@ -147,10 +147,10 @@
             </a>
         </div>
 
-        <div class="max-w-5xl w-full paper-stack bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyPink p-5 sm:p-8 md:p-10 relative z-10 rounded-sm overflow-visible">
+        <div class="max-w-5xl w-full paper-stack bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyPink p-4 sm:p-8 md:p-10 relative z-10 rounded-sm overflow-visible">
             
             <div class="flex justify-center mb-7 md:mb-9">
-                <div class="washi-tape px-6 sm:px-10 py-1.5 font-black text-white text-sm sm:text-lg tracking-widest uppercase">
+                <div class="washi-tape px-5 sm:px-10 py-1.5 font-black text-white text-xs sm:text-lg tracking-widest uppercase">
                     Student Profile
                 </div>
             </div>
@@ -162,8 +162,8 @@
                         </div>
                 </div>
                 
-                <div class="mt-8 text-center flex-grow flex flex-col justify-end">
-                    <div class="bg-partyBlue dark:bg-gray-900 text-white p-4 border-4 border-partyBlue dark:border-partyPink transform -rotate-1 hover:rotate-0 transition-all shadow-sm">
+                <div class="mt-5 md:mt-8 text-center flex-grow flex flex-col justify-end">
+                    <div class="bg-partyBlue dark:bg-gray-900 text-white p-3 md:p-4 border-4 border-partyBlue dark:border-partyPink md:transform md:-rotate-1 hover:rotate-0 transition-all shadow-sm">
                         <p class="text-xs font-bold text-partyPink uppercase tracking-widest mb-1 flex items-center justify-center gap-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             Department / สังกัดฝ่าย
@@ -174,7 +174,7 @@
             </div>
             
             <div class="w-full md:w-3/5 min-w-0 flex flex-col justify-center">
-                <div class="mb-8">
+                <div class="mb-5 md:mb-8">
                     <div class="flex items-center gap-3 mb-2">
                         <span id="profile-id-tag" class="bg-partyBlue dark:bg-partyPink text-white font-black text-xs px-3 py-1 rounded-full tracking-widest shadow-sm">#ID-000</span>
                     </div>
@@ -187,8 +187,8 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-5 md:mb-8">
+                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
                         <div class="flex items-center gap-2 mb-1 text-gray-500 dark:text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                             <span class="text-xs font-bold uppercase tracking-wider">Nickname</span>
@@ -196,7 +196,7 @@
                         <p id="info-nickname" class="font-black text-xl text-partyBlue dark:text-partyPink truncate">-</p>
                     </div>
                     
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
+                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
                         <div class="flex items-center gap-2 mb-1 text-gray-500 dark:text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                             <span class="text-xs font-bold uppercase tracking-wider">Class</span>
@@ -204,7 +204,7 @@
                         <p id="info-room" class="font-black text-xl text-partyBlue dark:text-partyPink truncate">-</p>
                     </div>
                     
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
+                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
                         <div class="flex items-center gap-2 mb-1 text-gray-500 dark:text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h16z"></path></svg>
                             <span class="text-xs font-bold uppercase tracking-wider">Birthday</span>
@@ -212,7 +212,7 @@
                         <p id="info-bday" class="font-black text-xl text-partyBlue dark:text-partyPink truncate">-</p>
                     </div>
 
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
+                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
                         <div class="flex items-center gap-2 mb-1 text-gray-500 dark:text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                             <span class="text-xs font-bold uppercase tracking-wider">Skills</span>
@@ -221,7 +221,7 @@
                     </div>
                 </div>
                 
-                <div class="mb-8 bg-gradient-to-br from-partyPink/10 to-transparent dark:from-gray-800 dark:to-gray-800 p-6 border-2 border-partyPink rounded-xl relative shadow-sm hover:shadow-md transition-shadow">
+                <div class="mb-5 md:mb-8 bg-gradient-to-br from-partyPink/10 to-transparent dark:from-gray-800 dark:to-gray-800 p-4 md:p-6 border-2 border-partyPink rounded-xl relative shadow-sm hover:shadow-md transition-shadow">
                     <span class="absolute -top-5 -left-2 text-6xl text-partyPink opacity-40 font-serif leading-none">"</span>
                     <div class="flex items-center gap-2 mb-2">
                         <span class="text-xs font-black text-partyPink uppercase tracking-widest bg-partyPink/10 px-2 py-0.5 rounded">Motto / คติประจำใจ</span>
