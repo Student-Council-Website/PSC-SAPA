@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathway to Future | Pioneer Party</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="theme-config.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">    <style>
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
+        .dark .glass-nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
+        .psc-hero-bg {
+            background:
+                radial-gradient(circle at 18% 20%, rgba(96, 165, 250, 0.28), transparent 32%),
+                radial-gradient(circle at 84% 18%, rgba(244, 114, 182, 0.25), transparent 30%),
+                radial-gradient(circle at 78% 82%, rgba(249, 189, 75, 0.14), transparent 28%),
+                linear-gradient(135deg, #102f6e 0%, #4b2d83 48%, #a12b90 100%);
+        }
+        .psc-model-image-card {
+            position: relative;
+            background: rgba(255,255,255,0.08);
+            border: 4px solid rgba(255,255,255,0.92);
+            box-shadow: 12px 12px 0 rgba(244, 114, 182, 0.75), 0 28px 80px rgba(15, 23, 42, 0.34);
+            backdrop-filter: blur(6px);
+        }
+        .psc-model-image-card::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 2px dashed rgba(255,255,255,0.34);
+            pointer-events: none;
+        }
+        .psc-model-image {
+            width: min(92vw, 760px);
+            max-height: 620px;
+            object-fit: contain;
+            filter: drop-shadow(0 18px 35px rgba(15, 23, 42, 0.34));
+        }
+        .model-action-card {
+            border: 3px solid #1e3a8a;
+            background: rgba(255,255,255,0.96);
+            color: #1e3a8a;
+            box-shadow: 5px 5px 0 rgba(244, 114, 182, 0.85);
+            transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease;
+        }
+        .model-action-card:hover,
+        .model-action-card.is-active {
+            transform: translate(3px, 3px);
+            box-shadow: 0 0 0 rgba(244, 114, 182, 0);
+            background: #1e3a8a;
+            color: #fff;
+            border-color: #f472b6;
+        }
+        .model-action-card .action-badge {
+            background: var(--card-color, #1e3a8a);
+            color: #fff;
+        }
+        .model-action-card.is-active .action-badge,
+        .model-action-card:hover .action-badge {
+            background: #fff;
+            color: var(--card-color, #1e3a8a);
+        }
+        .detail-panel { min-height: 320px; }
+        @media (max-width: 767px) {
+            .psc-model-image-card { box-shadow: 7px 7px 0 rgba(244, 114, 182, 0.75), 0 18px 45px rgba(15, 23, 42, 0.28); }
+            .psc-model-image { width: min(94vw, 430px); max-height: 430px; }
+            .detail-panel { min-height: auto; }
+        }
+    </style>
+</head>
+<body class="bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden flex flex-col min-h-screen transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
+
+    <!-- Modern Loader -->
+    <div id="app-loader">
+        <div class="loader-content">
+            <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Pioneer" class="loader-logo">
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <p class="font-black text-partyBlue dark:text-partyPink text-sm tracking-widest uppercase animate-pulse">Pioneer Pathway</p>
+        </div>
+    </div>
+
+    <div class="bg-noise opacity-30 mix-blend-overlay fixed inset-0 pointer-events-none z-0"></div>
+    <div id="cursor" class="hidden md:block"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-[60] glass-nav border-b-4 border-partyBlue dark:border-gray-800 shadow-sm transition-transform duration-300 h-[68px] md:h-[76px]" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative z-20 h-full">
+            <a href="index.html" class="flex items-center gap-2 md:gap-3 group z-20 hover-trigger">
+                <div class="rounded-full p-1 bg-white border-2 border-partyBlue shadow-sm group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Panthong_Saphanupathamnd.png" alt="School Logo" class="h-8 w-8 md:h-10 md:w-10 object-contain">
+                </div>
+                <div class="rounded-full p-1 bg-white border-2 border-partyBlue group-hover:border-partyYellow transition-all duration-300 transform group-hover:rotate-3 shadow-sm flex-shrink-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="h-8 w-8 md:h-10 md:w-10 object-contain">
+                </div>
+                <div class="flex flex-col leading-tight font-anakotmai ml-1">
+                    <span class="text-base md:text-xl font-black text-partyBlue dark:text-partyYellow tracking-tight group-hover:translate-x-1 transition-transform duration-300">สภานักเรียน</span>
+                    <span class="text-[10px] md:text-xs font-bold text-gray-600 dark:text-gray-300 truncate max-w-[150px] md:max-w-xs transition-transform duration-300">โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                </div>
+            </a>
+
+            <ul class="hidden md:flex space-x-6 items-center font-anakotmai">
+                <li><a href="index.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">หน้าหลัก</a></li>
+                <li><a href="council-committee.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">คณะสภานักเรียน</a></li>
+                <li><a href="pathway.html" class="nav-link-active text-partyBlue dark:text-white font-bold px-3 py-1 border-b-4 border-partyYellow transition-colors hover-trigger">แผนการทำงาน</a></li>
+                <li>
+                    <a href="policy.html" class="bg-partyBlue text-white border-2 border-partyBlue px-6 py-2 font-bold shadow-[4px_4px_0px_0px_#f472b6] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block rounded-sm hover:bg-partyDarkBlue hover-trigger">
+                        ดูนโยบาย
+                    </a>
+                </li>
+                <li>
+                    <button onclick="toggleTheme()" class="hover-trigger bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyYellow transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
+                        <svg class="sun-icon absolute w-5 h-5 text-partyYellow transform translate-y-12 dark:translate-y-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 1 1-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="moon-icon absolute w-5 h-5 text-partyBlue dark:translate-y-12 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                </li>
+            </ul>
+
+            <button id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20 hover-trigger">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu-backdrop" class="hidden md:hidden"></div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-950 border-t-2 border-partyYellow shadow-2xl z-10 flex flex-col p-5 space-y-2 font-anakotmai">
+            <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🏠</span> หน้าหลัก</a>
+            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>👥</span> คณะสภานักเรียน</a>
+            <a href="pathway.html" class="block text-partyYellow font-bold text-xl py-2 border-b border-white/10 pl-2 border-l-4 border-l-partyYellow bg-white/10">แผนการทำงาน</a>
+            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]"><span>📋</span> ดูนโยบาย</a>
+            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-xl py-3 group pl-2">
+                <span>สลับโหมด มืด/สว่าง</span>
+                <div class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-full bg-white/10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24 md:pt-28 pb-20 relative z-10 psc-hero-bg overflow-hidden">
+        <div class="absolute inset-0 bg-dot-pattern opacity-10 pointer-events-none"></div>
+        <div class="absolute -left-24 top-32 w-72 h-72 border-[18px] border-white/10 rounded-full pointer-events-none"></div>
+        <div class="absolute -right-24 bottom-24 w-80 h-80 border-[18px] border-partyYellow/20 rounded-full pointer-events-none"></div>
+
+        <section class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center text-white mb-10 md:mb-14 reveal-on-scroll">
+                <div class="inline-flex items-center gap-2 bg-white/95 text-partyBlue border-4 border-partyBlue px-4 py-1.5 font-black shadow-[5px_5px_0px_0px_rgba(244,114,182,1)] mb-6">
+                    PSC MODEL
+                </div>
+                <h1 class="text-4xl md:text-7xl font-black leading-tight drop-shadow-[3px_4px_0px_rgba(0,0,0,0.35)]">
+                    กิจกรรมสร้างคน คนสร้างชาติ<br class="hidden md:block"> ด้วยวิถีประชาธิปไตย
+                </h1>
+                <p class="max-w-4xl mx-auto mt-5 text-base md:text-xl font-bold text-white/90 leading-relaxed">
+                    สภานักเรียนดำเนินโครงการ PSC Model เพื่อพัฒนาการทำงานอย่างสร้างสรรค์ อุทิศตน และร่วมมือกับทุกภาคส่วน โดยบูรณาการวงจรคุณภาพ PDCA เพื่อพัฒนาอย่างต่อเนื่อง
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-8 items-center">
+                <div class="flex flex-col gap-7 items-center justify-center w-full">
+                    <div class="psc-model-image-card p-4 md:p-7 rounded-sm reveal-on-scroll">
+                        <img src="images/PSC-MODEL.png" alt="PSC Model กระบวนการ PDCA" class="psc-model-image">
+                    </div>
+
+                    <div class="w-full max-w-5xl space-y-4 reveal-on-scroll">
+                        <div>
+                            <h2 class="text-white font-black text-xl md:text-2xl mb-3 drop-shadow-md">องค์ประกอบ PSC Model</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <button class="model-action-card hover-trigger text-left p-4" style="--card-color:#0b56b3" type="button" data-topic="project">
+                                    <span class="action-badge inline-flex w-11 h-11 rounded-full items-center justify-center font-black text-2xl mb-3">P</span>
+                                    <span class="block font-black text-xl">Project</span>
+                                    <span class="block text-sm font-bold opacity-80 mt-1">คิดและวางแผนกิจกรรมที่สร้างสรรค์</span>
+                                </button>
+                                <button class="model-action-card hover-trigger text-left p-4" style="--card-color:#f70a6d" type="button" data-topic="spirit">
+                                    <span class="action-badge inline-flex w-11 h-11 rounded-full items-center justify-center font-black text-2xl mb-3">S</span>
+                                    <span class="block font-black text-xl">Spirit</span>
+                                    <span class="block text-sm font-bold opacity-80 mt-1">อุทิศตนด้วยจิตวิญญาณ</span>
+                                </button>
+                                <button class="model-action-card hover-trigger text-left p-4" style="--card-color:#f59e0b" type="button" data-topic="cooperation">
+                                    <span class="action-badge inline-flex w-11 h-11 rounded-full items-center justify-center font-black text-2xl mb-3">C</span>
+                                    <span class="block font-black text-xl">Cooperation</span>
+                                    <span class="block text-sm font-bold opacity-80 mt-1">ทำงานทีมและประสานความร่วมมือ</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h2 class="text-white font-black text-xl md:text-2xl mb-3 drop-shadow-md">กระบวนการพัฒนางาน PDCA</h2>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                <button class="model-action-card hover-trigger text-left p-4" style="--card-color:#38bdf8" type="button" data-topic="plan">
+                                    <span class="block font-black text-lg">Plan</span>
+                                    <span class="block text-sm font-bold opacity-80">วางแผน</span>
+                                </button>
+                                <button class="model-action-card hover-trigger text-left p-4" style="--card-color:#f9bd4b" type="button" data-topic="do">
+                                    <span class="block font-black text-lg">Do</span>
+                                    <span class="block text-sm font-bold opacity-80">ปฏิบัติ</span>
+                                </button>
+                                <button class="model-action-card hover-trigger text-left p-4" style="--card-color:#f472b6" type="button" data-topic="check">
+                                    <span class="block font-black text-lg">Check</span>
+                                    <span class="block text-sm font-bold opacity-80">ตรวจสอบ</span>
+                                </button>
+                                <button class="model-action-card hover-trigger text-left p-4" style="--card-color:#7ed957" type="button" data-topic="act">
+                                    <span class="block font-black text-lg">Act</span>
+                                    <span class="block text-sm font-bold opacity-80">ปรับปรุง</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="detail-panel bg-white/95 dark:bg-gray-900/95 border-4 border-partyBlue dark:border-partyPink shadow-[10px_10px_0px_0px_rgba(244,114,182,0.85)] p-5 md:p-7 reveal-on-scroll xl:sticky xl:top-28">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div id="detail-badge" class="w-14 h-14 rounded-full bg-partyBlue text-white flex items-center justify-center font-black text-3xl border-4 border-white shadow-md">P</div>
+                        <div>
+                            <p id="detail-kicker" class="text-xs font-black tracking-widest uppercase text-partyPink">PSC Model</p>
+                            <h2 id="detail-title" class="text-3xl font-black text-partyBlue dark:text-white leading-tight">Project</h2>
+                        </div>
+                    </div>
+                    <p id="detail-desc" class="text-gray-700 dark:text-gray-200 font-bold leading-relaxed text-base md:text-lg mb-5">
+                        สภานักเรียนมีการคิด และวางแผนกิจกรรมที่สร้างสรรค์
+                    </p>
+                    <ul id="detail-list" class="space-y-3"></ul>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-partyBlue dark:bg-gray-950 text-white py-16 relative shadow-[0_-10px_40px_rgba(0,0,0,0.3)] z-50 overflow-hidden transition-colors duration-300">
+        <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-partyYellow via-pink-300 to-partyYellow"></div>
+        <div class="absolute -right-10 -bottom-20 w-80 h-80 border-8 border-partyYellow rounded-full opacity-10"></div>
+        <div class="absolute left-10 top-20 w-32 h-32 border-4 border-white rounded-full opacity-5"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 relative z-10"> 
+            
+            <div class="flex-shrink-0 order-2 md:order-1 flex items-center justify-center hover-trigger group">
+                <div class="bg-white p-2 rounded-full -rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_#ffffff] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 relative z-10">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Panthong_Saphanupathamnd.png" alt="School Logo" class="w-full h-full object-contain drop-shadow-sm">
+                </div>
+                <div class="bg-white p-2 rounded-full rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 -ml-6 md:-ml-8 relative z-0">
+                    <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="w-full h-full object-contain drop-shadow-sm">
+                </div>
+            </div>
+            
+            <div class="text-center order-1 md:order-2 flex-grow">
+                <h3 class="font-marker text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Pioneering development, listening to every problem</h3>
+                <p class="font-marker text-partyPink text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">and ready to solve them together</p>
+                <div class="flex justify-center gap-3 mt-6">
+                     <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0s"></span>
+                     <span class="w-3 h-3 bg-partyYellow rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+                     <span class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
+                </div>
+                <p class="text-sm opacity-60 mt-6 text-gray-300 font-mono tracking-widest uppercase">System Version <span id="app-version"></span></p>
+            </div>
+            
+            <div class="flex flex-col items-center md:items-end gap-3 order-3 md:order-3 flex-shrink-0">
+
+                <span class="text-xs md:text-sm font-black text-partyBlue uppercase tracking-widest bg-white px-4 py-1 rounded-sm shadow-sm mt-4 mb-1">สภานักเรียนพานทองฯ</span>
+                
+                <a href="https://www.instagram.com/deksapa.psc/" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Instagram</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                </a>
+                
+                <a href="https://www.facebook.com/profile.php?id=100063788612433" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Facebook Page</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </div>
+                </a>
+
+                <a href="https://www.tiktok.com/@deksapa.psc" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
+                    <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">TikTok</span>
+                    <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                    </div>
+                </a>
+
+            </div>
+            
+        </div>
+    </footer>
+    <script>
+        const pscTopics = {
+            project: {
+                badge: 'P', kicker: 'PSC Model', title: 'Project', color: '#0b56b3',
+                desc: 'สภานักเรียนมีการคิด และวางแผนกิจกรรมที่สร้างสรรค์ เพื่อให้การดำเนินงานตอบโจทย์นักเรียนและโรงเรียน',
+                points: ['วิเคราะห์ความต้องการและปัญหาของนักเรียน', 'ออกแบบกิจกรรมที่สร้างสรรค์และทำได้จริง', 'กำหนดเป้าหมาย ผู้รับผิดชอบ และช่วงเวลาดำเนินงาน']
+            },
+            spirit: {
+                badge: 'S', kicker: 'PSC Model', title: 'Spirit', color: '#f70a6d',
+                desc: 'สภานักเรียนมีการอุทิศตนด้วยจิตวิญญาณ พร้อมทำงานเพื่อส่วนรวมด้วยความรับผิดชอบ',
+                points: ['ทำงานด้วยใจบริการและความเสียสละ', 'ยึดประโยชน์ส่วนรวมเป็นสำคัญ', 'สร้างแรงบันดาลใจให้เพื่อนนักเรียนมีส่วนร่วม']
+            },
+            cooperation: {
+                badge: 'C', kicker: 'PSC Model', title: 'Cooperation', color: '#f59e0b',
+                desc: 'สภานักเรียนมีการทำงานทีมและประสานความร่วมมือกับทุกภาคส่วน เพื่อให้โครงการเกิดผลจริง',
+                points: ['ทำงานร่วมกันภายในทีมสภานักเรียน', 'ประสานงานกับครู นักเรียน และหน่วยงานที่เกี่ยวข้อง', 'รับฟังข้อเสนอแนะและสร้างเครือข่ายความร่วมมือ']
+            },
+            plan: {
+                badge: 'P', kicker: 'PDCA Process', title: 'Plan / วางแผน', color: '#38bdf8',
+                desc: 'วิเคราะห์ปัญหา กำหนดเป้าหมาย และวางแผนขั้นตอนการทำงานให้ชัดเจนก่อนลงมือทำ',
+                points: ['สำรวจข้อมูลและปัญหาที่ต้องแก้ไข', 'กำหนดเป้าหมายและตัวชี้วัดความสำเร็จ', 'จัดลำดับขั้นตอน ทรัพยากร และผู้รับผิดชอบ']
+            },
+            do: {
+                badge: 'D', kicker: 'PDCA Process', title: 'Do / ปฏิบัติ', color: '#f9bd4b',
+                desc: 'ลงมือทำตามแผนที่วางไว้จริง โดยติดตามการทำงานระหว่างทางให้เป็นระบบ',
+                points: ['ดำเนินกิจกรรมตามแผน', 'บันทึกปัญหาและข้อสังเกตระหว่างทำงาน', 'สื่อสารความคืบหน้ากับผู้เกี่ยวข้อง']
+            },
+            check: {
+                badge: 'C', kicker: 'PDCA Process', title: 'Check / ตรวจสอบ', color: '#f472b6',
+                desc: 'ประเมินผลลัพธ์ที่ได้จากการปฏิบัติ เทียบกับเป้าหมายที่ตั้งไว้ เพื่อหาจุดที่ต้องพัฒนา',
+                points: ['ตรวจสอบผลลัพธ์เทียบกับเป้าหมาย', 'รวบรวมข้อผิดพลาดและข้อเสนอแนะ', 'สรุปบทเรียนจากการดำเนินงาน']
+            },
+            act: {
+                badge: 'A', kicker: 'PDCA Process', title: 'Act / ปรับปรุง', color: '#7ed957',
+                desc: 'หากผลลัพธ์เป็นไปตามเป้า ให้จัดทำเป็นมาตรฐานใหม่ หากยังไม่ถึงเป้า ให้ปรับปรุงแล้วเริ่มวงจรใหม่',
+                points: ['จัดทำแนวทางที่ดีให้เป็นมาตรฐาน', 'แก้ไขสาเหตุของปัญหาที่พบ', 'นำบทเรียนกลับไปวางแผนรอบต่อไป']
+            }
+        };
+
+        function selectPscTopic(key) {
+            const topic = pscTopics[key] || pscTopics.project;
+            document.getElementById('detail-badge').textContent = topic.badge;
+            document.getElementById('detail-badge').style.backgroundColor = topic.color;
+            document.getElementById('detail-kicker').textContent = topic.kicker;
+            document.getElementById('detail-title').textContent = topic.title;
+            document.getElementById('detail-desc').textContent = topic.desc;
+            document.getElementById('detail-list').innerHTML = topic.points.map(function(point) {
+                return '<li class="flex gap-3 bg-partyBlue/5 dark:bg-white/5 border-l-4 border-partyPink p-3 font-bold text-gray-700 dark:text-gray-200"><span class="text-partyPink font-black">•</span><span>' + point + '</span></li>';
+            }).join('');
+
+            document.querySelectorAll('[data-topic]').forEach(function(button) {
+                button.classList.toggle('is-active', button.dataset.topic === key);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[data-topic]').forEach(function(button) {
+                button.addEventListener('click', function() { selectPscTopic(button.dataset.topic); });
+            });
+            selectPscTopic('project');
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
