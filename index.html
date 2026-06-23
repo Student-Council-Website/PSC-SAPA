@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -112,10 +112,10 @@
             <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
                 <span>👥</span> คณะสภานักเรียน
             </a>
-            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
+            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
                 <span>🗺️</span> แผนการทำงาน
             </a>
-            <a href="Action-Plan.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]">
+            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]">
                 <span>📋</span> ดูนโยบาย
             </a>
             <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
@@ -127,32 +127,53 @@
         </div>
     </nav>
 
-    <div class="mt-[68px] md:mt-[76px] bg-gradient-to-r from-partyBlue via-partyDarkBlue to-partyBlue dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-b-4 border-partyYellow py-3 md:py-4 z-40 relative shadow-md transition-colors duration-300 overflow-hidden">
+    <div class="mt-[68px] md:mt-[76px] bg-gradient-to-r from-partyBlue via-partyDarkBlue to-partyBlue dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 border-b-4 border-partyYellow py-3 md:py-4 z-40 relative shadow-md transition-colors duration-300 overflow-hidden">
         <div class="absolute inset-0 bg-dot-pattern opacity-10 animate-pulse-slow"></div>
         <div class="container mx-auto px-4 max-w-7xl relative z-10">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
-                <div class="flex flex-col md:flex-row items-center gap-3 md:gap-4">
-                    <div class="bg-white p-1 rounded-full shadow-md hidden sm:block">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+                
+                <div class="flex items-center gap-3 text-center lg:text-left">
+                    <div class="bg-white p-1 rounded-full shadow-md hidden sm:block transform hover:rotate-12 transition-transform duration-300">
                         <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="h-8 w-8 drop-shadow-sm">
                     </div>
-                    
-                    <div class="bg-partyYellow text-partyBlue font-black px-3 py-1 text-sm md:text-base uppercase tracking-wider flex items-center gap-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.4)] transform hover:scale-105 transition-transform">
-                        <span class="relative flex h-3 w-3">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
-                        </span>
-                        OFFICIAL
+                    <div class="hidden xl:block">
+                        <h2 class="text-white font-black text-sm md:text-base tracking-wide">PSC COUNCIL SERVICES</h2>
+                        <p class="text-partyYellow/80 text-xs font-bold">บริการออนไลน์สำหรับนักเรียน</p>
                     </div>
-                    <h2 class="text-white font-bold text-sm md:text-lg tracking-wide md:border-l-2 md:border-white/30 md:pl-4">
-                        คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ประจำปีการศึกษา 2569
-                    </h2>
                 </div>
-                
-                <div class="text-partyYellow font-bold text-sm md:text-base tracking-wider flex items-center gap-2 bg-white/10 px-3 py-1 rounded-sm backdrop-blur-sm">
-                    <span class="font-mono text-white">READY TO SERVE</span> 
-                    <span class="text-partyYellow animate-pulse">●</span> 
-                    <span>พร้อมปฏิบัติหน้าที่</span>
+
+                <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2.5 w-full lg:w-auto">
+                    
+                    <a href="#mailbox-section" class="hover-trigger flex items-center justify-center gap-2 bg-white/10 hover:bg-partyYellow text-white hover:text-partyBlue font-black px-3 py-2 text-xs md:text-sm rounded border border-white/20 hover:border-partyYellow transition-all duration-300 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] transform hover:-translate-y-0.5">
+                        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <span>ตู้ ปณ. สภาฯ</span>
+                    </a>
+
+                    <a href="lost-found.html" class="hover-trigger flex items-center justify-center gap-2 bg-white/10 hover:bg-partyPink text-white hover:text-white font-black px-3 py-2 text-xs md:text-sm rounded border border-white/20 hover:border-partyPink transition-all duration-300 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] transform hover:-translate-y-0.5">
+                        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        <span>ศูนย์แจ้งของหาย</span>
+                    </a>
+
+                    <a href="classroom-files.html" class="hover-trigger flex items-center justify-center gap-2 bg-white/10 hover:bg-emerald-500 text-white hover:text-white font-black px-3 py-2 text-xs md:text-sm rounded border border-white/20 hover:border-emerald-500 transition-all duration-300 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] transform hover:-translate-y-0.5">
+                        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
+                        </svg>
+                        <span>ไฟล์ห้องเรียนทั้งหมด</span>
+                    </a>
+
+                    <a href="http://www.ptsp.ac.th/mainpage" target="_blank" rel="noopener noreferrer" class="hover-trigger flex items-center justify-center gap-2 bg-white/10 hover:bg-sky-500 text-white hover:text-white font-black px-3 py-2 text-xs md:text-sm rounded border border-white/20 hover:border-sky-500 transition-all duration-300 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] transform hover:-translate-y-0.5 col-span-2 sm:col-span-1">
+                        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                        <span>เว็บไซต์โรงเรียน</span>
+                    </a>
+
                 </div>
+
             </div>
         </div>
     </div>
@@ -313,7 +334,7 @@
         </div>
     </section>
 
-    <section class="py-20 md:py-28 bg-gradient-to-b from-partyBlue to-partyDarkBlue dark:from-gray-950 dark:to-gray-950 text-white relative overflow-hidden transition-colors duration-300 border-t-8 border-partyYellow">
+    <section id="mailbox-section" class="py-20 md:py-28 bg-gradient-to-b from-partyBlue to-partyDarkBlue dark:from-gray-950 dark:to-gray-950 text-white relative overflow-hidden transition-colors duration-300 border-t-8 border-partyYellow">
         <div class="absolute inset-0 bg-noise opacity-10 mix-blend-overlay"></div>
         <div class="absolute left-10 top-10 text-4xl opacity-20 animate-float">✉️</div>
         <div class="absolute right-20 bottom-20 text-5xl opacity-20 animate-float-delayed">💡</div>
@@ -596,26 +617,26 @@
         // --- News System for Index ---
         const newsData = [
             {
-                id: 17,
-                date: "5 มิถุนายน 2569",
-                title: "ต้อนรับ 3 โรงเรียนภาคีเครือข่าย ร่วมแลกเปลี่ยนเรียนรู้และลงนาม MOU สภานักเรียน 🤝✨",
-                shortDesc: "โรงเรียนพานทองสภาชนูปถัมภ์ ต้อนรับคณะศึกษาดูงานจากโรงเรียนสุรศักดิ์วิทยาคม, โรงเรียนเกาะโพธิ์ถ้วยงามวิทยา และโรงเรียนทุ่งเหียงพิทยาคม มุ่งสร้างเครือข่ายผู้นำอย่างยั่งยืน",
-                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _14_.png"
+                id: 22,
+                date: "19 มิถุนายน 2569",
+                title: "สภานักเรียนพานทองฯ คว้ารางวัลรองชนะเลิศอันดับ 1 (อันดับที่ 2) ประกวดหนังสั้นต้านภัยยาเสพติด อบจ.ชลบุรี ประจำปี 2569 🎬🏆",
+                shortDesc: "ขอแสดงความยินดีกับทีม “ท้ายพานทองสภาฯ” ได้รับรางวัลชนะเลิศอันดับที่ 2 จากการประกวดสื่อประชาสัมพันธ์ด้านยาเสพติด ประเภทหนังสั้น ภายใต้หัวข้อ “วัยรุ่นยุคใหม่รู้ทันภัยยาเสพติด”",
+                image: "images/วารสาร/PSC_ANTI_DRUG_FILM_2569.jpg"
             },
             {
-                id: 16 ,
-                date: "4 มิถุนายน 2569",
-                title: "ต้อนรับคณะกรรมการประเมินโรงเรียนต้นแบบสภานักเรียน ระดับเขตตรวจราชการ ประจำปี 2569",
-                shortDesc: "โรงเรียนพานทองสภาชนูปถัมภ์ รับการตรวจเยี่ยมและประเมินผลการดำเนินงานสภานักเรียน มุ่งยกระดับสู่การเป็นโรงเรียนต้นแบบในระดับประเทศต่อไป",
-                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _13_.png"
+                id: 21,
+                date: "18 มิถุนายน 2569",
+                title: "น้อมวันทา บูชาครู 🙏 พิธีไหว้ครู ประจำปีการศึกษา 2569",
+                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ร่วมเป็นแกนนำวางแผนและดำเนินการจัดพิธีไหว้ครู ประจำปีการศึกษา 2569",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _16_.png"
             },
             {
-                id: 15,
-                date: "25 พฤษภาคม 2569",
-                title: "พิธีประดับเข็มคณะสภานักเรียน ปีการศึกษา 2569 และมอบเกียรติบัตรเชิดชูเกียรติ",
-                shortDesc: "โรงเรียนพานทองสภาชนูปถัมภ์ จัดพิธีประดับเข็มสภานักเรียนชุดใหม่ พร้อมมอบเกียรติบัตรแก่สภานักเรียนชุดเดิมและครูที่ปรึกษา เพื่อสร้างขวัญกำลังใจและส่งเสริมภาวะผู้นำ",
-                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _12_.png"
-            }
+                id: 20 ,
+                date: "16 มิถุนายน 2569",
+                title: "ยินดีต้อนรับท่านรองผู้อำนวยการคนใหม่ พร้อมนำเสนอผลงานสภานักเรียนต้นแบบแก่ภาคีเครือข่าย",
+                shortDesc: "โรงเรียนพานทองสภาชนูปถัมภ์ ต้อนรับคณะผู้บริหารและครูจากโรงเรียนบ้านบึง 'มนูญวิทยาคาร' และโรงเรียนชลบุรี 'สุขบท' ในโอกาสร่วมยินดีท่านรองฯ อัชฌวุฒิ เปลี่ยนสมัย",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _15_.png"
+            },
         ];
 
         function renderLatestNews() {
