@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -13,9 +13,83 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="theme-config.js"></script>
     <link rel="stylesheet" href="style.css">
-    <style>
+                <style>
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
         .dark .glass-nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
+
+        .policy-hero {
+            background:
+                radial-gradient(circle at top left, rgba(250, 204, 21, 0.22), transparent 32%),
+                radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.22), transparent 34%),
+                linear-gradient(135deg, rgba(30, 58, 138, 0.08), rgba(255, 255, 255, 0.88));
+        }
+        .dark .policy-hero {
+            background:
+                radial-gradient(circle at top left, rgba(250, 204, 21, 0.16), transparent 32%),
+                radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.18), transparent 34%),
+                linear-gradient(135deg, rgba(30, 58, 138, 0.38), rgba(15, 23, 42, 0.96));
+        }
+        .policy-filter.is-active {
+            background: #1e3a8a;
+            color: #fff;
+            border-color: #1e3a8a;
+            box-shadow: 4px 4px 0 #facc15;
+        }
+        .dark .policy-filter.is-active {
+            background: #facc15;
+            color: #1e3a8a;
+            border-color: #facc15;
+            box-shadow: 4px 4px 0 #f472b6;
+        }
+        .policy-row {
+            display: grid;
+            grid-template-columns: minmax(260px, 1.25fr) minmax(480px, 2fr) 150px;
+            gap: 1rem;
+            align-items: stretch;
+        }
+        .policy-stage {
+            min-height: 58px;
+            border: 2px solid rgba(30, 58, 138, 0.16);
+            background: rgba(255,255,255,0.76);
+        }
+        .dark .policy-stage {
+            border-color: rgba(250, 204, 21, 0.18);
+            background: rgba(15, 23, 42, 0.78);
+        }
+        .policy-stage.is-done {
+            background: rgba(34, 197, 94, 0.16);
+            border-color: #22c55e;
+        }
+        .policy-stage.is-current {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.96), rgba(244, 114, 182, 0.92));
+            border-color: #facc15;
+            color: #fff;
+            box-shadow: 4px 4px 0 rgba(250, 204, 21, 0.85);
+        }
+        .policy-stage.is-paused {
+            background: rgba(239, 68, 68, 0.14);
+            border-color: #ef4444;
+        }
+        .policy-detail-panel {
+            scroll-margin-top: 98px;
+        }
+        @media (max-width: 1023px) {
+            .policy-row {
+                grid-template-columns: 1fr;
+            }
+            .policy-stage-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 520px) {
+            .policy-stage-grid {
+                grid-template-columns: 1fr;
+            }
+            .policy-filter {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body class="bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden flex flex-col min-h-screen transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
@@ -77,7 +151,7 @@
             <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🏠</span> หน้าหลัก</a>
             <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>👥</span> คณะสภานักเรียน</a>
             <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🗺️</span> แผนการทำงาน</a>
-            <a href="Action-Plan.html" class="block text-partyYellow font-bold text-xl py-2 border-b border-white/10 pl-2 border-l-4 border-l-partyYellow bg-white/10">ดูนโยบาย</a>
+            <a href="policy.html" class="block text-partyYellow font-bold text-xl py-2 border-b border-white/10 pl-2 border-l-4 border-l-partyYellow bg-white/10">ดูนโยบาย</a>
             <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-xl py-3 group pl-2">
                 <span>สลับโหมด มืด/สว่าง</span>
                 <div class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-full bg-white/10">
@@ -87,28 +161,66 @@
         </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center pt-28 pb-20 px-4 relative z-10 font-anakotmai">
-        <div class="max-w-3xl w-full text-center reveal-on-scroll">
-            <div class="inline-block relative mb-8">
-                <div class="absolute -inset-4 border-4 border-partyBlue dark:border-partyYellow opacity-20 rotate-3 rounded-xl animate-pulse"></div>
-                <div class="absolute -inset-4 border-4 border-partyYellow dark:border-partyBlue opacity-20 -rotate-3 rounded-xl"></div>
-                
-                <div class="relative bg-white dark:bg-gray-800 p-8 md:p-12 border-4 border-partyBlue dark:border-partyYellow shadow-pop dark:shadow-pop-yellow flex flex-col items-center">
-                    <div class="text-7xl md:text-8xl mb-6 animate-bounce">🚧</div>
-                    <h1 class="text-3xl md:text-5xl font-black text-partyBlue dark:text-white mb-4 uppercase tracking-tighter">
-                        ขออภัย! หน้านี้กำลัง<br class="md:hidden">อยู่ระหว่างการพัฒนา
+                <main class="flex-grow pt-28 pb-20 px-4 md:px-6 relative z-10 font-anakotmai">
+        <section class="max-w-7xl mx-auto policy-hero border-4 border-partyBlue dark:border-partyYellow shadow-pop dark:shadow-pop-yellow p-5 md:p-8 lg:p-10 overflow-hidden relative reveal-on-scroll">
+            <div class="absolute -right-12 -top-12 w-48 h-48 border-[18px] border-partyYellow/40 rounded-full"></div>
+            <div class="absolute -left-16 bottom-4 w-44 h-44 border-[14px] border-partyPink/30 rounded-full"></div>
+
+            <div class="relative z-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-end">
+                <div>
+                    <span class="inline-flex items-center gap-2 bg-partyYellow text-partyBlue border-2 border-partyBlue px-4 py-1 font-black shadow-[3px_3px_0_#1e3a8a] mb-4">
+                        PSC POLICY TRACKER
+                    </span>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-partyBlue dark:text-white tracking-tight leading-[0.95]">
+                        ติดตามสถานะ<br>
+                        <span class="text-partyPink dark:text-partyYellow">นโยบายสภานักเรียน</span>
                     </h1>
-                    <div class="w-20 h-2 bg-partyYellow mb-6 rounded-full"></div>
-                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 font-bold leading-relaxed mb-8">
-                        เรากำลังปรับปรุงหน้า "นโยบายพรรค (Policy)" ให้สวยงามและข้อมูลถูกต้องที่สุด เพื่อให้เพื่อนๆ ได้ติดตามการทำงานของสภาฯ ได้อย่างชัดเจน พบกันเร็วๆ นี้!
+                    <p class="mt-5 max-w-3xl text-gray-700 dark:text-gray-200 text-lg md:text-xl font-bold leading-relaxed">
+                        รวมสถานะนโยบายที่กำลังผลักดัน เห็นได้ทันทีว่านโยบายไหนอยู่ขั้นตอนไหน และกดอ่านรายละเอียดของแต่ละนโยบายได้เลย
                     </p>
-                    <a href="index.html" class="hover-trigger bg-partyBlue text-white px-8 py-4 font-black text-xl shadow-pop-yellow hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all border-2 border-partyBlue flex items-center gap-3">
-                        <span>กลับไปหน้าหลัก</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-                    </a>
+                </div>
+                <div class="bg-white/90 dark:bg-gray-900/90 border-4 border-partyBlue dark:border-partyYellow p-5 shadow-[8px_8px_0_rgba(244,114,182,0.85)]">
+                    <p class="text-sm font-black text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3">ภาพรวมตอนนี้</p>
+                    <div id="policy-stats" class="grid grid-cols-2 gap-3"></div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto mt-10 space-y-6">
+            <div class="bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyYellow shadow-pop dark:shadow-pop-yellow p-4 md:p-5 reveal-on-scroll">
+                <div class="grid lg:grid-cols-[minmax(240px,360px)_1fr] gap-4 items-center">
+                    <label class="relative block">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-partyBlue dark:text-partyYellow font-black">⌕</span>
+                        <input id="policy-search" type="search" placeholder="ค้นหาชื่อนโยบาย / รายละเอียด..." class="w-full pl-10 pr-4 py-3 border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-bold focus:outline-none focus:border-partyBlue dark:focus:border-partyYellow">
+                    </label>
+                    <div id="policy-filters" class="flex flex-wrap gap-3 lg:justify-end">
+                        <button class="policy-filter is-active hover-trigger inline-flex items-center gap-2 px-4 py-2 border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 font-black transition-all" data-filter="all">ทั้งหมด <span data-count="all"></span></button>
+                        <button class="policy-filter hover-trigger inline-flex items-center gap-2 px-4 py-2 border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 font-black transition-all" data-filter="active">ดำเนินการ <span data-count="active"></span></button>
+                        <button class="policy-filter hover-trigger inline-flex items-center gap-2 px-4 py-2 border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 font-black transition-all" data-filter="review">รอพิจารณา <span data-count="review"></span></button>
+                        <button class="policy-filter hover-trigger inline-flex items-center gap-2 px-4 py-2 border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 font-black transition-all" data-filter="done">เสร็จแล้ว <span data-count="done"></span></button>
+                        <button class="policy-filter hover-trigger inline-flex items-center gap-2 px-4 py-2 border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 font-black transition-all" data-filter="paused">ต้องปรับปรุง <span data-count="paused"></span></button>
+                    </div>
+                </div>
+                <div class="mt-5 flex flex-wrap gap-4 text-sm font-black text-gray-700 dark:text-gray-200">
+                    <span class="inline-flex items-center gap-2"><i class="w-10 h-3 rounded-full bg-green-500 block"></i>ผ่านแล้ว</span>
+                    <span class="inline-flex items-center gap-2"><i class="w-10 h-3 rounded-full bg-partyBlue block"></i>ขั้นตอนปัจจุบัน</span>
+                    <span class="inline-flex items-center gap-2"><i class="w-10 h-3 rounded-full bg-gray-300 dark:bg-gray-600 block"></i>ยังไม่ถึงขั้นตอน</span>
+                    <span class="inline-flex items-center gap-2"><i class="w-10 h-3 rounded-full bg-red-500 block"></i>ต้องปรับปรุง</span>
+                </div>
+            </div>
+
+            <div id="policy-detail" class="policy-detail-panel hidden bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyYellow shadow-pop dark:shadow-pop-yellow overflow-hidden"></div>
+
+            <div class="hidden lg:grid policy-row px-5 text-sm font-black text-partyBlue dark:text-partyYellow uppercase tracking-wide">
+                <span>นโยบาย</span>
+                <span>สถานะการดำเนินงาน</span>
+                <span class="text-center">รายละเอียด</span>
+            </div>
+            <div id="policy-tracker-list" class="space-y-4"></div>
+            <div id="policy-empty" class="hidden text-center bg-white dark:bg-gray-800 border-4 border-dashed border-partyBlue/40 dark:border-partyYellow/40 p-10 font-black text-xl text-gray-500 dark:text-gray-300">
+                ไม่พบนโยบายที่ตรงกับการค้นหา
+            </div>
+        </section>
     </main>
 
     <button id="install-pwa-btn" class="hidden fixed bottom-4 left-4 z-50 bg-partyYellow text-partyBlue border-2 border-partyBlue dark:border-white px-4 py-2 font-black shadow-pop rounded-lg animate-bounce hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">⬇️ ติดตั้งแอป</button>
@@ -171,197 +283,269 @@
     </footer>
 
     <script src="main.js"></script>
-    <script>
+            <script>
+        const policyStages = [
+            "รับฟังปัญหา",
+            "ออกแบบนโยบาย",
+            "เสนอที่ปรึกษา",
+            "กำลังดำเนินการ",
+            "ประเมินผล",
+            "ต่อยอด/สรุปผล"
+        ];
 
-        // --- Policies Data ---
-        const policies = [
+        const statusMeta = {
+            active: { label: "กำลังดำเนินการ", badge: "bg-partyBlue text-white", tone: "text-partyBlue dark:text-partyYellow" },
+            review: { label: "รอพิจารณา", badge: "bg-partyYellow text-partyBlue", tone: "text-amber-600 dark:text-partyYellow" },
+            done: { label: "เสร็จแล้ว", badge: "bg-green-500 text-white", tone: "text-green-600 dark:text-green-400" },
+            paused: { label: "ต้องปรับปรุง", badge: "bg-red-500 text-white", tone: "text-red-600 dark:text-red-400" }
+        };
+
+        const policyItems = [
             {
                 id: 1,
                 title: "Loud & Clear",
                 image: "images/รูปประกอบนโยบาย/Loud-Clear.png",
                 icon: "📢",
-                concept: "นโยบายพัฒนาระบบการสื่อสารของโรงเรียน เพื่อให้ข่าวสาร ประกาศ ข้อมูลสำคัญได้อย่างชัดเจนและทั่วถึง",
-                how: ["เสนอแนวทางปรับปรุงคุณภาพลำโพง ให้เสียงชัดขึ้นในพื้นที่ที่มีปัญหา", "เมื่อมีการประกาศทางเสียงตามสาย จะพิมพ์ข้อความซ้ำในกลุ่ม 'สายใยพี่น้อง'", "เพื่อให้นักเรียนที่ฟังไม่ทันหรืออยู่ในจุดอับเสียงได้รับข้อมูลครบถ้วน"],
-                slogan: "เสียงชัด ข่าวถึงทุกคน",
-                benefits: ["นักเรียนได้รับข้อมูล ทั้งจากเสียงและข้อความ", "ลดปัญหาฟังไม่ชัด พลาดข่าวสำคัญ", "การสื่อสารของโรงเรียนมีความเป็นระบบมากขึ้น", "นักเรียนรู้สึกว่าโรงเรียนใส่ใจการสื่อสารจริง ๆ"]
+                owner: "คณะกรรมการสภานักเรียน",
+                status: "done",
+                stage: 3,
+                summary: "พัฒนาระบบประกาศและการสื่อสารในโรงเรียนให้ชัดเจนและทั่วถึง",
+                concept: "นโยบายพัฒนาระบบการสื่อสารของโรงเรียน เพื่อให้ข่าวสาร ประกาศ และข้อมูลสำคัญส่งถึงนักเรียนได้ชัดเจนทั้งเสียงและข้อความ",
+                how: ["เสนอแนวทางปรับปรุงคุณภาพลำโพงในจุดที่มีปัญหา", "พิมพ์ประกาศสำคัญซ้ำในกลุ่มสายใยพี่น้อง", "รวบรวมข้อเสนอแนะจากนักเรียนเกี่ยวกับจุดอับเสียง"],
+                benefits: ["ลดการพลาดข่าวสำคัญ", "นักเรียนได้รับข้อมูลทั้งจากเสียงและข้อความ", "โรงเรียนมีระบบสื่อสารที่เป็นระเบียบขึ้น"]
             },
             {
                 id: 2,
                 title: "Continuity Policy",
                 image: "images/รูปประกอบนโยบาย/Continuity-Policy.png",
-                icon: "🔄", 
-                concept: "การคงไว้และต่อยอดนโยบายหรือโครงการจากสภานักเรียนชุดก่อน ที่เป็นประโยชน์ต่อนักเรียนและโรงเรียน เพื่อให้เกิดการพัฒนาอย่างต่อเนื่อง",
-                how: ["ศึกษาและรวบรวมนโยบายของสภานักเรียนชุดก่อน", "คัดเลือกนโยบายที่ยังเหมาะสมและใช้งานได้จริง", "รับฟังความคิดเห็นจากนักเรียนเพื่อนำมาปรับปรุง", "ดำเนินการต่อภายใต้การดูแลของคุณครูที่ปรึกษา", "ติดตามและประเมินผลเพื่อพัฒนาอย่างเหมาะสม"],
-                slogan: "สานต่อนโยบายรุ่นพี่",
-                benefits: ["นโยบายดี ๆ จากรุ่นพี่จะยังคงดำเนินต่อไป", "นักเรียนได้รับประโยชน์อย่างต่อเนื่อง", "โรงเรียนมีทิศทางการพัฒนาที่ชัดเจน", "สร้างวัฒนธรรมความร่วมมือและการเคารพซึ่งกันและกัน", "สภานักเรียนทำงานได้อย่างมีเสถียรภาพมากขึ้น"],
-                extra: {
-                    title: "📌 ตัวอย่างนโยบายที่จะสานต่อ",
-                    type: "list",
-                    data: ["การแข่งขัน E-SPORTS", "สมุนไพรดับกลิ่นห้องน้ำ", "กระดาษรียูสห่อผ้าอนามัย", "ลานน้ำเงินชมพู","ผ้าอนามัยฉุกเฉิน"]
-                }
+                icon: "🔄",
+                owner: "คณะกรรมการสภานักเรียน",
+                status: "active",
+                stage: 5,
+                summary: "สานต่อโครงการที่ดีจากสภานักเรียนรุ่นก่อนและปรับให้เข้ากับปีปัจจุบัน",
+                concept: "คงไว้และต่อยอดนโยบายหรือโครงการจากสภานักเรียนชุดก่อนที่เป็นประโยชน์ต่อนักเรียนและโรงเรียน เพื่อให้การพัฒนาไม่สะดุด",
+                how: ["รวบรวมนโยบายเดิมที่ยังมีประโยชน์", "คัดเลือกสิ่งที่ทำต่อได้จริง", "ปรับรูปแบบให้เหมาะกับบริบทปัจจุบัน", "ติดตามผลหลังดำเนินการ"],
+                benefits: ["นโยบายดี ๆ ไม่หายไปเมื่อเปลี่ยนรุ่น", "ลดเวลาการเริ่มต้นใหม่", "สร้างวัฒนธรรมการทำงานต่อเนื่อง"],
+                extraTitle: "ตัวอย่างโครงการที่สานต่อ",
+                extra: ["การแข่งขัน E-SPORTS", "สมุนไพรดับกลิ่นห้องน้ำ", "กระดาษรียูสห่อผ้าอนามัย", "ลานน้ำเงินชมพู", "ผ้าอนามัยฉุกเฉิน"]
             },
             {
                 id: 3,
                 title: "Pathway to Future",
                 image: "images/รูปประกอบนโยบาย/Pathway-to-Future.png",
                 icon: "🚀",
-                concept: "นโยบายรวบรวมข้อมูลการศึกษาต่ออย่างเป็นระบบ เพื่อให้นักเรียนสามารถวางแผนอนาคตได้ง่ายและชัดเจน",
-                how: ["รวบรวมลิงก์ค่าย / Open House จากมหาวิทยาลัยต่าง ๆ", "สรุปเกณฑ์การรับเข้าแต่ละคณะ แบบเข้าใจง่าย", "จัดหมวดหมู่ตามสายการเรียน (วิทย์–คณิต / ศิลป์) และคณะยอดนิยม", "เผยแพร่ผ่านเว็บไซต์สภานักเรียน, QR Code และกลุ่มสายใยพี่น้อง"],
-                slogan: "เส้นทางการเรียนที่ชัดเจน",
-                benefits: ["นักเรียนเข้าถึงข้อมูลโอกาสทางการศึกษาได้สะดวก", "ลดความสับสนในการเลือกคณะและการเตรียมพอร์ต", "ช่วยให้นักเรียนวางแผนอนาคตได้เร็วและชัดเจนขึ้น", "สร้างแรงบันดาลใจและเป้าหมายในการเรียน"]
+                owner: "คณะกรรมการสภานักเรียน",
+                status: "active",
+                stage: 3,
+                summary: "รวบรวมข้อมูลค่าย Open House และแนวทางศึกษาต่อให้ค้นหาได้ง่าย",
+                concept: "รวบรวมข้อมูลการศึกษาต่ออย่างเป็นระบบ เพื่อให้นักเรียนวางแผนอนาคตได้เร็ว ชัดเจน และเข้าถึงโอกาสได้เท่าเทียมขึ้น",
+                how: ["รวบรวมลิงก์ค่ายและ Open House", "สรุปเกณฑ์รับเข้าแบบเข้าใจง่าย", "จัดหมวดหมู่ตามสายการเรียนและคณะที่สนใจ", "เผยแพร่ผ่านเว็บไซต์และ QR Code"],
+                benefits: ["ลดความสับสนในการเลือกคณะ", "ช่วยวางแผนพอร์ตและกิจกรรม", "เพิ่มแรงบันดาลใจในการเรียน"]
             },
             {
                 id: 4,
                 title: "Smart Parking",
                 image: "images/รูปประกอบนโยบาย/Smart-Parking.png",
                 icon: "🅿️",
-                concept: "นโยบายปรับปรุงและจัดระเบียบพื้นที่จอดรถภายในโรงเรียน เพื่อให้การจอดรถเป็นระบบ ปลอดภัย และเป็นธรรมต่อผู้ใช้งานทุกคน โดยคำนึงถึงขนาดรถและพื้นที่อย่างเหมาะสม",
-                how: ["แบ่งโซนที่จอดรถตามประเภทและขนาดรถ (เช่น รถจักรยานยนต์ทั่วไป / คันใหญ่)", "ปรับผังการจอดให้เป็นระเบียบ ลดการจอดซ้อนหรือกีดขวางทางสัญจร", "ติดป้ายและเส้นสัญลักษณ์ให้ชัดเจน", "ประชาสัมพันธ์แนวทางการจอดรถที่ถูกต้องแก่ผู้ใช้งาน", "ประสานงานกับคุณครูและฝ่ายที่เกี่ยวข้องในการดูแลความเรียบร้อย"],
-                slogan: "จอดเป็นระบบ ใช้งานสะดวก",
-                benefits: ["พื้นที่จอดรถถูกใช้อย่างคุ้มค่าและเป็นระบบมากขึ้น", "ลดปัญหาการจอดรถไม่เป็นระเบียบและความแออัด", "เพิ่มความปลอดภัยในการเข้า–ออกพื้นที่จอดรถ", "นักเรียนใช้งานได้สะดวกและเป็นธรรมมากขึ้น"]
+                owner: "คณะกรรมการสภานักเรียน",
+                status: "done",
+                stage: 6,
+                summary: "จัดระเบียบพื้นที่จอดรถให้ปลอดภัย ใช้งานง่าย และลดการจอดกีดขวาง",
+                concept: "ปรับปรุงพื้นที่จอดรถภายในโรงเรียนให้เป็นระบบ ปลอดภัย และเป็นธรรมต่อผู้ใช้งานทุกคน โดยคำนึงถึงขนาดรถและการสัญจร",
+                how: ["แบ่งโซนตามประเภทและขนาดรถ", "ทำป้ายและเส้นสัญลักษณ์ให้ชัดเจน", "ประสานฝ่ายที่เกี่ยวข้องเพื่อกำกับดูแล", "ประชาสัมพันธ์แนวทางการจอดที่ถูกต้อง"],
+                benefits: ["ลดความแออัด", "เพิ่มความปลอดภัย", "ใช้พื้นที่จอดรถได้คุ้มค่าขึ้น"]
             },
             {
                 id: 5,
                 title: "No More Wait",
                 image: "images/รูปประกอบนโยบาย/No-More-Wait.png",
                 icon: "🚽",
-                concept: "นโยบายเปิดใช้งานห้องน้ำใต้ตึก 4-5 เพื่ออำนวยความสะดวกแก่นักเรียนทุกคน ลดปัญหาการเดินไกล และการต้องรอห้องน้ำเป็นเวลานาน",
-                how: ["เปิดใช้งานห้องน้ำใต้ตึก 4-5 อย่างเป็นทางการ", "กำหนดกติกาการใช้งานอย่างชัดเจน", "รณรงค์การใช้ห้องน้ำอย่างเหมาะสมและรับผิดชอบร่วมกัน", "ประสานงานกับคุณครูและฝ่ายที่เกี่ยวข้องในการดูแลความเรียบร้อย"],
-                slogan: "ไม่ต้องรอ ไม่ต้องกลั้น",
-                benefits: ["นักเรียนใช้ชีวิตในโรงเรียนได้สะดวกขึ้น", "ลดปัญหาการอั้นปัสสาวะ ซึ่งส่งผลต่อสุขภาพ", "โรงเรียนมีการจัดสรรพื้นที่ที่ตอบโจทย์การใช้งานจริง", "ส่งเสริมวินัยและความรับผิดชอบร่วมกันของนักเรียน"],
-                extra: {
-                    title: "⚠️ กฎระเบียบและข้อควรปฏิบัติ",
-                    type: "rules",
-                    rules: ["ใช้ห้องน้ำด้วยความสุภาพและเหมาะสม", "เข้าใช้ตามความจำเป็น ไม่ใช้เป็นพื้นที่รวมกลุ่ม", "รักษาความสะอาดก่อนและหลังใช้งาน", "ห้ามสูบบุหรี่ บุหรี่ไฟฟ้า หรือสิ่งเสพติดทุกชนิด", "ห้ามทำลายหรือเขียนขีดข่วนอุปกรณ์ภายในห้องน้ำ", "ไม่ส่งเสียงดังหรือก่อความรบกวน", "ใช้ห้องน้ำตามช่วงเวลาที่โรงเรียนกำหนด", "ให้ความร่วมมือกับคุณครูและผู้ดูแลพื้นที่", "หากพบพฤติกรรมไม่เหมาะสม ให้แจ้งคุณครูหรือสภานักเรียน", "การใช้ห้องน้ำเป็นความรับผิดชอบร่วมกันของนักเรียนทุกคน"],
-                    note: "หมายเหตุ: หากมีการใช้งานผิดวัตถุประสงค์ เช่น การสูบบุหรี่หรือการกระทำร้ายแรง โรงเรียนอาจพิจารณา **ปิดการใช้งานห้องน้ำชั่วคราว 1 ภาคเรียน**",
-                    dos: ["กด/ราด โถส้วมทุกครั้งหลังใช้งาน", "สแกน QR code ทุกครั้งที่พบปัญหาผิดปกติ"],
-                    donts: ["สูบบุหรี่/พอต ในห้องน้ำ", "ใช้เป็นจุดรวมพล"]
-                }
-            }
-        ];
-
-        const secondaryPolicies = [
+                owner: "คณะกรรมการสภานักเรียน",
+                status: "done",
+                stage: 6,
+                summary: "เปิดและดูแลห้องน้ำใต้ตึก 4-5 เพื่อลดการรอและการเดินไกล",
+                concept: "เปิดใช้งานห้องน้ำใต้ตึก 4-5 พร้อมกติกาการใช้งานที่ชัดเจน เพื่อความสะดวก สุขอนามัย และความรับผิดชอบร่วมกัน",
+                how: ["เปิดใช้งานพื้นที่อย่างเป็นทางการ", "กำหนดกติกาและช่วงเวลาการใช้", "ติด QR แจ้งปัญหา", "รณรงค์รักษาความสะอาดร่วมกัน"],
+                benefits: ["นักเรียนไม่ต้องรอนาน", "ลดปัญหาการอั้นปัสสาวะ", "ฝึกวินัยการใช้พื้นที่ส่วนรวม"],
+                extraTitle: "ข้อควรปฏิบัติ",
+                extra: ["รักษาความสะอาดก่อนและหลังใช้งาน", "ไม่ใช้เป็นจุดรวมกลุ่ม", "แจ้งปัญหาผ่าน QR เมื่อพบความผิดปกติ", "งดพฤติกรรมเสี่ยงทุกชนิด"]
+            },
             {
-                id: 101,
+                id: 6,
                 title: "ลานน้ำเงินชมพู x งานวัด",
-                icon: "🎡",
                 image: "images/รูปประกอบนโยบาย/ลานน้ำเงินชมพู x งานวัด.png",
-                concept: "ส่งเสริมให้นักเรียนใช้เวลาว่างอย่างสร้างสรรค์ ผ่านกิจกรรมลานน้ำเงินชมพูในรูปแบบงานวัดร่วมสมัย เพื่อสร้างความสามัคคี ผ่อนคลายความเครียด และเปิดพื้นที่แสดงความสามารถของนักเรียน",
-                how: ["จัดกิจกรรมงานวัดภายในลานน้ำเงินชมพู (เช่น เทอมละ 1 ครั้ง)", "จัดซุ้มเกมมหาสนุกต่างๆ เพื่อความบันเทิง", "เปิดเวทีการแสดงดนตรีและความสามารถพิเศษ", "เปิดโซนร้านค้า Market ให้พี่น้องนักเรียนได้มาขายของ"],
-                slogan: "พื้นที่ความสุข สนุกแบบสร้างสรรค์",
-                benefits: ["เกิดความสุข ความสามัคคีในหมู่คณะ", "ฝึกทักษะการทำงานเป็นทีมและการบริหารจัดการ", "นักเรียนกล้าแสดงออกในทางที่สร้างสรรค์", "เรียนรู้การใช้เวลาว่างอย่างมีคุณค่า"],
-                extra: {
-                    title: "🎯 กิจกรรมภายในงาน",
-                    type: "list",
-                    data: ["ซุ้มเกมงานวัด", "ดนตรีสด (Folk Song)", "ร้านค้า DIY นักเรียน", "จุด Check-in ถ่ายรูป"]
-                }
-            }
+                icon: "🎡",
+                owner: "คณะกรรมการสภานักเรียน",
+                status: "active",
+                stage: 3,
+                summary: "เปลี่ยนลานกิจกรรมให้เป็นพื้นที่ความสุขแบบงานวัดร่วมสมัย",
+                concept: "ส่งเสริมให้นักเรียนใช้เวลาว่างอย่างสร้างสรรค์ ผ่านกิจกรรมลานน้ำเงินชมพูในรูปแบบงานวัด เพื่อสร้างความสามัคคีและเปิดพื้นที่แสดงความสามารถ",
+                how: ["จัดซุ้มเกมและร้านค้านักเรียน", "เปิดเวทีดนตรีและการแสดง", "ออกแบบจุดถ่ายรูปและกิจกรรมชุมชน", "ประเมินความพึงพอใจหลังจบงาน"],
+                benefits: ["สร้างบรรยากาศที่สนุกและปลอดภัย", "ฝึกทักษะการจัดงาน", "เปิดโอกาสให้นักเรียนกล้าแสดงออก"],
+                extraTitle: "กิจกรรมภายในงาน",
+                extra: ["ซุ้มเกมงานวัด", "ดนตรีสด", "ร้านค้า DIY", "จุด Check-in"]
+            },
         ];
 
-        // --- Render Policies ---
-        function renderPolicies(data, containerId) {
-            const container = document.getElementById(containerId);
-            data.forEach((policy) => {
-                const card = document.createElement('div');
-                card.className = "group bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyYellow shadow-pop hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all cursor-pointer reveal-on-scroll relative overflow-hidden";
-                card.onclick = () => openModal(policy);
-                card.innerHTML = `
-                    <div class="h-48 overflow-hidden relative border-b-4 border-partyBlue dark:border-partyYellow">
-                        <div class="absolute top-2 right-2 bg-partyYellow text-3xl p-2 rounded-full border-2 border-black z-10 shadow-sm">${policy.icon}</div>
-                        <img src="${policy.image}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-black text-partyBlue dark:text-white mb-2 uppercase">${policy.title}</h3>
-                        <p class="text-gray-600 dark:text-gray-300 line-clamp-2 font-medium">${policy.concept}</p>
-                        <div class="mt-4 flex justify-between items-center">
-                            <span class="text-partyBlue dark:text-partyYellow text-sm font-bold bg-partyYellow/20 px-2 py-1 border border-partyYellow">อ่านรายละเอียด +</span>
-                        </div>
-                    </div>`;
-                container.appendChild(card);
+        let currentFilter = "all";
+        let currentQuery = "";
+
+        const trackerList = document.getElementById("policy-tracker-list");
+        const detailPanel = document.getElementById("policy-detail");
+        const emptyState = document.getElementById("policy-empty");
+
+        function getFilteredPolicies() {
+            const query = currentQuery.trim().toLowerCase();
+            return policyItems.filter((policy) => {
+                const matchesStatus = currentFilter === "all" || policy.status === currentFilter;
+                const searchable = [policy.title, policy.owner, policy.summary, policy.concept, ...(policy.how || []), ...(policy.benefits || [])].join(" ").toLowerCase();
+                return matchesStatus && (!query || searchable.includes(query));
             });
         }
-        renderPolicies(policies, 'policy-container');
-        renderPolicies(secondaryPolicies, 'secondary-policy-container');
 
-        // --- Modal Logic ---
-        function openModal(policy) {
-            const modal = document.getElementById('policy-modal');
-            const modalBody = document.getElementById('modal-body');
-            
-            let extraHTML = '';
-            if (policy.extra) {
-                if (policy.extra.type === 'list') {
-                    extraHTML = `<div class="bg-offWhite dark:bg-gray-700 p-6 rounded-lg border-2 border-dashed border-partyBlue/30 mt-6">
-                        <h4 class="font-black text-xl text-partyBlue dark:text-partyYellow mb-4">${policy.extra.title}</h4>
-                        <div class="flex flex-wrap gap-2">${policy.extra.data.map(item => `<span class="bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-500 px-3 py-1 text-sm font-bold text-gray-700 dark:text-white shadow-sm">${item}</span>`).join('')}</div>
-                    </div>`;
-                } else if (policy.extra.type === 'rules') {
-                    extraHTML = `<div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500 mt-6">
-                        <h4 class="font-black text-xl text-red-600 dark:text-red-400 mb-4">${policy.extra.title}</h4>
-                        <ul class="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300 mb-4 text-sm">${policy.extra.rules.map(r => `<li>${r}</li>`).join('')}</ul>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                            <div class="bg-green-100 dark:bg-green-900/30 p-3 rounded border border-green-300 dark:border-green-800">
-                                <h5 class="font-bold text-green-700 dark:text-green-400 mb-2">✅ Dos</h5>
-                                <ul class="list-none space-y-1 text-sm text-green-800 dark:text-green-300">${policy.extra.dos.map(d => `<li>✓ ${d}</li>`).join('')}</ul>
-                            </div>
-                            <div class="bg-red-100 dark:bg-red-900/30 p-3 rounded border border-red-300 dark:border-red-800">
-                                <h5 class="font-bold text-red-700 dark:text-red-400 mb-2">❌ Don'ts</h5>
-                                <ul class="list-none space-y-1 text-sm text-red-800 dark:text-red-300">${policy.extra.donts.map(d => `<li>✕ ${d}</li>`).join('')}</ul>
-                            </div>
-                        </div>
-                        <p class="text-xs text-red-500 mt-4 font-bold ">${policy.extra.note}</p>
-                    </div>`;
-                }
-            }
+        function renderStats() {
+            const stats = [
+                ["ทั้งหมด", policyItems.length, "bg-partyBlue text-white"],
+                ["ดำเนินการ", policyItems.filter((item) => item.status === "active").length, "bg-partyPink text-white"],
+                ["เสร็จแล้ว", policyItems.filter((item) => item.status === "done").length, "bg-green-500 text-white"],
+                ["รอ/ปรับ", policyItems.filter((item) => item.status === "review" || item.status === "paused").length, "bg-partyYellow text-partyBlue"]
+            ];
 
-            modalBody.innerHTML = `
-                <div class="relative">
-                    <div class="h-64 md:h-80 overflow-hidden relative">
-                        <img src="${policy.image}" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-partyBlue via-transparent to-transparent opacity-90"></div> 
-                        <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
-                            <div class="flex items-center gap-4 mb-2">
-                                <span class="text-4xl md:text-5xl">${policy.icon}</span>
-                                <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter drop-shadow-md">${policy.title}</h2>
-                            </div>
-                            <p class="text-partyYellow font-bold text-xl md:text-2xl bg-partyBlue/50 inline-block px-2 backdrop-blur-sm">"${policy.slogan}"</p> 
-                        </div>
-                    </div>
-                    <div class="p-6 md:p-10 max-h-[60vh] overflow-y-auto">
-                        <div class="mb-8">
-                            <h3 class="text-2xl font-black text-partyBlue dark:text-yellow-400 mb-3 flex items-center gap-2"><span class="w-2 h-8 bg-partyYellow block"></span> แนวคิด (Concept)</h3>
-                            <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed font-medium">${policy.concept}</p>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                            <div>
-                                <h3 class="text-xl font-black text-partyBlue dark:text-yellow-400 mb-3 border-b-2 border-gray-200 dark:border-gray-600 pb-1">วิธีการ (How)</h3>
-                                <ul class="space-y-3">${policy.how.map(h => `<li class="flex items-start gap-3"><span class="bg-partyBlue dark:bg-yellow-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">step</span><span class="text-gray-700 dark:text-gray-300">${h}</span></li>`).join('')}</ul>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-black text-partyBlue dark:text-yellow-400 mb-3 border-b-2 border-gray-200 dark:border-gray-600 pb-1">ประโยชน์ (Benefits)</h3>
-                                <ul class="space-y-2">${policy.benefits.map(b => `<li class="flex items-start gap-2 text-green-700 dark:text-green-400 font-bold"><svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg><span>${b}</span></li>`).join('')}</ul>
-                            </div>
-                        </div>
-                        ${extraHTML}
-                    </div>
-                </div>`;
-            modal.classList.remove('hidden');
-            attachCursorEvents(); // Re-attach cursor events for new modal content
-            document.body.style.overflow = 'hidden';
+            document.getElementById("policy-stats").innerHTML = stats.map(([label, value, color]) => `
+                <div class="${color} border-2 border-partyBlue dark:border-white p-4 shadow-[4px_4px_0_rgba(30,58,138,0.24)]">
+                    <div class="text-3xl md:text-4xl font-black leading-none">${value}</div>
+                    <div class="text-sm font-black mt-1">${label}</div>
+                </div>
+            `).join("");
+
+            ["all", "active", "review", "done", "paused"].forEach((status) => {
+                const target = document.querySelector(`[data-count="${status}"]`);
+                if (!target) return;
+                const count = status === "all" ? policyItems.length : policyItems.filter((item) => item.status === status).length;
+                target.textContent = `(${count})`;
+            });
         }
 
-        // Close Modal
-        document.getElementById('close-modal')?.addEventListener('click', () => {
-            document.getElementById('policy-modal')?.classList.add('hidden');
-            document.body.style.overflow = '';
-        });
-        document.getElementById('policy-modal')?.addEventListener('click', (e) => {
-            if (e.target === document.getElementById('policy-modal')) {
-                document.getElementById('policy-modal').classList.add('hidden');
-                document.body.style.overflow = '';
-            } 
+        function stageClass(policy, index) {
+            if (policy.status === "paused" && index === policy.stage) return "is-paused";
+            if (index < policy.stage || policy.status === "done") return "is-done";
+            if (index === policy.stage) return "is-current";
+            return "";
+        }
+
+        function renderPolicyRows() {
+            const items = getFilteredPolicies();
+            emptyState.classList.toggle("hidden", items.length !== 0);
+
+            trackerList.innerHTML = items.map((policy) => {
+                const meta = statusMeta[policy.status];
+                const image = policy.image
+                    ? `<img src="${policy.image}" alt="${policy.title}" class="w-20 h-20 object-cover border-2 border-partyBlue dark:border-partyYellow bg-white" loading="lazy">`
+                    : `<div class="w-20 h-20 border-2 border-partyBlue dark:border-partyYellow bg-partyYellow/30 flex items-center justify-center text-4xl">${policy.icon}</div>`;
+
+                return `
+                    <article class="policy-row bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyYellow shadow-[6px_6px_0_rgba(30,58,138,0.22)] dark:shadow-[6px_6px_0_rgba(250,204,21,0.20)] p-4 reveal-on-scroll is-visible" data-policy-id="${policy.id}">
+                        <div class="flex gap-4 min-w-0">
+                            <div class="flex-shrink-0">${image}</div>
+                            <div class="min-w-0">
+                                <div class="flex flex-wrap items-center gap-2 mb-2">
+                                    <span class="text-2xl">${policy.icon}</span>
+                                    <h2 class="text-xl md:text-2xl font-black text-partyBlue dark:text-white leading-tight break-words">${policy.title}</h2>
+                                </div>
+                                <p class="text-sm font-black ${meta.tone} mb-2">${policy.owner}</p>
+                                <p class="text-gray-600 dark:text-gray-300 font-bold leading-relaxed">${policy.summary}</p>
+                                <span class="inline-flex mt-3 px-3 py-1 text-sm font-black ${meta.badge}">${meta.label}</span>
+                            </div>
+                        </div>
+                        <div class="policy-stage-grid grid grid-cols-3 gap-2">
+                            ${policyStages.map((stage, index) => `
+                                <div class="policy-stage ${stageClass(policy, index)} p-2 flex flex-col justify-center">
+                                    <span class="text-[11px] font-black opacity-70">ขั้นที่ ${index + 1}</span>
+                                    <span class="text-sm font-black leading-tight">${stage}</span>
+                                </div>
+                            `).join("")}
+                        </div>
+                        <div class="flex lg:items-center lg:justify-center">
+                            <button class="policy-open hover-trigger w-full lg:w-auto bg-partyYellow text-partyBlue border-2 border-partyBlue px-4 py-3 font-black shadow-[4px_4px_0_#1e3a8a] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all" data-open-policy="${policy.id}">
+                                อ่านรายละเอียด
+                            </button>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+        }
+
+        function renderDetail(policyId) {
+            const policy = policyItems.find((item) => item.id === Number(policyId));
+            if (!policy) return;
+            const meta = statusMeta[policy.status];
+            const imageBlock = policy.image
+                ? `<img src="${policy.image}" alt="${policy.title}" class="w-full h-full object-cover" loading="lazy">`
+                : `<div class="w-full h-full flex items-center justify-center bg-partyYellow/30 text-8xl">${policy.icon}</div>`;
+
+            detailPanel.innerHTML = `
+                <div class="grid lg:grid-cols-[360px_1fr]">
+                    <div class="min-h-[260px] bg-partyBlue relative overflow-hidden border-b-4 lg:border-b-0 lg:border-r-4 border-partyBlue dark:border-partyYellow">
+                        ${imageBlock}
+                        <div class="absolute inset-0 bg-gradient-to-t from-partyBlue/90 via-transparent to-transparent"></div>
+                        <div class="absolute left-5 bottom-5 right-5">
+                            <span class="inline-flex ${meta.badge} px-3 py-1 font-black mb-2">${meta.label}</span>
+                            <h3 class="text-3xl md:text-4xl font-black text-white leading-tight">${policy.title}</h3>
+                        </div>
+                    </div>
+                    <div class="p-5 md:p-7">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <p class="font-black text-partyPink dark:text-partyYellow uppercase tracking-widest text-sm">รายละเอียดนโยบาย</p>
+                                <h4 class="text-2xl md:text-3xl font-black text-partyBlue dark:text-white mt-1">${policy.icon} ${policy.summary}</h4>
+                            </div>
+                            <button id="policy-detail-close" class="hover-trigger flex-shrink-0 w-10 h-10 border-2 border-partyBlue dark:border-partyYellow bg-white dark:bg-gray-900 text-partyBlue dark:text-partyYellow font-black shadow-[3px_3px_0_rgba(244,114,182,0.9)]">×</button>
+                        </div>
+                        <div class="mt-5 grid md:grid-cols-2 gap-5">
+                            <section>
+                                <h5 class="font-black text-partyBlue dark:text-partyYellow text-xl mb-2">แนวคิด</h5>
+                                <p class="text-gray-700 dark:text-gray-300 font-bold leading-relaxed">${policy.concept}</p>
+                            </section>
+                            <section>
+                                <h5 class="font-black text-partyBlue dark:text-partyYellow text-xl mb-2">ผลลัพธ์ที่คาดหวัง</h5>
+                                <ul class="space-y-2">${policy.benefits.map((item) => `<li class="font-bold text-gray-700 dark:text-gray-300 flex gap-2"><span class="text-green-500 font-black">✓</span><span>${item}</span></li>`).join("")}</ul>
+                            </section>
+                        </div>
+                        <section class="mt-5">
+                            <h5 class="font-black text-partyBlue dark:text-partyYellow text-xl mb-2">แนวทางดำเนินการ</h5>
+                            <div class="grid md:grid-cols-2 gap-2">${policy.how.map((item, index) => `<div class="border-2 border-gray-200 dark:border-gray-700 bg-offWhite dark:bg-gray-900 p-3 font-bold text-gray-700 dark:text-gray-300"><span class="text-partyPink dark:text-partyYellow font-black">0${index + 1}</span> ${item}</div>`).join("")}</div>
+                        </section>
+                        ${policy.extra ? `<section class="mt-5 bg-partyYellow/20 dark:bg-partyYellow/10 border-2 border-partyYellow p-4"><h5 class="font-black text-partyBlue dark:text-partyYellow text-xl mb-3">${policy.extraTitle || "เพิ่มเติม"}</h5><div class="flex flex-wrap gap-2">${policy.extra.map((item) => `<span class="bg-white dark:bg-gray-800 border-2 border-partyBlue/20 dark:border-partyYellow/30 px-3 py-1 font-black text-sm">${item}</span>`).join("")}</div></section>` : ""}
+                    </div>
+                </div>
+            `;
+
+            detailPanel.classList.remove("hidden");
+            detailPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+            document.getElementById("policy-detail-close")?.addEventListener("click", () => detailPanel.classList.add("hidden"));
+        }
+
+        document.getElementById("policy-search")?.addEventListener("input", (event) => {
+            currentQuery = event.target.value;
+            renderPolicyRows();
         });
 
+        document.getElementById("policy-filters")?.addEventListener("click", (event) => {
+            const button = event.target.closest("[data-filter]");
+            if (!button) return;
+            currentFilter = button.dataset.filter;
+            document.querySelectorAll(".policy-filter").forEach((item) => item.classList.toggle("is-active", item === button));
+            renderPolicyRows();
+        });
+
+        trackerList?.addEventListener("click", (event) => {
+            const button = event.target.closest("[data-open-policy]");
+            if (!button) return;
+            renderDetail(button.dataset.openPolicy);
+        });
+
+        renderStats();
+        renderPolicyRows();
     </script>
 </body>
 </html>
