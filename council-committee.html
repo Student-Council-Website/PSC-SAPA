@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ทำเนียบคณะสภานักเรียน - Pioneer Party</title>
+    <title>ทำเนียบคณะสภานักเรียน | สภานักเรียนพานทองสภาชนูปถัมภ์</title>
     
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://PioneerParty.com/">
-    <meta property="og:title" content="Pioneer Party - สภานักเรียน">
-    <meta property="og:description" content="พรรค Pioneer - ผู้บุกเบิกพัฒนา รับฟังทุกปัญหา พร้อมแก้ไขไปด้วยกัน">
-    <meta property="og:image" content="images/Pioneer logo 2.png">
-    
+    <meta property="og:url" content="https://Council.com/">
+    <meta property="og:title" content="สภานักเรียนพานทองสภาชนูปถัมภ์ - ประจำปีการศึกษา 2569">
+    <meta property="og:description" content="สภานักเรียน - ผู้บุกเบิกพัฒนา รับฟังทุกปัญหา พร้อมแก้ไขไปด้วยกัน">
+    <meta property="og:image" content="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e3a8a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Pioneer">
-    <link rel="apple-touch-icon" href="images/Pioneer logo 2.png">
+    <meta name="apple-mobile-web-app-title" content="PSC-SAPA">
+    <link rel="apple-touch-icon" href="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="theme-config.js"></script>
@@ -70,7 +69,7 @@
             <div class="loader-bar">
                 <div class="loader-progress"></div>
             </div>
-            <p class="font-black text-partyBlue dark:text-partyPink text-sm tracking-widest uppercase animate-pulse">Pioneer Council</p>
+            <p class="font-black text-partyBlue dark:text-partyPink text-sm tracking-widest uppercase animate-pulse">Council Committee</p>
         </div>
     </div>
 
@@ -120,7 +119,7 @@
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-900 border-t-2 border-partyYellow shadow-xl z-10 flex flex-col p-4 space-y-3 font-anakotmai">
             <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🏠</span> หน้าหลัก</a>
             <a href="council-committee.html" class="block text-partyYellow font-bold text-xl py-2 border-b border-white/10 pl-2 border-l-4 border-l-partyYellow">คณะสภานักเรียน</a>
-            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🗺️</span> แผนการทำงาน</a>
+            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🗺️</span> แผนการทำงาน</a>
             <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]"><span>📋</span> ดูนโยบาย</a>
             <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-xl py-3 group pl-2">
                 <span>สลับโหมด มืด/สว่าง</span>
@@ -184,7 +183,7 @@
                             <span class="md:hidden animate-bounce text-xl">⚠️</span> Work in Progress
                         </h3>
                         <p class="text-gray-700 dark:text-gray-300 text-xs md:text-base leading-relaxed">
-                            <span class="font-bold">หมายเหตุ :</span> ขณะนี้อยู่ในระหว่างการจัดเตรียมรูปภาพและอัปเดตข้อมูลคณะกรรมการสภานักเรียนให้ครบทั้ง 44 ตำแหน่ง
+                            <span class="font-bold">หมายเหตุ :</span> สภานักเรียนบ้างรายชื่ออาจไม่มีข้มูลเนื่องจากยังไม่เอาเข้าสู่ระบบหรือยังไม่มีข้อมูล
                         </p>
                     </div>
                 </div>
@@ -275,6 +274,9 @@
             
         </div>
     </footer>
+    <button id="install-pwa-btn" class="hidden fixed bottom-4 left-4 z-50 bg-partyYellow text-partyBlue border-2 border-partyBlue dark:border-white px-4 py-2 font-black shadow-pop rounded-lg animate-bounce hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+    ⬇️ ติดตั้งแอป
+    </button>
     <script src="main.js"></script>
     <script>
         const councilData = [
@@ -573,11 +575,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             renderDirectory();
             initCommitteeSearch();
-            window.initRevealOnScroll?.();
-            const versionEl = document.getElementById('app-version');
-            if(versionEl) versionEl.innerText = "3.0.0";
-            setTimeout(() => window.dispatchEvent(new Event('scroll')), 200);
-        });
+            window.initRevealOnScroll?.();});
 </script>
 </body>
 </html>
