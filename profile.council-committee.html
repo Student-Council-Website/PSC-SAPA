@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ข้อมูลสภานักเรียน - Pioneer Party</title>
+    <title>ข้อมูลสภานักเรียน - สภานักเรียนพานทองสภาชนูปถัมภ์</title>
     
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://Council.com/">
+    <meta property="og:title" content="สภานักเรียนพานทองสภาชนูปถัมภ์ - ประจำปีการศึกษา 2569">
+    <meta property="og:description" content="สภานักเรียน - ผู้บุกเบิกพัฒนา รับฟังทุกปัญหา พร้อมแก้ไขไปด้วยกัน">
+    <meta property="og:image" content="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png">
+    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e3a8a">
-    <link rel="apple-touch-icon" href="images/Pioneer logo 2.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PSC-SAPA">
+    <link rel="apple-touch-icon" href="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="theme-config.js"></script>
@@ -75,7 +84,7 @@
             <div class="loader-bar">
                 <div class="loader-progress"></div>
             </div>
-            <p class="font-black text-partyBlue dark:text-partyPink text-sm tracking-widest uppercase animate-pulse">Loading PSC-SAPA</p>
+            <p class="font-black text-partyBlue dark:text-partyPink text-sm tracking-widest uppercase animate-pulse">Profile Council Committee</p>
         </div>
     </div>
 
@@ -239,7 +248,7 @@
                         <div class="bg-white/20 p-2 rounded-lg group-hover:scale-110 transition-transform">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                         </div>
-                        <span class="tracking-wide min-w-0 break-words">INSTAGRAM: <span id="profile-ig-name" class="underline decoration-2 underline-offset-4">@PIONEER</span></span>
+                        <span class="tracking-wide min-w-0 break-words">INSTAGRAM: <span id="profile-ig-name" class="underline decoration-2 underline-offset-4">@PSC-Sapa</span></span>
                     </a>
                 </div>
             </div>
@@ -303,14 +312,17 @@
             
         </div>
     </footer>
+    <button id="install-pwa-btn" class="hidden fixed bottom-4 left-4 z-50 bg-partyYellow text-partyBlue border-2 border-partyBlue dark:border-white px-4 py-2 font-black shadow-pop rounded-lg animate-bounce hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+    ⬇️ ติดตั้งแอป
+    </button>
 
-<script src="main.js"></script>
+    <script src="main.js"></script>
     <script>
         // --- ส่วนฐานข้อมูลและการแสดงผลโปรไฟล์ ---
         const councilData = [
             // --- คณะผู้บริหาร (Executive) ---
             { id: '1', role: 'ประธานสภานักเรียน', name: 'นางสาวพาขวัญ นวลสำลี', nickname: 'นุกนิก', room: 'ม.5/2', birthday: '16', skills: 'คฑากร รำ', dept: 'Executive / ประธานนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/1.png', motto: 'ความเจ็บปวดในวันวาน คือความแข็งแกร่งในวันนี้', ig: '@pxkxn_nkk' },
-            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Executive / รองประธานนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/2.png', motto: '-', ig: '-' },
+            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', nickname: 'ซีโฟน', room: '5/4', birthday: '17', skills: 'กีฬา ', dept: 'Executive / รองประธานนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/2.png', motto: 'อย่ากลัวคนอื่นจะไปไกล กลัวตัวเองไม่ไปไหนดีกว่า ', ig: '@z_fornn' },
             { id: '3', role: 'รองประธานสภานักเรียน', name: 'นางสาวธัญญรัตน์ หมื่นรัตน์', nickname: 'หนิง', room: '5/1', birthday: '16', skills: 'รอบรู้ทุกเรื่องและเข้าใจอะไรได้ง่าย', dept: 'Executive / รองประธานนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/3.png', motto: 'หากวันนี้ผิดพรุ่งนี้พร้อมแก้เสมอ', ig: '@thanyaratmunrat ' },
 
             // --- ฝ่ายสนับสนุน (Admin) ---
@@ -335,7 +347,7 @@
             { id: '18', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวกัญญารัตน์ แสงสว่าง', nickname: 'กิ่ง', room: '5/2', birthday: '16', skills: '-', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/18.png', motto: 'ไม่ต้องเก่งที่สุด แค่ทำให้ดีที่สุดก็พอ', ig: '-' },
             { id: '19', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาววรพัชรา ศรีบุญเรือง', nickname: 'เอิร์น', room: '5/2', birthday: '17', skills: 'วาดภาพ', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/19.png', motto: 'อย่ากลัวความผิดพลาด ถ้ายังไม่ได้ลองทำ', ig: '@3xrnpz._ S' },
             { id: '20', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวฐิตาภา พวงพิศ', nickname: 'ไอเดีย', room: '5/1', birthday: '16', skills: 'วาดรูป', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/20.png', motto: 'ให้อภัยคนอื่นคือการปลดปล่อยตัวเองจากความโกรธ', ig: '@dearthitapa' },
-            { id: '21', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพลอยปภัส นัยวิจารณ์', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/21.png', motto: '-', ig: '-' },
+            { id: '21', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพลอยปภัส นัยวิจารณ์', nickname: 'แบ๋ม', room: '5/1', birthday: '16', skills: 'ทักษะด้านภาษา', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/21.png', motto: 'เรียนรู้ เติบโต และพัฒนาตัวเองเสมอ', ig: '@_12aprill_' },
             { id: '22', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายตรีรัตน์ ปิติไพศาลกุล', nickname: 'เพรช', room: '5/1', birthday: '17', skills: 'นักปราชญ์ เล่นกีฬาเก่ง ร้องเพลงเพราะครับ ', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/22.png', motto: 'คล้อยตามคือสามัญ ฝืนทวนคือเซียน', ig: '@petchcff_dcs' },
             { id: '23', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพิชามญช์ หาญอาสา', nickname: 'ไอด้า', room: '5/6', birthday: '16', skills: 'Note-taking skill ', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/23.png', motto: 'ไม่จำเป็นต้อง perfect แค่ยอมรับความไม่สมบูรณ์แบบของตัวเอง', ig: '@penessien' },
 
@@ -344,7 +356,7 @@
             { id: '25', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวอารีรัตน์ บัวทอง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/25.png', motto: '-', ig: '-' },
             { id: '26', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวดิรัชญา ขาวผ่อง', nickname: 'ดีน', room: '5/2', birthday: '17', skills: 'กล้าแสดงออก', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/26.png', motto: 'มุ่งมั่นแล้วไปต่อ', ig: '@d1_dunier' },
             { id: '27', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวภควดี หมื่นพล', nickname: 'กำไร', room: '5/2', birthday: '17', skills: 'ความสามารถด้านดนตรีไทย กล้าแสดงออกด้านการพูด', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/27.png', motto: 'เคล็ดลับของความสุขคือทำในสิ่งที่รัก ส่วนเคล็ดลับของความสำเร็จคือรักในสิ่งที่ทำ', ig: '@_klpkwd' },
-            { id: '28', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายปภังกร ปัญญาใส', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/28.png', motto: '-', ig: '-' },
+            { id: '28', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายปภังกร ปัญญาใส', nickname: 'เป๊ก', room: '5/5', birthday: '16', skills: 'วาดรูป', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/28.png', motto: 'มีแล้วไม่ใช้ดีกว่าใช้แล้วไม่มี', ig: '@p_xqza' },
             { id: '29', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายจักรเพ็ชร บุญโสม', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/29.png', motto: '-', ig: '-' },
             { id: '30', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวชุติกาญจน์ กันยาเนียม', nickname: 'น้ำขิง', room: '5/3', birthday: '17', skills: 'รับฟังผู้อื่น เห็นอกเห็นใจ ', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/30.png', motto: 'อย่าพึ่งบอกว่ายาก ถ้ายังไม่ลองทำ', ig: '@n_mkxxngg' },
 
