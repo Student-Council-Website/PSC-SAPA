@@ -37,6 +37,8 @@ window.toggleTheme = toggleTheme; // Make it globally accessible for onclick eve
 function attachCursorEvents() {
     if (!cursor) return; // Ensure cursor element exists
     document.querySelectorAll('a, button, .hover-trigger, input, select, textarea').forEach(el => {
+        if (el.dataset.cursorBound === 'true') return;
+        el.dataset.cursorBound = 'true';
         el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
     });
@@ -118,7 +120,7 @@ setTimeout(() => {
 // --- PWA & Version ---
 document.addEventListener('DOMContentLoaded', () => {
     const versionEl = document.getElementById('app-version');
-    if (versionEl) versionEl.innerText = "beta 0.50";
+    if (versionEl) versionEl.innerText = "Release Version 1.01";
 
     let deferredPrompt;
     const installBtn = document.getElementById('install-pwa-btn');
