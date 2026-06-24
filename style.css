@@ -52,7 +52,17 @@ h1, h2, h3, .font-display {
 
 /* Custom Cursor */
 @media (min-width: 768px) {
-    body { cursor: none; }
+    body,
+    body a,
+    body button,
+    body input,
+    body select,
+    body textarea,
+    body .hover-trigger { cursor: none; }
+    #cursor { display: block !important; }
+}
+@media (max-width: 767px) {
+    #cursor { display: none !important; }
 }
 #cursor {
     position: fixed; top: 0; left: 0; width: 20px; height: 20px;
