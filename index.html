@@ -20,134 +20,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="theme-config.js"></script>
     <link rel="stylesheet" href="style.css">
-    <style>
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-        .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-        
-        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
-        .dark .glass-nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
 
-        /* Dark mode form fix - no rotate on mobile */
-        @media (max-width: 768px) {
-            .form-tilt { transform: none !important; }
-        }
-
-        /* Policy badge overflow fix */
-        .policy-card { position: relative; }
-        .policy-badge { position: absolute; top: 1rem; right: 1rem; z-index: 10; }
-        @media (min-width: 768px) { .policy-badge { top: 2rem; right: 2rem; } }
-
-        /* Better dark mode scrollbar */
-        @media (max-width: 640px) {
-            .hero-title { font-size: clamp(2rem, 10vw, 4rem); }
-        }
-    </style>
-</head>
-    <div id="announcement-popup" class="hidden fixed inset-0 z-[100] items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-all duration-300">
-            
-            <div class="bg-offWhite dark:bg-gray-800 border-4 border-partyBlue dark:border-white w-full max-w-lg p-6 md:p-8 rounded-xl shadow-[8px_8px_0px_0px_#f472b6] dark:shadow-[8px_8px_0px_0px_#f59e0b] relative transform scale-95 opacity-0 transition-all duration-300 animate-popup-in">
-                
-                <button id="close-popup-x-old" class="absolute top-3 right-3 bg-white dark:bg-gray-700 border-2 border-partyBlue dark:border-white w-8 h-8 rounded-full flex items-center justify-center font-black text-partyBlue dark:text-white hover:bg-partyPink hover:text-white transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-sm">
-                    ✕
-                </button>
-
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="bg-partyYellow text-partyBlue text-xs font-black px-3 py-1 rounded-sm border-2 border-partyBlue shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase tracking-wider animate-pulse">
-                        🔥 HOT NEWS
-                    </span>
-                    <h2 class="text-xl md:text-2xl font-black text-partyBlue dark:text-white tracking-tight">กิจกรรมล่าสุดจากสภาฯ</h2>
-                </div>
-
-                <div class="w-full h-44 bg-gray-200 dark:bg-gray-700 rounded-lg border-2 border-partyBlue dark:border-white overflow-hidden mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.15)]">
-                    <img src="images/news-banner-sample.jpg" alt="ภาพกิจกรรม" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000';">
-                </div>
-
-                <div class="space-y-2 mb-6">
-                    <h3 class="text-lg font-black text-partyPink dark:text-partyYellow leading-tight">
-                        📢 เปิดรับสมัครแล้ว! การแข่งขันดนตรีโฟล์คซอง "พานทองคัพ 2569"
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 font-bold leading-relaxed">
-                        สภานักเรียนขอเชิญชวนเพื่อนๆ พี่ๆ น้องๆ ม.1-ม.6 ที่มีใจรักในเสียงดนตรี รวมทีมมาโชว์สเต็ปและความสามารถในกิจกรรมสุดมันส์ ชิงเงินรางวัลรวมกว่า 5,000 บาท พร้อมเกียรติบัตร!
-                    </p>
-                    <div class="flex items-center gap-2 text-xs font-black text-partyBlue dark:text-white pt-1">
-                        <span>🗓️ สมัครได้ตั้งแต่วันนี้ - 15 กรกฎาคม 2569</span>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <a href="https://forms.gle/xxxxxx" target="_blank" rel="noopener noreferrer" class="bg-emerald-500 hover:bg-emerald-600 text-white font-black text-center py-2.5 border-2 border-partyBlue dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm rounded-md flex items-center justify-center gap-2">
-                        ✍️ สมัครเข้าร่วมกิจกรรม
-                    </a>
-                    <button id="close-popup-btn-old" class="bg-gray-200 dark:bg-gray-700 hover:bg-partyPink hover:text-white text-partyBlue dark:text-white font-black text-center py-2.5 border-2 border-partyBlue dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm rounded-md">
-                        รับทราบและปิดหน้าต่าง
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const popup = document.getElementById('announcement-popup');
-                const popupCard = popup ? popup.querySelector('div') : null;
-                const closeBtn = document.getElementById('close-popup-btn-old');
-                const closeXBtn = document.getElementById('close-popup-x-old');
-
-                // 💡 เทคนิคสำคัญ: ตัวแปรเวอร์ชันของกิจกรรม 
-                // ถ้าในอนาคตเปลี่ยนกิจกรรมใหม่ ให้เปลี่ยนรหัสเวอร์ชันตรงนี้ (เช่น v2, v3) ปอปอัพจะกลับมาเด้งใหม่ให้ทุกคนเห็นอีกครั้งครับ
-                const currentActivityVersion = "folk-song-2569-v1"; 
-
-                // ตรวจสอบว่าเคยปิดประกาศเวอร์ชันนี้ไปแล้วหรือยัง
-                const hasClosed = localStorage.getItem('closed_announcement_' + currentActivityVersion);
-
-                if (!hasClosed && popup && popupCard) {
-                    // หน่วงเวลา 1.2 วินาทีหลังจากเปิดเว็บ เพื่อให้หน้าเว็บหลักโหลดขึ้นมาสวยๆ ก่อนป็อปอัพจะเด้งขึ้นมา
-                    setTimeout(() => {
-                        popup.classList.remove('hidden');
-                        popup.classList.add('flex');
-                        
-                        // เพิ่มคลาสแอนิเมชันตอนเปิดตัว
-                        setTimeout(() => {
-                            popupCard.classList.remove('scale-95', 'opacity-0');
-                            popupCard.classList.add('scale-100', 'opacity-100');
-                        }, 50);
-                    }, 1200);
-                }
-
-                // ฟังก์ชันสำหรับปิดป็อปอัพและบันทึกความจำลงเครื่องผู้ใช้
-                function closeAnnouncement() {
-                    if (popup && popupCard) {
-                        popupCard.classList.remove('scale-100', 'opacity-100');
-                        popupCard.classList.add('scale-95', 'opacity-0');
-                        
-                        setTimeout(() => {
-                            popup.classList.remove('flex');
-                            popup.classList.add('hidden');
-                            // บันทึกสถานะว่าผู้ใช้กดปิดเวอร์ชันนี้แล้ว
-                            localStorage.setItem('closed_announcement_' + currentActivityVersion, 'true');
-                        }, 200);
-                    }
-                }
-
-                // ผูกเหตุการณ์กับปุ่มปิดทั้งสองจุด
-                if (closeBtn) closeBtn.addEventListener('click', closeAnnouncement);
-                if (closeXBtn) closeXBtn.addEventListener('click', closeAnnouncement);
-
-                // หากกดนอกกล่องป็อปอัพ (บนพื้นหลังมืดเบลอ) ให้ปิดด้วยเช่นกัน
-                if (popup) {
-                    popup.addEventListener('click', (e) => {
-                        if (e.target === popup) {
-                            closeAnnouncement();
-                        }
-                    });
-                }
-            });
-        </script>
 <body class="bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden relative transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
 
     <!-- Modern Loader -->
@@ -732,9 +605,8 @@
     <button id="install-pwa-btn" class="hidden fixed bottom-4 left-4 z-50 bg-partyYellow text-partyBlue border-2 border-partyBlue dark:border-white px-4 py-2 font-black shadow-pop rounded-lg animate-bounce hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
     ⬇️ ติดตั้งแอป
     </button>
-    <!-- ╔══════════════════════════════════════════════╗ -->
+
     <!-- ║  POP-ART RETRO ACTIVITY MODAL - PSC SAPA    ║ -->
-    <!-- ╚══════════════════════════════════════════════╝ -->
     <style>
         /* Pop-Art Retro Modal Styles */
         #activity-modal-overlay {
@@ -1053,25 +925,25 @@
         // --- News System for Index ---
         const newsData = [
             {
-                id: 22,
-                date: "19 มิถุนายน 2569",
-                title: "สภานักเรียนพานทองฯ คว้ารางวัลรองชนะเลิศอันดับ 1 (อันดับที่ 2) ประกวดหนังสั้นต้านภัยยาเสพติด อบจ.ชลบุรี ประจำปี 2569 🎬🏆",
-                shortDesc: "ขอแสดงความยินดีกับทีม “ท้ายพานทองสภาฯ” ได้รับรางวัลชนะเลิศอันดับที่ 2 จากการประกวดสื่อประชาสัมพันธ์ด้านยาเสพติด ประเภทหนังสั้น ภายใต้หัวข้อ “วัยรุ่นยุคใหม่รู้ทันภัยยาเสพติด”",
-                image: "images/วารสาร/PSC_ANTI_DRUG_FILM_2569.jpg"
+                id: 26,
+                date: "30 มิถุนายน 2569",
+                title: "กลับมาตามคำเรียกร้อง! 🎶 ลานน้ำเงิน–ชมพู Music & Market 🩷💙 ระเบิดความสนุก ช้อป ชิม ชม ดนตรีสดจากเพื่อนๆ นักเรียน ✨",
+                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ชวนทุกคนมาเช็คอินและร่วมสนุกในกิจกรรม ลานน้ำเงิน–ชมพู Music & Market พบกับวงดนตรีสดและร้านค้านักเรียนมากมาย ณ โดมเอนกประสงค์”",
+                image: "images/วารสาร/ลานน้ำเงิน-ชมพู_Music_&_Market_2569.jpg"
             },
             {
-                id: 21,
-                date: "18 มิถุนายน 2569",
-                title: "น้อมวันทา บูชาครู 🙏 พิธีไหว้ครู ประจำปีการศึกษา 2569",
-                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ร่วมเป็นแกนนำวางแผนและดำเนินการจัดพิธีไหว้ครู ประจำปีการศึกษา 2569",
-                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _16_.png"
+                id: 25,
+                date: "29 มิถุนายน 2569",
+                title: "เปิดรับสมัครผู้นำคณะสี! ประกาศรับสมัครผู้ลงสมัครรับเลือกตั้ง ประธานคณะสี ประจำปีการศึกษา 2569 🏛️🗳️",
+                shortDesc: "คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอเชิญชวนพี่ ๆ ม.6 ที่มีใจรักในการเป็นผู้นำ สมัครรับเลือกตั้งประธานคณะสี ร่วมขับเคลื่อนกิจกรรมและส่งเสริมประชาธิปไตยในโรงเรียน",
+                image: "images/วารสาร/เปิดรับสมัคร_ประธานคณะสี_ประจำปีการศึกษา_2569.png"
             },
             {
-                id: 20 ,
-                date: "16 มิถุนายน 2569",
-                title: "ยินดีต้อนรับท่านรองผู้อำนวยการคนใหม่ พร้อมนำเสนอผลงานสภานักเรียนต้นแบบแก่ภาคีเครือข่าย",
-                shortDesc: "โรงเรียนพานทองสภาชนูปถัมภ์ ต้อนรับคณะผู้บริหารและครูจากโรงเรียนบ้านบึง 'มนูญวิทยาคาร' และโรงเรียนชลบุรี 'สุขบท' ในโอกาสร่วมยินดีท่านรองฯ อัชฌวุฒิ เปลี่ยนสมัย",
-                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _15_.png"
+                id: 24 ,
+                date: "29 มิถุนายน 2569",
+                title: "สร้างภาคีเครือข่ายอย่างยั่งยืน! สภานักเรียนโรงเรียนพานทองฯ ต้อนรับ 3 สถาบันศึกษาดูงาน พร้อมร่วมลงนาม MOU พัฒนาผู้นำเยาวชน 🤝✨",
+                shortDesc: "โรงเรียนพานทองสภาชนูปถัมภ์ เปิดบ้านต้อนรับคณะสภานักเรียนจากโรงเรียนบ่อทองวงษ์จันทร์วิทยา, โรงเรียนผินแจ่มวิชาสอน และโรงเรียนบ้านวังหินฯ ร่วมแลกเปลี่ยนเรียนรู้และลงนามบันทึกความเข้าใจ (MOU) เครือข่ายสภานักเรียน",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _19_.png"
             },
         ];
 
