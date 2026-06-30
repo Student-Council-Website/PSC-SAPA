@@ -48,7 +48,106 @@
         }
     </style>
 </head>
+    <div id="announcement-popup" class="hidden fixed inset-0 z-[100] items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-all duration-300">
+            
+            <div class="bg-offWhite dark:bg-gray-800 border-4 border-partyBlue dark:border-white w-full max-w-lg p-6 md:p-8 rounded-xl shadow-[8px_8px_0px_0px_#f472b6] dark:shadow-[8px_8px_0px_0px_#f59e0b] relative transform scale-95 opacity-0 transition-all duration-300 animate-popup-in">
+                
+                <button id="close-popup-x-old" class="absolute top-3 right-3 bg-white dark:bg-gray-700 border-2 border-partyBlue dark:border-white w-8 h-8 rounded-full flex items-center justify-center font-black text-partyBlue dark:text-white hover:bg-partyPink hover:text-white transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-sm">
+                    ✕
+                </button>
 
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-partyYellow text-partyBlue text-xs font-black px-3 py-1 rounded-sm border-2 border-partyBlue shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase tracking-wider animate-pulse">
+                        🔥 HOT NEWS
+                    </span>
+                    <h2 class="text-xl md:text-2xl font-black text-partyBlue dark:text-white tracking-tight">กิจกรรมล่าสุดจากสภาฯ</h2>
+                </div>
+
+                <div class="w-full h-44 bg-gray-200 dark:bg-gray-700 rounded-lg border-2 border-partyBlue dark:border-white overflow-hidden mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.15)]">
+                    <img src="images/news-banner-sample.jpg" alt="ภาพกิจกรรม" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000';">
+                </div>
+
+                <div class="space-y-2 mb-6">
+                    <h3 class="text-lg font-black text-partyPink dark:text-partyYellow leading-tight">
+                        📢 เปิดรับสมัครแล้ว! การแข่งขันดนตรีโฟล์คซอง "พานทองคัพ 2569"
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 font-bold leading-relaxed">
+                        สภานักเรียนขอเชิญชวนเพื่อนๆ พี่ๆ น้องๆ ม.1-ม.6 ที่มีใจรักในเสียงดนตรี รวมทีมมาโชว์สเต็ปและความสามารถในกิจกรรมสุดมันส์ ชิงเงินรางวัลรวมกว่า 5,000 บาท พร้อมเกียรติบัตร!
+                    </p>
+                    <div class="flex items-center gap-2 text-xs font-black text-partyBlue dark:text-white pt-1">
+                        <span>🗓️ สมัครได้ตั้งแต่วันนี้ - 15 กรกฎาคม 2569</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <a href="https://forms.gle/xxxxxx" target="_blank" rel="noopener noreferrer" class="bg-emerald-500 hover:bg-emerald-600 text-white font-black text-center py-2.5 border-2 border-partyBlue dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm rounded-md flex items-center justify-center gap-2">
+                        ✍️ สมัครเข้าร่วมกิจกรรม
+                    </a>
+                    <button id="close-popup-btn-old" class="bg-gray-200 dark:bg-gray-700 hover:bg-partyPink hover:text-white text-partyBlue dark:text-white font-black text-center py-2.5 border-2 border-partyBlue dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm rounded-md">
+                        รับทราบและปิดหน้าต่าง
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const popup = document.getElementById('announcement-popup');
+                const popupCard = popup ? popup.querySelector('div') : null;
+                const closeBtn = document.getElementById('close-popup-btn-old');
+                const closeXBtn = document.getElementById('close-popup-x-old');
+
+                // 💡 เทคนิคสำคัญ: ตัวแปรเวอร์ชันของกิจกรรม 
+                // ถ้าในอนาคตเปลี่ยนกิจกรรมใหม่ ให้เปลี่ยนรหัสเวอร์ชันตรงนี้ (เช่น v2, v3) ปอปอัพจะกลับมาเด้งใหม่ให้ทุกคนเห็นอีกครั้งครับ
+                const currentActivityVersion = "folk-song-2569-v1"; 
+
+                // ตรวจสอบว่าเคยปิดประกาศเวอร์ชันนี้ไปแล้วหรือยัง
+                const hasClosed = localStorage.getItem('closed_announcement_' + currentActivityVersion);
+
+                if (!hasClosed && popup && popupCard) {
+                    // หน่วงเวลา 1.2 วินาทีหลังจากเปิดเว็บ เพื่อให้หน้าเว็บหลักโหลดขึ้นมาสวยๆ ก่อนป็อปอัพจะเด้งขึ้นมา
+                    setTimeout(() => {
+                        popup.classList.remove('hidden');
+                        popup.classList.add('flex');
+                        
+                        // เพิ่มคลาสแอนิเมชันตอนเปิดตัว
+                        setTimeout(() => {
+                            popupCard.classList.remove('scale-95', 'opacity-0');
+                            popupCard.classList.add('scale-100', 'opacity-100');
+                        }, 50);
+                    }, 1200);
+                }
+
+                // ฟังก์ชันสำหรับปิดป็อปอัพและบันทึกความจำลงเครื่องผู้ใช้
+                function closeAnnouncement() {
+                    if (popup && popupCard) {
+                        popupCard.classList.remove('scale-100', 'opacity-100');
+                        popupCard.classList.add('scale-95', 'opacity-0');
+                        
+                        setTimeout(() => {
+                            popup.classList.remove('flex');
+                            popup.classList.add('hidden');
+                            // บันทึกสถานะว่าผู้ใช้กดปิดเวอร์ชันนี้แล้ว
+                            localStorage.setItem('closed_announcement_' + currentActivityVersion, 'true');
+                        }, 200);
+                    }
+                }
+
+                // ผูกเหตุการณ์กับปุ่มปิดทั้งสองจุด
+                if (closeBtn) closeBtn.addEventListener('click', closeAnnouncement);
+                if (closeXBtn) closeXBtn.addEventListener('click', closeAnnouncement);
+
+                // หากกดนอกกล่องป็อปอัพ (บนพื้นหลังมืดเบลอ) ให้ปิดด้วยเช่นกัน
+                if (popup) {
+                    popup.addEventListener('click', (e) => {
+                        if (e.target === popup) {
+                            closeAnnouncement();
+                        }
+                    });
+                }
+            });
+        </script>
 <body class="bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden relative transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
 
     <!-- Modern Loader -->
@@ -633,6 +732,247 @@
     <button id="install-pwa-btn" class="hidden fixed bottom-4 left-4 z-50 bg-partyYellow text-partyBlue border-2 border-partyBlue dark:border-white px-4 py-2 font-black shadow-pop rounded-lg animate-bounce hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
     ⬇️ ติดตั้งแอป
     </button>
+    <!-- ╔══════════════════════════════════════════════╗ -->
+    <!-- ║  POP-ART RETRO ACTIVITY MODAL - PSC SAPA    ║ -->
+    <!-- ╚══════════════════════════════════════════════╝ -->
+    <style>
+        /* Pop-Art Retro Modal Styles */
+        #activity-modal-overlay {
+            background: repeating-linear-gradient(
+                -45deg,
+                rgba(0,0,0,0.65) 0px,
+                rgba(0,0,0,0.65) 8px,
+                rgba(0,0,0,0.5) 8px,
+                rgba(0,0,0,0.5) 16px
+            );
+        }
+        .popart-card {
+            background: #fffdf0;
+            position: relative;
+            overflow: hidden;
+        }
+        .dark .popart-card {
+            background: #1a1130;
+        }
+        .popart-halftone {
+            background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1.5px, transparent 1.5px);
+            background-size: 12px 12px;
+        }
+        .dark .popart-halftone {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1.5px, transparent 1.5px);
+        }
+        .popart-stripe-top {
+            background: repeating-linear-gradient(90deg, #1d4ed8 0px, #1d4ed8 20px, #f472b6 20px, #f472b6 40px, #facc15 40px, #facc15 60px);
+        }
+        .popart-stripe-bot {
+            background: repeating-linear-gradient(90deg, #facc15 0px, #facc15 20px, #f472b6 20px, #f472b6 40px, #1d4ed8 40px, #1d4ed8 60px);
+        }
+        .activity-card-item {
+            transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s;
+        }
+        .activity-card-item:hover {
+            transform: translate(-3px,-4px) rotate(-0.5deg);
+        }
+        @keyframes popInModal {
+            0%   { transform: scale(0.7) rotate(-4deg); opacity: 0; }
+            60%  { transform: scale(1.04) rotate(1deg); opacity: 1; }
+            80%  { transform: scale(0.98) rotate(-0.3deg); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        @keyframes shakeNotify {
+            0%,100% { transform: rotate(0deg); }
+            20%     { transform: rotate(-7deg); }
+            40%     { transform: rotate(7deg); }
+            60%     { transform: rotate(-4deg); }
+            80%     { transform: rotate(4deg); }
+        }
+        .modal-popin {
+            animation: popInModal 0.45s cubic-bezier(.4,2,.6,1) both;
+        }
+        .btn-shake:hover svg { animation: shakeNotify 0.5s ease-in-out; }
+    </style>
+
+    <!-- MODAL OVERLAY -->
+    <div id="activity-modal-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center p-4 transition-all duration-300">
+        <div id="activity-modal-card" class="popart-card w-full max-w-xl border-4 border-partyBlue dark:border-partyYellow rounded-none shadow-[10px_10px_0px_0px_#f472b6] dark:shadow-[10px_10px_0px_0px_#facc15] relative">
+
+            <!-- Stripe Top Banner -->
+            <div class="popart-stripe-top h-3 w-full"></div>
+
+            <!-- Halftone BG -->
+            <div class="popart-halftone absolute inset-0 pointer-events-none"></div>
+
+            <!-- Header -->
+            <div class="relative z-10 bg-partyBlue text-white flex items-center justify-between px-5 py-3 border-b-4 border-partyYellow">
+                <div class="flex items-center gap-3">
+                    <span class="inline-block bg-partyYellow text-partyBlue text-xs font-black px-3 py-1 rounded-sm border-2 border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] uppercase tracking-widest animate-pulse">🔥 HOT</span>
+                    <h2 class="text-lg md:text-xl font-black tracking-tight uppercase">กิจกรรมล่าสุดจากสภาฯ</h2>
+                </div>
+                <button id="close-popup-x" aria-label="ปิด" class="bg-partyPink hover:bg-red-500 text-white w-9 h-9 rounded-sm border-2 border-white flex items-center justify-center font-black text-base shadow-[2px_2px_0px_0px_rgba(0,0,0,0.4)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex-shrink-0">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Activity Cards -->
+            <div class="relative z-10 p-5 space-y-4">
+
+                <!-- Activity 1: ลานน้ำเงิน–ชมพู Music & Market -->
+                <a href="news.html" class="activity-card-item block bg-white dark:bg-gray-800 border-3 border-partyBlue dark:border-partyPink rounded-sm shadow-[5px_5px_0px_0px_#1d4ed8] dark:shadow-[5px_5px_0px_0px_#f472b6] overflow-hidden no-underline" style="border-width:3px">
+                    <div class="flex gap-0">
+                        <div class="w-28 md:w-36 flex-shrink-0 relative overflow-hidden bg-partyBlue">
+                            <img src="images/วารสาร/ลานน้ำเงิน-ชมพู_Music_&_Market_2569.jpg"
+                                 alt="ลานน้ำเงิน–ชมพู Music & Market"
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-partyBlue to-partyPink\'>🎶</div>'">
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 dark:to-black/20"></div>
+                        </div>
+                        <div class="flex-1 p-3">
+                            <span class="inline-block bg-partyBlue text-white text-[10px] font-black px-2 py-0.5 mb-2 uppercase tracking-wider rounded-sm">🎵 กิจกรรม</span>
+                            <h3 class="text-sm md:text-base font-black text-partyBlue dark:text-partyYellow leading-snug mb-1">
+                                🎶 ลานน้ำเงิน–ชมพู Music &amp; Market
+                            </h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-300 font-medium leading-relaxed line-clamp-2">
+                                ดนตรีสด · ร้านค้า · อาหาร · Photo Zone ณ โดมเอนกประสงค์
+                            </p>
+                            <div class="mt-2 flex items-center gap-1 text-[11px] font-black text-partyPink dark:text-partyYellow">
+                                <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                17 กรกฎาคม 2569 · 14.50–15.40 น.
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Activity 2: เปิดรับสมัครผู้นำคณะสี -->
+                <a href="news.html" class="activity-card-item block bg-white dark:bg-gray-800 border-3 border-partyPink dark:border-partyYellow rounded-sm shadow-[5px_5px_0px_0px_#f472b6] dark:shadow-[5px_5px_0px_0px_#facc15] overflow-hidden no-underline" style="border-width:3px">
+                    <div class="flex gap-0">
+                        <div class="w-28 md:w-36 flex-shrink-0 relative overflow-hidden bg-partyPink">
+                            <img src="images/วารสาร/เปิดรับสมัคร_ประธานคณะสี_ประจำปีการศึกษา_2569.png"
+                                 alt="เปิดรับสมัครผู้นำคณะสี"
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-partyPink to-partyYellow\'>🏛️</div>'">
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 dark:to-black/20"></div>
+                        </div>
+                        <div class="flex-1 p-3">
+                            <span class="inline-block bg-partyPink text-white text-[10px] font-black px-2 py-0.5 mb-2 uppercase tracking-wider rounded-sm">🗳️ รับสมัคร</span>
+                            <h3 class="text-sm md:text-base font-black text-partyPink dark:text-partyYellow leading-snug mb-1">
+                                🏛️ เปิดรับสมัครผู้นำคณะสี!
+                            </h3>
+                            <p class="text-xs text-gray-600 dark:text-gray-300 font-medium leading-relaxed line-clamp-2">
+                                ประธานคณะสี ประจำปีการศึกษา 2569 สำหรับ ม.6 ที่มีใจรักการเป็นผู้นำ
+                            </p>
+                            <div class="mt-2 flex items-center gap-1 text-[11px] font-black text-partyBlue dark:text-partyYellow">
+                                <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                รับสมัคร 29 มิ.ย. – 6 ก.ค. 2569
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- Footer Buttons -->
+            <div class="relative z-10 px-5 pb-5">
+                <div class="grid grid-cols-2 gap-3">
+                    <a href="news.html" class="bg-partyBlue hover:bg-partyDarkBlue text-white font-black text-center py-2.5 border-2 border-partyBlue dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm rounded-sm flex items-center justify-center gap-2">
+                        📰 ดูข่าวทั้งหมด
+                    </a>
+                    <button id="close-popup-btn" class="bg-gray-100 dark:bg-gray-700 hover:bg-partyPink hover:text-white text-partyBlue dark:text-white font-black text-center py-2.5 border-2 border-partyBlue dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.6)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm rounded-sm">
+                        รับทราบ · ปิด
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stripe Bottom Banner -->
+            <div class="popart-stripe-bot h-3 w-full"></div>
+        </div>
+    </div>
+
+
+    <!-- Floating Reopen Button (Pop-Art Retro) -->
+    <button id="reopen-popup-btn" class="btn-shake hidden fixed bottom-6 right-6 z-50 bg-partyYellow hover:bg-amber-400 text-partyBlue font-black p-0 rounded-none border-4 border-partyBlue dark:border-white shadow-[5px_5px_0px_0px_#f472b6] dark:shadow-[5px_5px_0px_0px_#f59e0b] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all items-center gap-0 group" title="ดูกิจกรรมล่าสุดจากสภาฯ" aria-label="ดูกิจกรรมล่าสุด">
+        <div class="popart-stripe-top h-1.5 w-full"></div>
+        <div class="flex items-center gap-2 px-4 py-2.5">
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+            </svg>
+            <span class="text-xs md:text-sm font-black tracking-tight hidden sm:inline uppercase">กิจกรรมล่าสุด</span>
+        </div>
+        <div class="popart-stripe-bot h-1.5 w-full"></div>
+    </button>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const overlay  = document.getElementById('activity-modal-overlay');
+            const card     = document.getElementById('activity-modal-card');
+            const closeBtn = document.getElementById('close-popup-btn');
+            const closeX   = document.getElementById('close-popup-x');
+            const reopenBtn= document.getElementById('reopen-popup-btn');
+
+            // ── ใช้ sessionStorage → แสดงทุกครั้งที่เปิด Tab/หน้าต่างใหม่ ──
+            const SESSION_KEY = 'psc_activity_modal_shown_this_session';
+
+            function openModal() {
+                if (!overlay) return;
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                // trigger pop-in animation by re-appending class
+                if (card) {
+                    card.classList.remove('modal-popin');
+                    void card.offsetWidth; // reflow
+                    card.classList.add('modal-popin');
+                }
+                if (reopenBtn) {
+                    reopenBtn.classList.remove('flex');
+                    reopenBtn.classList.add('hidden');
+                }
+            }
+
+            function closeModal() {
+                if (!overlay || !card) return;
+                card.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
+                card.style.transform  = 'scale(0.9) rotate(2deg)';
+                card.style.opacity    = '0';
+                setTimeout(() => {
+                    overlay.classList.remove('flex');
+                    overlay.classList.add('hidden');
+                    card.style.transform = '';
+                    card.style.opacity   = '';
+                    card.style.transition= '';
+                    // แสดง floating button หลังปิด
+                    if (reopenBtn) {
+                        reopenBtn.classList.remove('hidden');
+                        reopenBtn.classList.add('flex');
+                    }
+                    // บันทึกว่า session นี้เคยเห็นแล้ว
+                    sessionStorage.setItem(SESSION_KEY, '1');
+                }, 220);
+            }
+
+            // แสดงทุกครั้งที่โหลดหน้าครั้งแรก (session ใหม่)
+            const alreadyShown = sessionStorage.getItem(SESSION_KEY);
+            if (!alreadyShown) {
+                setTimeout(openModal, 900);
+            } else {
+                // เคยเห็น session นี้แล้ว → ให้ปุ่มลอยรออยู่แทน
+                if (reopenBtn) {
+                    reopenBtn.classList.remove('hidden');
+                    reopenBtn.classList.add('flex');
+                }
+            }
+
+            if (closeBtn)  closeBtn.addEventListener('click', closeModal);
+            if (closeX)    closeX.addEventListener('click', closeModal);
+            if (reopenBtn) reopenBtn.addEventListener('click', openModal);
+
+            // กดพื้นหลัง overlay ปิดได้
+            if (overlay) {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) closeModal();
+                });
+            }
+        });
+    </script>
 
     <footer class="bg-partyBlue dark:bg-gray-950 text-white py-16 relative shadow-[0_-10px_40px_rgba(0,0,0,0.3)] z-50 overflow-hidden transition-colors duration-300">
         <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-partyYellow via-pink-300 to-partyYellow"></div>
