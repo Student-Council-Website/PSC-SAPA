@@ -47,7 +47,6 @@
         </div>
     </div>
 
-
     <div class="bg-noise opacity-30 mix-blend-overlay fixed inset-0 pointer-events-none z-0"></div>
     <div id="cursor" class="hidden md:block"></div>
 
@@ -67,14 +66,20 @@
             </a>
 
             <ul class="hidden md:flex space-x-6 items-center font-anakotmai">
-                <li><a href="index.html" class="nav-link-active text-partyBlue dark:text-white font-bold px-3 py-1 border-b-4 border-partyYellow transition-colors">หน้าหลัก</a></li>
+                <li><a href="index.html" class="text-partyBlue dark:text-white font-bold px-3 py-1 transition-colors border-b-4 border-partyYellow">หน้าหลัก</a></li>
+                
                 <li><a href="council-committee.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">คณะสภานักเรียน</a></li>
+                
+                <li><a href="pathway.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">Pathway to Future</a></li>
+                
                 <li><a href="Action-Plan.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">แผนการทำงาน</a></li>
+                
                 <li>
                     <a href="policy.html" class="bg-partyBlue text-white border-2 border-partyBlue px-6 py-2 font-bold shadow-[4px_4px_0px_0px_#f472b6] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block rounded-sm hover:bg-partyDarkBlue">
                         ดูนโยบาย
                     </a>
                 </li>
+                
                 <li>
                     <button onclick="toggleTheme()" class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyYellow transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
                         <svg class="sun-icon absolute w-5 h-5 text-pink-400 transform translate-y-12 dark:translate-y-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -91,23 +96,29 @@
         <div id="mobile-menu-backdrop" class="hidden md:hidden"></div>
 
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-950 border-t-2 border-partyYellow dark:border-pink-500 shadow-2xl z-10 flex flex-col p-5 space-y-2 font-anakotmai">
-            <a href="index.html" class="flex items-center gap-3 text-partyYellow font-bold text-lg py-3 px-4 border-l-4 border-l-partyYellow bg-white/10 rounded-r-lg">
-                <span>🏠</span> หน้าหลัก
+            
+            <a href="index.html" class="flex items-center gap-3 text-partyYellow font-bold text-lg py-3 px-4 border-l-4 border-partyYellow bg-white/10 rounded-r-lg"> 
+                <span>🏠</span> หน้าหลัก 
             </a>
-            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
-                <span>👥</span> คณะสภานักเรียน
+            
+            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>👥</span> คณะสภานักเรียน 
             </a>
-            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
-                <span>🗺️</span> แผนการทำงาน
+            
+            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>🧭</span> Pathway to Future
             </a>
-            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]">
-                <span>📋</span> ดูนโยบาย
+            
+            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>🗺️</span> แผนการทำงาน 
             </a>
-            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
+            
+            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] active:translate-y-1 active:shadow-none transition-all"> 
+                📋 ดูนโยบาย 
+            </a>
+            
+            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors mt-4 border-t border-white/20">
                 <span class="flex items-center gap-3"><span>🌙</span> สลับโหมด มืด/สว่าง</span>
-                <div class="w-9 h-9 flex items-center justify-center border-2 border-white/50 rounded-full bg-white/10">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                </div>
             </button>
         </div>
     </nav>
