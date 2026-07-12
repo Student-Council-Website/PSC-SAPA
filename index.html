@@ -54,14 +54,20 @@
             </a>
 
             <ul class="hidden md:flex space-x-6 items-center font-anakotmai">
-                <li><a href="index.html" class="nav-link-active text-partyBlue dark:text-white font-bold px-3 py-1 border-b-4 border-partyYellow transition-colors">หน้าหลัก</a></li>
+                <li><a href="index.html" class="text-partyBlue dark:text-white font-bold px-3 py-1 transition-colors border-b-4 border-partyYellow">หน้าหลัก</a></li>
+                
                 <li><a href="council-committee.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">คณะสภานักเรียน</a></li>
+                
+                <li><a href="pathway.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">Pathway to Future</a></li>
+                
                 <li><a href="Action-Plan.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">แผนการทำงาน</a></li>
+                
                 <li>
                     <a href="policy.html" class="bg-partyBlue text-white border-2 border-partyBlue px-6 py-2 font-bold shadow-[4px_4px_0px_0px_#f472b6] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block rounded-sm hover:bg-partyDarkBlue">
                         ดูนโยบาย
                     </a>
                 </li>
+                
                 <li>
                     <button onclick="toggleTheme()" class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyYellow transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
                         <svg class="sun-icon absolute w-5 h-5 text-pink-400 transform translate-y-12 dark:translate-y-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -78,23 +84,29 @@
         <div id="mobile-menu-backdrop" class="hidden md:hidden"></div>
 
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-950 border-t-2 border-partyYellow dark:border-pink-500 shadow-2xl z-10 flex flex-col p-5 space-y-2 font-anakotmai">
-            <a href="index.html" class="flex items-center gap-3 text-partyYellow font-bold text-lg py-3 px-4 border-l-4 border-l-partyYellow bg-white/10 rounded-r-lg">
-                <span>🏠</span> หน้าหลัก
+            
+            <a href="index.html" class="flex items-center gap-3 text-partyYellow font-bold text-lg py-3 px-4 border-l-4 border-partyYellow bg-white/10 rounded-r-lg"> 
+                <span>🏠</span> หน้าหลัก 
             </a>
-            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
-                <span>👥</span> คณะสภานักเรียน
+            
+            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>👥</span> คณะสภานักเรียน 
             </a>
-            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
-                <span>🗺️</span> แผนการทำงาน
+            
+            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>🧭</span> Pathway to Future
             </a>
-            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.5)]">
-                <span>📋</span> ดูนโยบาย
+            
+            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>🗺️</span> แผนการทำงาน 
             </a>
-            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
+            
+            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] active:translate-y-1 active:shadow-none transition-all"> 
+                📋 ดูนโยบาย 
+            </a>
+            
+            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors mt-4 border-t border-white/20">
                 <span class="flex items-center gap-3"><span>🌙</span> สลับโหมด มืด/สว่าง</span>
-                <div class="w-9 h-9 flex items-center justify-center border-2 border-white/50 rounded-full bg-white/10">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                </div>
             </button>
         </div>
     </nav>
@@ -688,53 +700,52 @@
             <!-- Activity Cards -->
             <div class="relative z-10 p-5 space-y-4">
 
-                <!-- Activity 1: ลานน้ำเงิน–ชมพู Music & Market -->
-                <a href="news.html" class="activity-card-item block bg-white dark:bg-gray-800 border-3 border-partyBlue dark:border-partyPink rounded-sm shadow-[5px_5px_0px_0px_#1d4ed8] dark:shadow-[5px_5px_0px_0px_#f472b6] overflow-hidden no-underline" style="border-width:3px">
+                <a href="news.html" class="activity-card-item block bg-white dark:bg-gray-800 border-3 border-emerald-500 dark:border-amber-400 rounded-sm shadow-[5px_5px_0px_0px_#10b981] dark:shadow-[5px_5px_0px_0px_#facc15] overflow-hidden no-underline" style="border-width:3px">
                     <div class="flex gap-0">
-                        <div class="w-28 md:w-36 flex-shrink-0 relative overflow-hidden bg-partyBlue">
-                            <img src="images/วารสาร/ลานน้ำเงิน-ชมพู_Music_&_Market_2569.jpg"
-                                 alt="ลานน้ำเงิน–ชมพู Music & Market"
+                        <div class="w-28 md:w-36 flex-shrink-0 relative overflow-hidden bg-emerald-500">
+                            <img src="images/วารสาร/ประธานคณะสีรวม/ประธานคณะสี_แต่ละสีมีใครบ้างนะ.png"
+                                 alt="เปิดตัวผู้สมัครประธานคณะสี 2569"
                                  class="w-full h-full object-cover"
-                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-partyBlue to-partyPink\'>🎶</div>'">
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-emerald-500 to-amber-400\'>👑</div>'">
                             <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 dark:to-black/20"></div>
                         </div>
                         <div class="flex-1 p-3">
-                            <span class="inline-block bg-partyBlue text-white text-[10px] font-black px-2 py-0.5 mb-2 uppercase tracking-wider rounded-sm">🎵 กิจกรรม</span>
-                            <h3 class="text-sm md:text-base font-black text-partyBlue dark:text-partyYellow leading-snug mb-1">
-                                🎶 ลานน้ำเงิน–ชมพู Music &amp; Market
+                            <span class="inline-block bg-emerald-600 text-white text-[10px] font-black px-2 py-0.5 mb-2 uppercase tracking-wider rounded-sm">📢 หาเสียง</span>
+                            <h3 class="text-sm md:text-base font-black text-emerald-600 dark:text-amber-400 leading-snug mb-1">
+                                🗳️ เปิดโฉมหน้าผู้สมัครประธานคณะสีทั้ง 4 คณะ
                             </h3>
                             <p class="text-xs text-gray-600 dark:text-gray-300 font-medium leading-relaxed line-clamp-2">
-                                ดนตรีสด · ร้านค้า · อาหาร · Photo Zone ณ โดมเอนกประสงค์
+                                ทับทิมสยาม · พลอยไพลิน · แสงมรกต · บุษราคัม ร่วมติดตามนโยบายและวิสัยทัศน์ของพี่ๆ ม.6
                             </p>
                             <div class="mt-2 flex items-center gap-1 text-[11px] font-black text-partyPink dark:text-partyYellow">
                                 <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                17 กรกฎาคม 2569 · 14.50–15.40 น.
+                                หาเสียง 8–15 ก.ค. 2569 · เลือกตั้ง 17 ก.ค. 2579
                             </div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Activity 2: เปิดรับสมัครผู้นำคณะสี -->
-                <a href="news.html" class="activity-card-item block bg-white dark:bg-gray-800 border-3 border-partyPink dark:border-partyYellow rounded-sm shadow-[5px_5px_0px_0px_#f472b6] dark:shadow-[5px_5px_0px_0px_#facc15] overflow-hidden no-underline" style="border-width:3px">
+
+                <a href="news.html" class="activity-card-item block bg-white dark:bg-gray-800 border-3 border-orange-500 dark:border-purple-400 rounded-sm shadow-[5px_5px_0px_0px_#f97316] dark:shadow-[5px_5px_0px_0px_#c084fc] overflow-hidden no-underline" style="border-width:3px">
                     <div class="flex gap-0">
-                        <div class="w-28 md:w-36 flex-shrink-0 relative overflow-hidden bg-partyPink">
-                            <img src="images/วารสาร/เปิดรับสมัคร_ประธานคณะสี_ประจำปีการศึกษา_2569.png"
-                                 alt="เปิดรับสมัครผู้นำคณะสี"
+                        <div class="w-28 md:w-36 flex-shrink-0 relative overflow-hidden bg-orange-500">
+                            <img src="images/วารสาร/ร่วมกันโหวตเกม_Eport.png"
+                                 alt="ร่วมกันโหวตเกม E-Sport"
                                  class="w-full h-full object-cover"
-                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-partyPink to-partyYellow\'>🏛️</div>'">
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-4xl bg-gradient-to-br from-orange-500 to-red-500\'>🎮</div>'">
                             <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 dark:to-black/20"></div>
                         </div>
                         <div class="flex-1 p-3">
-                            <span class="inline-block bg-partyPink text-white text-[10px] font-black px-2 py-0.5 mb-2 uppercase tracking-wider rounded-sm">🗳️ รับสมัคร</span>
-                            <h3 class="text-sm md:text-base font-black text-partyPink dark:text-partyYellow leading-snug mb-1">
-                                🏛️ เปิดรับสมัครผู้นำคณะสี!
+                            <span class="inline-block bg-orange-500 text-white text-[10px] font-black px-2 py-0.5 mb-2 uppercase tracking-wider rounded-sm">🎮 E-SPORT</span>
+                            <h3 class="text-sm md:text-base font-black text-orange-600 dark:text-purple-400 leading-snug mb-1">
+                                🔥 ร่วมโหวตเลือกเกมแข่งขัน E-Sport ภายในโรงเรียน
                             </h3>
                             <p class="text-xs text-gray-600 dark:text-gray-300 font-medium leading-relaxed line-clamp-2">
-                                ประธานคณะสี ประจำปีการศึกษา 2569 สำหรับ ม.6 ที่มีใจรักการเป็นผู้นำ
+                                RoV · Free Fire · Minecraft · Mobile Legends 1 เสียงของคุณคือกติกาสู่การแข่งขันจริง
                             </p>
                             <div class="mt-2 flex items-center gap-1 text-[11px] font-black text-partyBlue dark:text-partyYellow">
                                 <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                รับสมัคร 29 มิ.ย. – 6 ก.ค. 2569
+                                เปิดระบบโหวต 13 – 18 กรกฎาคม 2569
                             </div>
                         </div>
                     </div>
@@ -925,25 +936,25 @@
         // --- News System for Index ---
         const newsData = [
             {
-                id: 26,
-                date: "30 มิถุนายน 2569",
-                title: "กลับมาตามคำเรียกร้อง! 🎶 ลานน้ำเงิน–ชมพู Music & Market 🩷💙 ระเบิดความสนุก ช้อป ชิม ชม ดนตรีสดจากเพื่อนๆ นักเรียน ✨",
-                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ชวนทุกคนมาเช็คอินและร่วมสนุกในกิจกรรม ลานน้ำเงิน–ชมพู Music & Market พบกับวงดนตรีสดและร้านค้านักเรียนมากมาย ณ โดมเอนกประสงค์”",
-                image: "images/วารสาร/ลานน้ำเงิน-ชมพู_Music_&_Market_2569.jpg"
+                id: 29,
+                date: "13 กรกฎาคม 2569",
+                title: "สายเกมเมอร์ห้ามพลาด! สภานักเรียนชวนร่วมโหวตเกม E-Sport แมตช์ไหนที่ใช่ เกมไหนที่อยากลุยในโรงเรียน 🎮🔥",
+                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ชวนนักเรียนทุกคนร่วมโหวตเลือกเกม E-Sport",
+                image: "images/วารสาร/ร่วมกันโหวตเกม_Eport.png"
             },
             {
-                id: 25,
-                date: "29 มิถุนายน 2569",
-                title: "เปิดรับสมัครผู้นำคณะสี! ประกาศรับสมัครผู้ลงสมัครรับเลือกตั้ง ประธานคณะสี ประจำปีการศึกษา 2569 🏛️🗳️",
-                shortDesc: "คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอเชิญชวนพี่ ๆ ม.6 ที่มีใจรักในการเป็นผู้นำ สมัครรับเลือกตั้งประธานคณะสี ร่วมขับเคลื่อนกิจกรรมและส่งเสริมประชาธิปไตยในโรงเรียน",
-                image: "images/วารสาร/เปิดรับสมัคร_ประธานคณะสี_ประจำปีการศึกษา_2569.png"
+                id: 28,
+                date: "10 กรกฎาคม 2569",
+                title: "โฉมหน้าผู้นำคนใหม่! เปิดตัวผู้สมัครรับเลือกตั้งประธานคณะสีทั้ง 4 คณะสี ประจำปีการศึกษา 2569",
+                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ เปิดเผยรายชื่อและหมายเลขผู้ลงสมัครรับเลือกตั้งประธานคณะสีทั้ง 4 คณะสี",
+                image: "images/วารสาร/ประธานคณะสีรวม/ประธานคณะสี_แต่ละสีมีใครบ้างนะ.png"
             },
             {
-                id: 24 ,
-                date: "29 มิถุนายน 2569",
-                title: "สร้างภาคีเครือข่ายอย่างยั่งยืน! สภานักเรียนโรงเรียนพานทองฯ ต้อนรับ 3 สถาบันศึกษาดูงาน พร้อมร่วมลงนาม MOU พัฒนาผู้นำเยาวชน 🤝✨",
-                shortDesc: "โรงเรียนพานทองสภาชนูปถัมภ์ เปิดบ้านต้อนรับคณะสภานักเรียนจากโรงเรียนบ่อทองวงษ์จันทร์วิทยา, โรงเรียนผินแจ่มวิชาสอน และโรงเรียนบ้านวังหินฯ ร่วมแลกเปลี่ยนเรียนรู้และลงนามบันทึกความเข้าใจ (MOU) เครือข่ายสภานักเรียน",
-                image: "images/วารสาร/PSC_SAPA_NEWS_ งานสภานักเรียนประชาสัมพันธ์_ฉบับที่ _19_.png"
+                id: 27 ,
+                date: "10 กรกฎาคม 2569",
+                title: "📢 ประกาศด่วน! ขอเลื่อนการจัดงาน “ลานน้ำเงิน–ชมพู Music & Market” ไปเป็นวันศุกร์ที่ 24 กรกฎาคม 2569 🏛️✨",
+                shortDesc: "คณะผู้จัดงานและสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอแจ้งเลื่อนกำหนดการจัดงานลานน้ำเงิน-ชมพู เพื่อความเรียบร้อยและความสะดวกสูงสุดของผู้ร่วมงาน โดยกิจกรรมและความสนุกยังจัดเต็มเช่นเดิม",
+                image: "images/วารสาร/ประกาศขอเลื่อนการจัดงาน_ลานน้ำเงินชมพู.png"
             },
         ];
 
