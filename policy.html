@@ -131,39 +131,59 @@
             </a>
 
             <ul class="hidden md:flex space-x-6 items-center font-anakotmai">
-                <li><a href="index.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">หน้าหลัก</a></li>
-                <li><a href="council-committee.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">คณะสภานักเรียน</a></li>
-                <li><a href="Action-Plan.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">แผนการทำงาน</a></li>
+                <li><a href="index.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">หน้าหลัก</a></li>
+                
+                <li><a href="council-committee.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">คณะสภานักเรียน</a></li>
+                
+                <li><a href="pathway.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">Pathway to Future</a></li>
+                
+                <li><a href="Action-Plan.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">แผนการทำงาน</a></li>
+                
                 <li>
-                    <a href="policy.html" class="nav-link-active bg-partyYellow text-partyBlue shadow-[4px_4px_0px_0px_#1e3a8a] dark:text-partyBlue font-bold px-3 py-1 border-b-4 border-partyYellow transition-colors hover-trigger">
-                        อ่านนโยบาย
+                    <a href="policy.html" class="bg-partyBlue text-white border-2 border-partyBlue px-6 py-2 font-bold shadow-[4px_4px_0px_0px_#f472b6] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block rounded-sm hover:bg-partyDarkBlue">
+                        ดูนโยบาย
                     </a>
                 </li>
+                
                 <li>
-                    <button onclick="toggleTheme()" class="hover-trigger bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyYellow transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
+                    <button onclick="toggleTheme()" class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyYellow transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
                         <svg class="sun-icon absolute w-5 h-5 text-pink-400 transform translate-y-12 dark:translate-y-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         <svg class="moon-icon absolute w-5 h-5 text-partyBlue dark:translate-y-12 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                     </button>
                 </li>
             </ul>
 
-            <button id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20 hover-trigger">
+            <button id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
         </div>
 
         <div id="mobile-menu-backdrop" class="hidden md:hidden"></div>
 
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-950 border-t-2 border-partyYellow shadow-2xl z-10 flex flex-col p-5 space-y-2 font-anakotmai">
-            <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🏠</span> หน้าหลัก</a>
-            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>👥</span> คณะสภานักเรียน</a>
-            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"><span>🗺️</span> แผนการทำงาน</a>
-            <a href="policy.html" class="block text-partyYellow font-bold text-xl py-2 border-b border-white/10 pl-2 border-l-4 border-l-partyYellow bg-white/10">ดูนโยบาย</a>
-            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-xl py-3 group pl-2">
-                <span>สลับโหมด มืด/สว่าง</span>
-                <div class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-full bg-white/10">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                </div>
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-950 border-t-2 border-partyYellow dark:border-pink-500 shadow-2xl z-10 flex flex-col p-5 space-y-2 font-anakotmai">
+            
+            <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>🏠</span> หน้าหลัก 
+            </a>
+            
+            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>👥</span> คณะสภานักเรียน 
+            </a>
+            
+            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>🧭</span> Pathway to Future
+            </a>
+            
+            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>🗺️</span> แผนการทำงาน 
+            </a>
+            
+            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] active:translate-y-1 active:shadow-none transition-all"> 
+                📋 ดูนโยบาย 
+            </a>
+            
+            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors mt-4 border-t border-white/20">
+                <span class="flex items-center gap-3"><span>🌙</span> สลับโหมด มืด/สว่าง</span>
             </button>
         </div>
     </nav>
@@ -216,7 +236,8 @@
                 </div>
             </div>
 
-            <div id="policy-detail" class="policy-detail-panel hidden bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyYellow shadow-pop dark:shadow-pop-yellow overflow-hidden"></div>
+            <!-- Centered Modal Overlay for Policy Detail -->
+            <div id="policy-detail" class="policy-detail-panel hidden fixed inset-0 z-[100] items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-all duration-300"></div>
 
             <div class="hidden lg:grid policy-row px-5 text-sm font-black text-partyBlue dark:text-partyYellow uppercase tracking-wide">
                 <span>นโยบาย</span>
@@ -537,45 +558,67 @@
                 : `<div class="w-full h-full flex items-center justify-center bg-partyYellow/30 text-8xl">${policy.icon}</div>`;
 
             detailPanel.innerHTML = `
-                <div class="grid lg:grid-cols-[360px_1fr]">
-                    <div class="min-h-[260px] bg-partyBlue relative overflow-hidden border-b-4 lg:border-b-0 lg:border-r-4 border-partyBlue dark:border-partyYellow">
+                <div class="bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyYellow w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-pop dark:shadow-pop-yellow relative modal-popin flex flex-col">
+                    
+                    <!-- Header Image Block (Full Width on Top) -->
+                    <div class="h-64 md:h-80 w-full bg-partyBlue relative overflow-hidden border-b-4 border-partyBlue dark:border-partyYellow flex-shrink-0">
                         ${imageBlock}
-                        <div class="absolute inset-0 bg-gradient-to-t from-partyBlue/90 via-transparent to-transparent"></div>
-                        <div class="absolute left-5 bottom-5 right-5">
+                        <div class="absolute inset-0 bg-gradient-to-t from-partyBlue/90 via-transparent to-transparent opacity-95"></div>
+                        <div class="absolute left-5 bottom-5 right-5 z-10">
                             <span class="inline-flex ${meta.badge} px-3 py-1 font-black mb-2">${meta.label}</span>
-                            <h3 class="text-3xl md:text-4xl font-black text-white leading-tight">${policy.title}</h3>
+                            <h3 class="text-3xl md:text-5xl font-black text-white leading-tight">${policy.title}</h3>
                         </div>
+                        <button id="policy-detail-close" class="absolute top-4 right-4 hover-trigger w-10 h-10 border-2 border-partyBlue dark:border-partyYellow bg-white dark:bg-gray-900 text-partyBlue dark:text-partyYellow font-black shadow-[3px_3px_0_rgba(244,114,182,0.9)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all text-xl z-20 flex items-center justify-center">✕</button>
                     </div>
-                    <div class="p-5 md:p-7">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <p class="font-black text-partyPink dark:text-partyYellow uppercase tracking-widest text-sm">รายละเอียดนโยบาย</p>
-                                <h4 class="text-2xl md:text-3xl font-black text-partyBlue dark:text-white mt-1">${policy.icon} ${policy.summary}</h4>
-                            </div>
-                            <button id="policy-detail-close" class="hover-trigger flex-shrink-0 w-10 h-10 border-2 border-partyBlue dark:border-partyYellow bg-white dark:bg-gray-900 text-partyBlue dark:text-partyYellow font-black shadow-[3px_3px_0_rgba(244,114,182,0.9)]">×</button>
+                    
+                    <!-- Details Content -->
+                    <div class="p-5 md:p-8 overflow-y-auto">
+                        <div>
+                            <p class="font-black text-partyPink dark:text-partyYellow uppercase tracking-widest text-xs md:text-sm">รายละเอียดนโยบาย</p>
+                            <h4 class="text-xl md:text-2xl font-black text-partyBlue dark:text-white mt-1">${policy.icon} ${policy.summary}</h4>
                         </div>
-                        <div class="mt-5 grid md:grid-cols-2 gap-5">
+                        <div class="mt-6 grid md:grid-cols-2 gap-6">
                             <section>
-                                <h5 class="font-black text-partyBlue dark:text-partyYellow text-xl mb-2">แนวคิด</h5>
+                                <h5 class="font-black text-partyBlue dark:text-partyYellow text-lg md:text-xl mb-2 flex items-center gap-2">
+                                    <span class="w-1.5 h-6 bg-partyYellow inline-block"></span>แนวคิด
+                                </h5>
                                 <p class="text-gray-700 dark:text-gray-300 font-bold leading-relaxed">${policy.concept}</p>
                             </section>
                             <section>
-                                <h5 class="font-black text-partyBlue dark:text-partyYellow text-xl mb-2">ผลลัพธ์ที่คาดหวัง</h5>
+                                <h5 class="font-black text-partyBlue dark:text-partyYellow text-lg md:text-xl mb-2 flex items-center gap-2">
+                                    <span class="w-1.5 h-6 bg-partyPink inline-block"></span>ผลลัพธ์ที่คาดหวัง
+                                </h5>
                                 <ul class="space-y-2">${policy.benefits.map((item) => `<li class="font-bold text-gray-700 dark:text-gray-300 flex gap-2"><span class="text-green-500 font-black">✓</span><span>${item}</span></li>`).join("")}</ul>
                             </section>
                         </div>
-                        <section class="mt-5">
-                            <h5 class="font-black text-partyBlue dark:text-partyYellow text-xl mb-2">แนวทางดำเนินการ</h5>
-                            <div class="grid md:grid-cols-2 gap-2">${policy.how.map((item, index) => `<div class="border-2 border-gray-200 dark:border-gray-700 bg-offWhite dark:bg-gray-900 p-3 font-bold text-gray-700 dark:text-gray-300"><span class="text-partyPink dark:text-partyYellow font-black">0${index + 1}</span> ${item}</div>`).join("")}</div>
+                        <section class="mt-6">
+                            <h5 class="font-black text-partyBlue dark:text-partyYellow text-lg md:text-xl mb-3 flex items-center gap-2">
+                                <span class="w-1.5 h-6 bg-partyBlue inline-block"></span>แนวทางดำเนินการ
+                            </h5>
+                            <div class="grid md:grid-cols-2 gap-3">${policy.how.map((item, index) => `<div class="border-2 border-gray-200 dark:border-gray-700 bg-offWhite dark:bg-gray-900 p-3 font-bold text-gray-700 dark:text-gray-300 flex gap-2"><span class="text-partyPink dark:text-partyYellow font-black">0${index + 1}</span> <span>${item}</span></div>`).join("")}</div>
                         </section>
-                        ${policy.extra ? `<section class="mt-5 bg-partyYellow/20 dark:bg-partyYellow/10 border-2 border-partyYellow p-4"><h5 class="font-black text-partyBlue dark:text-partyYellow text-xl mb-3">${policy.extraTitle || "เพิ่มเติม"}</h5><div class="flex flex-wrap gap-2">${policy.extra.map((item) => `<span class="bg-white dark:bg-gray-800 border-2 border-partyBlue/20 dark:border-partyYellow/30 px-3 py-1 font-black text-sm">${item}</span>`).join("")}</div></section>` : ""}
+                        ${policy.extra ? `<section class="mt-6 bg-partyYellow/20 dark:bg-partyYellow/10 border-2 border-partyYellow p-4"><h5 class="font-black text-partyBlue dark:text-partyYellow text-lg md:text-xl mb-3">${policy.extraTitle || "เพิ่มเติม"}</h5><div class="flex flex-wrap gap-2">${policy.extra.map((item) => `<span class="bg-white dark:bg-gray-800 border-2 border-partyBlue/20 dark:border-partyYellow/30 px-3 py-1 font-black text-sm">${item}</span>`).join("")}</div></section>` : ""}
                     </div>
                 </div>
             `;
 
             detailPanel.classList.remove("hidden");
-            detailPanel.scrollIntoView({ behavior: "smooth", block: "start" });
-            document.getElementById("policy-detail-close")?.addEventListener("click", () => detailPanel.classList.add("hidden"));
+            detailPanel.classList.add("flex");
+            
+            // Add handler to close modal
+            const closeDetail = () => {
+                detailPanel.classList.remove("flex");
+                detailPanel.classList.add("hidden");
+            };
+            
+            document.getElementById("policy-detail-close")?.addEventListener("click", closeDetail);
+            
+            // Close when clicking backdrop
+            detailPanel.onclick = (e) => {
+                if (e.target === detailPanel) {
+                    closeDetail();
+                }
+            };
         }
 
         document.getElementById("policy-search")?.addEventListener("input", (event) => {
