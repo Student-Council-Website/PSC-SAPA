@@ -107,39 +107,55 @@
             </a>
 
             <ul class="hidden md:flex space-x-6 items-center font-anakotmai">
-                <li><a href="index.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">หน้าหลัก</a></li>
-                <li><a href="council-committee.html" class="nav-link-active bg-partyPink text-partyBlue shadow-[4px_4px_0px_0px_#1e3a8a] dark:text-partyBlue font-bold px-3 py-1 border-b-4 border-partyPink transition-colors hover-trigger">คณะสภานักเรียน</a></li>
-                <li><a href="Action-Plan.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue hover-trigger">แผนการทำงาน</a></li>
+                <li><a href="index.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">หน้าหลัก</a></li>
+                <li><a href="council-committee.html" class="text-partyYellow font-bold px-3 py-1 transition-colors border-b-4 border-partyYellow">คณะสภานักเรียน</a></li>
+                <li><a href="pathway.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">Pathway to Future</a></li>
+                <li><a href="Action-Plan.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">แผนการทำงาน</a></li>
                 <li>
-                    <a href="policy.html" class="bg-partyBlue text-white border-2 border-partyBlue px-6 py-2 font-bold shadow-[4px_4px_0px_0px_#f472b6] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block rounded-sm hover:bg-partyDarkBlue hover-trigger">
+                    <a href="policy.html" class="bg-partyBlue text-white border-2 border-partyBlue px-6 py-2 font-bold shadow-[4px_4px_0px_0px_#f472b6] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block rounded-sm hover:bg-partyDarkBlue">
                         ดูนโยบาย
                     </a>
                 </li>
+                
                 <li>
-                    <button onclick="toggleTheme()" class="hover-trigger bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyPink transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
-                        <svg class="sun-icon absolute w-5 h-5 text-partyPink transform translate-y-12 dark:translate-y-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <button onclick="toggleTheme()" class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyYellow transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
+                        <svg class="sun-icon absolute w-5 h-5 text-pink-400 transform translate-y-12 dark:translate-y-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         <svg class="moon-icon absolute w-5 h-5 text-partyBlue dark:translate-y-12 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                     </button>
                 </li>
             </ul>
 
-            <button id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false" class="md:hidden text-partyBlue dark:text-partyPink p-2 focus:outline-none z-20 hover-trigger">
+            <button id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false" class="md:hidden text-partyBlue dark:text-partyYellow p-2 focus:outline-none z-20">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
         </div>
 
         <div id="mobile-menu-backdrop" class="hidden md:hidden"></div>
 
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-900 border-t-2 border-partyPink shadow-xl z-10 flex flex-col p-4 space-y-3 font-anakotmai">
-            <a href="index.html" class="block text-white font-bold text-xl py-2 border-b border-white/10 pl-2">หน้าหลัก</a>
-            <a href="council-committee.html" class="block text-partyPink font-bold text-xl py-2 border-b border-white/10 pl-2 border-l-4 border-l-partyPink">คณะสภานักเรียน</a>
-            <a href="pathway.html" class="block text-white font-bold text-xl py-2 border-b border-white/10 pl-2">แผนการทำงาน</a>
-            <a href="policy.html" class="block bg-partyPink text-partyBlue font-black text-center text-xl py-3 border-2 border-white shadow-[4px_4px_0px_0px_#ffffff] mt-2">ดูนโยบาย</a>
-            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-xl py-3 group pl-2">
-                <span>สลับโหมด มืด/สว่าง</span>
-                <div class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-full bg-white/10">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                </div>
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-950 border-t-2 border-partyYellow dark:border-pink-500 shadow-2xl z-10 flex flex-col p-5 space-y-2 font-anakotmai">
+            
+            <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>🏠</span> หน้าหลัก 
+            </a>
+            
+            <a href="council-committee.html" class="flex items-center gap-3 text-partyYellow font-bold text-lg py-3 px-4 border-l-4 border-partyYellow bg-white/10 rounded-r-lg"> 
+                <span>👥</span> คณะสภานักเรียน 
+            </a>
+            
+            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>🧭</span> Pathway to Future
+            </a>
+            
+            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+                <span>🗺️</span> แผนการทำงาน 
+            </a>
+            
+            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] active:translate-y-1 active:shadow-none transition-all"> 
+                📋 ดูนโยบาย 
+            </a>
+            
+            <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors mt-4 border-t border-white/20">
+                <span class="flex items-center gap-3"><span>🌙</span> สลับโหมด มืด/สว่าง</span>
             </button>
         </div>
     </nav>
@@ -342,8 +358,8 @@
 
             // --- ฝ่ายสนับสนุน (Admin) ---
             { id: '4', role: 'เลขานุการ', name: 'นางสาวปรียากาญจน์ ใจกล้า', nickname: 'ไอติม', room: '5/2', birthday: '16', skills: 'มีทักษะด้านการออกแบบกราฟฟิก', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/4.png', motto: 'พัฒนาตัวเองในทุก ๆ วัน เพื่อเป็นเวอร์ชันที่ดีที่สุดของตัวเอง', ig: '@iisakuerem' },
-            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวอชิริญา หารภูมิ', nickname: 'เอเชีย', room: '5/2', birthday: '16', skills: 'กล้าแสดงออกด้านกิจกรรมมีความคิดสร้างสรรค์ในการแสดงหรือกิจกรรม', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/5.png', motto: 'อยากเป็นพลังงานบวกให้ทุกๆคน', ig: '@snniriiya' },
-            { id: '6', role: 'พัสดุ', name: 'นางสาวชญานิศ บุญมา', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/6.png', motto: '-', ig: '-' },
+            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวฐานิดา พลอารีย์', nickname: 'แตม', room: '5/1', birthday: '16', skills: 'เรียนรู้ได้เร็ว', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/42.png', motto: 'อย่าเก็บอดีตมาทำร้ายตนเอง แต่จงหัดที่จะเรียนรู้จากมัน', ig: '@t.thanidaa_' },
+            { id: '6', role: 'พัสดุ', name: 'นางสาวชญานิศ บุญมา', nickname: 'แพรวา', room: '5/2', birthday: '17', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/6.png', motto: '-', ig: '@p.praxnwa' },
             { id: '7', role: 'ผู้ช่วยพัสดุ', name: 'นางสาวพิมพ์ลภัส สุขนิธิกุลวงศ์', nickname: 'มิ้ง', room: '5/2', birthday: '16', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/7.png', motto: '-', ig: '-' },
             { id: '8', role: 'เหรัญญิก', name: 'นางสาวธนัญญา ตันประเสริฐ', nickname: 'ชมพู่', room: '5/4', birthday: '17', skills: 'สื่อสารและทำงานร่วมกับผู้อื่นได้ดี', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/8.png', motto: 'อนาคตที่ดี เริ่มจากการตั้งใจทำหน้าที่วันนี้ให้ดีที่สุด', ig: '@than.ks880' },
             { id: '9', role: 'ผู้ช่วยเหรัญญิก', name: 'นางสาวเขมิกา ศักด์เสรีกุล', nickname: 'คิมมิ่', room: '5/2', birthday: '16', skills: 'เล่นวอลเลย์บอล', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/9.png', motto: 'ทุก ๆ อย่างต้องใช้เวลา', ig: '@Khemika_q' },
@@ -380,7 +396,7 @@
             { id: '32', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายพิชญะ วงศรีแก้ว', nickname: 'กาฟิวส์', room: '5/1', birthday: '17', skills: 'ตีกลอง,งานช่างต่างๆ', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/32.png', motto: 'ไม่พยายาม ก็ไม่โต', ig: '@pichaya._.ss' },
             { id: '33', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายรัฐภูมิ ลีทอง', nickname: 'ภูมิ', room: '5/1', birthday: '-', skills: '-', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/33.png', motto: '-', ig: '@ratthaphumleethong' },
             { id: '34', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายเจริญชัย ทองแพง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/34.png', motto: '-', ig: '-' },
-            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', nickname: 'เกื้อ', room: '5/4', birthday: '16', skills: 'เล่นกีฬา', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/35.png', motto: 'พอใจเท่าที่มี ยินดีเท่าที่ได้', ig: '@Kuea' },
+            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', nickname: 'เกื้อ', room: '5/4', birthday: '16', skills: 'เล่นกีฬา', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/35.png', motto: 'พอใจเท่าที่มี ยินดีเท่าที่ได้', ig: '@kue_a9' },
             { id: '36', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพัทธ์ เชื่อเมืองพาน', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/36.png', motto: '-', ig: '-' },
             { id: '37', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวพณิตา ทองสว่างแจ้ง', nickname: 'เอม', room: '5/5', birthday: '16', skills: 'มีรับผิดชอบในงาน หรือหน้าที่ต่างๆที่ได้รับมอบหมาย', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/37.png', motto: 'ข้างหน้าคือความฝัน ข้างหลัง คือบทเรียน', ig:'@axm_.ore' },
 
@@ -389,7 +405,7 @@
             { id: '39', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนพรัตน์ สารรัตน์', nickname: 'แน็ค', room: '5/2', birthday: '17', skills: 'เรียนรู้เร็ว', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/39.png', motto: 'Love yourself and be who you want to be.', ig: '@npr.srt' },
             { id: '40', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอภิญญาภรณ์ บุญหนา', nickname: 'แบม', room: '5/1', birthday: '16', skills: 'ด้านการพูด การสื่อสาร', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/40.png', motto: 'End of beginning ', ig: '@nuldeas' },
             { id: '41', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวศศิธร หงษา', nickname: 'จอย', room: '5/1', birthday: '16', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/41.png', motto: 'ข่าวสารไว ใส่ใจทุกคน', ig: '@ssithrnhgsaa' },
-            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวฐานิดา พลอารีย์', nickname: 'แตม', room: '5/1', birthday: '16', skills: 'เรียนรู้ได้เร็ว', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/42.png', motto: 'อย่าเก็บอดีตมาทำร้ายตนเอง แต่จงหัดที่จะเรียนรู้จากมัน', ig: '@t.thanidaa_' },
+            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอชิริญา หารภูมิ', nickname: 'เอเชีย', room: '5/2', birthday: '16', skills: 'กล้าแสดงออกด้านกิจกรรมมีความคิดสร้างสรรค์ในการแสดงหรือกิจกรรม', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/42.png', motto: 'อยากเป็นพลังงานบวกให้ทุกๆคน', ig: '@snniriiya' },
             { id: '43', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนภัสสร ประทุมมา', nickname: 'นุ๊ก', room: '5/3', birthday: '16', skills: 'ร้องเพลง นาฏศิลป์ เต้น', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/43.png', motto: 'ความสุขอยู่ที่เราคิด ชีวิตอยู่ที่เราสร้าง', ig: '@nongpedkaka ' },
             { id: '44', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวกฤตยากร วงค์สงคราม', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/44.png', motto: '-', ig: '-' }
         ];
