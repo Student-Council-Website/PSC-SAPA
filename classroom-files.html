@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ไฟล์ตารางเรียนและห้องเรียน ม.1-ม.6 - สภานักเรียน</title>
-    
+    <title>ตารางเรียนแยกรายห้อง ม.1-ม.6 - สภานักเรียน</title>
+
+    <meta name="description" content="ตารางเรียนแยกรายห้องเรียน ระดับชั้นมัธยมศึกษาปีที่ 1-6 ภาคเรียนที่ 1/2569 โรงเรียนพานทองสภาชนูปถัมภ์">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://Council.com/">
-    <meta property="og:title" content="สภานักเรียนพานทองสภาชนูปถัมภ์ - ประจำปีการศึกษา 2569">
-    <meta property="og:description" content="สภานักเรียน - ผู้บุกเบิกพัฒนา รับฟังทุกปัญหา พร้อมแก้ไขไปด้วยกัน">
+    <meta property="og:title" content="ตารางเรียนแยกรายห้อง - สภานักเรียนพานทองสภาชนูปถัมภ์">
+    <meta property="og:description" content="ตารางเรียนแยกรายห้องเรียน ม.1-ม.6 ภาคเรียนที่ 1/2569">
     <meta property="og:image" content="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e3a8a">
@@ -19,8 +20,10 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="theme-config.js"></script>
+    <!-- Include html2canvas to convert DOM elements to Images -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    
+
     <style>
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
@@ -28,9 +31,141 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
         .animate-float-custom { animation: float 4s ease-in-out infinite; }
-        
+
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
         .dark .glass-nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
+
+        /* Tab styling */
+        .grade-tab {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+        .grade-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 80%;
+            height: 4px;
+            background: #f472b6;
+            border-radius: 2px;
+            transition: transform 0.3s ease;
+        }
+        .grade-tab:hover::after,
+        .grade-tab.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+        .grade-tab.active {
+            background: #1e3a8a;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 0px 0px #f472b6;
+        }
+        .dark .grade-tab.active {
+            background: #f472b6;
+            color: #0f172a;
+            box-shadow: 4px 4px 0px 0px #facc15;
+        }
+
+        /* Room card */
+        .room-card {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        .room-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1e3a8a, #f472b6, #facc15);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .room-card:hover::before {
+            opacity: 1;
+        }
+        .room-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0px 0px #1e3a8a;
+        }
+        .dark .room-card:hover {
+            box-shadow: 8px 8px 0px 0px #f472b6;
+        }
+
+        /* Stagger animation */
+        .room-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.4s ease forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Grade panel */
+        .grade-panel { display: none; }
+        .grade-panel.active { display: block; }
+
+        /* Badge pulse */
+        .badge-glow {
+            animation: badgeGlow 2s infinite;
+        }
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.4); }
+            50% { box-shadow: 0 0 12px 4px rgba(244, 114, 182, 0.15); }
+        }
+
+        /* Retro table design inside modal */
+        .retro-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Anakotmai', sans-serif;
+            font-size: 0.85rem;
+        }
+        .retro-table th {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            font-weight: 800;
+            padding: 10px 6px;
+            border: 2px solid #0f172a;
+            text-align: center;
+        }
+        .dark .retro-table th {
+            background-color: #312e81;
+            border-color: #374151;
+        }
+        .retro-table td {
+            padding: 8px 6px;
+            border: 2px solid #0f172a;
+            text-align: center;
+            font-weight: bold;
+            line-height: 1.2;
+            background-color: #ffffff;
+        }
+        .dark .retro-table td {
+            border-color: #374151;
+            background-color: #1f2937;
+            color: #f3f4f6;
+        }
+        .retro-table tr:hover td {
+            background-color: #fef08a;
+            color: #1e3a8a;
+        }
+        .dark .retro-table tr:hover td {
+            background-color: #374151;
+            color: #facc15;
+        }
+        .subject-cell {
+            min-width: 80px;
+        }
     </style>
 </head>
 
@@ -66,20 +201,15 @@
             </a>
 
             <ul class="hidden md:flex space-x-6 items-center font-anakotmai">
-                <li><a href="index.html" class="text-partyBlue dark:text-white font-bold px-3 py-1 transition-colors border-b-4 border-partyYellow">หน้าหลัก</a></li>
-                
+                <li><a href="index.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">หน้าหลัก</a></li>
                 <li><a href="council-committee.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">คณะสภานักเรียน</a></li>
-                
                 <li><a href="pathway.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">Pathway to Future</a></li>
-                
                 <li><a href="Action-Plan.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">แผนการทำงาน</a></li>
-                
                 <li>
                     <a href="policy.html" class="bg-partyBlue text-white border-2 border-partyBlue px-6 py-2 font-bold shadow-[4px_4px_0px_0px_#f472b6] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block rounded-sm hover:bg-partyDarkBlue">
                         ดูนโยบาย
                     </a>
                 </li>
-                
                 <li>
                     <button onclick="toggleTheme()" class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 hover:border-partyYellow transition-all group relative overflow-hidden h-10 w-10 flex items-center justify-center">
                         <svg class="sun-icon absolute w-5 h-5 text-pink-400 transform translate-y-12 dark:translate-y-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -96,33 +226,28 @@
         <div id="mobile-menu-backdrop" class="hidden md:hidden"></div>
 
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-partyBlue dark:bg-gray-950 border-t-2 border-partyYellow dark:border-pink-500 shadow-2xl z-10 flex flex-col p-5 space-y-2 font-anakotmai">
-            
-            <a href="index.html" class="flex items-center gap-3 text-partyYellow font-bold text-lg py-3 px-4 border-l-4 border-partyYellow bg-white/10 rounded-r-lg"> 
-                <span>🏠</span> หน้าหลัก 
+            <a href="index.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
+                <span>🏠</span> หน้าหลัก
             </a>
-            
-            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
-                <span>👥</span> คณะสภานักเรียน 
+            <a href="council-committee.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
+                <span>👥</span> คณะสภานักเรียน
             </a>
-            
-            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
                 <span>🧭</span> Pathway to Future
             </a>
-            
-            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
-                <span>🗺️</span> แผนการทำงาน 
+            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors">
+                <span>🗺️</span> แผนการทำงาน
             </a>
-            
-            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] active:translate-y-1 active:shadow-none transition-all"> 
-                📋 ดูนโยบาย 
+            <a href="policy.html" class="flex items-center justify-center gap-2 bg-partyYellow text-partyBlue font-black text-lg py-3 px-4 rounded-lg mt-2 shadow-[4px_4px_0px_0px_rgba(244,114,182,1)] active:translate-y-1 active:shadow-none transition-all">
+                📋 ดูนโยบาย
             </a>
-            
             <button onclick="toggleTheme()" class="flex items-center justify-between w-full text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors mt-4 border-t border-white/20">
                 <span class="flex items-center gap-3"><span>🌙</span> สลับโหมด มืด/สว่าง</span>
             </button>
         </div>
     </nav>
 
+    <!-- Sub-header bar -->
     <div class="mt-[68px] md:mt-[76px] bg-gradient-to-r from-partyBlue via-partyDarkBlue to-partyBlue dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 border-b-4 border-partyYellow py-3 md:py-4 z-40 relative shadow-md">
         <div class="container mx-auto px-4 max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3 text-center lg:text-left">
@@ -130,11 +255,11 @@
                     <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="h-8 w-8">
                 </div>
                 <div>
-                    <h2 class="text-white font-black text-sm md:text-base tracking-wide">PSC COUNCIL SERVICES</h2>
-                    <p class="text-partyYellow/80 text-xs font-bold">คลังไฟล์และห้องเรียนออนไลน์ ม.1 - ม.6</p>
+                    <h2 class="text-white font-black text-sm md:text-base tracking-wide">📂 CLASS SCHEDULE DATABASE</h2>
+                    <p class="text-partyYellow/80 text-xs font-bold">ตารางเรียนแยกรายห้อง ภาคเรียนที่ 1/2569</p>
                 </div>
             </div>
-            
+
             <div class="flex flex-wrap items-center justify-center gap-2.5 w-full lg:w-auto">
                 <a href="index.html" class="flex items-center justify-center gap-2 bg-white/10 hover:bg-partyYellow text-white hover:text-partyBlue font-black px-3 py-2 text-xs md:text-sm rounded border border-white/20 hover:border-partyYellow transition-all duration-300 transform hover:-translate-y-0.5">
                     <span>🏠 กลับหน้าหลัก</span>
@@ -146,7 +271,7 @@
         </div>
     </div>
 
-    <main class="min-h-[80vh] py-16 px-4 relative overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
+    <main class="min-h-[80vh] py-12 md:py-16 px-4 relative overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
         <!-- Background Elements -->
         <div class="absolute top-12 left-10 w-24 h-24 border-4 border-partyPink rounded-full opacity-20 animate-float-custom hidden md:block"></div>
         <div class="absolute bottom-16 right-12 w-32 h-32 bg-partyYellow opacity-10 transform rotate-12 animate-float-custom hidden md:block"></div>
@@ -154,166 +279,74 @@
 
         <div class="max-w-6xl mx-auto relative z-10">
             <!-- Header Section -->
-            <div class="text-center mb-12 reveal-on-scroll">
+            <div class="text-center mb-10 reveal-on-scroll">
                 <div class="inline-flex items-center gap-2 bg-partyYellow text-partyBlue font-black px-4 py-1.5 border-2 border-partyBlue shadow-[3px_3px_0px_0px_rgba(30,58,138,1)] text-xs md:text-sm mb-4 transform -rotate-1">
-                    📂 CLASSROOM FILES & SCHEDULES
+                    🗓️ SEMESTER 1 / 2569
                 </div>
-                <h1 class="text-3xl md:text-5xl font-black text-partyBlue dark:text-white mb-4 tracking-tight leading-tight">
-                    ตารางเรียนโรงเรียนพานทองสภาชนูปถัมภ์
-                    <p class="text-xl md:text-2xl font-black text-partyBlue dark:text-white mb-4">
-                        ปีการศึกษา 2569
-                    </p>   
+                <h1 class="text-2xl md:text-4xl lg:text-5xl font-black text-partyBlue dark:text-white mb-3 tracking-tight leading-tight">
+                    ตารางเรียนแยกรายห้อง
                 </h1>
-                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 font-bold max-w-2xl mx-auto leading-relaxed border-l-4 border-partyYellow pl-4 py-1 bg-gray-50 dark:bg-gray-800/80 rounded-r-lg">
-                    บริการคลังไฟล์ข้อมูลตารางเรียนของนักเรียนระดับชั้น ม.1 - ม.6 โรงเรียนพานทองสภาชนูปถัมภ์ ท่านสามารถคลิกเลือกตามระดับชั้นและห้องเรียนเพื่อดูรูปภาพหรือดาวน์โหลดได้ทันที
+                <p class="text-base md:text-lg font-black text-partyPink dark:text-partyPink mb-4">
+                    โรงเรียนพานทองสภาชนูปถัมภ์
+                </p>
+                <p class="text-xs md:text-sm text-gray-600 dark:text-gray-400 font-bold max-w-2xl mx-auto leading-relaxed border-l-4 border-partyYellow pl-4 py-2 bg-gray-50 dark:bg-gray-800/80 rounded-r-lg text-left">
+                    🔎 เลือกระดับชั้นจากแท็บด้านล่าง แล้วกดที่ห้องเรียนที่ต้องการเพื่อดูตารางเรียนแบบละเอียด และสามารถบันทึกเป็นรูปภาพเก็บลงอุปกรณ์ได้ทันที!
                 </p>
             </div>
 
-            <!-- Grade Grid (ม.1 - ม.6) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 reveal-on-scroll">
-                
-                <!-- ม.1 Card -->
-                <div class="bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-gray-700 shadow-pop hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all rounded-sm p-6 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-partyBlue text-white font-black px-3.5 py-1 text-base md:text-lg border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase">ม.1</span>
-                            <span class="text-xs font-bold text-gray-400">2 ตาราง</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-black text-partyBlue dark:text-white mb-2 leading-tight group-hover:text-partyPink transition-colors">มัธยมศึกษาปีที่ 1</h3>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 font-bold mb-6">ตารางเรียนแบ่งกลุ่มห้องของนักเรียนระดับชั้น ม.1</p>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <button onclick="openModal('ตารางเรียน ม.1 (ห้อง 1-8)', 'images/ตารางเรียนแต่ละดับชั้น/M.1(1-8).jpg')" class="w-full text-left bg-gray-50 hover:bg-partyYellow dark:bg-gray-900 text-partyBlue dark:text-white font-bold p-3 border-2 border-partyBlue dark:border-gray-600 hover:border-partyBlue shadow-[3px_3px_0px_0px_rgba(30,58,138,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex items-center justify-between">
-                            <span>ตารางเรียน ห้อง 1 - 8</span>
-                            <span class="text-partyPink font-black">🔍 ดูรูป</span>
-                        </button>
-                        <button onclick="openModal('ตารางเรียน ม.1 (ห้อง 9-14)', 'images/ตารางเรียนแต่ละดับชั้น/M.1(9-14).jpg')" class="w-full text-left bg-gray-50 hover:bg-partyYellow dark:bg-gray-900 text-partyBlue dark:text-white font-bold p-3 border-2 border-partyBlue dark:border-gray-600 hover:border-partyBlue shadow-[3px_3px_0px_0px_rgba(30,58,138,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex items-center justify-between">
-                            <span>ตารางเรียน ห้อง 9 - 14</span>
-                            <span class="text-partyPink font-black">🔍 ดูรูป</span>
-                        </button>
-                    </div>
+            <!-- Grade Tab Switcher -->
+            <div class="mb-8 reveal-on-scroll">
+                <div class="flex flex-wrap justify-center gap-2 md:gap-3" id="grade-tabs">
+                    <button class="grade-tab active bg-white dark:bg-gray-800 text-partyBlue dark:text-white font-black px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base border-2 border-partyBlue dark:border-gray-600 rounded-sm" data-grade="m1" onclick="switchGrade('m1', this)">
+                        <span class="hidden md:inline">มัธยมศึกษาปีที่ </span>ม.1
+                    </button>
+                    <button class="grade-tab bg-white dark:bg-gray-800 text-partyBlue dark:text-white font-black px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base border-2 border-partyBlue dark:border-gray-600 rounded-sm" data-grade="m2" onclick="switchGrade('m2', this)">
+                        <span class="hidden md:inline">มัธยมศึกษาปีที่ </span>ม.2
+                    </button>
+                    <button class="grade-tab bg-white dark:bg-gray-800 text-partyBlue dark:text-white font-black px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base border-2 border-partyBlue dark:border-gray-600 rounded-sm" data-grade="m3" onclick="switchGrade('m3', this)">
+                        <span class="hidden md:inline">มัธยมศึกษาปีที่ </span>ม.3
+                    </button>
+                    <button class="grade-tab bg-white dark:bg-gray-800 text-partyBlue dark:text-white font-black px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base border-2 border-partyBlue dark:border-gray-600 rounded-sm" data-grade="m4" onclick="switchGrade('m4', this)">
+                        <span class="hidden md:inline">มัธยมศึกษาปีที่ </span>ม.4
+                    </button>
+                    <button class="grade-tab bg-white dark:bg-gray-800 text-partyBlue dark:text-white font-black px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base border-2 border-partyBlue dark:border-gray-600 rounded-sm" data-grade="m5" onclick="switchGrade('m5', this)">
+                        <span class="hidden md:inline">มัธยมศึกษาปีที่ </span>ม.5
+                    </button>
+                    <button class="grade-tab bg-white dark:bg-gray-800 text-partyBlue dark:text-white font-black px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base border-2 border-partyBlue dark:border-gray-600 rounded-sm" data-grade="m6" onclick="switchGrade('m6', this)">
+                        <span class="hidden md:inline">มัธยมศึกษาปีที่ </span>ม.6
+                    </button>
                 </div>
+            </div>
 
-                <!-- ม.2 Card -->
-                <div class="bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-gray-700 shadow-pop hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all rounded-sm p-6 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-partyBlue text-white font-black px-3.5 py-1 text-base md:text-lg border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase">ม.2</span>
-                            <span class="text-xs font-bold text-gray-400">2 ตาราง</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-black text-partyBlue dark:text-white mb-2 leading-tight group-hover:text-partyPink transition-colors">มัธยมศึกษาปีที่ 2</h3>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 font-bold mb-6">ตารางเรียนแบ่งกลุ่มห้องของนักเรียนระดับชั้น ม.2</p>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <button onclick="openModal('ตารางเรียน ม.2 (ห้อง 1-8)', 'images/ตารางเรียนแต่ละดับชั้น/M.2(1-8).jpg')" class="w-full text-left bg-gray-50 hover:bg-partyYellow dark:bg-gray-900 text-partyBlue dark:text-white font-bold p-3 border-2 border-partyBlue dark:border-gray-600 hover:border-partyBlue shadow-[3px_3px_0px_0px_rgba(30,58,138,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex items-center justify-between">
-                            <span>ตารางเรียน ห้อง 1 - 8</span>
-                            <span class="text-partyPink font-black">🔍 ดูรูป</span>
-                        </button>
-                        <button onclick="openModal('ตารางเรียน ม.2 (ห้อง 9-14)', 'images/ตารางเรียนแต่ละดับชั้น/M.2(9-14).jpg')" class="w-full text-left bg-gray-50 hover:bg-partyYellow dark:bg-gray-900 text-partyBlue dark:text-white font-bold p-3 border-2 border-partyBlue dark:border-gray-600 hover:border-partyBlue shadow-[3px_3px_0px_0px_rgba(30,58,138,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex items-center justify-between">
-                            <span>ตารางเรียน ห้อง 9 - 14</span>
-                            <span class="text-partyPink font-black">🔍 ดูรูป</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ม.3 Card -->
-                <div class="bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-gray-700 shadow-pop hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all rounded-sm p-6 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-partyBlue text-white font-black px-3.5 py-1 text-base md:text-lg border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase">ม.3</span>
-                            <span class="text-xs font-bold text-gray-400">2 ตาราง</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-black text-partyBlue dark:text-white mb-2 leading-tight group-hover:text-partyPink transition-colors">มัธยมศึกษาปีที่ 3</h3>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 font-bold mb-6">ตารางเรียนกลุ่มห้องของนักเรียนระดับชั้น ม.3</p>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <button onclick="openModal('ตารางเรียน ม.3 (ห้อง 1-8)', 'images/ตารางเรียนแต่ละดับชั้น/M.3(1-8).jpg')" class="w-full text-left bg-gray-50 hover:bg-partyYellow dark:bg-gray-900 text-partyBlue dark:text-white font-bold p-3 border-2 border-partyBlue dark:border-gray-600 hover:border-partyBlue shadow-[3px_3px_0px_0px_rgba(30,58,138,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex items-center justify-between">
-                            <span>ตารางเรียน ห้อง 1 - 8</span>
-                            <span class="text-partyPink font-black">🔍 ดูรูป</span>
-                        </button>
-                        <button onclick="openModal('ตารางเรียน ม.3 (ห้อง 9-13)', 'images/ตารางเรียนแต่ละดับชั้น/M.3(9-13).jpg')" class="w-full text-left bg-gray-50 hover:bg-partyYellow dark:bg-gray-900 text-partyBlue dark:text-white font-bold p-3 border-2 border-partyBlue dark:border-gray-600 hover:border-partyBlue shadow-[3px_3px_0px_0px_rgba(30,58,138,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex items-center justify-between">
-                            <span>ตารางเรียน ห้อง 9 - 13</span>
-                            <span class="text-partyPink font-black">🔍 ดูรูป</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ม.4 Card -->
-                <div class="bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-gray-700 shadow-pop hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all rounded-sm p-6 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-partyBlue text-white font-black px-3.5 py-1 text-base md:text-lg border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase">ม.4</span>
-                            <span class="text-xs font-bold text-gray-400">1 ตาราง</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-black text-partyBlue dark:text-white mb-2 leading-tight group-hover:text-partyPink transition-colors">มัธยมศึกษาปีที่ 4</h3>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 font-bold mb-6">ตารางเรียนกลุ่มห้องของนักเรียนระดับชั้น ม.4</p>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <button onclick="openModal('ตารางเรียน ม.4 (ห้อง 1-6)', 'images/ตารางเรียนแต่ละดับชั้น/M.4(1-6).jpg')" class="w-full text-left bg-gray-50 hover:bg-partyYellow dark:bg-gray-900 text-partyBlue dark:text-white font-bold p-3 border-2 border-partyBlue dark:border-gray-600 hover:border-partyBlue shadow-[3px_3px_0px_0px_rgba(30,58,138,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex items-center justify-between">
-                            <span>ตารางเรียน ห้อง 1 - 6</span>
-                            <span class="text-partyPink font-black">🔍 ดูรูป</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ม.5 Card -->
-                <div class="bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-gray-700 shadow-pop hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all rounded-sm p-6 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-partyBlue text-white font-black px-3.5 py-1 text-base md:text-lg border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase">ม.5</span>
-                            <span class="text-xs font-bold text-gray-400">1 ตาราง</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-black text-partyBlue dark:text-white mb-2 leading-tight group-hover:text-partyPink transition-colors">มัธยมศึกษาปีที่ 5</h3>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 font-bold mb-6">ตารางเรียนกลุ่มห้องของนักเรียนระดับชั้น ม.5</p>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <button onclick="openModal('ตารางเรียน ม.5 (ห้อง 1-6)', 'images/ตารางเรียนแต่ละดับชั้น/M.5(1-6).jpg')" class="w-full text-left bg-gray-50 hover:bg-partyYellow dark:bg-gray-900 text-partyBlue dark:text-white font-bold p-3 border-2 border-partyBlue dark:border-gray-600 hover:border-partyBlue shadow-[3px_3px_0px_0px_rgba(30,58,138,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex items-center justify-between">
-                            <span>ตารางเรียน ห้อง 1 - 6</span>
-                            <span class="text-partyPink font-black">🔍 ดูรูป</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ม.6 Card -->
-                <div class="bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-gray-700 shadow-pop hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all rounded-sm p-6 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-partyBlue text-white font-black px-3.5 py-1 text-base md:text-lg border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] uppercase">ม.6</span>
-                            <span class="text-xs font-bold text-gray-400">1 ตาราง</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-black text-partyBlue dark:text-white mb-2 leading-tight group-hover:text-partyPink transition-colors">มัธยมศึกษาปีที่ 6</h3>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 font-bold mb-6">ตารางเรียนกลุ่มห้องของนักเรียนระดับชั้น ม.6</p>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                        <button onclick="openModal('ตารางเรียน ม.6 (ห้อง 1-6)', 'images/ตารางเรียนแต่ละดับชั้น/M.6(1-6).jpg')" class="w-full text-left bg-gray-50 hover:bg-partyYellow dark:bg-gray-900 text-partyBlue dark:text-white font-bold p-3 border-2 border-partyBlue dark:border-gray-600 hover:border-partyBlue shadow-[3px_3px_0px_0px_rgba(30,58,138,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex items-center justify-between">
-                            <span>ตารางเรียน ห้อง 1 - 6</span>
-                            <span class="text-partyPink font-black">🔍 ดูรูป</span>
-                        </button>
-                    </div>
-                </div>
-
+            <!-- Grade Content Panels -->
+            <div id="grade-panels">
+                <!-- Generated by JavaScript -->
             </div>
         </div>
     </main>
 
-    <!-- Lightbox Modal -->
+    <!-- Lightbox Modal for Detailed Schedule Table -->
     <div id="schedule-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity duration-300">
-        <div class="relative max-w-5xl w-full bg-white dark:bg-gray-900 border-4 border-partyBlue dark:border-partyPink p-4 shadow-[8px_8px_0px_0px_rgba(30,58,138,1)] dark:shadow-[8px_8px_0px_0px_#f472b6] rounded-sm flex flex-col max-h-[90vh]">
+        <div class="relative max-w-6xl w-full bg-white dark:bg-gray-900 border-4 border-partyBlue dark:border-partyPink p-4 shadow-[8px_8px_0px_0px_rgba(30,58,138,1)] dark:shadow-[8px_8px_0px_0px_#f472b6] rounded-sm flex flex-col max-h-[95vh]">
             <!-- Modal Header -->
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b-4 border-partyBlue dark:border-gray-700 pb-3 mb-4 gap-3">
-                <h3 id="modal-title" class="text-xl md:text-2xl font-black text-partyBlue dark:text-white">ตารางเรียน</h3>
+                <div>
+                    <h3 id="modal-title" class="text-xl md:text-2xl font-black text-partyBlue dark:text-white">ตารางเรียน</h3>
+                    <p id="modal-subtitle" class="text-xs md:text-sm text-partyPink dark:text-partyPink font-bold mt-1"></p>
+                </div>
                 <div class="flex items-center gap-3 w-full sm:w-auto">
-                    <a id="modal-download" href="" download class="flex-1 sm:flex-none text-center bg-emerald-500 hover:bg-emerald-600 text-white font-black px-4 py-2 text-xs md:text-sm rounded-sm border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
-                        📥 ดาวน์โหลดไฟล์
-                    </a>
+                    <!-- Action Button to Save as Image -->
+                    <button id="btn-save-img" class="flex-1 sm:flex-none text-center bg-emerald-500 hover:bg-emerald-600 text-white font-black px-4 py-2 text-xs md:text-sm rounded-sm border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+                        📸 บันทึกเป็นรูปภาพ
+                    </button>
                     <button onclick="closeModal()" class="flex-1 sm:flex-none text-center bg-partyPink hover:bg-pink-600 text-white font-black px-4 py-2 text-xs md:text-sm rounded-sm border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
                         ❌ ปิดหน้าต่าง
                     </button>
                 </div>
             </div>
-            <!-- Modal Body -->
-            <div class="flex-grow overflow-auto flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded border-2 border-gray-300 dark:border-gray-700 p-2 md:p-4 min-h-[50vh]">
-                <img id="modal-image" src="" alt="ตารางเรียน" class="max-w-full max-h-[65vh] object-contain rounded-sm shadow-sm transition-transform duration-300 hover:scale-[1.02]">
+            <!-- Modal Body (Detailed Retro Schedule Table) -->
+            <div class="flex-grow overflow-auto bg-gray-50 dark:bg-gray-800 rounded border-2 border-gray-300 dark:border-gray-700 p-2 md:p-4 min-h-[50vh]" id="modal-table-container">
+                <!-- Table will be injected here dynamically -->
             </div>
         </div>
     </div>
@@ -322,9 +355,9 @@
         <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-partyYellow via-pink-300 to-partyYellow"></div>
         <div class="absolute -right-10 -bottom-20 w-80 h-80 border-8 border-partyYellow rounded-full opacity-10"></div>
         <div class="absolute left-10 top-20 w-32 h-32 border-4 border-white rounded-full opacity-5"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 relative z-10"> 
-            
+
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 relative z-10">
+
             <div class="flex-shrink-0 order-2 md:order-1 flex items-center justify-center hover-trigger group">
                 <div class="bg-white p-2 rounded-full -rotate-6 group-hover:rotate-0 transition-all duration-300 shadow-[4px_4px_0px_0px_#ffffff] w-20 h-20 md:w-28 md:h-28 flex items-center justify-center border-4 border-partyBlue group-hover:scale-105 relative z-10">
                     <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Panthong_Saphanupathamnd.png" alt="School Logo" class="w-full h-full object-contain drop-shadow-sm">
@@ -333,7 +366,7 @@
                     <img src="images/Panthong_Saphanupathamnd/Remove_Backgrou_Council_Panthong_Saphanupathamnd.png" alt="Council Logo" class="w-full h-full object-contain drop-shadow-sm">
                 </div>
             </div>
-            
+
             <div class="text-center order-1 md:order-2 flex-grow">
                 <h3 class="font-marker text-3xl md:text-5xl lg:text-6xl text-white mb-2 tracking-wide leading-tight drop-shadow-lg">Pioneering development, listening to every problem</h3>
                 <p class="font-marker text-partyPink text-2xl md:text-4xl mb-4 leading-tight drop-shadow-md">and ready to solve them together</p>
@@ -344,34 +377,29 @@
                 </div>
                 <p class="text-sm opacity-60 mt-6 text-gray-300 font-mono tracking-widest uppercase">System Version <span id="app-version"></span></p>
             </div>
-            
-            <div class="flex flex-col items-center md:items-end gap-3 order-3 md:order-3 flex-shrink-0">
 
+            <div class="flex flex-col items-center md:items-end gap-3 order-3 md:order-3 flex-shrink-0">
                 <span class="text-xs md:text-sm font-black text-partyBlue uppercase tracking-widest bg-white px-4 py-1 rounded-sm shadow-sm mt-4 mb-1">สภานักเรียนพานทองฯ</span>
-                
                 <a href="https://www.instagram.com/deksapa.psc/" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
                     <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Instagram</span>
                     <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </div>
                 </a>
-                
                 <a href="https://www.facebook.com/profile.php?id=100063788612433" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
                     <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">Facebook Page</span>
                     <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                     </div>
                 </a>
-
                 <a href="https://www.tiktok.com/@deksapa.psc" target="_blank" class="hover-trigger flex items-center gap-4 text-white hover:text-partyYellow transition-colors group">
                     <span class="font-bold text-lg md:text-xl group-hover:-translate-x-2 transition-transform tracking-wide">TikTok</span>
                     <div class="bg-white text-partyBlue p-2 md:p-3 rounded-full border-2 border-partyBlue group-hover:bg-partyYellow transition-all shadow-[2px_2px_0px_0px_rgba(244,114,182,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
                     </div>
                 </a>
-
             </div>
-            
+
         </div>
 
         <!-- Identity & Copyright Bottom Bar -->
@@ -389,14 +417,14 @@
             </div>
         </div>
     </footer>
-        
-        <script src="main.js"></script>
+
+    <script src="main.js"></script>
     <script>
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
         }
 
-        // เปิด-ปิด เมนูในมือถือ
+        // Mobile menu toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         if (menuBtn && mobileMenu) {
@@ -405,34 +433,673 @@
             });
         }
 
-        // Lightbox Modal Functions
-        function openModal(title, imageUrl) {
-            const modal = document.getElementById('schedule-modal');
-            const modalTitle = document.getElementById('modal-title');
-            const modalImage = document.getElementById('modal-image');
-            const modalDownload = document.getElementById('modal-download');
-            
-            if (modal && modalTitle && modalImage && modalDownload) {
-                modalTitle.textContent = title;
-                modalImage.src = imageUrl;
-                modalDownload.href = imageUrl;
-                modalDownload.setAttribute('download', title + '.jpg');
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                document.body.style.overflow = 'hidden'; // prevent scrolling background
+        // Raw Schedules from pasted-text.txt and newly updated M.1
+        const rawSchedules = {
+            "1/1": {
+                homeroom: "คหกรรม1",
+                table: [
+                    ["จ.", "Home Room", "ว21101<br>ไพโรจน์<br>314", "ว21101<br>ไพโรจน์<br>314", "ส21101<br>ณัฏฐณิชา<br>222", "พักเที่ยง", "ศ20161<br>วิศรชัย<br>111", "ว21101<br>จิรัฐฐ์<br>com1", "ว21101<br>จิรัฐฐ์<br>com1", "ส21221<br>เพชรไพลี<br>คห1"],
+                    ["อ.", "Home Room", "ส21101<br>สุดา<br>322", "ส21111<br>ทิพาดา<br>226", "พ21101<br>พรประภา<br>433", "พักเที่ยง", "อ21101<br>ทิพย์สุดา<br>544", "ส21101<br>อาภรทิพย์<br>524", "ณ21101<br>ณัฏฐณิชา<br>222", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ส21231<br>นันทิกร<br>ห้องสมุด", "อ21101<br>อาภรทิพย์<br>116", "พ21101<br>พรประภา<br>433", "พักเที่ยง", "อ21101<br>ทิพย์สุดา<br>544", "ส21231<br>ทิพย์สุดา<br>125", "ท21201<br>สุดา<br>322", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ว21251<br>จิรัฐฐ์<br>com1", "ว21251<br>จิรัฐฐ์<br>com1", "ส21101<br>สุดา<br>322", "พักเที่ยง", "อ21101<br>ทิพย์สุดา<br>544", "ท21101<br>อาภรทิพย์<br>สนาม3", "ศ20121<br>สุพิชญา<br>นาฎ 2", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "ศ21101<br>สุดา<br>322", "พ21101<br>พรประภา<br>433", "ว21101<br>ไพโรจน์<br>314", "พักเที่ยง", "ส21161<br>เชาวเลิศ<br>226", "ว21102<br>เพชรไพลี<br>คห1", "ว21102<br>เพชรไพลี<br>คห1", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/2": {
+                homeroom: "ห้องสมุด",
+                table: [
+                    ["จ.", "Home Room", "ว21101<br>จิรัฐฐ์<br>com1", "ว21101<br>จิรัฐฐ์<br>com1", "ว21101<br>ภาวิณี<br>431", "พักเที่ยง", "ท21101<br>อาภรทิพย์<br>สนาม2", "ศ20121<br>สุพิชญา<br>นาฎ 2", "ท21201<br>ธิดา<br>328", "ส21221<br>สุพิชญา<br>นาฎ 2"],
+                    ["อ.", "Home Room", "ว21101<br>วิลาวัลย์<br>544", "ท21201<br>ธิดา<br>328", "ส21231<br>นันทิกร<br>ห้องสมุด", "พักเที่ยง", "อ21101<br>ภาวิณี<br>431", "ส21111<br>ทิพย์สุดา<br>125", "ส21101<br>ทิพาดา<br>223", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ว21101<br>วิลาวัลย์<br>544", "ศ20161<br>วิศรชัย<br>111", "อ21101<br>อาภรทิพย์<br>116", "พักเที่ยง", "ว21101<br>ไพโรจน์<br>314", "ว21102<br>เพชรไพลี<br>คห1", "ว21102<br>เพชรไพลี<br>คห1", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ว21101<br>ไพโรจน์<br>314", "ว21101<br>ไพโรจน์<br>314", "ส21101<br>ทิพาดา<br>223", "พักเที่ยง", "ส21231<br>นันทิกร<br>ห้องสมุด", "ศ21201<br>สุดา<br>322", "ศ21201<br>สุดา<br>322", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "อ21101<br>ภาวิณี<br>431", "ท21201<br>ธิดา<br>328", "ส21101<br>วิลาวัลย์<br>534", "พักเที่ยง", "ส21101<br>ทิพาดา<br>223", "ส21161<br>เชาวเลิศ<br>226", "ส21101<br>ทิพาดา<br>223", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/3": {
+                homeroom: "223",
+                table: [
+                    ["จ.", "Home Room", "ส21241<br>วริศรา<br>เกษตร", "ส21241<br>วริศรา<br>เกษตร", "แนะแนว<br>ทิพย์นภา<br>125", "พักเที่ยง", "ท21101<br>ธิดา<br>328", "อ21101<br>ภาวิณี<br>431", "ท21101<br>อาภรทิพย์<br>สนาม3", "ส21101<br>นพดล<br>223"],
+                    ["อ.", "Home Room", "ว21211<br>เตชินท์<br>com3", "ว21211<br>เตชินท์<br>com3", "ส21111<br>จุฑาทิพ<br>542", "พักเที่ยง", "ศ20121<br>สุพิชญา<br>นาฎ 2", "ส21161<br>เชาวเลิศ<br>226", "ท21201<br>ธิดา<br>328", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ว21102<br>เพชรไพลี<br>คห1", "ว21102<br>เพชรไพลี<br>คห1", "อ21101<br>จุฑาทิพ<br>542", "พักเที่ยง", "อ21101<br>ภาวิณี<br>431", "ส21231<br>นันทิกร<br>222", "ศ20161<br>วิศรชัย<br>111", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ว21101<br>วิลาวัลย์<br>311", "ว21101<br>วิลาวัลย์<br>311", "ท21101<br>อาภรทิพย์<br>116", "พักเที่ยง", "อ21101<br>จุฑาทิพ<br>542", "ส21101<br>นพดล<br>223", "อ21101<br>ภัสรา<br>524", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "ส21231<br>นันทิกร<br>ห้องสมุด", "ว21101<br>วิลาวัลย์<br>311", "ท21201<br>ธิดา<br>328", "พักเที่ยง", "ส21101<br>นพดล<br>223", "อ21101<br>ภาวิณี<br>431", "ส21101<br>ทิพาดา<br>224", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/4": {
+                homeroom: "533",
+                table: [
+                    ["จ.", "Home Room", "ว21101<br>วิลาวัลย์<br>534", "ส21101<br>ทิพาดา<br>226", "ศ20121<br>สุพิชญา<br>นาฎ 2", "พักเที่ยง", "ท21101<br>สายรุ้ง<br>322", "ส21261<br>นิพนธ์<br>คห2", "ส21261<br>นิพนธ์<br>คห2", "ส21261<br>นิพนธ์<br>คห2"],
+                    ["อ.", "Home Room", "ว21101<br>จิรัฐฐ์<br>com1", "ว21101<br>จิรัฐฐ์<br>com1", "ส21161<br>เชาวเลิศ<br>226", "พักเที่ยง", "พ21101<br>พรประภา<br>433", "ณ21101<br>ณัฏฐณิชา<br>222", "ศ20161<br>วิศรชัย<br>111", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "แนะแนว<br>ทิพย์นภา<br>125", "พ21101<br>พรประภา<br>433", "อ21101<br>นวพล<br>534", "พักเที่ยง", "ท21101<br>หนูพันธ์<br>217", "ท21101<br>หนูพันธ์<br>217", "อ21101<br>ภัสรา<br>328", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ท21101<br>สายรุ้ง<br>328", "ว21101<br>วิลาวัลย์<br>544", "อ21101<br>นวพล<br>533", "พักเที่ยง", "พ21101<br>พรประภา<br>433", "ส21231<br>นันทิกร<br>ห้องสมุด", "ท21101<br>อาภรทิพย์<br>สนาม2", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "ว21102<br>เพชรไพลี<br>คห1", "ว21102<br>เพชรไพลี<br>คห1", "อ21101<br>อาภรทิพย์<br>116", "พักเที่ยง", "ท21101<br>หนูพันธ์<br>217", "ส21111<br>ณัฏฐณิชา<br>223", "พ21101<br>พรประภา<br>433", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/5": {
+                homeroom: "431",
+                table: [
+                    ["จ.", "Home Room", "ว21101<br>วิลาศ<br>311", "ว21101<br>วิลาศ<br>311", "ส21101<br>วริศรา<br>327", "พักเที่ยง", "อ21101<br>วิลาวัลย์<br>544", "ส21111<br>ณัฏฐณิชา<br>222", "ศ20121<br>สุพิชญา<br>นาฎ 2", "ท21101<br>เจนจิรา<br>431"],
+                    ["อ.", "Home Room", "ว21102<br>เพชรไพลี<br>คห1", "ว21102<br>เพชรไพลี<br>คห1", "ส21101<br>ทิพาดา<br>228", "พักเที่ยง", "ศ20161<br>วิศรชัย<br>111", "ท21101<br>เจนจิรา<br>431", "อ21101<br>สุกัญญา<br>114", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ส21161<br>เชาวเลิศ<br>226", "ท21101<br>เจนจิรา<br>431", "ส21101<br>วริศรา<br>327", "พักเที่ยง", "ว21211<br>เตชินท์<br>com3", "ว21211<br>เตชินท์<br>com3", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ส21101<br>ณัฏฐณิชา<br>224", "ส21101<br>วริศรา<br>327", "อ21101<br>วิลาวัลย์<br>534", "พักเที่ยง", "ท21101<br>สมญามา<br>สนาม1", "ว21101<br>วิลาศ<br>311", "ท21101<br>ภาวิณี<br>431", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "ท21101<br>เจนจิรา<br>431", "ส21231<br>นันทิกร<br>ห้องสมุด", "อ21201<br>ภัสรา<br>524", "พักเที่ยง", "อ21101<br>จุฑาทิพ<br>542", "อ21101<br>จุฑาทิพ<br>542", "อ21101<br>วิลาวัลย์<br>544", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/6": {
+                homeroom: "226",
+                table: [
+                    ["จ.", "Home Room", "อ21101<br>จุฑาทิพ<br>542", "ส21101<br>สุดา<br>322", "ศ20161<br>วิศรชัย<br>111", "พักเที่ยง", "ท21101<br>สมญามา<br>สนาม1", "ว21102<br>เพชรไพลี<br>คห1", "ว21102<br>เพชรไพลี<br>คห1", "ส21101<br>วริศรา<br>คห4"],
+                    ["อ.", "Home Room", "ส21101<br>นวพล<br>533", "อ21101<br>จุฑาทิพ<br>542", "อ21101<br>สุกัญญา<br>114", "พักเที่ยง", "ส21101<br>นพดล<br>223", "ท21201<br>ภาวิณี<br>432", "ส21161<br>เชาวเลิศ<br>226", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ว21101<br>วิลาศ<br>312", "ว21101<br>วิลาศ<br>312", "ศ20121<br>สุพิชญา<br>นาฎ 2", "พักเที่ย5", "ส21111<br>ธัญญาภร<br>คห4", "ท21201<br>ภาวิณี<br>432", "ส21101<br>นพดล<br>223", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ว21261<br>กมลวรรณ<br>122", "ว21261<br>กมลวรรณ<br>122", "แนะแนว<br>ทิพย์นภา<br>125", "พักเที่ยง", "ส21101<br>สุดา<br>322", "อ21101<br>จุฑาทิพ<br>542", "ส21231<br>นันทิกร<br>ห้องสมุด", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "ว21211<br>สุวิมล<br>com2", "ว21211<br>สุวิมล<br>com2", "ท21101<br>สมญามา<br>321", "พักเที่ยง", "ส21101<br>ทิพาดา<br>224", "ว21101<br>วิลาศ<br>311", "ท21101<br>ภาวิณี<br>431", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/7": {
+                homeroom: "434",
+                table: [
+                    ["จ.", "Home Room", "ว21102<br>เพชรไพลี<br>คห1", "ว21102<br>เพชรไพลี<br>คห1", "อ21101<br>ทิพย์สุดา<br>544", "พักเที่ยง", "ส21101<br>ณัฏฐณิชา<br>222", "ท21101<br>สมญามา<br>สนาม1", "ส21161<br>เชาวเลิศ<br>226", "ส21221<br>เชาวเลิศ<br>226"],
+                    ["อ.", "Home Room", "ศ20121<br>สุพิชญา<br>นาฎ 2", "ส21101<br>สุดา<br>322", "ส21111<br>ณัฏฐณิชา<br>225", "พักเที่ยง", "ว21101<br>ไพโรจน์<br>314", "ส21231<br>นันทิกร<br>ห้องสมุด", "พ21101<br>พรประภา<br>443", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ส21201<br>วิชิต<br>113", "ส21201<br>วิชิต<br>113", "อ21101<br>ทิพย์สุดา<br>544", "พักเที่ยง", "ส21101<br>สุดา<br>322", "พ21101<br>พรประภา<br>431", "อ21101<br>ภัสรา<br>524", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "อ21101<br>สุกัญญา<br>114", "แนะแนว<br>ทิพย์นภา<br>125", "ว21231<br>ไพโรจน์<br>314", "พักเที่ยง", "ว21101<br>ไพโรจน์<br>314", "ว21211<br>จิรัฐฐ์<br>com1", "ว21211<br>จิรัฐฐ์<br>com1", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "พ21101<br>พรประภา<br>433", "ส21101<br>สุดา<br>322", "ศ20161<br>วิศรชัย<br>111", "พักเที่ยง", "อ21101<br>ทิพย์สุดา<br>544", "ว21101<br>ไพโรจน์<br>314", "ว21101<br>ไพโรจน์<br>314", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/8": {
+                homeroom: "คหกรรม2",
+                table: [
+                    ["จ.", "Home Room", "ศ20161<br>วิศรชัย<br>111", "ส21101<br>นพดล<br>223", "ว21101<br>ไพโรจน์<br>314", "พักเที่ยง", "ท21101<br>ภาวิณี<br>431", "ท21101<br>ธิดา<br>328", "ท21101<br>สมญามา<br>สนาม1", "อ21221<br>ทิพย์สุดา<br>544"],
+                    ["อ.", "Home Room", "ว21101<br>ไพโรจน์<br>314", "ว21101<br>ไพโรจน์<br>314", "อ21101<br>ทิพย์สุดา<br>544", "พักเที่ยง", "อ21101<br>ทิพย์สุดา<br>543", "ศ20121<br>สุพิชญา<br>นาฎ 2", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ว21101<br>จิรัฐฐ์<br>com1", "ว21101<br>จิรัฐฐ์<br>com1", "ท21101<br>ภาวิณี<br>432", "พักเที่ยง", "ท21101<br>ธิดา<br>328", "ส21101<br>นพดล<br>524", "ส21161<br>เชาวเลิศ<br>226", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ส21221<br>เชาวเลิศ<br>226", "ว21102<br>เพชรไพลี<br>คห1", "ส21231<br>นันทิกร<br>ห้องสมุด", "พักเที่ยง", "ส21101<br>นพดล<br>223", "ท21101<br>ภาวิณี<br>431", "อ21101<br>ทิพย์สุดา<br>544", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "ส21101<br>ธัญญาภร<br>คห4", "ส21101<br>ธัญญาภร<br>คห4", "อ21101<br>ทิพย์สุดา<br>544", "พักเที่ยง", "อ21101<br>สุกัญญา<br>114", "ส21101<br>ทิพาดา<br>224", "ท21101<br>ธิดา<br>328", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/9": {
+                homeroom: "114",
+                table: [
+                    ["จ.", "Home Room", "ส21101<br>ณัฏฐณิชา<br>221", "ท21101<br>จุฑาทิพ<br>543", "อ21101<br>อาภรทิพย์<br>สนาม3", "พักเที่ยง", "ศ20121<br>สุพิชญา<br>นาฎ 2", "ส21101<br>ธัญญาภร<br>116", "ส21101<br>ธัญญาภร<br>116", "ส21221<br>อาภรทิพย์<br>444"],
+                    ["อ.", "Home Room", "ท21101<br>ธิดา<br>328", "ท21101<br>เจนจิรา<br>431", "อ21101<br>ภัสรา<br>524", "พักเที่ยง", "ส21111<br>ณัฏฐณิชา<br>222", "ว21101<br>วิลาศ<br>311", "ว21101<br>วิลาศ<br>311", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ส21231<br>นันทิกร<br>115", "ท21101<br>ธิดา<br>328", "ส21101<br>ทิพาดา<br>224", "พักเที่ยง", "อ21101<br>จุฑาทิพ<br>542", "ว21101<br>อาภรทิพย์<br>116", "ส21231<br>นันทิกร<br>ห้องสมุด", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "แนะแนว<br>ทิพย์นภา<br>125", "ส21161<br>เชาวเลิศ<br>226", "อ21101<br>จุฑาทิพ<br>542", "พักเที่ยง", "ท21101<br>เจนจิรา<br>431", "ท21101<br>ธิดา<br>328", "ว21101<br>วิลาศ<br>311", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "ว21211<br>จิรัฐฐ์<br>com1", "ว21211<br>จิรัฐฐ์<br>com1", "ส21101<br>ณัฏฐณิชา<br>431", "พักเที่ยง", "ศ20161<br>วิศรชัย<br>111", "ท21101<br>สมญามา<br>สนาม1", "ท21101<br>สมญามา<br>สนาม1", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/10": {
+                homeroom: "หุ่นยนต์",
+                table: [
+                    ["จ.", "Home Room", "ว21211<br>เตชินท์<br>com3", "ว21211<br>เตชินท์<br>com3", "ส21101<br>นพดล<br>223", "พักเที่ยง", "ส21101<br>ธัญญาภร<br>321", "ท21101<br>จุฑาทิพ<br>544", "แนะแนว<br>ทิพย์นภา<br>125", "ส21221<br>เตชินท์<br>หุ่นยนต์"],
+                    ["อ.", "Home Room", "ว21101<br>ธนวุฒิ<br>หุ่นยนต์", "ว21101<br>ธนวุฒิ<br>หุ่นยนต์", "ส21101<br>ณัฏฐณิชา<br>321", "พักเที่ยง", "ว21101<br>ธนวุฒิ<br>313", "ศ20161<br>วิศรชัย<br>111", "ส21101<br>ภาวิณี<br>432", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ส21101<br>ธัญญาภร<br>คห4", "ส21101<br>ธัญญาภร<br>คห4", "ส21161<br>เชาวเลิศ<br>226", "พักเที่ยง", "ส21101<br>นพดล<br>223", "อ21101<br>สุดา<br>322", "ส21101<br>ทิพาดา<br>224", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ศ20121<br>สุพิชญา<br>นาฎ 2", "ส21231<br>ธนวุฒิ<br>หุ่นยนต์", "อ21101<br>นวพล<br>544", "พักเที่ยง", "ท21101<br>ภาวิณี<br>432", "ว21101<br>วิลาศ<br>216", "ว21101<br>วิลาศ<br>216", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "อ21101<br>สุกัญญา<br>114", "ท21101<br>สมญามา<br>สนาม1", "ส21231<br>นันทิกร<br>ห้องสมุด", "พักเที่ยง", "ท21101<br>ภาวิณี<br>431", "อ21101<br>ทิพย์สุดา<br>544", "อ21201<br>ภัสรา<br>524", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/11": {
+                homeroom: "นาฏศิลป์2",
+                table: [
+                    ["จ.", "Home Room", "ศ20121<br>สุพิชญา<br>นาฎ 2", "ท21101<br>พรประภา<br>431", "ส21101<br>สายรุ้ง<br>322", "พักเที่ยง", "ว21211<br>สุวิมล<br>com2", "ว21211<br>สุวิมล<br>com2", "ส21101<br>ทิพาดา<br>225", "ว21101<br>วิศรชัย<br>111"],
+                    ["อ.", "Home Room", "ศ20161<br>วิศรชัย<br>111", "อ21101<br>วิลาวัลย์<br>544", "ส21101<br>สายรุ้ง<br>322", "พักเที่ยง", "ส21111<br>สุกัญญา<br>114", "ท21101<br>พรประภา<br>433", "ส21231<br>นันทิกร<br>ห้องสมุด", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ส21101<br>สายรุ้ง<br>322", "ส21161<br>เชาวเลิศ<br>226", "แนะแนว<br>ทิพย์นภา<br>125", "พักเที่ยง", "ว21101<br>วิลาศ<br>312", "ว21101<br>วิลาศ<br>312", "ท21101<br>พรประภา<br>433", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ส21201<br>วิชิต<br>216", "ส21201<br>วิชิต<br>216", "ส21101<br>ณัฏฐณิชา<br>226", "พักเที่ยง", "อ21201<br>ภัสรา<br>524", "อ21101<br>นวพล<br>532", "ท21101<br>สมญามา<br>สนาม1", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "อ21101<br>วิลาวัลย์<br>544", "ส21101<br>ณัฏฐณิชา<br>225", "ศ21221<br>สุพิชญา<br>นาฎ 2", "พักเที่ยง", "ว21101<br>วิลาศ<br>311", "ส21101<br>ธัญญาภร<br>คห4", "ส21101<br>ธัญญาภร<br>คห4", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/12": {
+                homeroom: "125",
+                table: [
+                    ["จ.", "Home Room", "แนะแนว<br>ทิพย์นภา<br>125", "อ21101<br>วิลาวัลย์<br>544", "ท21101<br>สุดา<br>323", "พักเที่ยง", "ว21101<br>วิลาศ<br>311", "ว21101<br>วิลาศ<br>311", "ส21101<br>นพดล<br>223", "ส21221<br>ทิพย์นภา<br>125"],
+                    ["อ.", "Home Room", "ว21211<br>สุวิมล<br>com2", "ว21211<br>สุวิมล<br>com2", "ส21101<br>ภาวิณี<br>432", "พักเที่ยง", "ส21101<br>ทิพาดา<br>222", "ส21111<br>ทิพย์สุดา<br>228", "ท21101<br>สมญามา<br>สนาม1", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ส21101<br>ภาวิณี<br>431", "ส21101<br>ทิพาดา<br>225", "อ21101<br>นวพล<br>524", "พักเที่ยง", "ศ20161<br>วิศรชัย<br>111", "ส21101<br>ธัญญาภร<br>คห4", "ส21101<br>ธัญญาภร<br>คห4", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "อ21101<br>วิลาวัลย์<br>544", "ศ20121<br>สุพิชญา<br>นาฎ 2", "ส21101<br>ภาวิณี<br>432", "พักเที่ยง", "ว21101<br>วิลาศ<br>311", "ท21101<br>นาฏศิลป์2<br>นาฏศิลป์2", "ท21101<br>สุดา<br>323", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "อ21201<br>ธนาภร.<br>115", "อ21101<br>วิลาวัลย์<br>544", "ส21161<br>เชาวเลิศ<br>226", "พักเที่ยง", "ท21101<br>สุดา<br>322", "ส21101<br>ทิพย์นภา<br>125", "ส21231<br>นันทิกร<br>ห้องสมุด", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/13": {
+                homeroom: "328",
+                table: [
+                    ["จ.", "Home Room", "อ21101<br>ทิพย์สุดา<br>544", "ส21111<br>ณัฏฐณิชา<br>221", "อ21201<br>ภัสรา<br>524", "พักเที่ยง", "ว21101<br>หนูพันธ์<br>217", "ว21101<br>หนูพันธ์<br>217", "ท21101<br>เจนจิรา<br>431", "ท21101<br>ธิดา<br>328"],
+                    ["อ.", "Home Room", "ส21101<br>ธัญญาภร<br>คห4", "ส21101<br>ธัญญาภร<br>คห4", "ท21101<br>สมญามา<br>สนาม1", "พักเที่ยง", "แนะแนว<br>ทิพย์นภา<br>125", "ส21201<br>วิชิต<br>216", "ส21201<br>วิชิต<br>216", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ท21101<br>ธิดา<br>328", "อ21101<br>ทิพย์สุดา<br>544", "ท21101<br>เจนจิรา<br>431", "พักเที่ยง", "ส21111<br>ทิพาดา<br>222", "ส21231<br>นันทิกร<br>ห้องสมุด", "ส21101<br>ณัฏฐณิชา<br>225", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ส21161<br>เชาวเลิศ<br>226", "ท21101<br>เจนจิรา<br>431", "ศ20121<br>สุพิชญา<br>นาฎ 2", "พักเที่ยง", "ว21101<br>หนูพันธ์<br>217", "อ21101<br>ทิพย์สุดา<br>544", "ท21101<br>ธิดา<br>328", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "ว21211<br>เตชินท์<br>com3", "ว21211<br>เตชินท์<br>com3", "ว21101<br>หนูพันธ์<br>217", "พักเที่ยง", "ท21101<br>ธิดา<br>328", "อ21201<br>ธนาภร.<br>115", "ศ20161<br>วิศรชัย<br>111", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            "1/14": {
+                homeroom: "543",
+                table: [
+                    ["จ.", "Home Room", "ส21101<br>ธัญญาภร<br>คห4", "ส21101<br>ธัญญาภร<br>คห4", "ส21231<br>นันทิกร<br>ห้องสมุด", "พักเที่ยง", "แนะแนว<br>ทิพย์นภา<br>125", "ท21101<br>ธนาภร.<br>สนาม3", "อ21101<br>นวพล<br>533", "อ21101<br>วิลาวัลย์<br>531"],
+                    ["อ.", "Home Room", "ท21101<br>วิลาศ<br>312", "ท21101<br>วิลาศ<br>312", "ศ20121<br>สุพิชญา<br>นาฎ 2", "พักเที่ยง", "ส21161<br>เชาวเลิศ<br>226", "ส21101<br>สุดา<br>322", "ท21101<br>เจนจิรา<br>431", "กิจกรรม<br>ลดเวลาเรียน<br>เพิ่มรู้"],
+                    ["พ.", "Home Room", "ส21101<br>นพดล<br>223", "ส21111<br>ทิพาดา<br>227", "อ21101<br>สุกัญญา<br>114", "พักเที่ยง", "ว21211<br>จิรัฐฐ์<br>com1", "ว21211<br>จิรัฐฐ์<br>com1", "ท21101<br>เจนจิรา<br>431", "กิจกรรม<br>ลส/ยว"],
+                    ["พฤ.", "Home Room", "ศ20161<br>วิศรชัย<br>111", "ส21101<br>สุดา<br>328", "ท21101<br>เจนจิรา<br>431", "พักเที่ยง", "อ21101<br>วิลาวัลย์<br>534", "ส21101<br>ธัญญาภร<br>คห4", "ส21101<br>ธัญญาภร<br>คห4", "กิจกรรม<br>ชุมนุม"],
+                    ["ศ.", "Home Room", "ท21101<br>วิลาศ<br>311", "อ21201<br>ธนาภร.<br>115", "ส21101<br>นพดล<br>223", "พักเที่ยง", "อ21101<br>วิลาวัลย์<br>534", "ว21101<br>จิรัฐฐ์<br>com1", "ว21101<br>จิรัฐฐ์<br>com1", "กิจกรรม<br>จัดสรร<br>อิสระ"]
+                ]
+            },
+            // Add all parsed rooms for ม.2, ม.3, ม.4, ม.5, ม.6 from pasted-text.txt
+            "2/1": { homeroom: "221", table: [
+                ["จ.", "Home Room", "ค22101<br>สายรุ้ง<br>322", "ท22101<br>สมญามา<br>221", "ว22101<br>วิลาศ<br>311", "พักเที่ยง", "อ22101<br>วิลาวัลย์<br>544", "ส22101<br>เชาวเลิศ<br>226", "ค22201<br>วรรัตน์<br>325", "ส22231<br>นพดล<br>223"],
+                ["อ.", "Home Room", "ว22101<br>วิลาศ<br>311", "ว22101<br>วิลาศ<br>311", "อ22101<br>วิลาวัลย์<br>544", "พักเที่ยง", "ศ22101<br>สุพิชญา<br>นาฏ 2", "ท22101<br>สมญามา<br>221", "ส22101<br>เชาวเลิศ<br>226", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ค22101<br>สายรุ้ง<br>322", "ส22101<br>เชาวเลิศ<br>226", "ว22201<br>เตชินท์<br>com3", "พักเที่ยง", "ว22201<br>เตชินท์<br>com3", "พ22101<br>ธนวุฒิ<br>สนาม1", "อ22201<br>ภัสรา<br>524", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ท22101<br>สมญามา<br>221", "อ22101<br>วิลาวัลย์<br>544", "ค22101<br>สายรุ้ง<br>322", "พักเที่ยง", "ง22101<br>นันทิกร<br>คห2", "ง22101<br>นันทิกร<br>คห2", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "พ22102<br>ธนวุฒิ<br>สนาม1", "ส22101<br>เชาวเลิศ<br>226", "ท22101<br>สมญามา<br>221", "พักเที่ยง", "ค22201<br>วรรัตน์<br>325", "ว22101<br>วิลาศ<br>311", "อ22201<br>ภัสรา<br>524", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/2": { homeroom: "222", table: [
+                ["จ.", "Home Room", "ว22101<br>หนูพันธ์<br>217", "ว22101<br>หนูพันธ์<br>217", "ท22101<br>จุฑาทิพ<br>543", "พักเที่ยง", "ค22101<br>ปริญญา<br>533", "ส22101<br>ณัฏฐณิชา<br>221", "อ22101<br>สุกัญญา<br>114", "ค22201<br>ศิริรัตน์<br>543"],
+                ["อ.", "Home Room", "ค22101<br>ปริญญา<br>533", "ส22101<br>ณัฏฐณิชา<br>221", "ว22201<br>จิรัฐฐ์<br>com1", "พักเที่ยง", "ว22201<br>จิรัฐฐ์<br>com1", "ท22101<br>จุฑาทิพ<br>543", "อ22101<br>สุกัญญา<br>114", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "อ22101<br>สุกัญญา<br>114", "ศ22101<br>วิศรชัย<br>111", "ส22101<br>ณัฏฐณิชา<br>221", "พักเที่ยง", "ค22101<br>ปริญญา<br>533", "ว22101<br>หนูพันธ์<br>217", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ง22101<br>ทิพาดา<br>คห4", "ง22101<br>ทิพาดา<br>คห4", "พ22101<br>นพดล<br>สนาม3", "พักเที่ยง", "ท22101<br>จุฑาทิพ<br>543", "อ22201<br>ธนาภร.<br>115", "ส22231<br>วิชิต<br>216", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ส22101<br>ณัฏฐณิชา<br>221", "ค22201<br>ศิริรัตน์<br>543", "ว22101<br>หนูพันธ์<br>217", "พักเที่ยง", "อ22201<br>ธนาภร.<br>115", "พ22102<br>นพดล<br>สนาม3", "ท22101<br>จุฑาทิพ<br>543", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/3": { homeroom: "223", table: [
+                ["จ.", "Home Room", "ท22101<br>เจนจิรา<br>431", "อ22101<br>นวพล<br>533", "ส22101<br>ทิพาดา<br>224", "พักเที่ยง", "ค22101<br>วรรัตน์<br>325", "ค22101<br>วรรัตน์<br>325", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "ว22201<br>สุวิมล<br>com2"],
+                ["อ.", "Home Room", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "ค22201<br>สายรุ้ง<br>322", "พักเที่ยง", "อ22101<br>นวพล<br>533", "ศ22101<br>สุพิชญา<br>นาฏ 2", "ส22101<br>ทิพาดา<br>224", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ส22101<br>ทิพาดา<br>224", "ท22101<br>เจนจิรา<br>431", "อ22201<br>ทิพย์สุดา<br>544", "พักเที่ยง", "ง22101<br>นิพนธ์<br>คห2", "ง22101<br>นิพนธ์<br>คห2", "พ22101<br>วิชิต<br>สนาม1", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ค22101<br>วรรัตน์<br>325", "ส22101<br>ทิพาดา<br>224", "ท22101<br>เจนจิรา<br>431", "พักเที่ยง", "ว22201<br>สุวิมล<br>com2", "ส22231<br>เชาวเลิศ<br>226", "อ22101<br>นวพล<br>533", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ท22101<br>เจนจิรา<br>431", "แนะแนว<br>ทิพย์นภา<br>125", "พ22102<br>วิชิต<br>สนาม1", "พักเที่ยง", "อ22201<br>ทิพย์สุดา<br>544", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "ค22201<br>สายรุ้ง<br>322", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/4": { homeroom: "224", table: [
+                ["จ.", "Home Room", "อ22101<br>สุดา<br>322", "ค22101<br>ปริญญา<br>533", "ท22101<br>ธิดา<br>328", "พักเที่ยง", "ว22101<br>วิลาศ<br>312", "ว22101<br>วิลาศ<br>312", "ส22101<br>ธัญญาภร<br>116", "พ22101<br>นพดล<br>สนาม3"],
+                ["อ.", "Home Room", "ส22101<br>ธัญญาภร<br>116", "ศ22101<br>วิศรชัย<br>111", "อ22101<br>สุดา<br>322", "พักเที่ยง", "ท22101<br>ธิดา<br>328", "ค22201<br>ศิริรัตน์<br>543", "ค22101<br>ปริญญา<br>533", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ว22101<br>วิลาศ<br>312", "ค22101<br>ปริญญา<br>533", "ส22101<br>ธัญญาภร<br>116", "พักเที่ยง", "อ22201<br>ภัสรา<br>524", "ง22101<br>นันทิกร<br>คห2", "ง22101<br>นันทิกร<br>คห2", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ว22201<br>เตชินท์<br>com3", "ว22201<br>เตชินท์<br>com3", "ท22101<br>ธิดา<br>328", "พักเที่ยง", "อ22101<br>สุดา<br>322", "ส22101<br>ธัญญาภร<br>116", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ส22231<br>ณัฏฐณิชา<br>221", "พ22102<br>นพดล<br>สนาม3", "อ22201<br>ภัสรา<br>524", "พักเที่ยง", "ท22101<br>ธิดา<br>328", "ค22201<br>ศิริรัตน์<br>543", "ว22101<br>วิลาศ<br>312", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/5": { homeroom: "225", table: [
+                ["จ.", "Home Room", "ส22101<br>นพดล<br>223", "อ22101<br>วิลาวัลย์<br>534", "ท22101<br>ภาวิณี<br>432", "พักเที่ยง", "ว22201<br>จิรัฐฐ์<br>com1", "ว22201<br>จิรัฐฐ์<br>com1", "ค22101<br>สายรุ้ง<br>322", "ค22201<br>วรรัตน์<br>325"],
+                ["อ.", "Home Room", "ท22101<br>ภาวิณี<br>432", "ส22101<br>นพดล<br>223", "ค22101<br>สายรุ้ง<br>322", "พักเที่ยง", "ว22101<br>หนูพันธ์<br>217", "ว22101<br>หนูพันธ์<br>217", "อ22101<br>วิลาวัลย์<br>534", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ส22101<br>นพดล<br>223", "ท22101<br>ภาวิณี<br>432", "อ22201<br>ธนาภร.<br>115", "พักเที่ยง", "พ22101<br>ธนวุฒิ<br>สนาม1", "ศ22101<br>สุพิชญา<br>นาฏ 2", "ค22101<br>สายรุ้ง<br>322", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "อ22101<br>วิลาวัลย์<br>534", "ง22101<br>ทิพาดา<br>คห4", "ง22101<br>ทิพาดา<br>คห4", "พักเที่ยง", "ส22101<br>นพดล<br>223", "ค22201<br>วรรัตน์<br>325", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "พ22102<br>ธนวุฒิ<br>สนาม1", "อ22201<br>ธนาภร.<br>115", "ท22101<br>ภาวิณี<br>432", "พักเที่ยง", "ว22101<br>หนูพันธ์<br>217", "ว22101<br>หนูพันธ์<br>217", "ส22231<br>เชาวเลิศ<br>226", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/6": { homeroom: "226", table: [
+                ["จ.", "Home Room", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "ค22101<br>ปริญญา<br>533", "ส22101<br>ณัฏฐณิชา<br>221", "พักเที่ยง", "ท22101<br>พรประภา<br>433", "อ22101<br>สุกัญญา<br>114", "ง22101<br>นิพนธ์<br>คห2", "ง22101<br>นิพนธ์<br>คห2"],
+                ["อ.", "Home Room", "ท22101<br>พรประภา<br>433", "อ22101<br>สุกัญญา<br>114", "ส22101<br>ณัฏฐณิชา<br>221", "พักเที่ยง", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "ศ22101<br>วิศรชัย<br>111", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ค22101<br>ปริญญา<br>533", "ส22101<br>ณัฏฐณิชา<br>221", "ท22101<br>พรประภา<br>433", "พักเที่ยง", "อ22201<br>ทิพย์สุดา<br>544", "ว22201<br>สุวิมล<br>com2", "ว22201<br>สุวิมล<br>com2", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "พ22101<br>วิชิต<br>สนาม1", "ส22101<br>ณัฏฐณิชา<br>221", "อ22101<br>สุกัญญา<br>114", "พักเที่ยง", "ค22101<br>ปริญญา<br>533", "ส22231<br>วิชิต<br>216", "ค22201<br>ศิริรัตน์<br>543", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ค22201<br>ศิริรัตน์<br>543", "อ22201<br>ทิพย์สุดา<br>544", "แนะแนว<br>ทิพย์นภา<br>125", "พักเที่ยง", "พ22102<br>วิชิต<br>สนาม1", "ท22101<br>พรประภา<br>433", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/7": { homeroom: "227", table: [
+                ["จ.", "Home Room", "ท22101<br>สุดา<br>323", "ส22101<br>ทิพาดา<br>224", "ค22101<br>วรรัตน์<br>325", "พักเที่ยง", "อ22101<br>นวพล<br>524", "อ22101<br>นวพล<br>524", "ว22101<br>วิลาศ<br>311", "ส22231<br>ณัฏฐณิชา<br>221"],
+                ["อ.", "Home Room", "ว22101<br>วิลาศ<br>311", "ว22101<br>วิลาศ<br>311", "พ22101<br>นพดล<br>สนาม3", "พักเที่ยง", "ค22101<br>วรรัตน์<br>325", "ท22101<br>สุดา<br>323", "ส22101<br>ทิพาดา<br>224", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ท22101<br>สุดา<br>323", "อ22101<br>นวพล<br>524", "ศ22101<br>สุพิชญา<br>นาฏ 2", "พักเที่ยง", "ส22101<br>ทิพาดา<br>224", "ว22201<br>เตชินท์<br>com3", "ว22201<br>เตชินท์<br>com3", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ค22201<br>สายรุ้ง<br>322", "แนะแนว<br>ทิพย์นภา<br>125", "ท22101<br>สุดา<br>323", "พักเที่ยง", "อ22201<br>ภัสรา<br>524", "ค22101<br>วรรัตน์<br>325", "ส22101<br>ทิพาดา<br>224", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "อ22201<br>ภัสรา<br>524", "ง22101<br>นันทิกร<br>คห2", "ง22101<br>นันทิกร<br>คห2", "พักเที่ยง", "พ22102<br>นพดล<br>สนาม3", "ค22201<br>สายรุ้ง<br>322", "ว22101<br>วิลาศ<br>311", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/8": { homeroom: "228", table: [
+                ["จ.", "Home Room", "ค22101<br>ปริญญา<br>533", "ว22101<br>หนูพันธ์<br>217", "ว22101<br>หนูพันธ์<br>217", "พักเที่ยง", "ส22101<br>ธัญญาภร<br>116", "ท22101<br>ธิดา<br>328", "อ22101<br>สุดา<br>322", "พ22101<br>ธนวุฒิ<br>สนาม1"],
+                ["อ.", "Home Room", "อ22101<br>สุดา<br>322", "ท22101<br>ธิดา<br>328", "ส22101<br>ธัญญาภร<br>116", "พักเที่ยง", "ง22101<br>ทิพาดา<br>คห4", "ง22101<br>ทิพาดา<br>คห4", "ค22101<br>ปริญญา<br>533", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ว22101<br>หนูพันธ์<br>217", "อ22101<br>สุดา<br>322", "ศ22101<br>วิศรชัย<br>111", "พักเที่ยง", "ท22101<br>ธิดา<br>328", "ส22101<br>ธัญญาภร<br>116", "ค22201<br>ศิริรัตน์<br>543", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ส22101<br>ธัญญาภร<br>116", "ค22101<br>ปริญญา<br>533", "อ22201<br>ธนาภร.<br>115", "พักเที่ยง", "ว22201<br>จิรัฐฐ์<br>com1", "ว22201<br>จิรัฐฐ์<br>com1", "ส22231<br>เชาวเลิศ<br>226", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "แนะแนว<br>ทิพย์นภา<br>125", "ค22201<br>ศิริรัตน์<br>543", "ท22101<br>ธิดา<br>328", "พักเที่ยง", "พ22102<br>ธนวุฒิ<br>สนาม1", "ว22101<br>หนูพันธ์<br>217", "อ22201<br>ธนาภร.<br>115", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/9": { homeroom: "321", table: [
+                ["จ.", "Home Room", "ส22101<br>เชาวเลิศ<br>226", "ส22101<br>เชาวเลิศ<br>226", "อ22101<br>วิลาวัลย์<br>534", "พักเที่ยง", "ค22101<br>สายรุ้ง<br>322", "ท22101<br>สมญามา<br>221", "ศ22101<br>สุพิชญา<br>นาฏ 2", "ค22201<br>วรรัตน์<br>325"],
+                ["อ.", "Home Room", "ท22101<br>สมญามา<br>221", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "พักเที่ยง", "อ22101<br>วิลาวัลย์<br>534", "ค22101<br>สายรุ้ง<br>322", "ส22101<br>เชาวเลิศ<br>226", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "อ22201<br>ทิพย์สุดา<br>544", "ท22101<br>สมญามา<br>221", "ส22101<br>เชาวเลิศ<br>226", "พักเที่ยง", "ง22101<br>นิพนธ์<br>คห2", "ง22101<br>นิพนธ์<br>คห2", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "อ22101<br>วิลาวัลย์<br>534", "ค22101<br>สายรุ้ง<br>322", "แนะแนว<br>ทิพย์นภา<br>125", "พักเที่ยง", "ท22101<br>สมญามา<br>221", "พ22101<br>วิชิต<br>สนาม1", "ส22231<br>วิชิต<br>216", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ค22201<br>วรรัตน์<br>325", "อ22201<br>ทิพย์สุดา<br>544", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "พักเที่ยง", "ว22201<br>สุวิมล<br>com2", "ว22201<br>สุวิมล<br>com2", "พ22102<br>วิชิต<br>สนาม1", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/10": { homeroom: "322", table: [
+                ["จ.", "Home Room", "ว22101<br>วิลาศ<br>312", "ว22101<br>วิลาศ<br>312", "ท22101<br>จุฑาทิพ<br>543", "พักเที่ยง", "ส22101<br>นพดล<br>223", "อ22101<br>สุกัญญา<br>114", "ค22101<br>ปริญญา<br>533", "อ22201<br>ภัสรา<br>524"],
+                ["อ.", "Home Room", "อ22101<br>สุกัญญา<br>114", "ท22101<br>จุฑาทิพ<br>543", "ส22101<br>นพดล<br>223", "พักเที่ยง", "ว22201<br>เตชินท์<br>com3", "ว22201<br>เตชินท์<br>com3", "ศ22101<br>วิศรชัย<br>111", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ส22101<br>นพดล<br>223", "ค22101<br>ปริญญา<br>533", "ท22101<br>จุฑาทิพ<br>543", "พักเที่ยง", "ว22101<br>วิลาศ<br>312", "พ22101<br>นพดล<br>สนาม3", "ส22231<br>ณัฏฐณิชา<br>221", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ค22201<br>ศิริรัตน์<br>543", "อ22101<br>สุกัญญา<br>114", "ส22101<br>นพดล<br>223", "พักเที่ยง", "ง22101<br>นันทิกร<br>คห2", "ง22101<br>นันทิกร<br>คห2", "ค22101<br>ปริญญา<br>533", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "อ22201<br>ภัสรา<br>524", "แนะแนว<br>ทิพย์นภา<br>125", "ท22101<br>จุฑาทิพ<br>543", "พักเที่ยง", "พ22102<br>นพดล<br>สนาม3", "ค22201<br>ศิริรัตน์<br>543", "ว22101<br>วิลาศ<br>312", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/11": { homeroom: "323", table: [
+                ["จ.", "Home Room", "อ22101<br>นวพล<br>533", "ส22101<br>ทิพาดา<br>224", "ส22101<br>ทิพาดา<br>224", "พักเที่ยง", "ท22101<br>ภาวิณี<br>432", "ค22101<br>วรรัตน์<br>325", "ว22101<br>หนูพันธ์<br>217", "ว22101<br>หนูพันธ์<br>217"],
+                ["อ.", "Home Room", "ว22101<br>หนูพันธ์<br>217", "ค22101<br>วรรัตน์<br>325", "ท22101<br>ภาวิณี<br>432", "พักเที่ยง", "อ22101<br>นวพล<br>533", "ส22101<br>ทิพาดา<br>224", "ศ22101<br>สุพิชญา<br>นาฏ 2", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ท22101<br>ภาวิณี<br>432", "อ22101<br>นวพล<br>533", "ค22101<br>วรรัตน์<br>325", "พักเที่ยง", "ว22201<br>จิรัฐฐ์<br>com1", "ว22201<br>จิรัฐฐ์<br>com1", "อ22201<br>ธนาภร.<br>115", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ส22101<br>ทิพาดา<br>224", "พ22101<br>ธนวุฒิ<br>สนาม1", "อ22201<br>ธนาภร.<br>115", "พักเที่ยง", "ค22201<br>สายรุ้ง<br>322", "ท22101<br>ภาวิณี<br>432", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ส22231<br>เชาวเลิศ<br>226", "ง22101<br>ทิพาดา<br>คห4", "ง22101<br>ทิพาดา<br>คห4", "พักเที่ยง", "ค22201<br>สายรุ้ง<br>322", "พ22102<br>ธนวุฒิ<br>สนาม1", "ว22101<br>หนูพันธ์<br>217", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/12": { homeroom: "324", table: [
+                ["จ.", "Home Room", "ค22101<br>ปริญญา<br>533", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "พักเที่ยง", "ส22101<br>ธัญญาภร<br>116", "อ22101<br>สุดา<br>322", "ท22101<br>พรประภา<br>433", "ศ22101<br>วิศรชัย<br>111"],
+                ["อ.", "Home Room", "ส22101<br>ธัญญาภร<br>116", "ส22101<br>ธัญญาภร<br>116", "ท22101<br>พรประภา<br>433", "พักเที่ยง", "อ22101<br>สุดา<br>322", "ค22101<br>ปริญญา<br>533", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "อ22101<br>สุดา<br>322", "ค22101<br>ปริญญา<br>533", "ส22101<br>ธัญญาภร<br>116", "พักเที่ยง", "ง22101<br>นิพนธ์<br>คห2", "ง22101<br>นิพนธ์<br>คห2", "ท22101<br>พรประภา<br>433", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ว22201<br>สุวิมล<br>com2", "ว22201<br>สุวิมล<br>com2", "พ22101<br>วิชิต<br>สนาม1", "พักเที่ยง", "ค22201<br>ศิริรัตน์<br>543", "อ22201<br>ทิพย์สุดา<br>544", "ส22231<br>วิชิต<br>216", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ท22101<br>พรประภา<br>433", "อ22201<br>ทิพย์สุดา<br>544", "แนะแนว<br>ทิพย์นภา<br>125", "พักเที่ยง", "พ22102<br>วิชิต<br>สนาม1", "ว22101<br>ธนวุฒิ<br>หุ่นยนต์", "ค22201<br>ศิริรัตน์<br>543", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/13": { homeroom: "431", table: [
+                ["จ.", "Home Room", "ท22101<br>เจนจิรา<br>431", "อ22101<br>วิลาวัลย์<br>534", "ค22101<br>วรรัตน์<br>325", "พักเที่ยง", "ส22101<br>ณัฏฐณิชา<br>221", "ว22101<br>วิลาศ<br>311", "ว22101<br>วิลาศ<br>311", "ส22231<br>ทิพาดา<br>224"],
+                ["อ.", "Home Room", "ส22101<br>ณัฏฐณิชา<br>221", "ส22101<br>ณัฏฐณิชา<br>221", "ท22101<br>เจนจิรา<br>431", "พักเที่ยง", "ว22101<br>วิลาศ<br>311", "ค22101<br>วรรัตน์<br>325", "อ22101<br>วิลาวัลย์<br>534", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ว22201<br>เตชินท์<br>com3", "ว22201<br>เตชินท์<br>com3", "อ22101<br>วิลาวัลย์<br>534", "พักเที่ยง", "ส22101<br>ณัฏฐณิชา<br>221", "ท22101<br>เจนจิรา<br>431", "ศ22101<br>สุพิชญา<br>นาฏ 2", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ค22101<br>วรรัตน์<br>325", "อ22201<br>ภัสรา<br>524", "พ22101<br>นพดล<br>สนาม3", "พักเที่ยง", "ง22101<br>นันทิกร<br>คห2", "ง22101<br>นันทิกร<br>คห2", "ท22101<br>เจนจิรา<br>431", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "แนะแนว<br>ทิพย์นภา<br>125", "ค22201<br>สายรุ้ง<br>322", "ค22201<br>สายรุ้ง<br>322", "พักเที่ยง", "ว22101<br>วิลาศ<br>311", "อ22201<br>ภัสรา<br>524", "พ22102<br>นพดล<br>สนาม3", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "2/14": { homeroom: "432", table: [
+                ["จ.", "Home Room", "ส22101<br>เชาวเลิศ<br>226", "ท22101<br>ธิดา<br>328", "อ22101<br>สุกัญญา<br>114", "พักเที่ยง", "ว22101<br>หนูพันธ์<br>217", "ว22101<br>หนูพันธ์<br>217", "ค22101<br>ปริญญา<br>533", "ค22201<br>ศิริรัตน์<br>543"],
+                ["อ.", "Home Room", "อ22101<br>สุกัญญา<br>114", "ค22101<br>ปริญญา<br>533", "ท22101<br>ธิดา<br>328", "พักเที่ยง", "ส22101<br>เชาวเลิศ<br>226", "ส22101<br>เชาวเลิศ<br>226", "ว22101<br>หนูพันธ์<br>217", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ท22101<br>ธิดา<br>328", "ศ22101<br>วิศรชัย<br>111", "ส22101<br>เชาวเลิศ<br>226", "พักเที่ยง", "ว22201<br>จิรัฐฐ์<br>com1", "ว22201<br>จิรัฐฐ์<br>com1", "อ22101<br>สุกัญญา<br>114", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "พ22101<br>ธนวุฒิ<br>สนาม1", "ค22101<br>ปริญญา<br>533", "ท22101<br>ธิดา<br>328", "พักเที่ยง", "อ22201<br>ธนาภร.<br>115", "ส22231<br>วิชิต<br>216", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ง22101<br>ทิพาดา<br>คห4", "ง22101<br>ทิพาดา<br>คห4", "อ22201<br>ธนาภร.<br>115", "พักเที่ยง", "พ22102<br>ธนวุฒิ<br>สนาม1", "ว22101<br>หนูพันธ์<br>217", "ค22201<br>ศิริรัตน์<br>543", "กิจกรรม<br>จัดสรร"]
+            ]},
+
+            "3/1": { homeroom: "433", table: [
+                ["จ.", "Home Room", "ว23101<br>สุดา<br>312", "ว23101<br>สุดา<br>312", "ท23101<br>เจนจิรา<br>431", "พักเที่ยง", "อ23101<br>นวพล<br>533", "ส23101<br>ณัฏฐณิชา<br>221", "ค23101<br>วรรัตน์<br>325", "ส23231<br>วิชิต<br>216"],
+                ["อ.", "Home Room", "ว23101<br>สุดา<br>312", "ค23101<br>วรรัตน์<br>325", "ส23101<br>ณัฏฐณิชา<br>221", "พักเที่ยง", "ท23101<br>เจนจิรา<br>431", "อ23101<br>นวพล<br>533", "ศ23101<br>สุพิชญา<br>นาฏ 2", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ว23201<br>เตชินท์<br>com3", "ว23201<br>เตชินท์<br>com3", "ท23101<br>เจนจิรา<br>431", "พักเที่ยง", "ค23101<br>วรรัตน์<br>325", "ส23101<br>ณัฏฐณิชา<br>221", "อ23201<br>ภัสรา<br>524", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "อ23101<br>นวพล<br>533", "พ23101<br>นพดล<br>สนาม3", "ค23201<br>สายรุ้ง<br>322", "พักเที่ยง", "ง23101<br>นันทิกร<br>คห2", "ง23101<br>นันทิกร<br>คห2", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "พ23102<br>นพดล<br>สนาม3", "ส23101<br>ณัฏฐณิชา<br>221", "อ23201<br>ภัสรา<br>524", "พักเที่ยง", "ค23201<br>สายรุ้ง<br>322", "ท23101<br>เจนจิรา<br>431", "ว23101<br>สุดา<br>312", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/2": { homeroom: "434", table: [
+                ["จ.", "Home Room", "ท23101<br>ธิดา<br>328", "ค23101<br>ปริญญา<br>533", "ว23101<br>วิลาศ<br>311", "พักเที่ยง", "ว23101<br>วิลาศ<br>311", "ส23101<br>เชาวเลิศ<br>226", "อ23101<br>สุกัญญา<br>114", "ค23201<br>ศิริรัตน์<br>543"],
+                ["อ.", "Home Room", "ค23101<br>ปริญญา<br>533", "ว23101<br>วิลาศ<br>311", "ส23101<br>เชาวเลิศ<br>226", "พักเที่ยง", "อ23101<br>สุกัญญา<br>114", "ท23101<br>ธิดา<br>328", "ว23201<br>จิรัฐฐ์<br>com1", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "อ23101<br>สุกัญญา<br>114", "ส23101<br>เชาวเลิศ<br>226", "ค23101<br>ปริญญา<br>533", "พักเที่ยง", "ท23101<br>ธิดา<br>328", "ว23201<br>จิรัฐฐ์<br>com1", "ศ23101<br>วิศรชัย<br>111", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ส23101<br>เชาวเลิศ<br>226", "อ23201<br>ธนาภร.<br>115", "ท23101<br>ธิดา<br>328", "พักเที่ยง", "ง23101<br>ทิพาดา<br>คห4", "ง23101<br>ทิพาดา<br>คห4", "พ23101<br>ธนวุฒิ<br>สนาม1", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ส23231<br>นพดล<br>223", "อ23201<br>ธนาภร.<br>115", "แนะแนว<br>ทิพย์นภา<br>125", "พักเที่ยง", "ค23201<br>ศิริรัตน์<br>543", "ว23101<br>วิลาศ<br>311", "พ23102<br>ธนวุฒิ<br>สนาม1", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/3": { homeroom: "441", table: [
+                ["จ.", "Home Room", "ว23101<br>หนูพันธ์<br>217", "ว23101<br>หนูพันธ์<br>217", "อ23101<br>วิลาวัลย์<br>544", "พักเที่ยง", "ท23101<br>พรประภา<br>433", "ค23101<br>สายรุ้ง<br>322", "ส23101<br>ทิพาดา<br>224", "ส23231<br>เชาวเลิศ<br>226"],
+                ["อ.", "Home Room", "ส23101<br>ทิพาดา<br>224", "ว23101<br>หนูพันธ์<br>217", "ค23101<br>สายรุ้ง<br>322", "พักเที่ยง", "ศ23101<br>สุพิชญา<br>นาฏ 2", "ท23101<br>พรประภา<br>433", "อ23101<br>วิลาวัลย์<br>544", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ท23101<br>พรประภา<br>433", "ค23101<br>สายรุ้ง<br>322", "ส23101<br>ทิพาดา<br>224", "พักเที่ยง", "อ23201<br>ทิพย์สุดา<br>544", "ว23201<br>สุวิมล<br>com2", "ว23201<br>สุวิมล<br>com2", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ง23101<br>นิพนธ์<br>คห2", "ง23101<br>นิพนธ์<br>คห2", "อ23101<br>วิลาวัลย์<br>544", "พักเที่ยง", "พ23101<br>วิชิต<br>สนาม1", "ส23101<br>ทิพาดา<br>224", "ค23201<br>วรรัตน์<br>325", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "อ23201<br>ทิพย์สุดา<br>544", "ท23101<br>พรประภา<br>433", "พ23102<br>วิชิต<br>สนาม1", "พักเที่ยง", "ว23101<br>หนูพันธ์<br>217", "แนะแนว<br>ทิพย์นภา<br>125", "ค23201<br>วรรัตน์<br>325", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/4": { homeroom: "442", table: [
+                ["จ.", "Home Room", "ส23101<br>ธัญญาภร<br>116", "ท23101<br>สมญามา<br>221", "ค23101<br>ศิริรัตน์<br>543", "พักเที่ยง", "อ23101<br>สุดา<br>322", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "ว23201<br>เตชินท์<br>com3"],
+                ["อ.", "Home Room", "ท23101<br>สมญามา<br>221", "ส23101<br>ธัญญาภร<br>116", "อ23101<br>สุดา<br>322", "พักเที่ยง", "ค23101<br>ศิริรัตน์<br>543", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "ว23201<br>เตชินท์<br>com3", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ส23101<br>ธัญญาภร<br>116", "อ23101<br>สุดา<br>322", "ท23101<br>สมญามา<br>221", "พักเที่ยง", "ศ23101<br>วิศรชัย<br>111", "พ23101<br>นพดล<br>สนาม3", "ค23101<br>ศิริรัตน์<br>543", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "อ23201<br>ภัสรา<br>524", "ส23101<br>ธัญญาภร<br>116", "แนะแนว<br>ทิพย์นภา<br>125", "พักเที่ยง", "ท23101<br>สมญามา<br>221", "ง23101<br>นันทิกร<br>คห2", "ง23101<br>นันทิกร<br>คห2", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "พ23102<br>นพดล<br>สนาม3", "ค23201<br>ปริญญา<br>533", "ค23201<br>ปริญญา<br>533", "พักเที่ยง", "ส23231<br>ทิพาดา<br>224", "อ23201<br>ภัสรา<br>524", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/5": { homeroom: "443", table: [
+                ["จ.", "Home Room", "อ23101<br>สุกัญญา<br>114", "ค23101<br>วรรัตน์<br>325", "ท23101<br>จุฑาทิพ<br>543", "พักเที่ยง", "ส23101<br>นพดล<br>223", "ส23101<br>นพดล<br>223", "ว23101<br>วิลาศ<br>312", "ว23101<br>วิลาศ<br>312"],
+                ["อ.", "Home Room", "ท23101<br>จุฑาทิพ<br>543", "อ23101<br>สุกัญญา<br>114", "ค23101<br>วรรัตน์<br>325", "พักเที่ยง", "ส23101<br>นพดล<br>223", "ศ23101<br>วิศรชัย<br>111", "ว23101<br>วิลาศ<br>312", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ค23101<br>วรรัตน์<br>325", "ส23101<br>นพดล<br>223", "ท23101<br>จุฑาทิพ<br>543", "พักเที่ยง", "อ23101<br>สุกัญญา<br>114", "อ23201<br>ธนาภร.<br>115", "ว23201<br>จิรัฐฐ์<br>com1", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "พ23101<br>ธนวุฒิ<br>สนาม1", "ว23201<br>จิรัฐฐ์<br>com1", "อ23201<br>ธนาภร.<br>115", "พักเที่ยง", "ค23201<br>สายรุ้ง<br>322", "ค23201<br>สายรุ้ง<br>322", "ส23231<br>ณัฏฐณิชา<br>221", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ง23101<br>ทิพาดา<br>คห4", "ง23101<br>ทิพาดา<br>คห4", "แนะแนว<br>ทิพย์นภา<br>125", "พักเที่ยง", "ว23101<br>วิลาศ<br>312", "ท23101<br>จุฑาทิพ<br>543", "พ23102<br>ธนวุฒิ<br>สนาม1", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/6": { homeroom: "444", table: [
+                ["จ.", "Home Room", "ค23101<br>ปริญญา<br>533", "ส23101<br>ณัฏฐณิชา<br>221", "อ23101<br>วิลาวัลย์<br>544", "พักเที่ยง", "ว23101<br>สุดา<br>312", "ว23101<br>สุดา<br>312", "ท23101<br>ภาวิณี<br>432", "ส23231<br>วิชิต<br>216"],
+                ["อ.", "Home Room", "อ23101<br>วิลาวัลย์<br>544", "ค23101<br>ปริญญา<br>533", "ส23101<br>ณัฏฐณิชา<br>221", "พักเที่ยง", "ท23101<br>ภาวิณี<br>432", "ว23101<br>สุดา<br>312", "อ23201<br>ทิพย์สุดา<br>544", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ส23101<br>ณัฏฐณิชา<br>221", "ท23101<br>ภาวิณี<br>432", "ค23101<br>ปริญญา<br>533", "พักเที่ยง", "ง23101<br>นิพนธ์<br>คห2", "ง23101<br>นิพนธ์<br>คห2", "อ23101<br>วิลาวัลย์<br>544", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ท23101<br>ภาวิณี<br>432", "ว23201<br>สุวิมล<br>com2", "ว23201<br>สุวิมล<br>com2", "พักเที่ยง", "ศ23101<br>สุพิชญา<br>นาฏ 2", "พ23101<br>วิชิต<br>สนาม1", "ค23201<br>ศิริรัตน์<br>543", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "อ23201<br>ทิพย์สุดา<br>544", "ส23101<br>ณัฏฐณิชา<br>221", "พ23102<br>วิชิต<br>สนาม1", "พักเที่ยง", "ค23201<br>ศิริรัตน์<br>543", "ว23101<br>สุดา<br>312", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/7": { homeroom: "521", table: [
+                ["จ.", "Home Room", "ส23101<br>เชาวเลิศ<br>226", "อ23101<br>นวพล<br>533", "ว23101<br>หนูพันธ์<br>217", "พักเที่ยง", "ว23101<br>หนูพันธ์<br>217", "ท23101<br>เจนจิรา<br>431", "ค23101<br>สายรุ้ง<br>322", "ส23231<br>ทิพาดา<br>224"],
+                ["อ.", "Home Room", "ส23101<br>เชาวเลิศ<br>226", "ท23101<br>เจนจิรา<br>431", "อ23101<br>นวพล<br>533", "พักเที่ยง", "ค23101<br>สายรุ้ง<br>322", "ว23101<br>หนูพันธ์<br>217", "ว23201<br>เตชินท์<br>com3", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "อ23101<br>นวพล<br>533", "ค23101<br>สายรุ้ง<br>322", "ส23101<br>เชาวเลิศ<br>226", "พักเที่ยง", "ว23201<br>เตชินท์<br>com3", "ศ23101<br>สุพิชญา<br>นาฏ 2", "ท23101<br>เจนจิรา<br>431", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ค23201<br>วรรัตน์<br>325", "อ23201<br>ภัสรา<br>524", "ส23101<br>เชาวเลิศ<br>226", "พักเที่ยง", "พ23101<br>นพดล<br>สนาม3", "ง23101<br>นันทิกร<br>คห2", "ง23101<br>นันทิกร<br>คห2", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ท23101<br>เจนจิรา<br>431", "พ23102<br>นพดล<br>สนาม3", "แนะแนว<br>ทิพย์นภา<br>125", "พักเที่ยง", "อ23201<br>ภัสรา<br>524", "ค23201<br>วรรัตน์<br>325", "ว23101<br>หนูพันธ์<br>217", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/8": { homeroom: "522", table: [
+                ["จ.", "Home Room", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "ส23101<br>ธัญญาภร<br>116", "พักเที่ยง", "ท23101<br>ธิดา<br>328", "ค23101<br>ศิริรัตน์<br>543", "อ23101<br>สุดา<br>322", "ส23231<br>นพดล<br>223"],
+                ["อ.", "Home Room", "ส23101<br>ธัญญาภร<br>116", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "ค23101<br>ศิริรัตน์<br>543", "พักเที่ยง", "อ23101<br>สุดา<br>322", "ท23101<br>ธิดา<br>328", "ง23101<br>ทิพาดา<br>คห4", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ท23101<br>ธิดา<br>328", "ค23101<br>ศิริรัตน์<br>543", "อ23101<br>สุดา<br>322", "พักเที่ยง", "ง23101<br>ทิพาดา<br>คห4", "ส23101<br>ธัญญาภร<br>116", "ศ23101<br>วิศรชัย<br>111", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ค23201<br>ปริญญา<br>533", "ส23101<br>ธัญญาภร<br>116", "ว23201<br>จิรัฐฐ์<br>com1", "พักเที่ยง", "ว23201<br>จิรัฐฐ์<br>com1", "ท23101<br>ธิดา<br>328", "อ23201<br>ธนาภร.<br>115", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "อ23201<br>ธนาภร.<br>115", "พ23101<br>ธนวุฒิ<br>สนาม1", "พ23102<br>ธนวุฒิ<br>สนาม1", "พักเที่ยง", "แนะแนว<br>ทิพย์นภา<br>125", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "ค23201<br>ปริญญา<br>533", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/9": { homeroom: "523", table: [
+                ["จ.", "Home Room", "อ23101<br>วิลาวัลย์<br>534", "ท23101<br>พรประภา<br>433", "ส23101<br>นพดล<br>223", "พักเที่ยง", "ค23101<br>วรรัตน์<br>325", "ว23101<br>วิลาศ<br>311", "ว23101<br>วิลาศ<br>311", "ส23231<br>ณัฏฐณิชา<br>221"],
+                ["อ.", "Home Room", "ส23101<br>นพดล<br>223", "อ23101<br>วิลาวัลย์<br>534", "ท23101<br>พรประภา<br>433", "พักเที่ยง", "ว23101<br>วิลาศ<br>311", "ค23101<br>วรรัตน์<br>325", "อ23201<br>ทิพย์สุดา<br>544", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ค23101<br>วรรัตน์<br>325", "ส23101<br>นพดล<br>223", "อ23101<br>วิลาวัลย์<br>534", "พักเที่ยง", "ท23101<br>พรประภา<br>433", "ว23201<br>สุวิมล<br>com2", "ว23201<br>สุวิมล<br>com2", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ศ23101<br>สุพิชญา<br>นาฏ 2", "ส23101<br>นพดล<br>223", "อ23201<br>ทิพย์สุดา<br>544", "พักเที่ยง", "ค23201<br>สายรุ้ง<br>322", "ง23101<br>นิพนธ์<br>คห2", "ง23101<br>นิพนธ์<br>คห2", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ท23101<br>พรประภา<br>433", "พ23101<br>วิชิต<br>สนาม1", "พ23102<br>วิชิต<br>สนาม1", "พักเที่ยง", "ค23201<br>สายรุ้ง<br>322", "ว23101<br>วิลาศ<br>311", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/10": { homeroom: "531", table: [
+                ["จ.", "Home Room", "ค23101<br>ปริญญา<br>533", "ส23101<br>ทิพาดา<br>224", "อ23101<br>สุกัญญา<br>114", "พักเที่ยง", "ว23101<br>สุดา<br>312", "ว23101<br>สุดา<br>312", "ท23101<br>สมญามา<br>221", "ว23201<br>เตชินท์<br>com3"],
+                ["อ.", "Home Room", "อ23101<br>สุกัญญา<br>114", "ค23101<br>ปริญญา<br>533", "ส23101<br>ทิพาดา<br>224", "พักเที่ยง", "ท23101<br>สมญามา<br>221", "ว23101<br>สุดา<br>312", "ว23201<br>เตชินท์<br>com3", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ส23101<br>ทิพาดา<br>224", "ท23101<br>สมญามา<br>221", "ค23101<br>ปริญญา<br>533", "พักเที่ยง", "ง23101<br>นันทิกร<br>คห2", "ง23101<br>นันทิกร<br>คห2", "อ23101<br>สุกัญญา<br>114", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ท23101<br>สมญามา<br>221", "พ23101<br>นพดล<br>สนาม3", "ส23101<br>ทิพาดา<br>224", "พักเที่ยง", "อ23201<br>ภัสรา<br>524", "อ23201<br>ภัสรา<br>524", "ค23201<br>ศิริรัตน์<br>543", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ศ23101<br>วิศรชัย<br>111", "ส23231<br>เชาวเลิศ<br>226", "พ23102<br>นพดล<br>สนาม3", "พักเที่ยง", "ค23201<br>ศิริรัตน์<br>543", "ว23101<br>สุดา<br>312", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/11": { homeroom: "532", table: [
+                ["จ.", "Home Room", "ท23101<br>จุฑาทิพ<br>543", "ส23101<br>ณัฏฐณิชา<br>221", "ส23101<br>ณัฏฐณิชา<br>221", "พักเที่ยง", "อ23101<br>นวพล<br>533", "ค23101<br>สายรุ้ง<br>322", "ว23101<br>หนูพันธ์<br>217", "ว23101<br>หนูพันธ์<br>217"],
+                ["อ.", "Home Room", "ส23101<br>ณัฏฐณิชา<br>221", "ท23101<br>จุฑาทิพ<br>543", "ค23101<br>สายรุ้ง<br>322", "พักเที่ยง", "อ23101<br>นวพล<br>533", "ศ23101<br>สุพิชญา<br>นาฏ 2", "ว23101<br>หนูพันธ์<br>217", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "อ23101<br>นวพล<br>533", "ค23101<br>สายรุ้ง<br>322", "ส23101<br>ณัฏฐณิชา<br>221", "พักเที่ยง", "ท23101<br>จุฑาทิพ<br>543", "อ23201<br>ธนาภร.<br>115", "ว23201<br>จิรัฐฐ์<br>com1", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ค23201<br>วรรัตน์<br>325", "อ23201<br>ธนาภร.<br>115", "ส23231<br>วิชิต<br>216", "พักเที่ยง", "ว23201<br>จิรัฐฐ์<br>com1", "ง23101<br>ทิพาดา<br>คห4", "ง23101<br>ทิพาดา<br>คห4", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ท23101<br>จุฑาทิพ<br>543", "พ23101<br>ธนวุฒิ<br>สนาม1", "พ23102<br>ธนวุฒิ<br>สนาม1", "พักเที่ยง", "ค23201<br>วรรัตน์<br>325", "ว23101<br>หนูพันธ์<br>217", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/12": { homeroom: "533", table: [
+                ["จ.", "Home Room", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "อ23101<br>สุดา<br>322", "พักเที่ยง", "ค23101<br>ศิริรัตน์<br>543", "ส23101<br>เชาวเลิศ<br>226", "ส23101<br>เชาวเลิศ<br>226", "ท23101<br>ภาวิณี<br>432"],
+                ["อ.", "Home Room", "ส23101<br>เชาวเลิศ<br>226", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "อ23101<br>สุดา<br>322", "พักเที่ยง", "ค23101<br>ศิริรัตน์<br>543", "ท23101<br>ภาวิณี<br>432", "อ23201<br>ทิพย์สุดา<br>544", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "อ23101<br>สุดา<br>322", "ส23101<br>เชาวเลิศ<br>226", "ค23101<br>ศิริรัตน์<br>543", "พักเที่ยง", "ท23101<br>ภาวิณี<br>432", "ว23201<br>สุวิมล<br>com2", "ว23201<br>สุวิมล<br>com2", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ส23101<br>เชาวเลิศ<br>226", "อ23201<br>ทิพย์สุดา<br>544", "ค23201<br>ปริญญา<br>533", "พักเที่ยง", "พ23101<br>วิชิต<br>สนาม1", "ง23101<br>นิพนธ์<br>คห2", "ง23101<br>นิพนธ์<br>คห2", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ศ23101<br>วิศรชัย<br>111", "ส23231<br>ทิพาดา<br>224", "ท23101<br>ภาวิณี<br>432", "พักเที่ยง", "ค23201<br>ปริญญา<br>533", "พ23102<br>วิชิต<br>สนาม1", "ว23101<br>ธนวุฒิ<br>หุ่นยนต์", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/13": { homeroom: "543", table: [
+                ["จ.", "Home Room", "ส23101<br>ธัญญาภร<br>116", "อ23101<br>วิลาวัลย์<br>544", "ท23101<br>ธิดา<br>328", "พักเที่ยง", "ค23101<br>วรรัตน์<br>325", "ว23101<br>วิลาศ<br>312", "ว23101<br>วิลาศ<br>312", "ส23231<br>นพดล<br>223"],
+                ["อ.", "Home Room", "ท23101<br>ธิดา<br>328", "ส23101<br>ธัญญาภร<br>116", "ส23101<br>ธัญญาภร<br>116", "พักเที่ยง", "อ23101<br>วิลาวัลย์<br>544", "ค23101<br>วรรัตน์<br>325", "ว23101<br>วิลาศ<br>312", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ค23101<br>วรรัตน์<br>325", "อ23101<br>วิลาวัลย์<br>544", "ส23101<br>ธัญญาภร<br>116", "พักเที่ยง", "ท23101<br>ธิดา<br>328", "ว23201<br>เตชินท์<br>com3", "ว23201<br>เตชินท์<br>com3", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ง23101<br>นันทิกร<br>คห2", "ง23101<br>นันทิกร<br>คห2", "อ23201<br>ภัสรา<br>524", "พักเที่ยง", "ค23201<br>สายรุ้ง<br>322", "ท23101<br>ธิดา<br>328", "ศ23101<br>วิศรชัย<br>111", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "พ23101<br>นพดล<br>สนาม3", "พ23102<br>นพดล<br>สนาม3", "อ23201<br>ภัสรา<br>524", "พักเที่ยง", "ค23201<br>สายรุ้ง<br>322", "ว23101<br>วิลาศ<br>312", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "3/14": { homeroom: "544", table: [
+                ["จ.", "Home Room", "อ23101<br>สุกัญญา<br>114", "ค23101<br>ปริญญา<br>533", "ส23101<br>นพดล<br>223", "พักเที่ยง", "ว23101<br>สุดา<br>312", "ว23101<br>สุดา<br>312", "ท23101<br>เจนจิรา<br>431", "อ23201<br>ธนาภร.<br>115"],
+                ["อ.", "Home Room", "ค23101<br>ปริญญา<br>533", "อ23101<br>สุกัญญา<br>114", "ส23101<br>นพดล<br>223", "พักเที่ยง", "ว23101<br>สุดา<br>312", "ส23101<br>นพดล<br>223", "ท23101<br>เจนจิรา<br>431", "กิจกรรม<br>ลดเวลาเรียน"],
+                ["พ.", "Home Room", "ส23101<br>นพดล<br>223", "ท23101<br>เจนจิรา<br>431", "ค23101<br>ปริญญา<br>533", "พักเที่ยง", "อ23101<br>สุกัญญา<br>114", "ว23201<br>จิรัฐฐ์<br>com1", "ว23201<br>จิรัฐฐ์<br>com1", "กิจกรรม<br>ลส/ยว"],
+                ["พฤ.", "Home Room", "ท23101<br>เจนจิรา<br>431", "พ23101<br>ธนวุฒิ<br>สนาม1", "ส23231<br>ณัฏฐณิชา<br>221", "พักเที่ยง", "ง23101<br>ทิพาดา<br>คห4", "ง23101<br>ทิพาดา<br>คห4", "ค23201<br>ศิริรัตน์<br>543", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "อ23201<br>ธนาภร.<br>115", "ศ23101<br>สุพิชญา<br>นาฏ 2", "พ23102<br>ธนวุฒิ<br>สนาม1", "พักเที่ยง", "ค23201<br>ศิริรัตน์<br>543", "ว23101<br>สุดา<br>312", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>จัดสรร"]
+            ]},
+
+            "4/1": { homeroom: "311", table: [
+                ["จ.", "Home Room", "ว31241<br>อนันญา<br>316", "ว31241<br>อนันญา<br>316", "ส30161<br>เดชวีร์<br>225", "ค31201<br>วรรัตน์<br>325", "พักเที่ยง", "ส31101<br>บุญนุช<br>534", "ท31101<br>เกศริน<br>441", "ว31221<br>นพดล<br>311", "ว31221<br>นพดล<br>311"],
+                ["อ.", "Home Room", "ว30221<br>ภัทร<br>311", "ว30221<br>ภัทร<br>311", "ว31201<br>วีรวิชญ์<br>217", "ว31201<br>วีรวิชญ์<br>217", "พักเที่ยง", "ว31201<br>วีรวิชญ์<br>217", "อ31201<br>ศุภชัย<br>221", "ค31101<br>สายรุ้ง<br>322", "-"],
+                ["พ.", "Home Room", "ส31101<br>บุญนุช<br>111", "ว31201<br>นิพนธ์<br>คห2", "ว31201<br>วีรวิชญ์<br>217", "ว31201<br>วีรวิชญ์<br>217", "พักเที่ยง", "ว31261<br>ประภาพร<br>325", "ว31241<br>อนันญา<br>534", "ว31241<br>อนันญา<br>311", "แนะแนว"],
+                ["พฤ.", "Home Room", "ว31241<br>อนันญา<br>316", "ส32201<br>เดชวีร์<br>523", "ค31201<br>วรรัตน์<br>325", "ท31101<br>เกศริน<br>116", "พักเที่ยง", "ว31221<br>นพดล<br>311", "ว31221<br>นพดล<br>311", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ว31261<br>ประภาพร<br>218", "ส32201<br>เดชวีร์<br>523", "ว31201<br>นิพนธ์<br>คห2", "ว31201<br>นิพนธ์<br>คห2", "พักเที่ยง", "ส31101<br>บุญนุช<br>322", "อ31201<br>ศุภชัย<br>221", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "4/2": { homeroom: "217", table: [
+                ["จ.", "Home Room", "ว31211<br>ธนวุฒิ<br>หุ่นยนต์", "ว31211<br>ธนวุฒิ<br>หุ่นยนต์", "ส31101<br>บุญนุช<br>534", "อ31201<br>ศุภชัย<br>221", "พักเที่ยง", "ค31201<br>วรรัตน์<br>325", "ว31201<br>วีรวิชญ์<br>217", "ว31201<br>วีรวิชญ์<br>217", "ว30221<br>ภัทร<br>217"],
+                ["อ.", "Home Room", "ค31201<br>วรรัตน์<br>325", "ท31101<br>เกศริน<br>112", "ว31241<br>อนันญา<br>316", "ว31241<br>อนันญา<br>316", "พักเที่ยง", "ว31221<br>นพดล<br>311", "ว31221<br>นพดล<br>311", "ส30161<br>เดชวีร์<br>311", "-"],
+                ["พ.", "Home Room", "ว31221<br>นพดล<br>311", "ว31221<br>นพดล<br>311", "ค31101<br>สายรุ้ง<br>322", "ส32201<br>เดชวีร์<br>523", "พักเที่ยง", "ส31101<br>บุญนุช<br>534", "ว31201<br>นิพนธ์<br>คห2", "ว31201<br>วีรวิชญ์<br>217", "แนะแนว"],
+                ["พฤ.", "Home Room", "ส32201<br>เดชวีร์<br>523", "ว31241<br>อนันญา<br>316", "ว31201<br>วีรวิชญ์<br>217", "ว31201<br>วีรวิชญ์<br>217", "พักเที่ยง", "ส31101<br>บุญนุช<br>221", "ท31101<br>เกศริน<br>441", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ค31201<br>วรรัตน์<br>325", "ว31261<br>ประภาพร<br>218", "ว31261<br>ประภาพร<br>218", "ส30161<br>เดชวีร์<br>225", "พักเที่ยง", "ว31201<br>นิพนธ์<br>คห2", "ว31201<br>วีรวิชญ์<br>217", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "4/3": { homeroom: "325", table: [
+                ["จ.", "Home Room", "ท31101<br>เกศริน<br>441", "ส30161<br>เดชวีร์<br>225", "ส31101<br>ปริญญา<br>533", "ส31101<br>บุญนุช<br>534", "พักเที่ยง", "ค31101<br>สายรุ้ง<br>322", "ค31201<br>วรรัตน์<br>325", "ค31201<br>วรรัตน์<br>325", "-"],
+                ["อ.", "Home Room", "ว31201<br>นิพนธ์<br>คห2", "ค31201<br>วรรัตน์<br>325", "ว31221<br>นพดล<br>311", "อ31201<br>ศุภชัย<br>221", "พักเที่ยง", "ส31101<br>ปริญญา<br>533", "ท31101<br>เกศริน<br>441", "-", "-"],
+                ["พ.", "Home Room", "ส31221<br>สุพิชญา<br>533", "อ31201<br>ศุภชัย<br>221", "ส31101<br>ปริญญา<br>543", "ว31201<br>นิพนธ์<br>คห2", "พักเที่ยง", "ว31241<br>อนันญา<br>316", "ว31241<br>อนันญา<br>316", "ส31221<br>สุพิชญา<br>325", "แนะแนว"],
+                ["พฤ.", "Home Room", "ค31201<br>วรรัตน์<br>325", "ท31101<br>เกศริน<br>441", "แนะแนว<br>ทิพย์นภา<br>125", "ค31101<br>สายรุ้ง<br>322", "พักเที่ยง", "ว30201<br>พิพัฒน์<br>217", "ว30201<br>พิพัฒน์<br>217", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ส31101<br>บุญนุช<br>534", "ค31201<br>วรรัตน์<br>325", "ส32201<br>ทิพยสุดา<br>218", "ท31101<br>เกศริน<br>116", "พักเที่ยง", "ว31201<br>นิพนธ์<br>คห2", "ส31221<br>ปริญญา<br>533", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "4/4": { homeroom: "534", table: [
+                ["จ.", "Home Room", "ท31101<br>นวพล<br>524", "ส31101<br>บุญนุช<br>534", "ส31101<br>กมลนันท์<br>112", "ส31101<br>กมลนันท์<br>112", "พักเที่ยง", "ท31101<br>เกศริน<br>441", "อ31201<br>ภัสรา<br>524", "ว31241<br>อนันญา<br>534", "ส30221<br>เดชวีร์<br>534"],
+                ["อ.", "Home Room", "ว30201<br>พิพัฒน์<br>218", "ว30201<br>พิพัฒน์<br>218", "ค31101<br>ปริญญา<br>533", "ส31101<br>บุญนุช<br>543", "พักเที่ยง", "ส31101<br>บุญนุช<br>534", "ส31221<br>นพดล<br>221", "ค31201<br>สายรุ้ง<br>322", "-"],
+                ["พ.", "Home Room", "ว31201<br>ภัสรา<br>524", "ค31101<br>ปริญญา<br>533", "ว31201<br>นิพนธ์<br>คห2", "ว31201<br>นิพนธ์<br>คห2", "พักเที่ยง", "ส31101<br>บุญนุช<br>543", "ท31101<br>เกศริน<br>441", "ว31221<br>หุ่นยนต์<br>หุ่นยนต์", "ว31221<br>หุ่นยนต์<br>หุ่นยนต์"],
+                ["พฤ.", "Home Room", "แนะแนว<br>ทิพย์นภา<br>125", "อ31201<br>ศุภชัย<br>221", "ว31201<br>ภัสรา<br>524", "ส31221<br>นพดล<br>534", "พักเที่ยง", "ว31201<br>วีรวิชญ์<br>217", "ว31201<br>วีรวิชญ์<br>217", "ส31101<br>บุญนุช<br>523", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ส30161<br>เดชวีร์<br>225", "ว31201<br>ภัสรา<br>524", "ค31201<br>สายรุ้ง<br>322", "ว30201<br>พิพัฒน์<br>218", "พักเที่ยง", "ท31101<br>นวพล<br>533", "ส31101<br>บุญนุช<br>534", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "4/5": { homeroom: "225", table: [
+                ["จ.", "Home Room", "อ31201<br>ศุภชัย<br>124", "ว31101<br>นิพนธ์<br>คห2", "ส31111<br>เดชวีร์<br>225", "ส31111<br>เดชวีร์<br>225", "พักเที่ยง", "อ31101<br>ศุภชัย<br>221", "ค31101<br>ศิริรัตน์<br>543", "ส30221<br>เดชวีร์<br>225", "-"],
+                ["อ.", "Home Room", "ค31101<br>ปริญญา<br>533", "อ31101<br>ศุภชัย<br>124", "ว31101<br>นิพนธ์<br>คห2", "ค31101<br>สายรุ้ง<br>322", "พักเที่ยง", "ท31101<br>นวพล<br>533", "ท31101<br>นวพล<br>533", "ท31101<br>เกศริน<br>441", "-"],
+                ["พ.", "Home Room", "ส30161<br>เดชวีร์<br>225", "ส31101<br>บุญนุช<br>554", "ว30201<br>พิพัฒน์<br>311", "ว30201<br>พิพัฒน์<br>311", "พักเที่ยง", "ว31241<br>อนันญา<br>533", "ท31101<br>เกศริน<br>441", "ส31231<br>ปริญญา<br>225", "แนะแนว"],
+                ["พฤ.", "Home Room", "ค31101<br>ศิริรัตน์<br>543", "ค31101<br>ปริญญา<br>533", "ท31101<br>นวพล<br>533", "ว31201<br>นิพนธ์<br>คห2", "พักเที่ยง", "ส31221<br>เดชวีร์<br>225", "ส31101<br>บุญนุช<br>554", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ท31101<br>นวพล<br>222", "ส31101<br>ปริญญา<br>533", "ว31201<br>วีรวิชญ์<br>441", "ค31101<br>สายรุ้ง<br>322", "พักเที่ยง", "ว30201<br>พิพัฒน์<br>218", "ส31231<br>เดชวีร์<br>115", "กิจกรรม<br>จัดสรร"]
+            ]},
+            "4/6": { homeroom: "322", table: [
+                ["จ.", "Home Room", "ว31101<br>นิพนธ์<br>คห2", "ส31101<br>บุญนุช<br>524", "ส31101<br>ศุภชัย<br>124", "อ31201<br>ศุภชัย<br>124", "พักเที่ยง", "ค31101<br>ศิริรัตน์<br>543", "ท31101<br>นวพล<br>524", "ส30221<br>เดชวีร์<br>322", "-"],
+                ["อ.", "Home Room", "ส31101<br>กมลนันท์<br>112", "ค31101<br>ปริญญา<br>533", "ว30201<br>พิพัฒน์<br>218", "ว30201<br>พิพัฒน์<br>218", "พักเที่ยง", "ค31101<br>ศิริรัตน์<br>543", "ท31101<br>นวพล<br>533", "ท31101<br>เกศริน<br>441", "-"],
+                ["พ.", "Home Room", "ส31101<br>บุญนุช<br>554", "ค31101<br>สายรุ้ง<br>322", "ว31111<br>ศราวุฒิ<br>com2", "ว31111<br>ศราวุฒิ<br>com2", "พักเที่ยง", "ว31201<br>พิพัฒน์<br>126", "ท31101<br>เกศริน<br>116", "ส31231<br>ปริญญา<br>322", "แนะแนว"],
+                ["พฤ.", "Home Room", "ว31201<br>พิพัฒน์<br>441", "ส31101<br>บุญนุช<br>322", "ว31201<br>พิพัฒน์<br>126", "อ31201<br>ศุภชัย<br>221", "พักเที่ยง", "ส31221<br>เดชวีร์<br>534", "ส31101<br>บุญนุช<br>221", "กิจกรรม<br>ชุมนุม"],
+                ["ศ.", "Home Room", "ค31101<br>ปริญญา<br>533", "ท31101<br>นวพล<br>222", "ส30161<br>เดชวีร์<br>225", "ว31201<br>วีรวิชญ์<br>441", "พักเที่ยง", "ส31101<br>บุญนุช<br>534", "ส31231<br>เดชวีร์<br>218", "กิจกรรม<br>จัดสรร"]
+            ]},
+
+            "5/1": { homeroom: "313", table: [
+                ["จ.", "Home Room", "ว32261<br>ทิพย์วดี<br>218", "ส32101<br>เบญจมาศ<br>326", "ท32101<br>อนันญา<br>433", "ว32241<br>ธนากร<br>314", "พักเที่ยง", "ว32221<br>พลธิตา<br>313", "ว32221<br>จินดาพร<br>523", "ส32221<br>ศิวิรัตน์<br>224", "ส30223<br>พลธิตา<br>313"],
+                ["อ.", "Home Room", "ว32201<br>เจษฎากร<br>542", "ว32201<br>เจษฎากร<br>นาฏ 2", "ว32241<br>ธนากร<br>314", "ว32241<br>ธนากร<br>314", "พักเที่ยง", "ส32101<br>เบญจมาศ<br>326", "ว32221<br>จินดาพร<br>523", "ว32261<br>หุ่นยนต์<br>หุ่นยนต์", "ว32261<br>หุ่นยนต์<br>หุ่นยนต์"],
+                ["พ.", "Home Room", "ค32101<br>วรรัตน์<br>325", "ว32201<br>สมญามา<br>115", "ท32101<br>ชยพล<br>312", "ว32201<br>สมญามา<br>312", "พักเที่ยง", "ส32201<br>เบญจมาศ<br>326", "ว32201<br>เจษฎากร<br>542", "ส32101<br>เบญจมาศ<br>313", "แนะแนว"],
+                ["พฤ.", "Home Room", "ท32101<br>อนันญา<br>433", "ส32101<br>เบญจมาศ<br>223", "ว32201<br>ชยพล<br>312", "ว32201<br>ชยพล<br>312", "พักเที่ยง", "ว32221<br>พลธิตา<br>325", "ว32221<br>พลธิตา<br>325", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ว32211<br>ธนวุฒิ<br>หุ่นยนต์", "ว32211<br>ธนวุฒิ<br>หุ่นยนต์", "ว32211<br>ธนวุฒิ<br>หุ่นยนต์", "ว32211<br>ธนวุฒิ<br>หุ่นยนต์", "พักเที่ยง", "ค32101<br>วรรัตน์<br>325", "อ32101<br>นิพนธ์<br>คห2", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+            "5/2": { homeroom: "312", table: [
+                ["จ.", "Home Room", "ส32201<br>เบญจมาศ<br>326", "ว32261<br>ทิพย์วดี<br>218", "ว32111<br>ธนวุฒิ<br>com4", "ว32111<br>ธนวุฒิ<br>com4", "พักเที่ยง", "ว32201<br>เจษฎากร<br>314", "ว32201<br>เจษฎากร<br>312", "ว32201<br>ชยพล<br>316", "ว32201<br>ชยพล<br>316"],
+                ["อ.", "Home Room", "ท32101<br>ชยพล<br>นาฏ 2", "ว32201<br>เจษฎากร<br>542", "ท32101<br>อนันญา<br>312", "ท32101<br>อนันญา<br>312", "พักเที่ยง", "ว32201<br>เจษฎากร<br>314", "ส32221<br>ศิวิรัตน์<br>225", "ส30223<br>พลธิตา<br>326", "ส30223<br>พลธิตา<br>312"],
+                ["พ.", "Home Room", "ว32221<br>จินดาพร<br>523", "ว32221<br>พลธิตา<br>313", "ว32241<br>ธนากร<br>314", "ว32241<br>ธนากร<br>314", "พักเที่ยง", "ส32101<br>เบญจมาศ<br>542", "ส32101<br>เบญจมาศ<br>326", "ว32201<br>เจษฎากร<br>312", "แนะแนว"],
+                ["พฤ.", "Home Room", "ส32101<br>เบญจมาศ<br>326", "ท32101<br>อนันญา<br>433", "ว32221<br>พลธิตา<br>313", "ว32221<br>พลธิตา<br>313", "พักเที่ยง", "ว32221<br>จินดาพร<br>523", "ว32221<br>จินดาพร<br>523", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ว32221<br>จินดาพร<br>523", "ส32101<br>ศิริรัตน์<br>221", "ส32111<br>ทิพยสุดา<br>115", "ส32111<br>ทิพยสุดา<br>326", "พักเที่ยง", "ท32101<br>อนันญา<br>433", "ว32101<br>กมลวรรณ<br>122", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+            "5/3": { homeroom: "326", table: [
+                ["จ.", "Home Room", "ว32201<br>นันทิกร<br>ห้องสมุด", "ว32201<br>นันทิกร<br>ห้องสมุด", "ว32241<br>ธนากร<br>543", "แนะแนว<br>ทิพย์นภา<br>126", "พักเที่ยง", "ว32101<br>กมลวรรณ<br>223", "ส32201<br>เบญจมาศ<br>326", "ส30223<br>พลธิตา<br>326", "-"],
+                ["อ.", "Home Room", "ว32221<br>จินดาพร<br>523", "ค32101<br>วรรัตน์<br>532", "ส32101<br>เบญจมาศ<br>326", "ท32101<br>อนันญา<br>433", "พักเที่ยง", "ว32201<br>สมญามา<br>312", "ว32201<br>สมญามา<br>312", "ส32221<br>ศิวิรัตน์<br>226", "-"],
+                ["พ.", "Home Room", "ว32221<br>พลธิตา<br>217", "ว32221<br>พลธิตา<br>217", "ค32101<br>วรรัตน์<br>532", "ส32101<br>เบญจมาศ<br>326", "พักเที่ยง", "ว32241<br>ธนากร<br>543", "ว32241<br>ธนากร<br>523", "ส32101<br>เบญจมาศ<br>326", "แนะแนว"],
+                ["พฤ.", "Home Room", "ว32211<br>นิพัทธ์<br>227", "ส32101<br>เบญจมาศ<br>326", "ท32101<br>อนันญา<br>433", "ค32101<br>ศิริรัตน์<br>543", "พักเที่ยง", "ท32101<br>อนันญา<br>115", "ท32101<br>อนันญา<br>326", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ค32101<br>ศิริรัตน์<br>221", "ส32101<br>เบญจมาศ<br>นาฏศิลป์ 2", "ส32201<br>เบญจมาศ<br>326", "ค32101<br>ปริญญา<br>453", "พักเที่ยง", "อ32101<br>นิพนธ์<br>คห2", "ส32221<br>ศิวิรัตน์<br>543", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+            "5/4": { homeroom: "524", table: [
+                ["จ.", "Home Room", "ท32101<br>นวพล<br>นาฏ 2", "ส32201<br>สมญามา<br>115", "ท32101<br>จินดาพร<br>523", "ท32101<br>นวพล<br>523", "พักเที่ยง", "ท32101<br>นวพล<br>524", "อ32221<br>นิพัทธ์<br>224", "อ32221<br>นิพัทธ์<br>524", "-"],
+                ["อ.", "Home Room", "ว32221<br>ภัสรา<br>217", "ว32221<br>ภัสรา<br>217", "ส32201<br>นพดล<br>223", "ส32201<br>นพดล<br>433", "พักเที่ยง", "ว32101<br>วรรัตน์<br>524", "ว32101<br>วรรัตน์<br>524", "ว32101<br>ภัสรา<br>524", "-"],
+                ["พ.", "Home Room", "ว32221<br>ภัสรา<br>433", "ว32221<br>ภัสรา<br>524", "ส32101<br>เบญจมาศ<br>326", "ส32101<br>เบญจมาศ<br>326", "พักเที่ยง", "อ32101<br>ทิพยสุดา<br>นาฏ 2", "อ32101<br>ทิพยสุดา<br>นาฏ 2", "ส32101<br>ภัสรา<br>524", "แนะแนว"],
+                ["พฤ.", "Home Room", "ท32221<br>นวพล<br>524", "ว32221<br>พลธิตา<br>325", "ว32221<br>พลธิตา<br>325", "ว32221<br>จินดาพร<br>523", "พักเที่ยง", "ว32241<br>ธนากร<br>523", "ว32241<br>ธนากร<br>523", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ว32221<br>ภัสรา<br>217", "ค32101<br>ศิริรัตน์<br>532", "ค32101<br>ศิริรัตน์<br>543", "อ32221<br>นิพัทธ์<br>221", "พักเที่ยง", "ส32101<br>เบญจมาศ<br>122", "ท32101<br>จินดาพร<br>523", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+            "5/5": { homeroom: "com4", table: [
+                ["จ.", "Home Room", "ส32201<br>นพดล<br>217", "ว32221<br>พลธิตา<br>217", "ท32101<br>นพดล<br>115", "ท32101<br>นพดล<br>543", "พักเที่ยง", "ส32101<br>เบญจมาศ<br>523", "แนะแนว<br>ทิพย์นภา<br>126", "ท32221<br>นวพล<br>524", "-"],
+                ["อ.", "Home Room", "ค32101<br>ศิริรัตน์<br>543", "ส32101<br>เบญจมาศ<br>453", "อ32101<br>นิพนธ์<br>คห2", "อ32101<br>นิพนธ์<br>คห2", "พักเที่ยง", "ท32101<br>อนันญา<br>532", "ว32101<br>วรรัตน์<br>325", "ท32221<br>พลธิตา<br>325", "-"],
+                ["พ.", "Home Room", "ท32101<br>อนันญา<br>221", "ค32101<br>ศิริรัตน์<br>532", "อ32201<br>ทิพยสุดา<br>นาฏศิลป์ 2", "อ32201<br>ทิพยสุดา<br>นาฏศิลป์ 2", "พักเที่ยง", "ว32101<br>วรรัตน์<br>433", "ท32241<br>ธนากร<br>543", "ท32241<br>ธนากร<br>com4", "แนะแนว"],
+                ["พฤ.", "Home Room", "ส32201<br>นพดล<br>223", "ท32221<br>นวพล<br>227", "ส32221<br>พลธิตา<br>com4", "ส32221<br>พลธิตา<br>com4", "พักเที่ยง", "อ32101<br>นิพนธ์<br>คห2", "ส32101<br>เบญจมาศ<br>543", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "อ32201<br>นิพัทธ์<br>คห2", "ว32221<br>พลธิตา<br>217", "ท32201<br>นพดล<br>543", "ค32101<br>ศิริรัตน์<br>226", "พักเที่ยง", "ว32221<br>จินดาพร<br>523", "ว32101<br>วรรัตน์<br>325", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+            "5/6": { homeroom: "com1", table: [
+                ["จ.", "Home Room", "ว32221<br>จินดาพร<br>523", "ว32221<br>จินดาพร<br>453", "ท32101<br>อนันญา<br>325", "ส32201<br>นพดล<br>443", "พักเที่ยง", "แนะแนว<br>ทิพย์นภา<br>126", "ส32101<br>เบญจมาศ<br>523", "ส32223<br>ศิวิรัตน์<br>224", "-"],
+                ["อ.", "Home Room", "ส32111<br>เชาวเลิศ<br>226", "ท32101<br>จินดาพร<br>523", "ว32111<br>ศิวิรัตน์<br>com1", "ว32111<br>ศิวิรัตน์<br>com1", "พักเที่ยง", "อ32201<br>นิพัทธ์<br>226", "อ32201<br>นิพัทธ์<br>217", "ส32201<br>นพดล<br>523", "-"],
+                ["พ.", "Home Room", "ส32101<br>เบญจมาศ<br>นาฏ 2", "อ32101<br>นิพนธ์<br>ห้องสมุด", "อ32101<br>นิพนธ์<br>ห้องสมุด", "ว32101<br>วรรัตน์<br>325", "พักเที่ยง", "ท32101<br>จินดาพร<br>523", "ท32101<br>นพดล<br>115", "ท32101<br>นพดล<br>com1", "แนะแนว"],
+                ["พฤ.", "Home Room", "ว32221<br>ภัสรา<br>217", "ว32221<br>ภัสรา<br>217", "ค32101<br>ศิริรัตน์<br>523", "ท32221<br>นวพล<br>227", "พักเที่ยง", "ท32101<br>อนันญา<br>433", "ค32101<br>ศิริรัตน์<br>543", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ว32101<br>กมลวรรณ<br>122", "ส32111<br>เชาวเลิศ<br>226", "อ32221<br>นิพัทธ์<br>443", "ส32101<br>ปริญญา<br>532", "พักเที่ยง", "อ32221<br>นิพัทธ์<br>543", "ค32101<br>ศิริรัตน์<br>225", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+
+            "6/1": { homeroom: "216", table: [
+                ["จ.", "Home Room", "ค33101<br>ศศิวีร์<br>225", "ท33101<br>นิพัทธ์<br>432", "ว33111<br>ชนม์ภัส<br>com1", "ว33111<br>ชนม์ภัส<br>com1", "พักเที่ยง", "ส33101<br>อนวัทย์<br>327", "ว33221<br>ลลิตา<br>313", "ว33241<br>ไพโรจน์<br>314", "-"],
+                ["อ.", "Home Room", "ส33101<br>อนวัทย์<br>327", "ว33241<br>ไพโรจน์<br>534", "ว30161<br>ทิพาดา<br>216", "ท33101<br>นิพัทธ์<br>225", "พักเที่ยง", "ว33201<br>เจษฎากร<br>542", "ว33221<br>ชนม์ภัส<br>316", "ว33221<br>ชนม์ภัส<br>316", "-"],
+                ["พ.", "Home Room", "ว33241<br>ไพโรจน์<br>314", "ว33241<br>ไพโรจน์<br>314", "ส33251<br>ธนาวุฒิ<br>327", "ส33251<br>ธนาวุฒิ<br>327", "พักเที่ยง", "ค33201<br>ศศิวีร์<br>225", "ส33101<br>อนวัทย์<br>327", "ส33101<br>อนวัทย์<br>216", "แนะแนว"],
+                ["พฤ.", "Home Room", "ว33101<br>เจษฎากร<br>542", "ท33201<br>บุญนุช<br>534", "ว33201<br>เจษฎากร<br>316", "ว33201<br>เจษฎากร<br>316", "พักเที่ยง", "ท33101<br>นิพัทธ์<br>432", "ค33101<br>ศศิวีร์<br>327", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ส33201<br>วิชิต<br>113", "ว33221<br>ลลิตา<br>คห2", "ว33221<br>ลลิตา<br>313", "ว33221<br>ลลิตา<br>313", "พักเที่ยง", "ส33201<br>อนวัทย์<br>327", "ท33101<br>อาภรทิพย์<br>116", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+            "6/2": { homeroom: "316", table: [
+                ["จ.", "Home Room", "ส33101<br>สุภาวรัตน์<br>321", "ว33101<br>เจษฎากร<br>542", "ว33221<br>ชนม์ภัส<br>316", "ว33221<br>ชนม์ภัส<br>316", "พักเที่ยง", "ส30163<br>ทิพาดา<br>226", "ว33241<br>ไพโรจน์<br>314", "ว33221<br>ลลิตา<br>313", "-"],
+                ["อ.", "Home Room", "ท33201<br>อาภรทิพย์<br>116", "ส33101<br>อนวัทย์<br>327", "ท33201<br>บุญนุช<br>534", "ท33101<br>นิพัทธ์<br>216", "พักเที่ยง", "ค33101<br>ศศิวีร์<br>225", "ว33241<br>ไพโรจน์<br>314", "ว33241<br>ไพโรจน์<br>314", "-"],
+                ["พ.", "Home Room", "ท33101<br>นิพัทธ์<br>432", "ส33201<br>อนวัทย์<br>327", "ว33221<br>ลลิตา<br>313", "ว33221<br>ลลิตา<br>313", "พักเที่ยง", "ส33201<br>ชนม์ภัส<br>316", "ส33201<br>ชนม์ภัส<br>316", "ว33101<br>ชนม์ภัส<br>316", "แนะแนว"],
+                ["พฤ.", "Home Room", "ส33201<br>บุญนุช<br>534", "ค33101<br>ศศิวีร์<br>225", "ว33111<br>ชนม์ภัส<br>com1", "ว33111<br>ชนม์ภัส<br>com1", "พักเที่ยง", "ส33101<br>สุภาวรัตน์<br>321", "ส33101<br>เจษฎากร<br>542", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ว33201<br>ชนม์ภัส<br>316", "ว33201<br>ชนม์ภัส<br>316", "ว33201<br>วิศรชัย<br>111", "ส33101<br>สุภาวรัตน์<br>113", "พักเที่ยง", "ท33101<br>นิพัทธ์<br>432", "ค33201<br>ศศิวีร์<br>327", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+            "6/3": { homeroom: "327", table: [
+                ["จ.", "Home Room", "ส33101<br>กัญญา<br>533", "ว33221<br>กัญญา<br>552", "ท33101<br>นิพัทธ์<br>432", "ส30163<br>เชาวเลิศ<br>226", "พักเที่ยง", "ว33201<br>เจษฎากร<br>216", "ว33101<br>อนวัทย์<br>327", "ท33201<br>อนวัทย์<br>327", "-"],
+                ["อ.", "Home Room", "แนะแนว<br>ทิพย์นภา<br>125", "ท33101<br>อาภรทิพย์<br>116", "ส33241<br>นพดล<br>223", "ส33241<br>กัญญา<br>532", "พักเที่ยง", "ท33201<br>อนวัทย์<br>327", "ท33201<br>อนวัทย์<br>327", "กิจกรรม<br>เพิ่มรู้", "-"],
+                ["พ.", "Home Room", "ส33101<br>กัญญา<br>228", "ว33111<br>ธนวุฒิ<br>com1", "ว33111<br>ธนวุฒิ<br>com1", "ส33101<br>กัญญา<br>533", "พักเที่ยง", "ส33201<br>อนวัทย์<br>327", "ส33101<br>กัญญา<br>532", "ส33101<br>อนวัทย์<br>327", "แนะแนว"],
+                ["พฤ.", "Home Room", "ว33241<br>กัญญา<br>532", "ท33101<br>เจษฎากร<br>542", "ว33101<br>อนวัทย์<br>327", "ว33101<br>นิพัทธ์<br>432", "พักเที่ยง", "ท33201<br>กัญญา<br>533", "ค33101<br>ศศิวีร์<br>225", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ส33201<br>อนวัทย์<br>327", "ว33101<br>วิศรชัย<br>111", "ส30161<br>วิชิต<br>216", "ส33201<br>วิชิต<br>216", "พักเที่ยง", "ค33101<br>ศศิวีร์<br>225", "ว33201<br>เจษฎากร<br>542", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+            "6/4": { homeroom: "544", table: [
+                ["จ.", "Home Room", "ส30163<br>ทิพาดา<br>228", "ส33101<br>สุภาวรัตน์<br>321", "ว33201<br>เจษฎากร<br>542", "ท33101<br>ภัสรา<br>524", "พักเที่ยง", "ค33101<br>ศศิวีร์<br>225", "ว33201<br>เจษฎากร<br>216", "ท33101<br>นวพล<br>533", "-"],
+                ["อ.", "Home Room", "ท33101<br>ภัสรา<br>524", "ว33241<br>ศศิวีร์<br>225", "ว33241<br>กัญญา<br>532", "ส33241<br>วิชิต<br>113", "พักเที่ยง", "ส33101<br>สุภาวรัตน์<br>116", "ส33101<br>กัญญา<br>533", "ส33101<br>กัญญา<br>523", "-"],
+                ["พ.", "Home Room", "ว33201<br>เจษฎากร<br>542", "ว33201<br>ภัสรา<br>524", "ว33201<br>เจษฎากร<br>216", "ว33201<br>เจษฎากร<br>216", "พักเที่ยง", "ส33101<br>วิศรชัย<br>432", "ส33101<br>กัญญา<br>532", "ส33101<br>วิศรชัย<br>523", "แนะแนว"],
+                ["พฤ.", "Home Room", "ว33201<br>ปริญญา<br>533", "ว33221<br>ภัสรา<br>524", "ส33241<br>สุภาวรัตน์<br>321", "ส33241<br>เจษฎากร<br>542", "พักเที่ยง", "ท33201<br>นวพล<br>532", "ส33201<br>วิศรชัย<br>432", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ท33201<br>นวพล<br>524", "ว33221<br>เจษฎากร<br>542", "ว33111<br>ธนวุฒิ<br>com1", "ว33111<br>ธนวุฒิ<br>com1", "พักเที่ยง", "ส33201<br>กัญญา<br>532", "แนะแนว<br>ทิพย์นภา<br>125", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+            "6/5": { homeroom: "542", table: [
+                ["จ.", "Home Room", "ส33101<br>กัญญา<br>532", "ส33101<br>กัญญา<br>327", "ส30163<br>วิชิต<br>113", "ว33201<br>เจษฎากร<br>225", "พักเที่ยง", "ส33101<br>กัญญา<br>542", "ส33101<br>เจษฎากร<br>542", "ส33101<br>เจษฎากร<br>542", "-"],
+                ["อ.", "Home Room", "ค33101<br>ศศิวีร์<br>225", "ส33101<br>นพดล<br>223", "ส33241<br>กัญญา<br>532", "ว33241<br>วิศรชัย<br>111", "พักเที่ยง", "ว33111<br>ธนวุฒิ<br>com1", "ว33111<br>ธนวุฒิ<br>com1", "ท33101<br>เจษฎากร<br>225", "-"],
+                ["พ.", "Home Room", "ส33201<br>กัญญา<br>532", "ว33101<br>วิศรชัย<br>432", "ส33241<br>นพดล<br>443", "ส33241<br>วิชิต<br>223", "พักเที่ยง", "ส33241<br>กัญญา<br>228", "ส33241<br>กัญญา<br>533", "ส33201<br>กัญญา<br>542", "แนะแนว"],
+                ["พฤ.", "Home Room", "ค33101<br>ศศิวีร์<br>225", "ท33201<br>กัญญา<br>532", "ท33201<br>วิชิต<br>216", "ท33101<br>เจษฎากร<br>125", "พักเที่ยง", "ส33101<br>เจษฎากร<br>542", "ส33101<br>ปริญญา<br>532", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ส33101<br>กัญญา<br>532", "ส33101<br>อนวัทย์<br>327", "ส33101<br>เจษฎากร<br>542", "ท33101<br>นิพัทธ์<br>432", "พักเที่ยง", "ว33101<br>อาภรทิพย์<br>116", "ส33201<br>วิชิต<br>216", "กิจกรรม<br>จัดสรร", "-"]
+            ]},
+            "6/6": { homeroom: "432", table: [
+                ["จ.", "Home Room", "ท33101<br>เจษฎากร<br>216", "ส33101<br>กัญญา<br>228", "ส30163<br>นพดล<br>223", "ส33101<br>เจษฎากร<br>432", "พักเที่ยง", "ส33101<br>กัญญา<br>532", "ส33101<br>นิพัทธ์<br>432", "ท33101<br>นิพัทธ์<br>432", "-"],
+                ["อ.", "Home Room", "ส33101<br>เจษฎากร<br>216", "ส33101<br>เจษฎากร<br>216", "ท33101<br>อาภรทิพย์<br>116", "ส33241<br>นพดล<br>223", "พักเที่ยง", "ท33101<br>วิศรชัย<br>111", "ส33101<br>เจษฎากร<br>542", "ส33101<br>เจษฎากร<br>542", "-"],
+                ["พ.", "Home Room", "ส33101<br>อนวัทย์<br>327", "ส33241<br>กัญญา<br>542", "ส33101<br>กัญญา<br>228", "ค33101<br>ศศิวีร์<br>225", "พักเที่ยง", "ว33111<br>ธนวุฒิ<br>com1", "ว33111<br>ธนวุฒิ<br>com1", "ส33201<br>เจษฎากร<br>432", "-"],
+                ["พฤ.", "Home Room", "ท33201<br>เจนจิรา<br>431", "ท33201<br>วิชิต<br>113", "ค33101<br>ศศิวีร์<br>225", "ส33241<br>อนวัทย์<br>327", "พักเที่ยง", "ส33101<br>วิศรชัย<br>533", "ส33101<br>ปริญญา<br>533", "กิจกรรม<br>ชุมนุม", "-"],
+                ["ศ.", "Home Room", "ส33201<br>เจษฎากร<br>542", "ส33201<br>ทิพยสุดา<br>228", "ว33101<br>นิพัทธ์<br>432", "ท33101<br>ทิพย์นภา<br>125", "พักเที่ยง", "ท33101<br>ภัสรา<br>216", "ส33101<br>กัญญา<br>532", "กิจกรรม<br>จัดสรร", "-"]
+            ]}
+        };
+
+        // UI Configurations
+        const classroomData = {
+            m1: { grade: 'ม.1', gradeTitle: 'มัธยมศึกษาปีที่ 1', emoji: '📘', color: 'blue', rooms: ['1/1', '1/2', '1/3', '1/4', '1/5', '1/6', '1/7', '1/8', '1/9', '1/10', '1/11', '1/12', '1/13', '1/14'] },
+            m2: { grade: 'ม.2', gradeTitle: 'มัธยมศึกษาปีที่ 2', emoji: '📗', color: 'violet', rooms: ['2/1', '2/2', '2/3', '2/4', '2/5', '2/6', '2/7', '2/8', '2/9', '2/10', '2/11', '2/12', '2/13', '2/14'] },
+            m3: { grade: 'ม.3', gradeTitle: 'มัธยมศึกษาปีที่ 3', emoji: '📙', color: 'pink', rooms: ['3/1', '3/2', '3/3', '3/4', '3/5', '3/6', '3/7', '3/8', '3/9', '3/10', '3/11', '3/12', '3/13', '3/14'] },
+            m4: { grade: 'ม.4', gradeTitle: 'มัธยมศึกษาปีที่ 4', emoji: '📕', color: 'amber', rooms: ['4/1', '4/2', '4/3', '4/4', '4/5', '4/6'] },
+            m5: { grade: 'ม.5', gradeTitle: 'มัธยมศึกษาปีที่ 5', emoji: '📒', color: 'emerald', rooms: ['5/1', '5/2', '5/3', '5/4', '5/5', '5/6'] },
+            m6: { grade: 'ม.6', gradeTitle: 'มัธยมศึกษาปีที่ 6', emoji: '📓', color: 'red', rooms: ['6/1', '6/2', '6/3', '6/4', '6/5', '6/6'] }
+        };
+
+        const gradeColors = {
+            blue: { bg: 'bg-blue-50 dark:bg-blue-950/30', border: 'border-blue-400', text: 'text-blue-600 dark:text-blue-400', badge: 'bg-blue-500', hoverBg: 'hover:bg-blue-100 dark:hover:bg-blue-900/40' },
+            violet: { bg: 'bg-violet-50 dark:bg-violet-950/30', border: 'border-violet-400', text: 'text-violet-600 dark:text-violet-400', badge: 'bg-violet-500', hoverBg: 'hover:bg-violet-100 dark:hover:bg-violet-900/40' },
+            pink: { bg: 'bg-pink-50 dark:bg-pink-950/30', border: 'border-pink-400', text: 'text-pink-600 dark:text-pink-400', badge: 'bg-pink-500', hoverBg: 'hover:bg-pink-100 dark:hover:bg-pink-900/40' },
+            amber: { bg: 'bg-amber-50 dark:bg-amber-950/30', border: 'border-amber-400', text: 'text-amber-600 dark:text-amber-400', badge: 'bg-amber-500', hoverBg: 'hover:bg-amber-100 dark:hover:bg-amber-900/40' },
+            emerald: { bg: 'bg-emerald-50 dark:bg-emerald-950/30', border: 'border-emerald-400', text: 'text-emerald-600 dark:text-emerald-400', badge: 'bg-emerald-500', hoverBg: 'hover:bg-emerald-100 dark:hover:bg-emerald-900/40' },
+            red: { bg: 'bg-red-50 dark:bg-red-950/30', border: 'border-red-400', text: 'text-red-600 dark:text-red-400', badge: 'bg-red-500', hoverBg: 'hover:bg-red-100 dark:hover:bg-red-900/40' }
+        };
+
+        // Render HTML content Panels
+        function buildPanels() {
+            const panelsContainer = document.getElementById('grade-panels');
+            let html = '';
+
+            for (const [gradeKey, data] of Object.entries(classroomData)) {
+                const colors = gradeColors[data.color];
+                const isActive = gradeKey === 'm1' ? 'active' : '';
+
+                html += `
+                <div class="grade-panel ${isActive}" id="panel-${gradeKey}">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 p-4 md:p-6 ${colors.bg} border-l-4 ${colors.border} rounded-r-lg">
+                        <div class="flex items-center gap-3">
+                            <span class="text-3xl md:text-4xl">${data.emoji}</span>
+                            <div>
+                                <h2 class="text-xl md:text-2xl font-black ${colors.text}">${data.gradeTitle}</h2>
+                                <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-bold">ตารางเรียนอย่างเป็นทางการภาคเรียนที่ 1/2569 · ${data.rooms.length} ห้องเรียน</p>
+                            </div>
+                        </div>
+                        <div class="${colors.badge} text-white font-black px-4 py-2 text-sm rounded-sm border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] badge-glow">
+                            ${data.rooms.length} ห้อง
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
+                `;
+
+                data.rooms.forEach((roomKey, index) => {
+                    const roomInfo = rawSchedules[roomKey];
+                    if (!roomInfo) return;
+                    const homeroom = roomInfo.homeroom;
+
+                    html += `
+                        <div class="room-card bg-white dark:bg-gray-800 border-3 border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-5 cursor-pointer group ${colors.hoverBg}"
+                             style="animation-delay: ${index * 0.04}s"
+                             onclick="openScheduleModal('${roomKey}')">
+                            
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="${colors.badge} text-white font-black text-lg md:text-xl px-3 py-0.5 rounded-sm border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]">
+                                    ชั้น ม. ${roomKey}
+                                </span>
+                                <span class="text-partyPink group-hover:scale-125 transition-transform duration-300 text-xl">🗓️</span>
+                            </div>
+
+                            <div class="space-y-2 mt-3">
+                                <div class="flex items-center gap-2 text-xs md:text-sm">
+                                    <span class="text-gray-400 dark:text-gray-500">🏫</span>
+                                    <span class="font-bold text-gray-600 dark:text-gray-300">ห้องประจำ:</span>
+                                    <span class="font-black ${colors.text}">${homeroom}</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 pt-3 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between">
+                                <span class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider">กดเพื่อเปิดตารางเรียน</span>
+                                <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-bold px-2 py-0.5 rounded group-hover:bg-partyBlue group-hover:text-white dark:group-hover:bg-partyPink transition-colors">
+                                    เปิดดู
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                    </div>
+                </div>
+                `;
+            }
+
+            panelsContainer.innerHTML = html;
+        }
+
+        // Switch Grade tab
+        function switchGrade(gradeKey, clickedTab) {
+            document.querySelectorAll('.grade-tab').forEach(tab => tab.classList.remove('active'));
+            clickedTab.classList.add('active');
+
+            document.querySelectorAll('.grade-panel').forEach(panel => panel.classList.remove('active'));
+            const targetPanel = document.getElementById(`panel-${gradeKey}`);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+                targetPanel.querySelectorAll('.room-card').forEach((card, i) => {
+                    card.style.animation = 'none';
+                    card.offsetHeight; // force reflow
+                    card.style.animation = `fadeInUp 0.4s ease forwards`;
+                    card.style.animationDelay = `${i * 0.04}s`;
+                });
             }
         }
+
+        // Generate retro detailed table HTML
+        function generateRetroTableHTML(roomKey) {
+            const data = rawSchedules[roomKey];
+            if (!data) return '<p class="text-center font-bold text-red-500">ไม่พบข้อมูลตารางเรียน</p>';
+
+            const periods = ["วัน", "0 (08.00-08.30)", "1 (08.30-09.20)", "2 (09.20-10.10)", "3 (10.10-11.00)", "4 (11.00-12.00)", "5 (12.00-12.50)", "6 (12.50-13.40)", "7 (13.40-14.30)", "8 (14.30-15.20)"];
+            if (roomKey.startsWith("4/") || roomKey.startsWith("5/") || roomKey.startsWith("6/")) {
+                periods.push("9 (15.20-16.10)");
+            }
+
+            let html = `<div id="capture-area" class="bg-white dark:bg-gray-900 p-4 rounded-sm border-4 border-partyBlue"><div class="text-center mb-4"><h3 class="text-2xl font-black text-partyBlue dark:text-partyYellow">ตารางเรียน ชั้น ม. ${roomKey}</h3><p class="text-sm font-bold text-partyPink">ห้องประจำ: ${data.homeroom} · โรงเรียนพานทองสภาชนูปถัมภ์</p></div><div class="overflow-x-auto w-full"><table class="retro-table"><thead><tr>`;
+            periods.forEach(p => {
+                html += `<th>${p}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+
+            data.table.forEach(row => {
+                html += '<tr>';
+                const maxCols = periods.length;
+                for (let i = 0; i < maxCols; i++) {
+                    const cellContent = row[i] || "-";
+                    if (i === 0) {
+                        html += `<td class="bg-gray-100 dark:bg-gray-800 text-partyBlue dark:text-partyYellow font-black">${cellContent}</td>`;
+                    } else {
+                        html += `<td class="subject-cell">${cellContent}</td>`;
+                    }
+                }
+                html += '</tr>';
+            });
+
+            html += '</tbody></table></div></div>';
+            return html;
+        }
+
+        // Open Modal with detailed table
+        let activeRoomKey = "";
+        function openScheduleModal(roomKey) {
+            const data = rawSchedules[roomKey];
+            if (!data) return;
+
+            activeRoomKey = roomKey;
+            const modal = document.getElementById('schedule-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalSubtitle = document.getElementById('modal-subtitle');
+            const modalContainer = document.getElementById('modal-table-container');
+
+            if (modal && modalTitle && modalSubtitle && modalContainer) {
+                modalTitle.textContent = `ตารางเรียน ชั้น ม. ${roomKey}`;
+                modalSubtitle.textContent = `ห้องประจำ: ${data.homeroom} · ภาคเรียนที่ 1/2569`;
+                modalContainer.innerHTML = generateRetroTableHTML(roomKey);
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // html2canvas Save as Image function
+        document.getElementById('btn-save-img').addEventListener('click', function() {
+            const target = document.getElementById('capture-area');
+            if (!target) return;
+
+            // Render to Canvas
+            html2canvas(target, {
+                useCORS: true,
+                scale: 2, // Double quality
+                backgroundColor: document.documentElement.classList.contains('dark') ? '#111827' : '#ffffff'
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `ตารางเรียน_ม_${activeRoomKey.replace('/', '_')}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                console.error("Error generating image:", err);
+                alert("ไม่สามารถบันทึกเป็นรูปภาพได้ กรุณาลองใหม่อีกครั้ง");
+            });
+        });
 
         function closeModal() {
             const modal = document.getElementById('schedule-modal');
             if (modal) {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
-                document.body.style.overflow = ''; // restore scrolling
+                document.body.style.overflow = '';
             }
         }
 
-        // Close modal on escape key and clicking outside
+        // Close handlers
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
@@ -443,6 +1110,9 @@
                 closeModal();
             }
         });
+
+        // Initialize
+        buildPanels();
     </script>
 </body>
 </html>
