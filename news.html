@@ -1755,7 +1755,7 @@
                         </div>
                     </div>
 
-                    <!-- กล่องแจ้งกำหนดการ -->
+                            <!-- กล่องแจ้งกำหนดการ -->
                     <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
                         <p class="text-sm md:text-base font-bold text-gray-800 dark:text-gray-200">
                             📅 เปิดระบบโหวตตั้งแต่วันที่: <span class="text-partyPink font-black">13 – 18 กรกฎาคม 2569</span>
@@ -1785,12 +1785,24 @@
                         </p>
                     </div>
 
-                    <!-- ปุ่มทางเข้าแบบฟอร์มโหวต -->
-                    <div class="mb-6 p-5 bg-orange-50 dark:bg-orange-950/10 border-l-4 border-orange-500 rounded-r-md text-center">
-                        <p class="font-black text-gray-850 dark:text-gray-200 text-lg mb-3">💙🩷 1 เสียงของคุณ อาจเป็นเกมที่ได้ลงแข่งขันจริง!</p>
-                        <a href="https://script.google.com/macros/u/1/s/AKfycbwJGLiTU9j_Ubdi6HY7N0AzSXX-Z6g6C3yPGPW9Xsxc7GoR2hiX4p_MOPggLLOQwOsAJw/exec" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-black px-6 py-3 rounded-sm shadow-md transition-all hover:-translate-y-0.5 text-sm md:text-base">
-                            🗳️ คลิกที่นี่เพื่อเข้าสู่แบบฟอร์มโหวตเกม
-                        </a>
+                    <!-- บล็อกทางเข้าแบบฟอร์มและปุ่มคัดลอกลิงก์ -->
+                    <div class="mb-6 p-5 bg-orange-50 dark:bg-orange-950/10 border border-orange-500/30 rounded-lg text-center">
+                        <p class="font-black text-gray-850 dark:text-gray-200 text-base md:text-lg mb-2">💙🩷 1 เสียงของคุณ อาจเป็นเกมที่ได้ลงแข่งขันจริง!</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 font-bold">กรุณาคัดลอกลิงก์ด้านล่างนี้ ไปวางในเว็บเบราว์เซอร์ (เช่น Safari, Chrome) เพื่อความเสถียรในการโหวตครับ</p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-2 max-w-lg mx-auto mb-5">
+                            <input type="text" id="esportVoteUrl" value="https://script.google.com/macros/u/1/s/AKfycbwJGLiTU9j_Ubdi6HY7N0AzSXX-Z6g6C3yPGPW9Xsxc7GoR2hiX4p_MOPggLLOQwOsAJw/exec" readonly class="flex-1 p-2.5 text-xs text-gray-600 bg-gray-100 border border-gray-300 rounded-sm focus:outline-none font-mono select-all text-center sm:text-left">
+                            <button onclick="navigator.clipboard.writeText(document.getElementById('esportVoteUrl').value); alert('คัดลอกลิงก์แบบฟอร์มโหวตเรียบร้อยแล้ว! สามารถนำไปวางในเบราว์เซอร์ได้เลยครับ');" class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-black px-4 py-2.5 rounded-sm text-xs md:text-sm shadow-md transition-all active:scale-95 flex-shrink-0 flex items-center justify-center gap-1">
+                                📋 คัดลอกลิงก์
+                            </button>
+                        </div>
+
+                        <!-- บล็อกแสดงรูปภาพขนาดกระชับ จัดวางไว้กึ่งกลางพอดี -->
+                        <div class="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 shadow-sm bg-white p-2 max-w-[200px] mx-auto">
+                            <a href="images/วารสาร/QR-ESport.png" target="_blank" class="block hover:opacity-90 transition-opacity">
+                                <img src="images/วารสาร/QR-ESport.png" alt="สแกนหรือคลิกที่นี่เพื่อร่วมโหวตเกม E-Sport" class="w-full h-auto object-cover rounded-sm mx-auto" />
+                            </a>
+                        </div>
                     </div>
 
                     <div class="mb-4 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
@@ -1800,6 +1812,615 @@
                         <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#RoV</span>
                         <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#FreeFire</span>
                         <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <!-- ลิงก์ประกาศต้นทาง -->
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">ลิงก์ประกาศต้นทาง:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.instagram.com/p/DattYn_yqBH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram Post
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 30,
+                date: "15 กรกฎาคม 2569", // วันที่ออกประกาศก่อนวันเลือกตั้งจริง
+                title: "🗳️ คู่มือเตรียมตัวเลือกตั้ง! วิธีการลงคะแนนและจุดเช็กอินหน่วยเลือกตั้งประธานคณะสี ประจำปีการศึกษา 2569 🏛️✨",
+                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ชวนนักเรียนทุกคนร่วมใช้สิทธิ์เลือกตั้งผู้นำคณะสีในวันศุกร์ที่ 17 กรกฎาคมนี้ พร้อมเปิดพิกัดหน่วยเลือกตั้งทั้ง 4 คณะสี และกฎเหล็กการกากบาทบัตรดี-บัตรเสียที่ต้องรู้!",
+                image: "images/วารสาร/การลงคะแนนเลือกตั้งประธานคณะสี/2.png", // ใช้รูปหลักตัวที่ 2 เป็นภาพหน้าปกวารสาร
+                content: `
+                    <p class="mb-4 indent-8 leading-relaxed font-medium">สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอเชิญชวนเพื่อน ๆ พี่ ๆ น้อง ๆ ชาวน้ำเงิน-ชมพูทุกคน ออกมาร่วมแรงร่วมใจแสดงพลังประชาธิปไตยในการ <strong>ใช้สิทธิ์เลือกตั้งประธานคณะสี ประจำปีการศึกษา 2569</strong> เพื่อเฟ้นหาผู้นำที่จะมาขับเคลื่อนกิจกรรมและสร้างสรรค์สีสันให้กับพวกเราตลอดปีการศึกษานี้ครับ!</p>
+                    
+                    <!-- บล็อกวันและเวลาจัดกิจกรรม -->
+                    <div class="mb-6 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-partyBlue/35 text-center">
+                        <p class="text-sm md:text-base font-black text-gray-800 dark:text-gray-250">
+                            🗓️ วันจัดกิจกรรม: <span class="text-partyBlue dark:text-blue-400 font-black">วันศุกร์ที่ 17 กรกฎาคม พ.ศ. 2569</span>
+                        </p>
+                        <p class="text-sm md:text-base font-black text-gray-800 dark:text-gray-250 mt-1">
+                            🕒 เวลาลงคะแนน: <span class="text-partyPink font-black">14.50 – 15.40 น.</span>
+                        </p>
+                    </div>
+
+                    <!-- พิกัดหน่วยเลือกตั้งแยกตามคณะสี -->
+                    <div class="mb-6">
+                        <p class="font-black text-gray-850 dark:text-gray-200 text-base mb-3 flex items-center gap-2">📍 พิกัดหน่วยเลือกตั้งของแต่ละคณะสี</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-bold">
+                            <div class="p-3 bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-500 rounded-r-md">
+                                <span class="text-blue-600 dark:text-blue-400 block text-base font-black mb-1">🔵 คณะสีฟ้า (พลอยไพลิน)</span>
+                                <p class="text-gray-600 dark:text-gray-300 font-medium">อาคารอเนกประสงค์ ชั้นบน (บริเวณโรงอาหาร)</p>
+                            </div>
+                            <div class="p-3 bg-yellow-50 dark:bg-yellow-950/20 border-l-4 border-yellow-500 rounded-r-md">
+                                <span class="text-yellow-600 dark:text-yellow-400 block text-base font-black mb-1">🟡 คณะสีเหลือง (บุษราคัม)</span>
+                                <p class="text-gray-600 dark:text-gray-300 font-medium">บริเวณหน้าห้องนาฏศิลป์</p>
+                            </div>
+                            <div class="p-3 bg-red-50 dark:bg-red-950/20 border-l-4 border-red-500 rounded-r-md">
+                                <span class="text-red-600 dark:text-red-400 block text-base font-black mb-1">🔴 คณะสีแดง (ทับทิมสยาม)</span>
+                                <p class="text-gray-600 dark:text-gray-300 font-medium">อาคารอเนกประสงค์ ชั้นเดียว (โดมใหญ่)</p>
+                            </div>
+                            <div class="p-3 bg-green-50 dark:bg-green-950/20 border-l-4 border-green-500 rounded-r-md">
+                                <span class="text-green-600 dark:text-green-400 block text-base font-black mb-1">🟢 คณะสีเขียว (แสงมรกต)</span>
+                                <p class="text-gray-600 dark:text-gray-300 font-medium">หอประชุมใหญ่ บริเวณหน้าโรงเรียน</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- คำแนะนำเกี่ยวกับการรับบัตรเลือกตั้ง -->
+                    <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <p class="font-bold text-gray-850 dark:text-gray-200 text-sm md:text-base mb-3">📇 รายละเอียดการรับบัตรลงคะแนน</p>
+                        <p class="text-xs md:text-sm text-gray-600 dark:text-gray-350 leading-relaxed mb-4">ผู้มีสิทธิ์เลือกตั้งทุกคนจะได้รับบัตรลงคะแนนสีละ <strong>1 ใบ</strong> ถ้วน โดยสามารถศึกษาหน้าตาและการจัดวางรูปแบบช่องทำเครื่องหมายได้จากตัวอย่างบัตรด้านล่างนี้เลยครับ:</p>
+                        
+                        <div class="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 shadow-sm bg-white p-2 max-w-sm mx-auto">
+                            <img src="images/วารสาร/การลงคะแนนเลือกตั้งประธานคณะสี/3.png" alt="ตัวอย่างบัตรเลือกตั้งประธานคณะสี" class="w-full h-auto object-cover rounded-sm mx-auto" />
+                        </div>
+                    </div>
+
+                    <!-- กฎเหล็กการทำเครื่องหมาย: บัตรดี VS บัตรเสีย -->
+                    <div class="mb-6">
+                        <p class="font-black text-gray-850 dark:text-gray-200 text-base mb-3 flex items-center gap-2">🔍 กติกาสำคัญที่ต้องรู้! วิธีการทำเครื่องหมายในบัตรเลือกตั้ง</p>
+                        
+                        <!-- รูปภาพประกอบกฎการกากบาท -->
+                        <div class="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 shadow-sm bg-white p-2 max-w-sm mx-auto mb-4">
+                            <img src="images/วารสาร/การลงคะแนนเลือกตั้งประธานคณะสี/4.png" alt="วิธีเช็กบัตรดีและบัตรเสีย" class="w-full h-auto object-cover rounded-sm mx-auto" />
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- บล็อกฝั่งบัตรดี -->
+                            <div class="p-4 bg-emerald-50 dark:bg-emerald-950/10 border border-emerald-500/30 rounded-lg">
+                                <p class="font-black text-emerald-600 dark:text-emerald-400 text-base mb-2 flex items-center gap-1">✅ ลักษณะของ “บัตรดี”</p>
+                                <ul class="list-disc list-inside space-y-2 text-xs md:text-sm text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
+                                    <li>ต้องทำเครื่องหมายกากบาท <strong class="text-emerald-600 dark:text-emerald-400">( ✗ หรือ X )</strong> ภายในช่องสี่เหลี่ยมของผู้สมัครเพียง <strong>1 หมายเลข</strong> เท่านั้นและมีความชัดเจน</li>
+                                    <li>หากไม่ประสงค์เลือกผู้สมัครคนใด สามารถกากบาท <strong class="text-emerald-600 dark:text-emerald-400">( ✗ หรือ X )</strong> ในช่อง <strong class="text-gray-800 dark:text-white">"ไม่ประสงค์ลงคะแนน"</strong> ได้ ซึ่งยังถือเป็นบัตรดีและจะนำไปนับรวมในสถิติจนวนผู้มาใช้สิทธิ์</li>
+                                </ul>
+                            </div>
+
+                            <!-- บล็อกฝั่งบัตรเสีย -->
+                            <div class="p-4 bg-rose-50 dark:bg-rose-950/10 border border-rose-500/30 rounded-lg">
+                                <p class="font-black text-rose-600 dark:text-rose-400 text-base mb-2 flex items-center gap-1">❌ ลักษณะของ “บัตรเสีย” (ไม่นับเป็นคะแนน)</p>
+                                <ul class="list-disc list-inside space-y-1.5 text-xs md:text-sm text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
+                                    <li>ใช้เครื่องหมายหรือสัญลักษณ์อื่นที่ไม่ใช่กากบาท</li>
+                                    <li>ทำเครื่องหมายกากบาทเลือกผู้สมัครมากกว่า 1 หมายเลข</li>
+                                    <li>กากบาทซ้ำๆ ซ้อนๆ หลายครั้งจนไม่สามารถระบุเจตนาที่ชัดเจนได้</li>
+                                    <li>ปล่อยบัตรว่างไว้โดยไม่มีการทำเครื่องหมายใดๆ</li>
+                                    <li>ทำเครื่องหมายอยู่นอกกรอบหรือนอกช่องลงคะแนนที่กำหนด</li>
+                                    <li>มีการขีดเขียนข้อความเพิ่มเติมลงไปในบัตรลงคะแนน</li>
+                                    <li>มีการวาดรูปภาพตกแต่งใดๆ ลงในบัตร</li>
+                                    <li>ทำเครื่องหมายเลือกผู้สมัคร พร้อมกับกาช่องไม่ประสงค์ลงคะแนนร่วมกัน</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- บล็อกสรุปวันประกาศผลอย่างเป็นทางการ -->
+                    <div class="mb-6 p-5 bg-amber-50 dark:bg-amber-950/10 border border-partyYellow/40 rounded-lg text-center font-bold">
+                        <div class="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 shadow-sm bg-white p-2 max-w-sm mx-auto mb-4">
+                            <img src="images/วารสาร/การลงคะแนนเลือกตั้งประธานคณะสี/5.png" alt="ไทม์ไลน์การเลือกตั้งประธานคณะสี" class="w-full h-auto object-cover rounded-sm mx-auto" />
+                        </div>
+                        <p class="text-base md:text-lg text-gray-850 dark:text-gray-200">
+                            🏆 ประกาศผลการเลือกตั้งอย่างเป็นทางการใน: <span class="text-amber-600 dark:text-partyYellow font-black">วันพฤหัสบดีที่ 23 กรกฎาคม พ.ศ. 2569</span>
+                        </p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium">สามารถร่วมติดตามชมการนับคะแนนสดและอัปเดตสถานการณ์ผ่านทางเพจสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ได้ตลอดช่วงวันกิจกรรมครับ</p>
+                    </div>
+
+                    <div class="mb-4 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#เลือกตั้งประธานคณะสี2569</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#ประชาธิปไตยในโรงเรียน</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#น้ำเงินชมพูเกมส์</span>
+                    </div>
+
+                    <!-- ลิงก์ประกาศต้นทาง -->
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">ลิงก์ประกาศต้นทาง:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.instagram.com/p/DaNHK63kWuV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram Post
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 31,
+                date: "17 กรกฎาคม 2569",
+                title: "🥛♻️ สภานักเรียนฯ จัดกิจกรรม UHT Recycle ครั้งที่ 1 ประกาศผลห้องเรียนรวบรวมกล่องนมสูงสุด! 🏆✨",
+                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ดำเนินกิจกรรม UHT Recycle ครั้งที่ 1 รวบรวมกล่องนม UHT ส่งต่อเข้าสู่กระบวนการรีไซเคิล พร้อมประกาศผลห้องเรียนที่ได้รับรางวัลรวบรวมกล่องนมสูงสุด",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ฉบับที่-20.png",
+                content: `
+                    <p class="mb-4 indent-8 leading-relaxed font-medium">วันศุกร์ที่ 17 กรกฎาคม พ.ศ. 2569 คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ได้ดำเนินกิจกรรม <strong>UHT Recycle ครั้งที่ 1</strong> โดยเชิญชวนนักเรียนทุกระดับชั้นร่วมกันรวบรวมกล่องนม UHT ที่ใช้แล้วจากแต่ละห้องเรียน เพื่อนำมาชั่งน้ำหนักและส่งต่อเข้าสู่กระบวนการรีไซเคิล แปรรูปเป็นผลิตภัณฑ์ที่สามารถนำกลับมาใช้ประโยชน์ได้อีกครั้ง</p>
+                    
+                    <p class="mb-6 indent-8 leading-relaxed font-medium">กิจกรรมดังกล่าวจัดขึ้นเพื่อส่งเสริมให้นักเรียนตระหนักถึงความสำคัญของการอนุรักษ์สิ่งแวดล้อม การคัดแยกขยะอย่างถูกวิธี และการใช้ทรัพยากรอย่างคุ้มค่า ตลอดจนปลูกฝังจิตสำนึกด้านการรีไซเคิลและการมีส่วนร่วมในการลดปริมาณขยะภายในโรงเรียน</p>
+
+                    <!-- กล่องสรุปผลการแข่งขันและรางวัล -->
+                    <div class="mb-6 p-5 bg-gradient-to-br from-emerald-50 via-teal-50 to-emerald-50 dark:from-emerald-950/20 dark:via-teal-950/20 dark:to-emerald-950/20 border border-emerald-500/30 rounded-xl shadow-sm">
+                        <h3 class="text-base md:text-lg font-black text-emerald-800 dark:text-emerald-300 text-center mb-4">🏆 ผลการรวบรวมกล่องนม UHT กิจกรรม UHT Recycle ครั้งที่ 1</h3>
+
+                        <!-- Top 3 Podiums -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+                            <!-- ชนะเลิศ -->
+                            <div class="p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-700/50 rounded-lg text-center shadow-xs">
+                                <span class="inline-block px-2.5 py-0.5 bg-amber-400 text-gray-900 font-black text-xs rounded-full mb-1">🥇 รางวัลชนะเลิศ</span>
+                                <p class="text-lg font-black text-gray-850 dark:text-gray-100">มัธยมศึกษาปีที่ 3/5</p>
+                                <p class="text-sm font-bold text-amber-600 dark:text-amber-400 mt-1">47.3 กิโลกรัม</p>
+                            </div>
+
+                            <!-- รองอันดับ 1 -->
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-600 rounded-lg text-center shadow-xs">
+                                <span class="inline-block px-2.5 py-0.5 bg-slate-300 text-gray-900 font-black text-xs rounded-full mb-1">🥈 รองชนะเลิศ อันดับ 1</span>
+                                <p class="text-lg font-black text-gray-850 dark:text-gray-100">มัธยมศึกษาปีที่ 3/2</p>
+                                <p class="text-sm font-bold text-slate-600 dark:text-slate-300 mt-1">26.1 กิโลกรัม</p>
+                            </div>
+
+                            <!-- รองอันดับ 2 -->
+                            <div class="p-3 bg-orange-50 dark:bg-orange-950/30 border border-orange-300 dark:border-orange-800/50 rounded-lg text-center shadow-xs">
+                                <span class="inline-block px-2.5 py-0.5 bg-orange-400 text-white font-black text-xs rounded-full mb-1">🥉 รองชนะเลิศ อันดับ 2</span>
+                                <p class="text-lg font-black text-gray-850 dark:text-gray-100">มัธยมศึกษาปีที่ 6/4</p>
+                                <p class="text-sm font-bold text-orange-600 dark:text-orange-400 mt-1">14.4 กิโลกรัม</p>
+                            </div>
+                        </div>
+
+                        <!-- รายการรางวัลชมเชยและดีเด่น -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm">
+                            <!-- รางวัลชมเชย -->
+                            <div class="bg-white/80 dark:bg-gray-800/80 p-3.5 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <p class="font-black text-partyBlue dark:text-partyYellow mb-2 flex items-center gap-1.5">🎖️ รางวัลชมเชย</p>
+                                <ul class="space-y-1 font-medium text-gray-700 dark:text-gray-300">
+                                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-700/50 pb-1"><span>ชั้นมัธยมศึกษาปีที่ 3/12</span> <strong class="text-emerald-600 dark:text-emerald-400">13.1 กก.</strong></li>
+                                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-700/50 pb-1"><span>ชั้นมัธยมศึกษาปีที่ 6/1</span> <strong class="text-emerald-600 dark:text-emerald-400">12.6 กก.</strong></li>
+                                    <li class="flex justify-between"><span>ชั้นมัธยมศึกษาปีที่ 2/4</span> <strong class="text-emerald-600 dark:text-emerald-400">8.0 กก.</strong></li>
+                                </ul>
+                            </div>
+
+                            <!-- รางวัลดีเด่น -->
+                            <div class="bg-white/80 dark:bg-gray-800/80 p-3.5 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <p class="font-black text-partyPink dark:text-pink-400 mb-2 flex items-center gap-1.5">⭐ รางวัลดีเด่น</p>
+                                <ul class="space-y-1 font-medium text-gray-700 dark:text-gray-300">
+                                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-700/50 pb-1"><span>ชั้นมัธยมศึกษาปีที่ 1/11</span> <strong class="text-emerald-600 dark:text-emerald-400">6.0 กก.</strong></li>
+                                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-700/50 pb-1"><span>ชั้นมัธยมศึกษาปีที่ 5/1</span> <strong class="text-emerald-600 dark:text-emerald-400">5.8 กก.</strong></li>
+                                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-700/50 pb-1"><span>ชั้นมัธยมศึกษาปีที่ 3/8</span> <strong class="text-emerald-600 dark:text-emerald-400">5.1 กก.</strong></li>
+                                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-700/50 pb-1"><span>ชั้นมัธยมศึกษาปีที่ 3/1</span> <strong class="text-emerald-600 dark:text-emerald-400">5.0 กก.</strong></li>
+                                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-700/50 pb-1"><span>ชั้นมัธยมศึกษาปีที่ 1/13</span> <strong class="text-emerald-600 dark:text-emerald-400">4.6 กก.</strong></li>
+                                    <li class="flex justify-between border-b border-gray-100 dark:border-gray-700/50 pb-1"><span>ชั้นมัธยมศึกษาปีที่ 3/11</span> <strong class="text-emerald-600 dark:text-emerald-400">3.6 กก.</strong></li>
+                                    <li class="flex justify-between"><span>ชั้นมัธยมศึกษาปีที่ 3/6</span> <strong class="text-emerald-600 dark:text-emerald-400">2.7 กก.</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ข้อความขอบคุณปิดท้าย -->
+                    <p class="mb-6 indent-8 leading-relaxed font-medium">ทั้งนี้ คณะกรรมการสภานักเรียนขอขอบคุณนักเรียนทุกห้องเรียนที่ให้ความร่วมมือเป็นอย่างดียิ่ง และหวังเป็นอย่างยิ่งว่ากิจกรรม UHT Recycle จะเป็นส่วนหนึ่งในการสร้างจิตสำนึกด้านสิ่งแวดล้อม และส่งเสริมการมีส่วนร่วมในการดูแลรักษาทรัพยากรธรรมชาติอย่างยั่งยืนต่อไปครับ 🌿💚</p>
+
+                    <div class="mb-4 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#ใช้ทรัพยากรอย่างคุ้มค่า</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#UHTRecycle</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+                    <!-- ลิงก์ประกาศต้นทาง -->
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">🔗 ลิงก์ประกาศต้นทาง:</span>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <a href="https://www.facebook.com/share/p/18Xpytzctx/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-4 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-0.5 transition-transform flex items-center gap-2 text-xs md:text-sm">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                Facebook Post
+                            </a>
+                            <a href="https://www.instagram.com/p/DbLaT--xAvY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-4 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-0.5 transition-transform flex items-center gap-2 text-xs md:text-sm">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram Post
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 32,
+                date: "17 กรกฎาคม 2569",
+                title: "🗳️✨ ประกาศผลการเลือกตั้งประธานคณะสี ประจำปีการศึกษา 2569 ยินดีต้อนรับ 4 ผู้นำใหม่แห่งชาวน้ำเงิน-ชมพู! 👑🎉",
+                shortDesc: "คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ประกาศผลการเลือกตั้งประธานคณะสี ประจำปีการศึกษา 2569 อย่างเป็นทางการ ขอแสดงความยินดีกับประธานคณะสีทั้ง 4 ท่าน ได้แก่ คณะสีบุษราคัม คณะสีพลอยไพลิน คณะสีทับทิมสยาม และคณะสีแสงมรกต",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ฉบับที่-21.png",
+                content: `
+                    <p class="mb-4 indent-8 leading-relaxed font-medium">วันศุกร์ที่ 17 กรกฎาคม พ.ศ. 2569 คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ได้ดำเนินการจัดการเลือกตั้งประธานคณะสี ประจำปีการศึกษา 2569 เพื่อส่งเสริมให้นักเรียนได้เรียนรู้และปฏิบัติตามหลักประชาธิปไตย เปิดโอกาสให้นักเรียนทุกคนมีส่วนร่วมในการเลือกผู้นำคณะสีของตนเองอย่างเสรี โปร่งใส และเป็นธรรม</p>
+                    
+                    <p class="mb-6 leading-relaxed font-medium">การเลือกตั้งในครั้งนี้เป็นไปด้วยความเรียบร้อย ภายหลังการนับคะแนนและการรับรองผลการเลือกตั้งอย่างเป็นทางการ ปรากฏผลการเลือกตั้งประธานคณะสี ประจำปีการศึกษา 2569 ดังนี้</p>
+
+                    <!-- Grid แสดงโฉมหน้าผู้ชนะประธานคณะสีทั้ง 4 คณะสี -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        
+                        <!-- 💛 คณะสีบุษราคัม -->
+                        <div class="p-4 bg-yellow-50/70 dark:bg-yellow-950/20 border border-yellow-400/50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="overflow-hidden rounded-lg border border-yellow-300 dark:border-yellow-700/50 bg-white mb-3">
+                                <img src="images/วารสาร/ประธานคณะสีรวม/ผู้ชนะประธานคณะสี/1.png" alt="ประธานคณะสีบุษราคัม" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                            </div>
+                            <div class="text-center">
+                                <span class="inline-block px-3 py-1 bg-yellow-400 text-gray-900 font-black text-sm rounded-full mb-2 shadow-sm">💛 คณะสีบุษราคัม</span>
+                                <h3 class="text-lg font-black text-gray-850 dark:text-gray-100">👑 นายเตชิษฎ์ เสือเพชร</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold mt-1">ประธานคณะสีบุษราคัม ประจำปีการศึกษา 2569</p>
+                            </div>
+                        </div>
+
+                        <!-- 🩵 คณะสีพลอยไพลิน -->
+                        <div class="p-4 bg-sky-50/70 dark:bg-sky-950/20 border border-sky-400/50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="overflow-hidden rounded-lg border border-sky-300 dark:border-sky-700/50 bg-white mb-3">
+                                <img src="images/วารสาร/ประธานคณะสีรวม/ผู้ชนะประธานคณะสี/2.png" alt="ประธานคณะสีพลอยไพลิน" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                            </div>
+                            <div class="text-center">
+                                <span class="inline-block px-3 py-1 bg-sky-400 text-white font-black text-sm rounded-full mb-2 shadow-sm">🩵 คณะสีพลอยไพลิน</span>
+                                <h3 class="text-lg font-black text-gray-850 dark:text-gray-100">👑 นายอัครเดช สว่างโลก</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold mt-1">ประธานคณะสีพลอยไพลิน ประจำปีการศึกษา 2569</p>
+                            </div>
+                        </div>
+
+                        <!-- ❤️ คณะสีทับทิมสยาม -->
+                        <div class="p-4 bg-rose-50/70 dark:bg-rose-950/20 border border-rose-400/50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="overflow-hidden rounded-lg border border-rose-300 dark:border-rose-700/50 bg-white mb-3">
+                                <img src="images/วารสาร/ประธานคณะสีรวม/ผู้ชนะประธานคณะสี/4.png" alt="ประธานคณะสีทับทิมสยาม" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                            </div>
+                            <div class="text-center">
+                                <span class="inline-block px-3 py-1 bg-rose-500 text-white font-black text-sm rounded-full mb-2 shadow-sm">❤️ คณะสีทับทิมสยาม</span>
+                                <h3 class="text-lg font-black text-gray-850 dark:text-gray-100">👑 นายราชันย์ คำภาชาติ</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold mt-1">ประธานคณะสีทับทิมสยาม ประจำปีการศึกษา 2569</p>
+                            </div>
+                        </div>
+
+                        <!-- 💚 คณะสีแสงมรกต -->
+                        <div class="p-4 bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-400/50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="overflow-hidden rounded-lg border border-emerald-300 dark:border-emerald-700/50 bg-white mb-3">
+                                <img src="images/วารสาร/ประธานคณะสีรวม/ผู้ชนะประธานคณะสี/3.png" alt="ประธานคณะสีแสงมรกต" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                            </div>
+                            <div class="text-center">
+                                <span class="inline-block px-3 py-1 bg-emerald-500 text-white font-black text-sm rounded-full mb-2 shadow-sm">💚 คณะสีแสงมรกต</span>
+                                <h3 class="text-lg font-black text-gray-850 dark:text-gray-100">👑 นายไกรวี ถนอมเมือง</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-bold mt-1">ประธานคณะสีแสงมรกต ประจำปีการศึกษา 2569</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ข้อความแสดงความยินดี ขอบคุณ และอวยพร -->
+                    <div class="mb-6 p-5 bg-gradient-to-r from-blue-50 via-pink-50 to-blue-50 dark:from-blue-950/20 dark:via-pink-950/20 dark:to-blue-950/20 border border-partyBlue/30 rounded-lg text-center">
+                        <p class="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-3 font-medium">
+                            ในการนี้ คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอแสดงความยินดีกับประธานคณะสีที่ได้รับความไว้วางใจจากนักเรียนทุกท่าน พร้อมทั้งขอขอบคุณนักเรียนทุกคนที่ออกมาใช้สิทธิเลือกตั้งและมีส่วนร่วมในการดำเนินกิจกรรมตามวิถีประชาธิปไตย อันเป็นการส่งเสริมภาวะผู้นำ ความรับผิดชอบ และการมีส่วนร่วมของนักเรียนในการพัฒนาโรงเรียน
+                        </p>
+                        <p class="text-sm md:text-base text-partyBlue dark:text-partyYellow font-bold leading-relaxed">
+                            ขออวยพรให้ประธานคณะสีทุกท่านประสบความสำเร็จในการปฏิบัติหน้าที่ และร่วมกันขับเคลื่อนกิจกรรมของคณะสีให้เกิดประโยชน์สูงสุดแก่โรงเรียนและนักเรียนตลอดปีการศึกษา 2569 💙🩷
+                        </p>
+                    </div>
+
+                    <div class="mb-4 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#เลือกตั้งประธานคณะสี2569</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#ส่งเสริมประชาธิปไตยในโรงเรียน</span>
+                    </div>
+
+                    <!-- ลิงก์ประกาศต้นทาง -->
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">🔗 ลิงก์ประกาศต้นทาง:</span>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <a href="https://www.facebook.com/share/p/16B7rFNaXfp/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-4 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-0.5 transition-transform flex items-center gap-2 text-xs md:text-sm">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                Facebook Post
+                            </a>
+                            <a href="https://www.instagram.com/p/DbH0Z98R0lf/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-4 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-0.5 transition-transform flex items-center justify-between text-xs md:text-sm">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                <span>💛 คณะสีบุษราคัม</span>
+                            </a>
+                            <a href="https://www.instagram.com/p/DbH0_2-xgjb/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-4 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-0.5 transition-transform flex items-center justify-between text-xs md:text-sm">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                <span>🩵 คณะสีพลอยไพลิน</span>
+                            </a>
+                            <a href="https://www.instagram.com/p/DbH1ItdRLHs/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-4 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-0.5 transition-transform flex items-center justify-between text-xs md:text-sm">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                <span>❤️ คณะสีทับทิมสยาม</span>
+                            </a>
+                            <a href="https://www.instagram.com/p/DbH1N4pRcxj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-4 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-0.5 transition-transform flex items-center justify-between text-xs md:text-sm">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                <span>💚 คณะสีแสงมรกต</span>
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 33,
+                date: "23 กรกฎาคม 2569",
+                title: "🎉 ชวนเที่ยวงาน “ลานน้ำเงินชมพู” ขนทัพซุ้มเกมจัดเต็ม ลุ้นรับของรางวัล และร้านค้าสุดอร่อยมากมาย! 🎈🥤✨",
+                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอเชิญชวนคณะครูและนักเรียนร่วมสัมผัสบรรยากาศแห่งความสุขในงานลานน้ำเงินชมพู พบกับซุ้มเกมปาโป่ง ปาป๋อง โยนห่วง ตักไข่ พร้อมร้านอาหาร เครื่องดื่มแบบจัดเต็ม!",
+                image: "images/วารสาร/ลานน้ำเงินชมพู.png",
+                content: `
+                    <p class="mb-4 indent-8 leading-relaxed font-medium">สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอเชิญชวนคณะครู บุคลากร และเพื่อน ๆ พี่ ๆ น้อง ๆ นักเรียนทุกคน มาร่วมสนุกและสัมผัสบรรยากาศแห่งความสุขในกิจกรรม <strong>“งานลานน้ำเงินชมพู”</strong> ที่จัดขึ้นเพื่อสร้างรอยยิ้ม ความสามัคคี และความทรงจำอันแสนประทับใจร่วมกันครับ! 🎉✨</p>
+                    
+                    <!-- บล็อกสรุปวัน เวลา และสถานที่ -->
+                    <div class="mb-6 p-4 bg-gradient-to-r from-blue-50 via-pink-50 to-blue-50 dark:from-blue-950/20 dark:via-pink-950/20 dark:to-blue-950/20 rounded-lg border border-partyBlue/30 text-center shadow-sm">
+                        <p class="text-base md:text-lg font-black text-partyBlue dark:text-partyYellow mb-1">
+                            📅 วันศุกร์ที่ 24 กรกฎาคม พ.ศ. 2569
+                        </p>
+                        <p class="text-sm md:text-base font-bold text-gray-800 dark:text-gray-200">
+                            ⏰ เวลา: <span class="text-partyPink font-black">14.50 – 15.40 น.</span>
+                        </p>
+                        <p class="text-sm md:text-base font-bold text-gray-800 dark:text-gray-200 mt-0.5">
+                            📍 สถานที่: <span class="text-partyBlue dark:text-blue-400 font-black">ณ อาคารอเนกประสงค์ (โดมใหญ่)</span>
+                        </p>
+                    </div>
+
+                    <!-- ไฮไลท์ซุ้มกิจกรรมและร้านค้า -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <!-- การ์ดซุ้มเกม -->
+                        <div class="p-4 bg-orange-50/70 dark:bg-orange-950/20 border border-orange-400/40 rounded-lg">
+                            <p class="font-black text-orange-600 dark:text-orange-400 text-base mb-2 flex items-center gap-1.5">🎯 ซุ้มเกมแสนสนุก & ลุ้นของรางวัล</p>
+                            <p class="text-xs md:text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+                                พบกับซุ้มเกมสุดคลาสสิกที่ทุกคนคุ้นเคย สามารถร่วมสนุกและลุ้นรับของรางวัลสุดพิเศษกลับบ้านได้จากทุกซุ้มตลอดทั้งงาน!
+                            </p>
+                            <div class="grid grid-cols-2 gap-2 text-xs font-bold text-center">
+                                <span class="p-2 bg-white dark:bg-gray-800 rounded border border-orange-200 dark:border-orange-900/50 text-gray-800 dark:text-gray-200">🎈 เกมปาโป่ง</span>
+                                <span class="p-2 bg-white dark:bg-gray-800 rounded border border-orange-200 dark:border-orange-900/50 text-gray-800 dark:text-gray-200">🥫 เกมปาป๋อง</span>
+                                <span class="p-2 bg-white dark:bg-gray-800 rounded border border-orange-200 dark:border-orange-900/50 text-gray-800 dark:text-gray-200">⭕ เกมโยนห่วง</span>
+                                <span class="p-2 bg-white dark:bg-gray-800 rounded border border-orange-200 dark:border-orange-900/50 text-gray-800 dark:text-gray-200">🥚 เกมตักไข่</span>
+                            </div>
+                        </div>
+
+                        <!-- การ์ดร้านค้าอาหารและสินค้า -->
+                        <div class="p-4 bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-400/40 rounded-lg">
+                            <p class="font-black text-emerald-600 dark:text-emerald-400 text-base mb-2 flex items-center gap-1.5">🍔 โซนอาหาร เครื่องดื่ม & สินค้า</p>
+                            <p class="text-xs md:text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+                                ยกทัพร้านจำหน่ายอาหาร ขนมหวาน เครื่องดื่มดับกระหาย และสินค้าหลากหลายรูปแบบ ให้ทุกคนได้เลือกชิม เลือกซื้อกันอย่างจุใจ เติมพลังหลังเลิกเรียน!
+                            </p>
+                            <ul class="list-disc list-inside text-xs md:text-sm text-gray-600 dark:text-gray-400 space-y-1 font-medium">
+                                <li>ร้านอาหารว่างและของทอดร้อน ๆ</li>
+                                <li>เครื่องดื่มและขนมหวานนานาชนิด</li>
+                                <li>สินค้ากิ๊ฟช็อปและของที่ระลึกน่ารัก ๆ</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- กล่องข้อความเชิญชวนปิดท้าย -->
+                    <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-lg text-center">
+                        <p class="text-sm md:text-base font-bold text-gray-800 dark:text-gray-200 leading-relaxed">
+                            ✨ อย่าพลาดโอกาสดี ๆ ที่จะได้มาร่วมสนุกกับเพื่อน ๆ ชวนคุณครู พี่ น้อง มาสร้างความทรงจำดี ๆ ไปด้วยกัน เพราะความสุขและความสนุกมากมายรอทุกคนอยู่นะครับ! แล้วพบกันที่โดม! 💙🩷
+                        </p>
+                    </div>
+
+                    <div class="mb-4 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#ลานน้ำเงินชมพู</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#กิจกรรมนักเรียน</span>
+                    </div>
+                    <!-- ลิงก์ประกาศต้นทางแยกรายคณะสี -->
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">🔗 ลิงก์ประกาศต้นทาง:</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <a href="https://www.instagram.com/p/DbINdV0Melm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-4 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-0.5 transition-transform flex items-center justify-between text-xs md:text-sm">
+                                <span>Instagram Post</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 34,
+                date: "24 กรกฎาคม 2569",
+                title: "🎉 สรุปภาพบรรยากาศกิจกรรม “ลานน้ำเงิน-ชมพู ปีที่ 4” อิ่มสุข อิ่มใจ ร่วมสร้างรอยยิ้มและยอดบริจาคสู่สังคม! 💙🩷✨",
+                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ จัดกิจกรรม ลานน้ำเงิน-ชมพู ปีที่ 4 ได้รับเกียรติจาก ท่านผู้อำนวยการ สมพร หิรัญลักษณ์สุต เป็นประธานในพิธีเปิด พร้อมระดมทุนจากการจัดกิจกรรมรวม 4,367 บาท เพื่อนำไปดำเนินกิจกรรมจิตอาสาพัฒนาโรงเรียนวัดสำเภาทอง",
+                image: "images/วารสาร/PSC_SAPA_NEWS_ฉบับที่-22.png",
+                content: `
+                    <p class="mb-4 indent-8 leading-relaxed font-medium">วันศุกร์ที่ 24 กรกฎาคม พ.ศ. 2569 คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ได้ดำเนินการจัดกิจกรรม <strong>"ลานน้ำเงิน-ชมพู ปีที่ 4"</strong> ภายใต้การดำเนินงานของงานคณะกรรมการสภานักเรียนและส่งเสริมประชาธิปไตยในโรงเรียน โดยได้รับเกียรติจาก <strong>นางสาวสมพร หิรัญลักษณ์สุต</strong> ผู้อำนวยการโรงเรียนพานทองสภาชนูปถัมภ์ เป็นประธานในพิธีเปิดกิจกรรม</p>
+                    
+                    <p class="mb-6 indent-8 leading-relaxed font-medium">การจัดกิจกรรมครั้งนี้มีวัตถุประสงค์เพื่อส่งเสริมให้นักเรียนได้แสดงออกถึงความสามารถ ความคิดสร้างสรรค์ และกล้าแสดงออกอย่างเหมาะสม ตลอดจนฝึกทักษะการวางแผน การทำงานร่วมกัน และการเป็นผู้ประกอบการผ่านการจำหน่ายสินค้า อีกทั้งยังเป็นการสร้างความสัมพันธ์อันดีระหว่างนักเรียนและคณะครู พร้อมทั้งส่งเสริมบรรยากาศแห่งการเรียนรู้และการมีส่วนร่วมภายในโรงเรียน</p>
+
+                    <!-- ไฮไลท์กิจกรรมภายในงาน -->
+                    <div class="mb-6 p-4 bg-orange-50/70 dark:bg-orange-950/20 border border-orange-400/40 rounded-xl">
+                        <p class="font-black text-orange-600 dark:text-orange-400 text-base mb-3 flex items-center gap-1.5">🎪 ไฮไลท์บรรยากาศและความสนุกภายในงาน</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs md:text-sm">
+                            <div class="p-3 bg-white dark:bg-gray-800 rounded-lg border border-orange-200 dark:border-orange-900/50">
+                                <span class="font-black text-orange-700 dark:text-orange-300 block mb-1">🎸 ดนตรีสดเปิดหมวก</span>
+                                <p class="text-gray-600 dark:text-gray-300 font-medium">การแสดงดนตรีสุดไพเราะจากเพื่อน ๆ พี่ ๆ น้อง ๆ ชมรมดนตรีสากล</p>
+                            </div>
+                            <div class="p-3 bg-white dark:bg-gray-800 rounded-lg border border-orange-200 dark:border-orange-900/50">
+                                <span class="font-black text-orange-700 dark:text-orange-300 block mb-1">🛍️ ออกร้านจำหน่ายสินค้า</span>
+                                <p class="text-gray-600 dark:text-gray-300 font-medium">ร้านค้าของนักเรียนจำนวน 17 ร้าน ขนทัพอาหาร ขนม และเครื่องดื่มจัดเต็ม</p>
+                            </div>
+                            <div class="p-3 bg-white dark:bg-gray-800 rounded-lg border border-orange-200 dark:border-orange-900/50">
+                                <span class="font-black text-orange-700 dark:text-orange-300 block mb-1">🎯 4 ซุ้มเกมสภานักเรียน</span>
+                                <p class="text-gray-600 dark:text-gray-300 font-medium">ซุ้มปาโป่ง, ซุ้มปากระป๋อง, ซุ้มตักไข่ และซุ้มโยนห่วง ลุ้นรับของรางวัลมากมาย</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- บล็อกสรุปยอดเงินบริจาคจิตอาสา -->
+                    <div class="mb-6 p-5 bg-gradient-to-r from-blue-50 via-pink-50 to-blue-50 dark:from-blue-950/20 dark:via-pink-950/20 dark:to-blue-950/20 border border-partyBlue/30 rounded-xl shadow-sm text-center">
+                        <p class="text-xs md:text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                            ในการนี้ คณะกรรมการสภานักเรียนขอขอบพระคุณ ท่านผู้อำนวยการ คณะรองผู้อำนวยการ คณะครู บุคลากรทางการศึกษา และนักเรียนทุกคนที่ร่วมสนับสนุนกิจกรรม
+                        </p>
+                        <div class="my-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-partyPink/40 max-w-xl mx-auto shadow-xs">
+                            <p class="text-xs md:text-sm font-bold text-gray-600 dark:text-gray-400 mb-1">🤝 รวมยอดเงินสมทบเพื่อกิจกรรมจิตอาสาพัฒนาสังคม</p>
+                            <p class="text-2xl md:text-3xl font-black text-partyPink dark:text-partyYellow my-1">
+                                4,367 บาท
+                            </p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 font-medium mt-1">
+                                (ยอดบริจาคดนตรีเปิดหมวก 2,367 บาท + รายได้สภานักเรียนสมทบเพิ่ม 2,000 บาท)
+                            </p>
+                        </div>
+                        <p class="text-xs md:text-sm font-bold text-partyBlue dark:text-blue-300 leading-relaxed">
+                            📍 เพื่อนำไปใช้ในการดำเนินกิจกรรมจิตอาสาเพื่อปรับปรุงและพัฒนา <br class="hidden sm:inline" />
+                            <strong>โรงเรียนวัดสำเภาทอง (บ้านหนองยายเภา) อำเภอบ่อทอง จังหวัดชลบุรี</strong> ต่อไปครับ 🏫🌱
+                        </p>
+                    </div>
+
+                    <!-- ปุ่มไดรฟ์อัลบั้มรูปภาพ -->
+                    <div class="mb-6 text-center">
+                        <a href="https://drive.google.com/drive/folders/12FUtZL37r0DQQ5-1y9q-xna1sGYQw87g" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-5 py-3 rounded-md shadow-md hover:-translate-y-0.5 transition-transform">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/></svg>
+                            🖼️ ดูภาพบรรยากาศกิจกรรมทั้งหมด (Google Drive)
+                        </a>
+                    </div>
+
+                    <div class="mb-4 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#ลานน้ำเงินชมพู</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <!-- ลิงก์ประกาศต้นทาง -->
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">🔗 ลิงก์ประกาศต้นทาง:</span>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <a href="https://www.facebook.com/share/p/1QYZnJK6Cf/" target="_blank" class="hover-trigger bg-[#1877F2] text-white px-4 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-0.5 transition-transform flex items-center gap-2 text-xs md:text-sm">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                Facebook Post
+                            </a>
+                            <a href="https://www.instagram.com/p/DbLd0niknxZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-4 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-0.5 transition-transform flex items-center gap-2 text-xs md:text-sm">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram Post
+                            </a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 35,
+                date: "1 สิงหาคม 2569",
+                title: "⛏️🏆 เปิดรับสมัครแล้ว! PSC E-Sport Minecraft Build Battle ครั้งที่ 1 ประจำปีการศึกษา 2569 🏗️✨",
+                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอเชิญชวนนักเรียนสายบล็อกเกอร์ร่วมปล่อยไอเดียในการแข่งขัน PSC E-Sport Minecraft Build Battle ครั้งที่ 1 ชิงความเป็นสุดยอดทีมนักสร้างสรรค์แห่งปี!",
+                image: "images/วารสาร/PSC-E-Sport-1/รับสมัคร_Minecraft_ESport.png",
+                content: `
+                    <p class="mb-4 indent-8 leading-relaxed font-medium">ถึงเวลารวมทีม ปล่อยไอเดีย และแสดงพลังแห่งความคิดสร้างสรรค์! สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอเชิญชวนเพื่อน ๆ พี่ ๆ น้อง ๆ นักเรียนที่ชื่นชอบเกม Minecraft ร่วมลงสมัครแข่งขัน <strong>PSC E-Sport Minecraft Build Battle ครั้งที่ 1 ประจำปีการศึกษา 2569</strong> เพื่อเฟ้นหาทีมนักสร้างสรรค์ที่ดีที่สุดของโรงเรียนครับ!</p>
+                    
+                    <!-- รูปภาพประชาสัมพันธ์หลัก -->
+                    <div class="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm bg-white p-2 max-w-md mx-auto mb-6">
+                        <img src="images/วารสาร/PSC-E-Sport-1/รับสมัคร_Minecraft_ESport2.png" alt="รายละเอียดการแข่งขัน PSC E-Sport Minecraft Build Battle" class="w-full h-auto object-cover rounded-md mx-auto" />
+                    </div>
+
+                    <!-- รูปแบบการแข่งขัน -->
+                    <div class="mb-6 p-4 bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-500/30 rounded-lg">
+                        <p class="font-black text-emerald-600 dark:text-emerald-400 text-base mb-2 flex items-center gap-1.5">🏗️ รูปแบบการแข่งขัน</p>
+                        <p class="text-xs md:text-sm text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
+                            แข่งขันสร้างผลงานตามหัวข้อ (Theme) ที่คณะกรรมการกำหนดภายในเวลาที่กำหนด โดยอาศัยความคิดสร้างสรรค์ การทำงานเป็นทีม และทักษะการออกแบบสถาปัตยกรรม เพื่อชิงตำแหน่งสุดยอดทีม Build Battle แห่งโรงเรียนพานทองสภาชนูปถัมภ์
+                        </p>
+                    </div>
+
+                    <!-- กำหนดการการแข่งขัน -->
+                    <div class="mb-6">
+                        <p class="font-black text-gray-850 dark:text-gray-200 text-base mb-3 flex items-center gap-2">📅 กำหนดการแข่งขัน</p>
+                        <div class="space-y-3 text-xs md:text-sm">
+                            <div class="p-3 bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 rounded-r-md">
+                                <span class="font-black text-amber-700 dark:text-amber-400 block text-sm mb-0.5">📝 เปิดรับสมัคร</span>
+                                <p class="text-gray-700 dark:text-gray-300 font-bold">1 – 7 สิงหาคม พ.ศ. 2569</p>
+                            </div>
+
+                            <div class="p-3 bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-500 rounded-r-md">
+                                <span class="font-black text-blue-700 dark:text-blue-400 block text-sm mb-1">💻 รอบคัดเลือก (Online)</span>
+                                <ul class="space-y-1 text-gray-600 dark:text-gray-300 font-medium">
+                                    <li>🔹 <strong class="text-gray-800 dark:text-gray-100">ระดับชั้นมัธยมศึกษาตอนต้น:</strong> วันอาทิตย์ที่ 16 สิงหาคม พ.ศ. 2569</li>
+                                    <li>🔹 <strong class="text-gray-800 dark:text-gray-100">ระดับชั้นมัธยมศึกษาตอนปลาย:</strong> วันอาทิตย์ที่ 23 สิงหาคม พ.ศ. 2569</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-3 bg-purple-50 dark:bg-purple-950/20 border-l-4 border-purple-500 rounded-r-md">
+                                <span class="font-black text-purple-700 dark:text-purple-400 block text-sm mb-0.5">🏆 รอบชิงชนะเลิศ (On-site)</span>
+                                <p class="text-gray-700 dark:text-gray-300 font-bold">📅 วันพฤหัสบดีที่ 27 สิงหาคม พ.ศ. 2569 | 🕐 เวลา 13.00 – 15.40 น.</p>
+                                <p class="text-gray-600 dark:text-gray-400 font-medium mt-0.5">📍 ณ ห้องโสตทัศนศึกษา โรงเรียนพานทองสภาชนูปถัมภ์</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- คุณสมบัติผู้สมัคร -->
+                    <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <p class="font-black text-gray-850 dark:text-gray-200 text-sm md:text-base mb-2">👥 คุณสมบัติผู้สมัคร</p>
+                        <ul class="list-disc list-inside space-y-1.5 text-xs md:text-sm text-gray-700 dark:text-gray-300 font-medium">
+                            <li>ต้องเป็นนักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ประจำปีการศึกษา 2569</li>
+                            <li>ลงแข่งขันเป็นทีม <strong>ทีมละ 4 คน</strong> (สามารถมีตัวสำรองได้ 1 คน)</li>
+                            <li>สมาชิกทุกคนต้องมีคุณสมบัติและปฏิบัติตามระเบียบการแข่งขันอย่างเคร่งครัด</li>
+                        </ul>
+                    </div>
+
+                    <!-- รายละเอียดเอกสาร คุณสมบัติ กติกาเพิ่มเติม -->
+                    <div class="mb-6">
+                        <p class="font-black text-gray-850 dark:text-gray-200 text-base mb-3">📜 เอกสาร คุณสมบัติ กติกา และกำหนดการแข่งขันฉบับเต็ม</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div class="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 bg-white p-1">
+                                <img src="images/วารสาร/PSC-E-Sport-1/PSC_E-Sport_M1.jpg" alt="เอกสารกติกาการแข่งขัน หน้า 1" class="w-full h-auto object-cover rounded-sm" />
+                            </div>
+                            <div class="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 bg-white p-1">
+                                <img src="images/วารสาร/PSC-E-Sport-1/PSC_E-Sport_M2.jpg" alt="เอกสารกติกาการแข่งขัน หน้า 2" class="w-full h-auto object-cover rounded-sm" />
+                            </div>
+                            <div class="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 bg-white p-1">
+                                <img src="images/วารสาร/PSC-E-Sport-1/PSC_E-Sport_M3.jpg" alt="เอกสารกติกาการแข่งขัน หน้า 3" class="w-full h-auto object-cover rounded-sm" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ช่องทางการสมัครและ Discord -->
+                    <div class="mb-6 p-5 bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 dark:from-emerald-950/20 dark:via-teal-950/20 dark:to-emerald-950/20 border border-emerald-500/30 rounded-lg text-center">
+                        <p class="font-black text-gray-850 dark:text-gray-200 text-base md:text-lg mb-4">📲 ช่องทางการสมัคร และ Discord การแข่งขัน</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- แบบฟอร์มสมัคร -->
+                            <div class="flex flex-col items-center p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <p class="font-bold text-xs md:text-sm text-emerald-600 dark:text-emerald-400 mb-2">📋 QR Code แบบฟอร์มลงทะเบียนสมัคร</p>
+                                <div class="max-w-[160px] p-1.5 bg-white border border-gray-200 rounded mb-2">
+                                    <img src="images/วารสาร/PSC-E-Sport-1/Forms_Minecraft_ESport.png" alt="QR Code ฟอร์มสมัคร Minecraft E-Sport" class="w-full h-auto object-cover rounded-sm" />
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">สแกนเพื่อเข้าสู่ฟอร์มสมัครการแข่งขัน</p>
+                            </div>
+
+                            <!-- Discord Server -->
+                            <div class="flex flex-col items-center p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <p class="font-bold text-xs md:text-sm text-indigo-600 dark:text-indigo-400 mb-2">💬 Discord PSC E-Sport Minecraft</p>
+                                <div class="max-w-[160px] p-1.5 bg-white border border-gray-200 rounded mb-2">
+                                    <img src="images/วารสาร/PSC-E-Sport-1/Discord_Minecraft_ESport.png" alt="QR Code Discord PSC E-Sport Minecraft" class="w-full h-auto object-cover rounded-sm" />
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">สแกนเพื่อเข้าร่วม Discord ติดตามการแข่ง</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ข้อความปิดท้าย -->
+                    <p class="text-center font-black text-partyBlue dark:text-partyYellow text-sm md:text-base mb-6">
+                        ✨ เตรียมไอเดียให้พร้อม รวมทีมให้ครบ แล้วมาสร้างผลงานที่จะทำให้ทุกคนต้องมอง! ✨
+                    </p>
+
+                    <div class="mb-4 flex flex-wrap gap-2 text-sm font-bold text-partyBlue dark:text-partyYellow">
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#PSCESport</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#Minecraft</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์</span>
+                        <span class="bg-partyYellow/20 dark:bg-partyYellow/10 px-3 py-1 rounded-sm border border-partyYellow/50">#โรงเรียนพานทองสภาชนูปถัมภ์</span>
+                    </div>
+
+                    <!-- ลิงก์ประกาศต้นทาง -->
+                    <div class="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+                        <span class="font-bold text-partyBlue dark:text-white block mb-4">ลิงก์ประกาศต้นทาง:</span>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://www.instagram.com/p/DattYn_yqBH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="hover-trigger bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-5 py-2.5 font-bold rounded-sm shadow-md hover:-translate-y-1 transition-transform flex items-center gap-2 text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                Instagram Post
+                            </a>
+                        </div>
                     </div>
                 `
             }
