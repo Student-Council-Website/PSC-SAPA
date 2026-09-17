@@ -1,4 +1,4 @@
-// scripts/main.js
+﻿// scripts/main.js
 
 // --- Core Logic & Theme ---
 const html = document.documentElement;

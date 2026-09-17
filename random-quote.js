@@ -1,4 +1,4 @@
-// random-quote.js
+﻿// random-quote.js
 
 // ข้อมูลสมาชิกสภาสภานักเรียน (ครบ 44 คน)
 const councilMembers = [
