@@ -74,9 +74,227 @@
         }
         .dark .paper-stack::before { background: #1e293b; border-color: #f472b6; }
         .paper-stack:hover::before { top: 16px; left: 16px; }
+
+        .profile-modern {
+            --profile-page: #f5f8ff;
+            --profile-surface: #fff;
+            background: var(--profile-page);
+        }
+
+        .dark .profile-modern {
+            --profile-page: #0b1220;
+            --profile-surface: #111b31;
+        }
+
+        .profile-modern :focus-visible {
+            outline: 3px solid #e85d9e;
+            outline-offset: 3px;
+        }
+
+        .profile-modern > nav {
+            border-bottom: 1px solid rgba(30, 58, 138, .12) !important;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, .08) !important;
+        }
+
+        .profile-modern > nav ul a:not([href="policy.html"]) {
+            border-bottom: 0 !important;
+            border-radius: 999px;
+            padding: .55rem .85rem !important;
+        }
+
+        .profile-modern > nav ul a:not([href="policy.html"]):hover {
+            background: #eff6ff;
+        }
+
+        .dark .profile-modern > nav ul a:not([href="policy.html"]):hover {
+            background: rgba(255, 255, 255, .08);
+        }
+
+        .profile-modern > nav ul a[href="policy.html"] {
+            border-radius: 999px !important;
+            box-shadow: 0 5px 14px rgba(232, 93, 158, .2) !important;
+        }
+
+        .profile-modern .profile-main {
+            background:
+                radial-gradient(ellipse at 9% 12%, rgba(30, 58, 138, .07), transparent 30rem),
+                radial-gradient(ellipse at 92% 78%, rgba(232, 93, 158, .09), transparent 28rem),
+                var(--profile-page);
+        }
+
+        .profile-modern .profile-paper-card {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 26px !important;
+            background: var(--profile-surface) !important;
+            box-shadow: 0 18px 48px rgba(30, 58, 138, .11) !important;
+            padding: clamp(1.25rem, 4vw, 2.5rem) !important;
+        }
+
+        .dark .profile-modern .profile-paper-card {
+            border-color: rgba(255, 255, 255, .1) !important;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, .22) !important;
+        }
+
+        .profile-modern .paper-stack::before {
+            top: 10px;
+            left: 10px;
+            border: 1px solid rgba(232, 93, 158, .35);
+            border-radius: 26px;
+            background: rgba(232, 93, 158, .06);
+        }
+
+        .dark .profile-modern .paper-stack::before {
+            background: rgba(232, 93, 158, .08);
+        }
+
+        .profile-modern .profile-back-link {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 12px !important;
+            box-shadow: 0 6px 16px rgba(30, 58, 138, .1) !important;
+        }
+
+        .profile-modern .profile-tape {
+            max-width: 100%;
+            border: 0;
+            border-radius: 999px;
+            background: linear-gradient(100deg, #1e3a8a, #e85d9e);
+            box-shadow: 0 8px 20px rgba(30, 58, 138, .16);
+            white-space: normal;
+        }
+
+        .profile-modern .profile-photo-frame {
+            border: 1px solid rgba(30, 58, 138, .15) !important;
+            border-radius: 22px !important;
+            background: #f1f5fb !important;
+            box-shadow: 0 12px 28px rgba(30, 58, 138, .12) !important;
+            transform: none !important;
+        }
+
+        .dark .profile-modern .profile-photo-frame {
+            border-color: rgba(255, 255, 255, .12) !important;
+            background: #0b1220 !important;
+        }
+
+        .profile-modern #profile-img-container {
+            border: 0 !important;
+            border-radius: 16px;
+        }
+
+        .profile-modern #profile-img-container img {
+            border-radius: 14px;
+        }
+
+        .profile-modern .profile-department {
+            border: 0 !important;
+            border-radius: 16px !important;
+            background: linear-gradient(135deg, #1e3a8a, #263d75) !important;
+            box-shadow: 0 8px 20px rgba(30, 58, 138, .16) !important;
+            transform: none !important;
+        }
+
+        .profile-modern #profile-name {
+            letter-spacing: -.025em;
+            overflow-wrap: anywhere;
+        }
+
+        .profile-modern #profile-id-tag {
+            border: 0;
+            background: #eff4ff;
+            color: #1e3a8a;
+        }
+
+        .dark .profile-modern #profile-id-tag {
+            background: rgba(232, 93, 158, .16);
+            color: #f9a8d4;
+        }
+
+        .profile-modern #profile-role {
+            border: 0 !important;
+            border-radius: 999px !important;
+            box-shadow: 0 6px 14px rgba(232, 93, 158, .16) !important;
+            transform: none !important;
+        }
+
+        .profile-modern .profile-info-card {
+            border: 1px solid rgba(30, 58, 138, .1) !important;
+            border-radius: 16px !important;
+            background: #f8fafc !important;
+            box-shadow: 0 6px 16px rgba(30, 58, 138, .05) !important;
+        }
+
+        .dark .profile-modern .profile-info-card {
+            border-color: rgba(255, 255, 255, .1) !important;
+            background: rgba(255, 255, 255, .04) !important;
+        }
+
+        .profile-modern .profile-info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(30, 58, 138, .09) !important;
+        }
+
+        .profile-modern .profile-motto-card {
+            border: 1px solid rgba(232, 93, 158, .24) !important;
+            border-radius: 18px !important;
+            background: linear-gradient(135deg, rgba(232, 93, 158, .08), rgba(30, 58, 138, .025)) !important;
+            box-shadow: none !important;
+        }
+
+        .dark .profile-modern .profile-motto-card {
+            background: linear-gradient(135deg, rgba(232, 93, 158, .12), rgba(255, 255, 255, .03)) !important;
+        }
+
+        .profile-modern #profile-ig-link {
+            border: 0 !important;
+            border-radius: 14px !important;
+            box-shadow: 0 8px 20px rgba(30, 58, 138, .15) !important;
+        }
+
+        .profile-modern #profile-ig-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(30, 58, 138, .2) !important;
+        }
+
+        .profile-modern > footer {
+            box-shadow: 0 -12px 40px rgba(15, 23, 42, .12) !important;
+        }
+
+        .profile-modern > footer .font-marker {
+            font-family: 'DancingScript', cursive !important;
+        }
+
+        .profile-modern > footer a > div {
+            box-shadow: none !important;
+        }
+
+        @media (max-width: 767px) {
+            .profile-modern .profile-main {
+                padding-top: 6rem;
+                padding-bottom: 3rem;
+            }
+
+            .profile-modern .profile-paper-card {
+                border-radius: 22px !important;
+                padding: 1rem !important;
+            }
+
+            .profile-modern .profile-paper-body {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .profile-modern *,
+            .profile-modern *::before,
+            .profile-modern *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
     </style>
 </head>
-<body class="bg-offWhite dark:bg-darkBg text-gray-900 dark:text-gray-100 transition-colors duration-300 bg-grid-pattern relative overflow-x-hidden min-h-screen flex flex-col justify-between selection:bg-partyYellow selection:text-partyBlue">
+<body class="profile-modern bg-offWhite dark:bg-darkBg text-gray-900 dark:text-gray-100 transition-colors duration-300 bg-grid-pattern relative overflow-x-hidden min-h-screen flex flex-col justify-between selection:bg-partyYellow selection:text-partyBlue">
 
     <div id="app-loader">
         <div class="loader-content">
@@ -166,29 +384,29 @@
         <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-partyBlue/10 rounded-full blur-3xl mix-blend-multiply pointer-events-none"></div>
 
         <div class="w-full max-w-5xl mb-6 relative z-20">
-            <a href="council-committee.html" class="inline-flex bg-white dark:bg-gray-800 border-4 border-partyBlue shadow-pop hover:translate-y-1 hover:shadow-none transition-all text-partyBlue dark:text-partyPink items-center gap-2 font-black px-6 py-3 uppercase hover-trigger rounded-sm">
+            <a href="council-committee.html" class="profile-back-link inline-flex bg-white dark:bg-gray-800 border-4 border-partyBlue shadow-pop hover:translate-y-1 hover:shadow-none transition-all text-partyBlue dark:text-partyPink items-center gap-2 font-black px-6 py-3 uppercase hover-trigger rounded-sm">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 <span>กลับทำเนียบสภา</span>
             </a>
         </div>
 
-        <div class="max-w-5xl w-full paper-stack bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyPink p-4 sm:p-8 md:p-10 relative z-10 rounded-sm overflow-visible">
+        <div class="profile-paper-card max-w-5xl w-full paper-stack bg-white dark:bg-gray-800 border-4 border-partyBlue dark:border-partyPink p-4 sm:p-8 md:p-10 relative z-10 rounded-sm overflow-visible">
             
             <div class="flex justify-center mb-7 md:mb-9">
-                <div class="washi-tape px-5 sm:px-10 py-1.5 font-black text-white text-xs sm:text-lg tracking-widest uppercase">
+                <div class="profile-tape washi-tape px-5 sm:px-10 py-1.5 font-black text-white text-xs sm:text-lg tracking-widest uppercase">
                     Student Profile
                 </div>
             </div>
 
             <div class="profile-paper-body flex flex-col md:flex-row gap-8 md:gap-10 items-stretch">
             <div class="w-full md:w-2/5 shrink-0 flex flex-col">
-                <div class="border-4 border-partyBlue dark:border-partyPink p-2 bg-white dark:bg-gray-700 shadow-pop-pink aspect-[4/5] relative group transform rotate-1 hover:rotate-0 transition-all duration-300">
+                <div class="profile-photo-frame border-4 border-partyBlue dark:border-partyPink p-2 bg-white dark:bg-gray-700 shadow-pop-pink aspect-[4/5] relative group transform rotate-1 hover:rotate-0 transition-all duration-300">
                     <div id="profile-img-container" class="w-full h-full overflow-hidden border-2 border-partyBlue dark:border-gray-500">
                         </div>
                 </div>
                 
                 <div class="mt-5 md:mt-8 text-center flex-grow flex flex-col justify-end">
-                    <div class="bg-partyBlue dark:bg-gray-900 text-white p-3 md:p-4 border-4 border-partyBlue dark:border-partyPink md:transform md:-rotate-1 hover:rotate-0 transition-all shadow-sm">
+                    <div class="profile-department bg-partyBlue dark:bg-gray-900 text-white p-3 md:p-4 border-4 border-partyBlue dark:border-partyPink md:transform md:-rotate-1 hover:rotate-0 transition-all shadow-sm">
                         <p class="text-xs font-bold text-partyPink uppercase tracking-widest mb-1 flex items-center justify-center gap-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             Department / สังกัดฝ่าย
@@ -213,7 +431,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-5 md:mb-8">
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
+                    <div class="profile-info-card bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
                         <div class="flex items-center gap-2 mb-1 text-gray-500 dark:text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                             <span class="text-xs font-bold uppercase tracking-wider">Nickname</span>
@@ -221,7 +439,7 @@
                         <p id="info-nickname" class="font-black text-xl text-partyBlue dark:text-partyPink truncate">-</p>
                     </div>
                     
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
+                    <div class="profile-info-card bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
                         <div class="flex items-center gap-2 mb-1 text-gray-500 dark:text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                             <span class="text-xs font-bold uppercase tracking-wider">Class</span>
@@ -229,7 +447,7 @@
                         <p id="info-room" class="font-black text-xl text-partyBlue dark:text-partyPink truncate">-</p>
                     </div>
                     
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
+                    <div class="profile-info-card bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
                         <div class="flex items-center gap-2 mb-1 text-gray-500 dark:text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h16z"></path></svg>
                             <span class="text-xs font-bold uppercase tracking-wider">Birthday</span>
@@ -237,7 +455,7 @@
                         <p id="info-bday" class="font-black text-xl text-partyBlue dark:text-partyPink truncate">-</p>
                     </div>
 
-                    <div class="bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
+                    <div class="profile-info-card bg-gray-50 dark:bg-gray-800/50 p-3 md:p-4 border-2 border-partyBlue dark:border-gray-600 rounded-xl shadow-card hover:-translate-y-1 transition-transform">
                         <div class="flex items-center gap-2 mb-1 text-gray-500 dark:text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                             <span class="text-xs font-bold uppercase tracking-wider">Skills</span>
@@ -246,7 +464,7 @@
                     </div>
                 </div>
                 
-                <div class="mb-5 md:mb-8 bg-gradient-to-br from-partyPink/10 to-transparent dark:from-gray-800 dark:to-gray-800 p-4 md:p-6 border-2 border-partyPink rounded-xl relative shadow-sm hover:shadow-md transition-shadow">
+                <div class="profile-motto-card mb-5 md:mb-8 bg-gradient-to-br from-partyPink/10 to-transparent dark:from-gray-800 dark:to-gray-800 p-4 md:p-6 border-2 border-partyPink rounded-xl relative shadow-sm hover:shadow-md transition-shadow">
                     <span class="absolute -top-5 -left-2 text-6xl text-partyPink opacity-40 font-serif leading-none">"</span>
                     <div class="flex items-center gap-2 mb-2">
                         <span class="text-xs font-black text-partyPink uppercase tracking-widest bg-partyPink/10 px-2 py-0.5 rounded">Motto / คติประจำใจ</span>
@@ -352,62 +570,62 @@
         // --- ส่วนฐานข้อมูลและการแสดงผลโปรไฟล์ ---
         const councilData = [
             // --- คณะผู้บริหาร (Executive) ---
-            { id: '1', role: 'ประธานสภานักเรียน', name: 'นางสาวพาขวัญ นวลสำลี', nickname: 'นุกนิก', room: 'ม.5/2', birthday: '16', skills: 'คฑากร รำ', dept: 'Executive / ประธานนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/1.png', motto: 'ความเจ็บปวดในวันวาน คือความแข็งแกร่งในวันนี้', ig: '@pxkxn_nkk' },
-            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', nickname: 'ซีโฟน', room: '5/4', birthday: '17', skills: 'กีฬา ', dept: 'Executive / รองประธานนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/2.png', motto: 'อย่ากลัวคนอื่นจะไปไกล กลัวตัวเองไม่ไปไหนดีกว่า ', ig: '@z_fornn' },
-            { id: '3', role: 'รองประธานสภานักเรียน', name: 'นางสาวธัญญรัตน์ หมื่นรัตน์', nickname: 'หนิง', room: '5/1', birthday: '16', skills: 'รอบรู้ทุกเรื่องและเข้าใจอะไรได้ง่าย', dept: 'Executive / รองประธานนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/3.png', motto: 'หากวันนี้ผิดพรุ่งนี้พร้อมแก้เสมอ', ig: '@thanyaratmunrat ' },
+            { id: '1', role: 'ประธานสภานักเรียน', name: 'นางสาวพาขวัญ นวลสำลี', nickname: 'นุกนิก', room: 'ม.5/2', birthday: '16', skills: 'คฑากร รำ', dept: 'Executive / ประธานนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/1.jpg', motto: 'ความเจ็บปวดในวันวาน คือความแข็งแกร่งในวันนี้', ig: '@pxkxn_nkk' },
+            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', nickname: 'ซีโฟน', room: '5/4', birthday: '17', skills: 'กีฬา ', dept: 'Executive / รองประธานนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/2.jpg', motto: 'อย่ากลัวคนอื่นจะไปไกล กลัวตัวเองไม่ไปไหนดีกว่า ', ig: '@z_fornn' },
+            { id: '3', role: 'รองประธานสภานักเรียน', name: 'นางสาวธัญญรัตน์ หมื่นรัตน์', nickname: 'หนิง', room: '5/1', birthday: '16', skills: 'รอบรู้ทุกเรื่องและเข้าใจอะไรได้ง่าย', dept: 'Executive / รองประธานนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/3.jpg', motto: 'หากวันนี้ผิดพรุ่งนี้พร้อมแก้เสมอ', ig: '@thanyaratmunrat ' },
 
             // --- ฝ่ายสนับสนุน (Admin) ---
-            { id: '4', role: 'เลขานุการ', name: 'นางสาวปรียากาญจน์ ใจกล้า', nickname: 'ไอติม', room: '5/2', birthday: '16', skills: 'มีทักษะด้านการออกแบบกราฟฟิก', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/4.png', motto: 'พัฒนาตัวเองในทุก ๆ วัน เพื่อเป็นเวอร์ชันที่ดีที่สุดของตัวเอง', ig: '@iisakuerem' },
-            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวฐานิดา พลอารีย์', nickname: 'แตม', room: '5/1', birthday: '16', skills: 'เรียนรู้ได้เร็ว', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/42.png', motto: 'อย่าเก็บอดีตมาทำร้ายตนเอง แต่จงหัดที่จะเรียนรู้จากมัน', ig: '@t.thanidaa_' },
-            { id: '6', role: 'พัสดุ', name: 'นางสาวชญานิศ บุญมา', nickname: 'แพรวา', room: '5/2', birthday: '17', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/6.png', motto: '-', ig: '@p.praxnwa' },
-            { id: '7', role: 'ผู้ช่วยพัสดุ', name: 'นางสาวพิมพ์ลภัส สุขนิธิกุลวงศ์', nickname: 'มิ้ง', room: '5/2', birthday: '16', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/7.png', motto: '-', ig: '-' },
-            { id: '8', role: 'เหรัญญิก', name: 'นางสาวธนัญญา ตันประเสริฐ', nickname: 'ชมพู่', room: '5/4', birthday: '17', skills: 'สื่อสารและทำงานร่วมกับผู้อื่นได้ดี', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/8.png', motto: 'อนาคตที่ดี เริ่มจากการตั้งใจทำหน้าที่วันนี้ให้ดีที่สุด', ig: '@than.ks880' },
-            { id: '9', role: 'ผู้ช่วยเหรัญญิก', name: 'นางสาวเขมิกา ศักด์เสรีกุล', nickname: 'คิมมิ่', room: '5/2', birthday: '16', skills: 'เล่นวอลเลย์บอล', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/9.png', motto: 'ทุก ๆ อย่างต้องใช้เวลา', ig: '@Khemika_q' },
+            { id: '4', role: 'เลขานุการ', name: 'นางสาวปรียากาญจน์ ใจกล้า', nickname: 'ไอติม', room: '5/2', birthday: '16', skills: 'มีทักษะด้านการออกแบบกราฟฟิก', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/4.jpg', motto: 'พัฒนาตัวเองในทุก ๆ วัน เพื่อเป็นเวอร์ชันที่ดีที่สุดของตัวเอง', ig: '@iisakuerem' },
+            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวฐานิดา พลอารีย์', nickname: 'แตม', room: '5/1', birthday: '16', skills: 'เรียนรู้ได้เร็ว', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/42.jpg', motto: 'อย่าเก็บอดีตมาทำร้ายตนเอง แต่จงหัดที่จะเรียนรู้จากมัน', ig: '@t.thanidaa_' },
+            { id: '6', role: 'พัสดุ', name: 'นางสาวชญานิศ บุญมา', nickname: 'แพรวา', room: '5/2', birthday: '17', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/6.jpg', motto: '-', ig: '@p.praxnwa' },
+            { id: '7', role: 'ผู้ช่วยพัสดุ', name: 'นางสาวพิมพ์ลภัส สุขนิธิกุลวงศ์', nickname: 'มิ้ง', room: '5/2', birthday: '16', skills: '-', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/7.jpg', motto: '-', ig: '-' },
+            { id: '8', role: 'เหรัญญิก', name: 'นางสาวธนัญญา ตันประเสริฐ', nickname: 'ชมพู่', room: '5/4', birthday: '17', skills: 'สื่อสารและทำงานร่วมกับผู้อื่นได้ดี', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/8.jpg', motto: 'อนาคตที่ดี เริ่มจากการตั้งใจทำหน้าที่วันนี้ให้ดีที่สุด', ig: '@than.ks880' },
+            { id: '9', role: 'ผู้ช่วยเหรัญญิก', name: 'นางสาวเขมิกา ศักดิ์เสรีกุล', nickname: 'คิมมิ่', room: '5/2', birthday: '16', skills: 'เล่นวอลเลย์บอล', dept: 'Admin / บริหารงานทั่วไป', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/9.jpg', motto: 'ทุก ๆ อย่างต้องใช้เวลา', ig: '@Khemika_q' },
 
             // --- ฝ่ายสารวัตร (Discipline) ---
-            { id: '10', role: 'หัวหน้าฝ่ายสารวัตร', name: 'นายสิทธิโชค แสงสว่าง', nickname: 'โฟม', room: '5/2', birthday: '16', skills: 'เรียนรู้ได้ไว', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/10.png', motto: 'เราต้องการความถูกต้อง ไม่ใช่ถูกใจ', ig: '@foxm_sx' },
-            { id: '11', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายชัยภัทร นรสาร', nickname: 'ออโต้', room: '5/3', birthday: '16', skills: 'มีความรับผิดชอบ', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/11.png', motto: 'อย่าคิดว่าทำไม่ได้ถ้ายังไม่ลงมือทำ', ig: '@chaiyapat.43_' },
-            { id: '12', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวธัญชนก ธนวุฒิคติวรกุล', nickname: 'มิ้นท์', room: '5/2', birthday: '16', skills: 'การเรียนรู้ไว ปรับตัวเข้ากับคนอื่นได้', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/12.png', motto: 'ความสุขอยู่ในสิ่งเล็กๆรอบตัวเรา', ig: '@5mnthxn' },
-            { id: '13', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวอุษา ยิ้ม', nickname: 'โฟม', room: '5/4', birthday: '16', skills: 'วาดรูป', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/13.png', motto: 'มุมมองต่อโลกขึ้นอยู่กับตัวเรา', ig: '@fxxm.mmx' },
-            { id: '14', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาววีรดา พูลสมบัติ', nickname: 'ออกัส', room: '5/2', birthday: '16', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/14.png', motto: 'อย่ากลัวในสิ่งที่เราสามารถสู้หรือเปลี่ยนแปลงมันได้', ig: '@cqxzy7_y' },
-            { id: '15', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวสุพิชญา กลิ่นเกลี้ยง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/15.png ', motto: '-', ig: '-' },
-            { id: '16', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายแทนคุณ เบญมาตย์', nickname: 'ตะวัน', room: '5/1', birthday: '16', skills: 'ความสามารถในปรับตัวในการเล่นกีฬาบางชนิด', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/16.png', motto: 'เอาที่ตัวเองไหว ถ้าเหนื่อยก็พัก ท้อได้แต่ห้ามถอย', ig: '@tx_w_an' },
+            { id: '10', role: 'หัวหน้าฝ่ายสารวัตร', name: 'นายสิทธิโชค แสงสว่าง', nickname: 'โฟม', room: '5/2', birthday: '16', skills: 'เรียนรู้ได้ไว', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/10.jpg', motto: 'เราต้องการความถูกต้อง ไม่ใช่ถูกใจ', ig: '@foxm_sx' },
+            { id: '11', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายชัยภัทร นรสาร', nickname: 'ออโต้', room: '5/3', birthday: '16', skills: 'มีความรับผิดชอบ', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/11.jpg', motto: 'อย่าคิดว่าทำไม่ได้ถ้ายังไม่ลงมือทำ', ig: '@chaiyapat.43_' },
+            { id: '12', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวธัญชนก ธนวุฒิคติวรกุล', nickname: 'มิ้นท์', room: '5/2', birthday: '16', skills: 'การเรียนรู้ไว ปรับตัวเข้ากับคนอื่นได้', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/12.jpg', motto: 'ความสุขอยู่ในสิ่งเล็กๆรอบตัวเรา', ig: '@5mnthxn' },
+            { id: '13', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวอุษา ยิ้ม', nickname: 'โฟม', room: '5/4', birthday: '16', skills: 'วาดรูป', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/13.jpg', motto: 'มุมมองต่อโลกขึ้นอยู่กับตัวเรา', ig: '@fxxm.mmx' },
+            { id: '14', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาววีรดา พูลสมบัติ', nickname: 'ออกัส', room: '5/2', birthday: '16', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/14.jpg', motto: 'อย่ากลัวในสิ่งที่เราสามารถสู้หรือเปลี่ยนแปลงมันได้', ig: '@cqxzy7_y' },
+            { id: '15', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวสุพิชญา กลิ่นเกลี้ยง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/15.jpg ', motto: '-', ig: '-' },
+            { id: '16', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายแทนคุณ เบญมาตย์', nickname: 'ตะวัน', room: '5/1', birthday: '16', skills: 'ความสามารถในปรับตัวในการเล่นกีฬาบางชนิด', dept: 'Discipline / สารวัตรนักเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/16.jpg', motto: 'เอาที่ตัวเองไหว ถ้าเหนื่อยก็พัก ท้อได้แต่ห้ามถอย', ig: '@tx_w_an' },
 
             // --- ฝ่ายการเรียน (Academic) ---
-            { id: '17', role: 'หัวหน้าฝ่ายการเรียน', name: 'นางสาวฐานิดา รื่นเริง', nickname: 'ข้าวฟ่าง', room: '5/2', birthday: '16', skills: '-', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/17.png', motto: 'Live like what you are', ig: '@thaldaa' },
-            { id: '18', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวกัญญารัตน์ แสงสว่าง', nickname: 'กิ่ง', room: '5/2', birthday: '16', skills: '-', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/18.png', motto: 'ไม่ต้องเก่งที่สุด แค่ทำให้ดีที่สุดก็พอ', ig: '-' },
-            { id: '19', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาววรพัชรา ศรีบุญเรือง', nickname: 'เอิร์น', room: '5/2', birthday: '17', skills: 'วาดภาพ', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/19.png', motto: 'อย่ากลัวความผิดพลาด ถ้ายังไม่ได้ลองทำ', ig: '@3xrnpz._' },
-            { id: '20', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวฐิตาภา พวงพิศ', nickname: 'ไอเดีย', room: '5/1', birthday: '16', skills: 'วาดรูป', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/20.png', motto: 'ให้อภัยคนอื่นคือการปลดปล่อยตัวเองจากความโกรธ', ig: '@dearthitapa' },
-            { id: '21', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพลอยปภัส นัยวิจารณ์', nickname: 'แบ๋ม', room: '5/1', birthday: '16', skills: 'ทักษะด้านภาษา', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/21.png', motto: 'เรียนรู้ เติบโต และพัฒนาตัวเองเสมอ', ig: '@_12aprill_' },
-            { id: '22', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายตรีรัตน์ ปิติไพศาลกุล', nickname: 'เพรช', room: '5/1', birthday: '17', skills: 'นักปราชญ์ เล่นกีฬาเก่ง ร้องเพลงเพราะครับ ', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/22.png', motto: 'คล้อยตามคือสามัญ ฝืนทวนคือเซียน', ig: '@petchcff_dcs' },
-            { id: '23', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพิชามญช์ หาญอาสา', nickname: 'ไอด้า', room: '5/6', birthday: '16', skills: 'Note-taking skill ', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/23.png', motto: 'ไม่จำเป็นต้อง perfect แค่ยอมรับความไม่สมบูรณ์แบบของตัวเอง', ig: '@penessien' },
+            { id: '17', role: 'หัวหน้าฝ่ายการเรียน', name: 'นางสาวฐานิดา รื่นเริง', nickname: 'ข้าวฟ่าง', room: '5/2', birthday: '16', skills: '-', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/17.jpg', motto: 'Live like what you are', ig: '@thaldaa' },
+            { id: '18', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวกัญญารัตน์ แสงสว่าง', nickname: 'กิ่ง', room: '5/2', birthday: '16', skills: '-', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/18.jpg', motto: 'ไม่ต้องเก่งที่สุด แค่ทำให้ดีที่สุดก็พอ', ig: '-' },
+            { id: '19', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาววรพัชรา ศรีบุญเรือง', nickname: 'เอิร์น', room: '5/2', birthday: '17', skills: 'วาดภาพ', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/19.jpg', motto: 'อย่ากลัวความผิดพลาด ถ้ายังไม่ได้ลองทำ', ig: '@3xrnpz._' },
+            { id: '20', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวฐิตาภา พวงพิศ', nickname: 'ไอเดีย', room: '5/1', birthday: '16', skills: 'วาดรูป', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/20.jpg', motto: 'ให้อภัยคนอื่นคือการปลดปล่อยตัวเองจากความโกรธ', ig: '@dearthitapa' },
+            { id: '21', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพลอยปภัส นัยวิจารณ์', nickname: 'แบ๋ม', room: '5/1', birthday: '16', skills: 'ทักษะด้านภาษา', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/21.jpg', motto: 'เรียนรู้ เติบโต และพัฒนาตัวเองเสมอ', ig: '@_12aprill_' },
+            { id: '22', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายตรีรัตน์ ปิติไพศาลกุล', nickname: 'เพรช', room: '5/1', birthday: '17', skills: 'นักปราชญ์ เล่นกีฬาเก่ง ร้องเพลงเพราะครับ ', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/22.jpg', motto: 'คล้อยตามคือสามัญ ฝืนทวนคือเซียน', ig: '@petchcff_dcs' },
+            { id: '23', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพิชามญช์ หาญอาสา', nickname: 'ไอด้า', room: '5/6', birthday: '16', skills: 'Note-taking skill ', dept: 'Academic / การเรียน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/23.jpg', motto: 'ไม่จำเป็นต้อง perfect แค่ยอมรับความไม่สมบูรณ์แบบของตัวเอง', ig: '@penessien' },
 
             // --- ฝ่ายกิจกรรม (Activity) ---
-            { id: '24', role: 'หัวหน้าฝ่ายกิจกรรม', name: 'นางสาววาศิณี ปู่ไข่', nickname: 'เนย', room: '5/2', birthday: '17', skills: 'เข้ากับคนง่าย,เอเนอจี้สูง', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/24.png', motto: 'กระทำตัวให้เท่กว่าเมื่อวาน', ig: '@buttermilk_0' },
-            { id: '25', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวอารีรัตน์ บัวทอง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/25.png', motto: '-', ig: '-' },
-            { id: '26', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวดิรัชญา ขาวผ่อง', nickname: 'ดีน', room: '5/2', birthday: '17', skills: 'กล้าแสดงออก', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/26.png', motto: 'มุ่งมั่นแล้วไปต่อ', ig: '@d1_dunier' },
-            { id: '27', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวภควดี หมื่นพล', nickname: 'กำไร', room: '5/2', birthday: '17', skills: 'ความสามารถด้านดนตรีไทย กล้าแสดงออกด้านการพูด', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/27.png', motto: 'เคล็ดลับของความสุขคือทำในสิ่งที่รัก ส่วนเคล็ดลับของความสำเร็จคือรักในสิ่งที่ทำ', ig: '@_klpkwd' },
-            { id: '28', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายปภังกร ปัญญาใส', nickname: 'เป๊ก', room: '5/5', birthday: '16', skills: 'วาดรูป', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/28.png', motto: 'มีแล้วไม่ใช้ดีกว่าใช้แล้วไม่มี', ig: '@p_xqza' },
-            { id: '29', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายจักรเพ็ชร บุญโสม', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/29.png', motto: '-', ig: '-' },
-            { id: '30', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวชุติกาญจน์ กันยาเนียม', nickname: 'น้ำขิง', room: '5/3', birthday: '17', skills: 'รับฟังผู้อื่น เห็นอกเห็นใจ ', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/30.png', motto: 'อย่าพึ่งบอกว่ายาก ถ้ายังไม่ลองทำ', ig: '@n_mkxxngg' },
+            { id: '24', role: 'หัวหน้าฝ่ายกิจกรรม', name: 'นางสาววาศิณี ปู่ไข่', nickname: 'เนย', room: '5/2', birthday: '17', skills: 'เข้ากับคนง่าย,เอเนอจี้สูง', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/24.jpg', motto: 'กระทำตัวให้เท่กว่าเมื่อวาน', ig: '@buttermilk_0' },
+            { id: '25', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวอารีรัตน์ บัวทอง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/25.jpg', motto: '-', ig: '-' },
+            { id: '26', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวดิรัชญา ขาวผ่อง', nickname: 'ดีน', room: '5/2', birthday: '17', skills: 'กล้าแสดงออก', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/26.jpg', motto: 'มุ่งมั่นแล้วไปต่อ', ig: '@d1_dunier' },
+            { id: '27', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวภควดี หมื่นพล', nickname: 'กำไร', room: '5/2', birthday: '17', skills: 'ความสามารถด้านดนตรีไทย กล้าแสดงออกด้านการพูด', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/27.jpg', motto: 'เคล็ดลับของความสุขคือทำในสิ่งที่รัก ส่วนเคล็ดลับของความสำเร็จคือรักในสิ่งที่ทำ', ig: '@_klpkwd' },
+            { id: '28', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายปภังกร ปัญญาใส', nickname: 'เป๊ก', room: '5/5', birthday: '16', skills: 'วาดรูป', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/28.jpg', motto: 'มีแล้วไม่ใช้ดีกว่าใช้แล้วไม่มี', ig: '@p_xqza' },
+            { id: '29', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายจักรเพ็ชร บุญโสม', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/29.jpg', motto: '-', ig: '-' },
+            { id: '30', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวชุติกาญจน์ กันยาเนียม', nickname: 'น้ำขิง', room: '5/3', birthday: '17', skills: 'รับฟังผู้อื่น เห็นอกเห็นใจ ', dept: 'Activity / กิจกรรม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/30.jpg', motto: 'อย่าพึ่งบอกว่ายาก ถ้ายังไม่ลองทำ', ig: '@n_mkxxngg' },
 
             // --- ฝ่ายการงาน (Works) ---
-            { id: '31', role: 'หัวหน้าฝ่ายการงาน', name: 'นายพชร กาเผือก', nickname: 'ไกด์', room: '5/1', birthday: '16', skills: 'สื่อสารดี กล้าแสดงออก ทำงานเป็นทีมเริ่ด', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/31.png', motto: 'ชีวิตมีครั้งเดียว ต้องใช้ให้คุ้ม', ig: '@gxide_g' },
-            { id: '32', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายพิชญะ วงศรีแก้ว', nickname: 'กาฟิวส์', room: '5/1', birthday: '17', skills: 'ตีกลอง,งานช่างต่างๆ', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/32.png', motto: 'ไม่พยายาม ก็ไม่โต', ig: '@pichaya._.ss' },
-            { id: '33', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายรัฐภูมิ ลีทอง', nickname: 'ภูมิ', room: '5/1', birthday: '-', skills: '-', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/33.png', motto: '-', ig: '@ratthaphumleethong' },
-            { id: '34', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายเจริญชัย ทองแพง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/34.png', motto: '-', ig: '-' },
-            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', nickname: 'เกื้อ', room: '5/4', birthday: '16', skills: 'เล่นกีฬา', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/35.png', motto: 'พอใจเท่าที่มี ยินดีเท่าที่ได้', ig: '@kue_a9' },
-            { id: '36', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพัทธ์ เชื่อเมืองพาน', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/36.png', motto: '-', ig: '-' },
-            { id: '37', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวพณิตา ทองสว่างแจ้ง', nickname: 'เอม', room: '5/5', birthday: '16', skills: 'มีรับผิดชอบในงาน หรือหน้าที่ต่างๆที่ได้รับมอบหมาย', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/37.png', motto: 'ข้างหน้าคือความฝัน ข้างหลัง คือบทเรียน', ig:'@axm_.ore' },
+            { id: '31', role: 'หัวหน้าฝ่ายการงาน', name: 'นายพชร กาเผือก', nickname: 'ไกด์', room: '5/1', birthday: '16', skills: 'สื่อสารดี กล้าแสดงออก ทำงานเป็นทีมเริ่ด', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/31.jpg', motto: 'ชีวิตมีครั้งเดียว ต้องใช้ให้คุ้ม', ig: '@gxide_g' },
+            { id: '32', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายพิชญะ วงศรีแก้ว', nickname: 'กาฟิวส์', room: '5/1', birthday: '17', skills: 'ตีกลอง,งานช่างต่างๆ', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/32.jpg', motto: 'ไม่พยายาม ก็ไม่โต', ig: '@pichaya._.ss' },
+            { id: '33', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายรัฐภูมิ ลีทอง', nickname: 'ภูมิ', room: '5/1', birthday: '-', skills: '-', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/33.jpg', motto: '-', ig: '@ratthaphumleethong' },
+            { id: '34', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายเจริญชัย ทองแพง', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/34.jpg', motto: '-', ig: '-' },
+            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', nickname: 'เกื้อ', room: '5/4', birthday: '16', skills: 'เล่นกีฬา', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/35.jpg', motto: 'พอใจเท่าที่มี ยินดีเท่าที่ได้', ig: '@kue_a9' },
+            { id: '36', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพัทธ์ เชื้อเมืองพาน', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/36.jpg', motto: '-', ig: '-' },
+            { id: '37', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวพณิตา ทองสว่างแจ้ง', nickname: 'เอม', room: '5/5', birthday: '16', skills: 'มีรับผิดชอบในงาน หรือหน้าที่ต่างๆที่ได้รับมอบหมาย', dept: 'Works / การงาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/37.jpg', motto: 'ข้างหน้าคือความฝัน ข้างหลัง คือบทเรียน', ig:'@axm_.ore' },
 
             // --- ฝ่ายประชาสัมพันธ์ (PR) ---
-            { id: '38', role: 'หัวหน้าฝ่ายประชาสัมพันธ์', name: 'นายธนกฤต สุวรรณาวุธ', nickname: 'โปเต้', room: '5/2', birthday: '16', skills: 'เขียนโค้ด', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/38.png', motto: 'ชีวิตอาจจะพังบ้าง แต่ก็ยังต้องก้าวต่อไปข้างหน้าอยู่ดี', ig: '@mr.potae.potato' },
-            { id: '39', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนพรัตน์ สารรัตน์', nickname: 'แน็ค', room: '5/2', birthday: '17', skills: 'เรียนรู้เร็ว', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/39.png', motto: 'Love yourself and be who you want to be.', ig: '@npr.srt' },
-            { id: '40', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอภิญญาภรณ์ บุญหนา', nickname: 'แบม', room: '5/1', birthday: '16', skills: 'ด้านการพูด การสื่อสาร', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/40.png', motto: 'End of beginning ', ig: '@nuldeas' },
-            { id: '41', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวศศิธร หงษา', nickname: 'จอย', room: '5/1', birthday: '16', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/41.png', motto: 'ข่าวสารไว ใส่ใจทุกคน', ig: '@ssithrnhgsaa' },
-            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอชิริญา หารภูมิ', nickname: 'เอเชีย', room: '5/2', birthday: '16', skills: 'กล้าแสดงออกด้านกิจกรรมมีความคิดสร้างสรรค์ในการแสดงหรือกิจกรรม', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/5.png', motto: 'อยากเป็นพลังงานบวกให้ทุกๆคน', ig: '@snniriiya' },
-            { id: '43', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนภัสสร ประทุมมา', nickname: 'นุ๊ก', room: '5/3', birthday: '16', skills: 'ร้องเพลง นาฏศิลป์ เต้น', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/43.png', motto: 'ความสุขอยู่ที่เราคิด ชีวิตอยู่ที่เราสร้าง', ig: '@nongpedkaka ' },
-            { id: '44', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวกฤตยากร วงค์สงคราม', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/44.png', motto: '-', ig: '-' }
+            { id: '38', role: 'หัวหน้าฝ่ายประชาสัมพันธ์', name: 'นายธนกฤต สุวรรณาวุธ', nickname: 'โปเต้', room: '5/2', birthday: '16', skills: 'เขียนโค้ด', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/38.jpg', motto: 'ชีวิตอาจจะพังบ้าง แต่ก็ยังต้องก้าวต่อไปข้างหน้าอยู่ดี', ig: '@mr.potae.potato' },
+            { id: '39', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนพรัตน์ สารรัตน์', nickname: 'แน็ค', room: '5/2', birthday: '17', skills: 'เรียนรู้เร็ว', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/39.jpg', motto: 'Love yourself and be who you want to be.', ig: '@npr.srt' },
+            { id: '40', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอภิญญาภรณ์ บุญหนา', nickname: 'แบม', room: '5/1', birthday: '16', skills: 'ด้านการพูด การสื่อสาร', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/40.jpg', motto: 'End of beginning ', ig: '@nuldeas' },
+            { id: '41', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวศศิธร หงษา', nickname: 'จอย', room: '5/1', birthday: '16', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/41.jpg', motto: 'ข่าวสารไว ใส่ใจทุกคน', ig: '@ssithrnhgsaa' },
+            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอชิริญา หารภูมิ', nickname: 'เอเชีย', room: '5/2', birthday: '16', skills: 'กล้าแสดงออกด้านกิจกรรมมีความคิดสร้างสรรค์ในการแสดงหรือกิจกรรม', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/5.jpg', motto: 'อยากเป็นพลังงานบวกให้ทุกๆคน', ig: '@snniriiya' },
+            { id: '43', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนภัสสร ประทุมมา', nickname: 'นุ๊ก', room: '5/3', birthday: '16', skills: 'ร้องเพลง นาฏศิลป์ เต้น', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/43.jpg', motto: 'ความสุขอยู่ที่เราคิด ชีวิตอยู่ที่เราสร้าง', ig: '@nongpedkaka ' },
+            { id: '44', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวกฤตยากร วงค์สงคราม', nickname: '-', room: '-', birthday: '-', skills: '-', dept: 'PR / ประชาสัมพันธ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/44.jpg', motto: '-', ig: '-' }
         ];
 
         window.addEventListener('DOMContentLoaded', () => {

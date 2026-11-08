@@ -20,9 +20,465 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="theme-config.js"></script>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .homepage-modern {
+            --home-blue: #1e3a8a;
+            --home-pink: #e85d9e;
+            --home-ink: #172554;
+            --home-muted: #526179;
+            --home-surface: #ffffff;
+            --home-page: #f5f8ff;
+            background: var(--home-page);
+        }
+
+        .dark .homepage-modern {
+            --home-ink: #f1f5f9;
+            --home-muted: #cbd5e1;
+            --home-surface: #111b31;
+            --home-page: #0b1220;
+        }
+
+        .homepage-modern :focus-visible {
+            outline: 3px solid var(--home-pink);
+            outline-offset: 3px;
+        }
+
+        .homepage-modern > nav {
+            border-bottom: 1px solid rgba(30, 58, 138, .12) !important;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, .08) !important;
+        }
+
+        .homepage-modern > nav ul a:not([href="policy.html"]) {
+            border-bottom: 0 !important;
+            border-radius: 999px;
+            padding: .55rem .85rem !important;
+        }
+
+        .homepage-modern > nav ul a:not([href="policy.html"]):hover {
+            background: #eff6ff;
+        }
+
+        .dark .homepage-modern > nav ul a:not([href="policy.html"]):hover {
+            background: rgba(255, 255, 255, .08);
+        }
+
+        .homepage-modern > nav ul a[href="policy.html"] {
+            border-radius: 999px !important;
+            box-shadow: 0 5px 14px rgba(232, 93, 158, .2) !important;
+        }
+
+        .homepage-modern .homepage-services {
+            background: linear-gradient(115deg, #1e3a8a, #263d75) !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .dark .homepage-modern .homepage-services {
+            background: linear-gradient(115deg, #111b31, #172554) !important;
+        }
+
+        .homepage-modern .homepage-services a {
+            min-height: 42px;
+            border-radius: 12px !important;
+            box-shadow: none !important;
+        }
+
+        .homepage-modern .homepage-services a:hover {
+            transform: translateY(-2px);
+        }
+
+        .homepage-modern .homepage-hero {
+            background:
+                radial-gradient(ellipse at 82% 45%, rgba(232, 93, 158, .11), transparent 38%),
+                linear-gradient(135deg, #fff 0%, #f1f6ff 100%) !important;
+        }
+
+        .dark .homepage-modern .homepage-hero {
+            background:
+                radial-gradient(ellipse at 82% 45%, rgba(232, 93, 158, .12), transparent 38%),
+                linear-gradient(135deg, #0b1220 0%, #111b31 100%) !important;
+        }
+
+        .homepage-modern .homepage-hero > .absolute.right-0 {
+            opacity: .06;
+            box-shadow: none !important;
+        }
+
+        .homepage-modern .homepage-hero .marquee-container {
+            opacity: .035 !important;
+        }
+
+        .homepage-modern .homepage-hero h1 {
+            line-height: 1.12 !important;
+            letter-spacing: -.035em !important;
+        }
+
+        .homepage-modern .homepage-hero h1 [style*="-webkit-text-stroke"] {
+            -webkit-text-stroke: 0 !important;
+        }
+
+        .homepage-modern .homepage-hero h1 > span:last-child {
+            line-height: 1.45;
+        }
+
+        .homepage-modern .homepage-hero h1 > span:last-child span {
+            border-radius: 8px;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+
+        .homepage-modern .homepage-hero p {
+            border-radius: 0 14px 14px 0 !important;
+            background: rgba(255, 255, 255, .78) !important;
+        }
+
+        .dark .homepage-modern .homepage-hero p {
+            background: rgba(255, 255, 255, .06) !important;
+        }
+
+        .homepage-modern .homepage-hero a {
+            border-radius: 12px !important;
+            box-shadow: 0 8px 18px rgba(30, 58, 138, .12) !important;
+        }
+
+        .homepage-modern .homepage-hero .inline-block.bg-partyYellow {
+            border-radius: 999px;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .homepage-modern .homepage-hero a:hover {
+            box-shadow: 0 5px 12px rgba(30, 58, 138, .1) !important;
+        }
+
+        .homepage-modern .homepage-hero .relative.w-64 {
+            border-radius: 28px;
+        }
+
+        .homepage-modern .homepage-hero .relative.w-64 > div:nth-child(3) {
+            border-radius: 28px;
+            border-width: 4px !important;
+            box-shadow: 0 20px 50px rgba(30, 58, 138, .2);
+        }
+
+        .homepage-modern .homepage-hero .relative.w-64 > div:nth-child(3) img {
+            border-radius: 22px;
+        }
+
+        .homepage-modern .homepage-hero .relative.w-64 > div:nth-child(4) {
+            border-radius: 999px;
+            border-color: #fff !important;
+            box-shadow: 0 8px 20px rgba(30, 58, 138, .18) !important;
+            transform: none !important;
+        }
+
+        .homepage-modern .homepage-president-message .max-w-5xl {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(30, 58, 138, .1) !important;
+        }
+
+        .homepage-modern .homepage-news-section,
+        .homepage-modern .homepage-services-section,
+        .homepage-modern #school-map {
+            background: var(--home-page) !important;
+        }
+
+        .homepage-modern .homepage-news-section {
+            border-top: 1px solid rgba(30, 58, 138, .1) !important;
+        }
+
+        .homepage-modern .homepage-news-section h2,
+        .homepage-modern #school-map h2 {
+            border-left-color: var(--home-pink) !important;
+            letter-spacing: -.025em;
+        }
+
+        .homepage-modern .homepage-news-section a[href="news.html"] {
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(30, 58, 138, .1) !important;
+        }
+
+        .homepage-modern #news-grid-container > div {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 24px rgba(30, 58, 138, .08) !important;
+        }
+
+        .dark .homepage-modern #news-grid-container > div {
+            border-color: rgba(255, 255, 255, .1) !important;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .2) !important;
+        }
+
+        .homepage-modern #news-grid-container > div:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 16px 30px rgba(30, 58, 138, .14) !important;
+        }
+
+        .homepage-modern #news-grid-container > div > div:first-child {
+            border-bottom-width: 1px !important;
+            border-color: rgba(30, 58, 138, .1) !important;
+        }
+
+        .homepage-modern #mailbox-section {
+            color: var(--home-ink) !important;
+            background:
+                radial-gradient(ellipse at 8% 15%, rgba(30, 58, 138, .08), transparent 35%),
+                radial-gradient(ellipse at 94% 85%, rgba(232, 93, 158, .1), transparent 32%),
+                #f3f6fc !important;
+            border-top: 1px solid rgba(30, 58, 138, .1) !important;
+        }
+
+        .dark .homepage-modern #mailbox-section {
+            background:
+                radial-gradient(ellipse at 8% 15%, rgba(30, 58, 138, .2), transparent 35%),
+                radial-gradient(ellipse at 94% 85%, rgba(232, 93, 158, .12), transparent 32%),
+                #0b1220 !important;
+        }
+
+        .homepage-modern #mailbox-section h2 {
+            color: var(--home-blue) !important;
+            text-shadow: none !important;
+        }
+
+        .dark .homepage-modern #mailbox-section h2 {
+            color: #f9a8d4 !important;
+        }
+
+        .homepage-modern #mailbox-section > .container > div:first-child > p {
+            color: var(--home-muted);
+            opacity: 1 !important;
+        }
+
+        .homepage-modern #mailbox-form {
+            background: var(--home-surface) !important;
+            border: 1px solid rgba(30, 58, 138, .14) !important;
+            border-radius: 24px !important;
+            box-shadow: 0 20px 55px rgba(30, 58, 138, .12) !important;
+            transform: none !important;
+            padding: clamp(1.25rem, 4vw, 3rem) !important;
+        }
+
+        .homepage-modern #mailbox-form > div:first-child {
+            border: 1px solid rgba(232, 93, 158, .2) !important;
+            border-radius: 18px;
+            box-shadow: none !important;
+        }
+
+        .homepage-modern #mailbox-form label:not(#anon-container) {
+            color: var(--home-blue) !important;
+        }
+
+        .dark .homepage-modern #mailbox-form label:not(#anon-container) {
+            color: #f9a8d4 !important;
+        }
+
+        .homepage-modern #mailbox-form input:not([type="checkbox"]),
+        .homepage-modern #mailbox-form select,
+        .homepage-modern #mailbox-form textarea {
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 12px !important;
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+
+        .dark .homepage-modern #mailbox-form input:not([type="checkbox"]),
+        .dark .homepage-modern #mailbox-form select,
+        .dark .homepage-modern #mailbox-form textarea {
+            border-color: #475569 !important;
+        }
+
+        .homepage-modern #mailbox-form input:focus,
+        .homepage-modern #mailbox-form select:focus,
+        .homepage-modern #mailbox-form textarea:focus {
+            border-color: var(--home-blue) !important;
+            box-shadow: 0 0 0 4px rgba(30, 58, 138, .12) !important;
+            outline: none;
+        }
+
+        .homepage-modern #submit-btn {
+            border: 0 !important;
+            border-radius: 12px !important;
+            box-shadow: 0 8px 18px rgba(30, 58, 138, .18) !important;
+        }
+
+        .homepage-modern .homepage-services-section {
+            border-top: 1px solid rgba(30, 58, 138, .08);
+        }
+
+        .homepage-modern .homepage-services-section #Music,
+        .homepage-modern .homepage-services-section #Pads {
+            border-width: 1px !important;
+            border-radius: 22px !important;
+            box-shadow: 0 12px 30px rgba(30, 58, 138, .08) !important;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .homepage-modern .homepage-services-section #Music:hover,
+        .homepage-modern .homepage-services-section #Pads:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 34px rgba(30, 58, 138, .13) !important;
+        }
+
+        .homepage-modern .homepage-services-section #Music a,
+        .homepage-modern .homepage-services-section #Pads a {
+            border: 0 !important;
+            border-radius: 12px !important;
+            box-shadow: none !important;
+        }
+
+        .homepage-modern .homepage-president-message {
+            background:
+                radial-gradient(ellipse at 96% 20%, rgba(232, 93, 158, .08), transparent 32%),
+                #f1f5fb !important;
+        }
+
+        .dark .homepage-modern .homepage-president-message {
+            background: #0b1220 !important;
+        }
+
+        .homepage-modern .homepage-president-message > div > div > div {
+            border-radius: 24px;
+        }
+
+        .homepage-modern .homepage-president-message > div > div > div:first-child {
+            border-bottom-width: 1px !important;
+            border-color: rgba(255, 255, 255, .16) !important;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .homepage-modern .homepage-president-message > div > div > div:nth-child(2) {
+            border-radius: 0 0 20px 20px;
+        }
+
+        .homepage-modern .homepage-president-message img {
+            border-radius: 20px;
+        }
+
+        .homepage-modern .homepage-council-quotes {
+            background: var(--home-page) !important;
+        }
+
+        .homepage-modern .quote-showcase {
+            border: 0 !important;
+            border-radius: 26px !important;
+            background: linear-gradient(135deg, #1e3a8a 0%, #172554 65%, #111827 100%) !important;
+            box-shadow: 0 18px 45px rgba(30, 58, 138, .18) !important;
+        }
+
+        .homepage-modern #school-map {
+            border-top: 1px solid rgba(30, 58, 138, .1) !important;
+        }
+
+        .homepage-modern #school-map > .container > div:last-child {
+            border: 1px solid rgba(30, 58, 138, .14) !important;
+            border-radius: 22px;
+            box-shadow: 0 14px 34px rgba(30, 58, 138, .12) !important;
+        }
+
+        .homepage-modern #school-map iframe {
+            border-radius: 21px;
+        }
+
+        .homepage-modern > footer {
+            box-shadow: 0 -12px 40px rgba(15, 23, 42, .12) !important;
+        }
+
+        .homepage-modern > footer .font-marker {
+            font-family: 'DancingScript', cursive !important;
+        }
+
+        .homepage-modern > footer a > div {
+            box-shadow: none !important;
+        }
+
+        .homepage-modern #activity-modal-overlay {
+            background: rgba(15, 23, 42, .58) !important;
+            backdrop-filter: blur(8px);
+        }
+
+        .homepage-modern .popart-card {
+            background: var(--home-surface) !important;
+            border: 1px solid rgba(255, 255, 255, .65) !important;
+            border-radius: 22px !important;
+            box-shadow: 0 24px 70px rgba(15, 23, 42, .28) !important;
+        }
+
+        .homepage-modern .popart-stripe-top,
+        .homepage-modern .popart-stripe-bot {
+            background: linear-gradient(90deg, #1e3a8a, #e85d9e) !important;
+        }
+
+        .homepage-modern .popart-halftone {
+            opacity: .18;
+        }
+
+        .homepage-modern #activity-modal-card > div:nth-child(4) {
+            border-radius: 18px 18px 0 0;
+        }
+
+        .homepage-modern .activity-card-item {
+            border-radius: 16px !important;
+            box-shadow: 0 8px 20px rgba(30, 58, 138, .1) !important;
+        }
+
+        .homepage-modern .activity-card-item:hover {
+            transform: translateY(-2px) !important;
+        }
+
+        .homepage-modern #reopen-popup-btn {
+            border-radius: 14px !important;
+            box-shadow: 0 8px 22px rgba(30, 58, 138, .2) !important;
+        }
+
+        @media (max-width: 767px) {
+            .homepage-modern .homepage-hero {
+                padding-top: 2rem !important;
+                padding-bottom: 4rem !important;
+            }
+
+            .homepage-modern .homepage-services {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+
+            .homepage-modern .homepage-news-section,
+            .homepage-modern .homepage-president-message,
+            .homepage-modern #school-map {
+                padding-top: 3.5rem !important;
+                padding-bottom: 3.5rem !important;
+            }
+
+            .homepage-modern #mailbox-section {
+                padding-top: 4rem !important;
+                padding-bottom: 4rem !important;
+            }
+
+            .homepage-modern .homepage-services-section {
+                padding-top: 2.5rem !important;
+                padding-bottom: 2.5rem !important;
+            }
+
+            .homepage-modern .homepage-news-section h2 {
+                font-size: clamp(1.8rem, 8vw, 2.8rem) !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .homepage-modern *,
+            .homepage-modern *::before,
+            .homepage-modern *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden relative transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
+<body class="homepage-modern bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden relative transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
 
     <!-- Modern Loader -->
     <div id="app-loader">
@@ -61,7 +517,7 @@
                 
                 <li><a href="pathway.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyPink px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">Pathway to Future</a></li>
                 
-                <li><a href="pathway.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">แผนการทำงาน</a></li>
+                <li><a href="Action-Plan.html" class="text-gray-600 dark:text-gray-300 font-bold hover:text-partyBlue dark:hover:text-partyYellow px-3 py-1 transition-colors border-b-4 border-transparent hover:border-partyBlue">แผนการทำงาน</a></li>
                 
                 <li>
                     <a href="policy.html" class="bg-partyBlue text-white border-2 border-partyBlue px-6 py-2 font-bold shadow-[4px_4px_0px_0px_#f472b6] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block rounded-sm hover:bg-partyDarkBlue">
@@ -98,7 +554,7 @@
                 <span>🧭</span> Pathway to Future
             </a>
             
-            <a href="pathway.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
+            <a href="Action-Plan.html" class="flex items-center gap-3 text-white font-bold text-lg py-3 px-4 hover:bg-white/10 rounded-lg transition-colors"> 
                 <span>🗺️</span> แผนการทำงาน 
             </a>
             
@@ -112,7 +568,7 @@
         </div>
     </nav>
 
-    <div class="mt-[68px] md:mt-[76px] bg-gradient-to-r from-partyBlue via-partyDarkBlue to-partyBlue dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 border-b-4 border-partyYellow py-3 md:py-4 z-40 relative shadow-md transition-colors duration-300 overflow-hidden">
+    <div class="homepage-services mt-[68px] md:mt-[76px] bg-gradient-to-r from-partyBlue via-partyDarkBlue to-partyBlue dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 border-b-4 border-partyYellow py-3 md:py-4 z-40 relative shadow-md transition-colors duration-300 overflow-hidden">
         <div class="absolute inset-0 bg-dot-pattern opacity-10 animate-pulse-slow"></div>
         <div class="container mx-auto px-4 max-w-7xl relative z-10">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
@@ -170,7 +626,7 @@
         </div>
     </div>
 
-    <header class="pt-10 pb-16 md:pt-20 md:pb-32 relative overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
+    <header class="homepage-hero pt-10 pb-16 md:pt-20 md:pb-32 relative overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
         <div class="absolute top-20 right-10 w-32 h-32 border-8 border-partyYellow rounded-full opacity-20 animate-float hidden md:block"></div>
         <div class="absolute bottom-20 left-10 w-24 h-24 bg-partyBlue opacity-10 transform rotate-45 animate-float-delayed hidden md:block"></div>
         
@@ -186,12 +642,6 @@
             <div class="w-full lg:w-3/5 text-center lg:text-left">
                 <div class="inline-block bg-partyYellow text-partyBlue px-3 py-1 font-bold text-sm mb-4 md:mb-6 shadow-pop transform -rotate-2 reveal-on-scroll">
                     Welcome to Official Website
-                </div>
-                <div class="mb-5 md:mb-6 max-w-2xl border-2 border-partyPink bg-pink-50 dark:bg-pink-950/40 px-4 py-3 text-left shadow-[4px_4px_0px_0px_#f472b6] reveal-on-scroll" style="transition-delay: 50ms;">
-                    <p class="font-black text-partyBlue dark:text-partyYellow">ประกาศจากคณะสภานักเรียน</p>
-                    <p class="mt-1 text-sm md:text-base font-medium leading-relaxed text-gray-700 dark:text-gray-200">
-                        เว็บไซต์สภานักเรียนกำลังปรับปรุง และคาดว่าจะอัปเดตเว็บไซต์ใหม่ได้ประมาณสัปดาห์หน้า ทั้งนี้ ยังสามารถเข้าชมเว็บไซต์ได้ แต่อาจมีบางส่วนที่ปิดให้บริการชั่วคราว
-                    </p>
                 </div>
                 <h1 class="font-black text-partyBlue dark:text-white leading-[0.9] tracking-tighter mb-6 md:mb-8 drop-shadow-sm reveal-on-scroll" style="transition-delay: 100ms;">
                     <span class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl block mb-2 opacity-90">คณะกรรมการ</span>
@@ -228,7 +678,7 @@
                     <div class="absolute inset-0 bg-partyBlue border-2 border-white dark:border-gray-800 translate-x-2 translate-y-2 md:translate-x-3 md:translate-y-3 z-10 transition-transform duration-500"></div>
                     
                     <div class="absolute inset-0 bg-gray-200 dark:bg-gray-700 border-2 border-partyBlue z-20 overflow-hidden group">
-                         <img src="images/รูปสภานักเรียนแบบมีพื้นหลัง/1.png" class="w-full h-full object-cover transition-transform duration-700 cursor-pointer scale-100 group-hover:scale-110" alt="President">
+                         <img src="images/รูปสภานักเรียนแบบมีพื้นหลัง/1.jpg" class="w-full h-full object-cover transition-transform duration-700 cursor-pointer scale-100 group-hover:scale-110" alt="President">
                          <div class="absolute inset-0 bg-gradient-to-t from-partyBlue/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     
@@ -240,7 +690,7 @@
         </div>
     </header>
 
-    <section class="py-16 md:py-24 bg-gray-50 dark:bg-gray-950 border-t-8 border-partyBlue dark:border-partyPink relative transition-colors duration-300 overflow-hidden">
+    <section class="homepage-news-section py-16 md:py-24 bg-gray-50 dark:bg-gray-950 border-t-8 border-partyBlue dark:border-partyPink relative transition-colors duration-300 overflow-hidden">
         <div class="absolute right-[-5%] top-[-5%] w-64 h-64 border-[1rem] border-partyYellow dark:border-partyBlue rounded-full opacity-20 animate-spin-slow"></div>
         <div class="absolute left-[-2%] bottom-[10%] w-32 h-32 bg-partyPink/10 rounded-full blur-2xl"></div>
         
@@ -284,21 +734,15 @@
                 <p class="text-lg md:text-xl font-medium max-w-2xl mx-auto opacity-90">พบปัญหา? มีข้อเสนอแนะ? หรืออยากให้โรงเรียนมีอะไรเพิ่ม พิมพ์ส่งมาให้พวกเราได้เลย (ข้อมูลของคุณจะถูกเก็บเป็นความลับ)</p>
             </div>
 
-            <form id="mailbox-form" aria-disabled="true" class="form-tilt bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-6 md:p-12 border-4 border-partyYellow shadow-[8px_8px_0px_0px_#f472b6] md:transform md:rotate-1 hover:rotate-0 transition-transform duration-300 relative z-20 rounded-sm">
+            <form id="mailbox-form" class="form-tilt bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-6 md:p-12 border-4 border-partyYellow shadow-[8px_8px_0px_0px_#f472b6] md:transform md:rotate-1 hover:rotate-0 transition-transform duration-300 relative z-20 rounded-sm">
 
                 <div class="mb-8 border-4 border-partyPink bg-pink-50 dark:bg-pink-950/40 p-5 md:p-6 text-center shadow-[5px_5px_0px_0px_#f472b6]">
-                    <div class="text-4xl mb-3" aria-hidden="true">🛠️</div>
-                    <h3 class="text-xl md:text-2xl font-black text-partyBlue dark:text-partyYellow">ตู้ ปณ. สภานักเรียนกำลังปรับปรุงแก้ไข</h3>
+                    <div class="text-4xl mb-3" aria-hidden="true">📮</div>
+                    <h3 class="text-xl md:text-2xl font-black text-partyBlue dark:text-partyYellow">ตู้ ปณ. สภานักเรียนเปิดให้ใช้งานแล้ว</h3>
                     <p class="mt-2 text-sm md:text-base font-medium leading-relaxed text-gray-700 dark:text-gray-200">
-                        ตู้ ปณ. จะกลับมาเปิดให้ใช้งานในภาคเรียนที่ 2 ปีการศึกษา 2569
-                    </p>
-                    <p class="mt-3 text-sm md:text-base font-bold text-gray-700 dark:text-gray-200">
-                        หากต้องการแจ้งข้อมูลต่างๆ สามารถแจ้งได้ที่
-                        <a href="https://www.instagram.com/deksapa.psc/?hl=en" target="_blank" rel="noopener noreferrer" class="text-partyBlue dark:text-partyYellow underline break-all">Instagram: @deksapa.psc</a>
+                        สามารถกรอกข้อมูลและส่งข้อความถึงคณะสภานักเรียนผ่านแบบฟอร์มนี้ได้เลย
                     </p>
                 </div>
-
-                <fieldset disabled class="opacity-50 cursor-not-allowed">
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-5">
                     <div>
@@ -358,19 +802,17 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" id="submit-btn" disabled aria-disabled="true"
-                        class="bg-gray-400 text-white font-black text-lg md:text-xl px-12 py-4 border-2 border-gray-500 shadow-[4px_4px_0px_0px_#6b7280] cursor-not-allowed rounded-sm w-full md:w-auto flex items-center justify-center gap-3 mx-auto">
-                        ปิดรับข้อความชั่วคราว
+                    <button type="submit" id="submit-btn"
+                        class="bg-partyBlue text-white font-black text-lg md:text-xl px-12 py-4 border-2 border-partyBlue shadow-[4px_4px_0px_0px_#1e3a8a] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all rounded-sm w-full md:w-auto flex items-center justify-center gap-3 mx-auto">
+                        ส่งข้อความ
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                         </svg>
                     </button>
                     <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">
-                        หากเป็นเรื่องที่มีข้อมูลภาพ หรือต้องการ การตอบกลับ กรุณาติดต่อละส่งเรื่องไปที่ <a href="https://www.instagram.com/deksapa.psc/?hl=en" target="_blank" rel="noopener noreferrer" class="font-bold text-partyBlue underline">IG deksapa.psc</a>
+                        หากเป็นเรื่องที่มีข้อมูลภาพ หรือต้องการการตอบกลับโดยตรง กรุณาติดต่อและส่งเรื่องไปที่ <a href="https://www.instagram.com/deksapa.psc/?hl=en" target="_blank" rel="noopener noreferrer" class="font-bold text-partyBlue dark:text-partyYellow underline">IG: @deksapa.psc</a>
                     </p>
                 </div>
-
-                </fieldset>
 
             </form>
         </div>
@@ -431,7 +873,6 @@
         // ── ส่งฟอร์ม ──
         form.addEventListener('submit', async function (ev) {
             ev.preventDefault();
-            if (form.getAttribute('aria-disabled') === 'true') return;
 
             const originalHTML  = submitBtn.innerHTML;
             submitBtn.disabled  = true;
@@ -476,7 +917,7 @@
     })();
     </script>
 
-    <section class="py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <section class="homepage-services-section py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
         <div class="container mx-auto px-4 max-w-6xl">
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-on-scroll">
@@ -535,7 +976,7 @@
         </div>
     </section>
 
-    <section class="py-16 md:py-24 bg-gray-50 dark:bg-gray-950 relative flex items-center justify-center overflow-hidden transition-colors duration-300">
+    <section class="homepage-president-message py-16 md:py-24 bg-gray-50 dark:bg-gray-950 relative flex items-center justify-center overflow-hidden transition-colors duration-300">
         <div class="absolute inset-0 bg-dot-pattern opacity-5"></div>
         <div class="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-partyYellow opacity-10 rounded-full blur-3xl"></div>
         
@@ -554,7 +995,7 @@
                         <div class="relative mb-6 group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-partyYellow transform rotate-6 z-0 border-2 border-partyBlue"></div>
                             <div class="bg-white text-partyBlue w-48 h-48 md:w-56 md:h-56 flex items-center justify-center font-black text-7xl relative z-10 shadow-pop border-4 border-partyBlue overflow-hidden">
-                                 <img src="images/รูปสภานักเรียนแบบมีพื้นหลัง/1.png" alt="รูปประธานนักเรียน" class="w-full h-full object-cover">
+                                 <img src="images/รูปสภานักเรียนแบบไม่มีพื้นหลัง/1.png" alt="รูปประธานนักเรียน" class="w-full h-full object-cover">
                             </div>
                         </div>
                         <h3 class="text-partyBlue dark:text-white font-black text-2xl md:text-3xl uppercase leading-none mb-2">พาขวัญ นวลสำลี</h3>
@@ -582,7 +1023,7 @@
         </div>
     </section>
 
-        <div class="bg-white dark:bg-gray-950 pt-20 pb-20 relative transition-colors duration-300 overflow-hidden">
+    <section class="homepage-council-quotes bg-white dark:bg-gray-950 pt-16 pb-16 md:pt-20 md:pb-20 relative transition-colors duration-300 overflow-hidden">
         <div class="absolute inset-0 bg-grid-pattern opacity-40 dark:opacity-30 pointer-events-none"></div>
         <div class="max-w-6xl mx-auto px-4 relative z-10 reveal-on-scroll">
             <div class="quote-showcase relative overflow-hidden rounded-sm border-4 border-partyBlue dark:border-partyPink bg-gradient-to-br from-partyBlue via-partyDarkBlue to-gray-950 text-white shadow-[10px_10px_0px_0px_rgba(244,114,182,0.85)] dark:shadow-[10px_10px_0px_0px_rgba(244,114,182,0.35)]">
@@ -617,7 +1058,7 @@
             </div>
 
         </div>
-    </div>
+    </section>
 
     <button id="install-pwa-btn" class="hidden fixed bottom-4 left-4 z-50 bg-partyYellow text-partyBlue border-2 border-partyBlue dark:border-white px-4 py-2 font-black shadow-pop rounded-lg animate-bounce hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
     ⬇️ ติดตั้งแอป
@@ -682,46 +1123,46 @@
     </style>
 
     <!-- MODAL OVERLAY -->
-    <div id="activity-modal-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center p-4 transition-all duration-300">
-        <div id="activity-modal-card" class="popart-card w-full max-w-xl border-4 border-partyBlue dark:border-partyYellow rounded-none shadow-[10px_10px_0px_0px_#f472b6] dark:shadow-[10px_10px_0px_0px_#facc15] relative">
+    <div id="activity-modal-overlay" class="hidden fixed inset-0 z-[100] items-center justify-center p-3 sm:p-4 transition-all duration-300">
+        <div id="activity-modal-card" class="popart-card w-full max-w-xl max-h-[90vh] flex flex-col border-4 border-partyBlue dark:border-partyYellow rounded-none shadow-[6px_6px_0px_0px_#f472b6] sm:shadow-[10px_10px_0px_0px_#f472b6] dark:shadow-[6px_6px_0px_0px_#facc15] sm:dark:shadow-[10px_10px_0px_0px_#facc15] relative overflow-hidden">
 
             <!-- Stripe Top Banner -->
-            <div class="popart-stripe-top h-3 w-full"></div>
+            <div class="popart-stripe-top h-2.5 sm:h-3 w-full flex-shrink-0"></div>
 
             <!-- Halftone BG -->
             <div class="popart-halftone absolute inset-0 pointer-events-none"></div>
 
             <!-- Header -->
-            <div class="relative z-10 bg-partyBlue text-white flex items-center justify-between px-5 py-3 border-b-4 border-partyYellow">
-                <div class="flex items-center gap-3">
-                    <span class="inline-block bg-partyYellow text-partyBlue text-xs font-black px-3 py-1 rounded-sm border-2 border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] uppercase tracking-widest animate-pulse">🔥 HOT</span>
-                    <h2 class="text-lg md:text-xl font-black tracking-tight uppercase">กิจกรรมล่าสุดจากสภาฯ</h2>
+            <div class="relative z-10 bg-partyBlue text-white flex items-center justify-between px-4 sm:px-5 py-3 border-b-4 border-partyYellow flex-shrink-0">
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <span class="inline-block bg-partyYellow text-partyBlue text-[11px] sm:text-xs font-black px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-sm border-2 border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] uppercase tracking-widest animate-pulse">🔥 HOT</span>
+                    <h2 class="text-base sm:text-lg md:text-xl font-black tracking-tight uppercase">กิจกรรมล่าสุดจากสภาฯ</h2>
                 </div>
-                <button id="close-popup-x" aria-label="ปิด" class="bg-partyPink hover:bg-red-500 text-white w-9 h-9 rounded-sm border-2 border-white flex items-center justify-center font-black text-base shadow-[2px_2px_0px_0px_rgba(0,0,0,0.4)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex-shrink-0">
+                <button id="close-popup-x" aria-label="ปิด" class="bg-partyPink hover:bg-red-500 text-white w-8 h-8 sm:w-9 sm:h-9 rounded-sm border-2 border-white flex items-center justify-center font-black text-sm sm:text-base shadow-[2px_2px_0px_0px_rgba(0,0,0,0.4)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex-shrink-0">
                     ✕
                 </button>
             </div>
 
-            <!-- Activity Cards -->
-            <div class="relative z-10 p-5 space-y-4">
+            <!-- Activity Cards (Scrollable on small mobile screens) -->
+            <div class="relative z-10 p-4 sm:p-5 space-y-4 overflow-y-auto max-h-[60vh]">
 
-                <a href="news.html" class="activity-card-item block bg-white dark:bg-gray-800 border-3 border-orange-500 dark:border-purple-400 rounded-sm shadow-[5px_5px_0px_0px_#f97316] dark:shadow-[5px_5px_0px_0px_#c084fc] overflow-hidden no-underline" style="border-width:3px">
-                    <div class="flex gap-0">
-                        <div class="w-28 md:w-36 flex-shrink-0 relative overflow-hidden bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
-                            <span class="text-5xl" aria-hidden="true">📢</span>
+                <a href="news.html" class="activity-card-item block bg-white dark:bg-gray-800 border-2 sm:border-3 border-orange-500 dark:border-purple-400 rounded-sm shadow-[4px_4px_0px_0px_#f97316] sm:shadow-[5px_5px_0px_0px_#f97316] dark:shadow-[4px_4px_0px_0px_#c084fc] sm:dark:shadow-[5px_5px_0px_0px_#c084fc] overflow-hidden no-underline">
+                    <div class="flex flex-col xs:flex-row sm:flex-row gap-0">
+                        <div class="w-full sm:w-36 h-24 sm:h-auto flex-shrink-0 relative overflow-hidden bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                            <span class="text-4xl sm:text-5xl" aria-hidden="true">📢</span>
                             <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 dark:to-black/20"></div>
                         </div>
-                        <div class="flex-1 p-3">
+                        <div class="flex-1 p-3 sm:p-3.5">
                             <span class="inline-block bg-orange-500 text-white text-[10px] font-black px-2 py-0.5 mb-2 uppercase tracking-wider rounded-sm">ประกาศเว็บไซต์</span>
                             <h3 class="text-sm md:text-base font-black text-orange-600 dark:text-purple-400 leading-snug mb-1">
-                                แจ้งกำหนดอัปเดตเว็บไซต์ใหม่
+                                เว็บไซต์สภานักเรียนอัปเดตแล้ว
                             </h3>
                             <p class="text-xs text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
-                                เว็บไซต์สภานักเรียนเวอร์ชันใหม่คาดว่าจะอัปเดตประมาณสัปดาห์หน้า ระหว่างนี้ยังสามารถเข้าชมเว็บไซต์ได้ แต่อาจมีบางส่วนปิดให้บริการชั่วคราว
+                                เว็บไซต์สภานักเรียนเวอร์ชันใหม่พร้อมให้บริการแล้ว ขอเชิญทุกคนเข้าชมและติดตามข่าวสารกับกิจกรรมต่าง ๆ ได้เลย
                             </p>
-                            <div class="mt-2 flex items-center gap-1 text-[11px] font-black text-partyBlue dark:text-partyYellow">
-                                <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                แจ้งเมื่อ 18 กันยายน 2569
+                            <div class="mt-2.5 flex items-center gap-1.5 text-[11px] font-black text-partyBlue dark:text-partyYellow">
+                                <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span>แจ้งเมื่อ วันอาทิตย์ที่ 8 พฤศจิกายน พ.ศ. 2569 เวลา 14:25</span>
                             </div>
                         </div>
                     </div>
@@ -730,33 +1171,33 @@
             </div>
 
             <!-- Footer Buttons -->
-            <div class="relative z-10 px-5 pb-5">
-                <div class="grid grid-cols-2 gap-3">
-                    <a href="news.html" class="bg-partyBlue hover:bg-partyDarkBlue text-white font-black text-center py-2.5 border-2 border-partyBlue dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm rounded-sm flex items-center justify-center gap-2">
-                        📰 ดูข่าวทั้งหมด
+            <div class="relative z-10 px-4 sm:px-5 pb-4 sm:pb-5 pt-1 flex-shrink-0">
+                <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+                    <a href="news.html" class="bg-partyBlue hover:bg-partyDarkBlue text-white font-black text-center py-2.5 border-2 border-partyBlue dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all text-xs sm:text-sm rounded-sm flex items-center justify-center gap-1.5 sm:gap-2">
+                        📰 <span>ดูข่าวทั้งหมด</span>
                     </a>
-                    <button id="close-popup-btn" class="bg-gray-100 dark:bg-gray-700 hover:bg-partyPink hover:text-white text-partyBlue dark:text-white font-black text-center py-2.5 border-2 border-partyBlue dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.6)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm rounded-sm">
+                    <button id="close-popup-btn" class="bg-gray-100 dark:bg-gray-700 hover:bg-partyPink hover:text-white text-partyBlue dark:text-white font-black text-center py-2.5 border-2 border-partyBlue dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.6)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all text-xs sm:text-sm rounded-sm">
                         รับทราบ · ปิด
                     </button>
                 </div>
             </div>
 
             <!-- Stripe Bottom Banner -->
-            <div class="popart-stripe-bot h-3 w-full"></div>
+            <div class="popart-stripe-bot h-2.5 sm:h-3 w-full flex-shrink-0"></div>
         </div>
     </div>
 
 
     <!-- Floating Reopen Button (Pop-Art Retro) -->
-    <button id="reopen-popup-btn" class="btn-shake hidden fixed bottom-6 right-6 z-50 bg-partyYellow hover:bg-amber-400 text-partyBlue font-black p-0 rounded-none border-4 border-partyBlue dark:border-white shadow-[5px_5px_0px_0px_#f472b6] dark:shadow-[5px_5px_0px_0px_#f59e0b] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all items-center gap-0 group" title="ดูกิจกรรมล่าสุดจากสภาฯ" aria-label="ดูกิจกรรมล่าสุด">
-        <div class="popart-stripe-top h-1.5 w-full"></div>
-        <div class="flex items-center gap-2 px-4 py-2.5">
-            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+    <button id="reopen-popup-btn" class="btn-shake hidden fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-partyYellow hover:bg-amber-400 text-partyBlue font-black p-0 rounded-none border-2 sm:border-4 border-partyBlue dark:border-white shadow-[3px_3px_0px_0px_#f472b6] sm:shadow-[5px_5px_0px_0px_#f472b6] dark:shadow-[3px_3px_0px_0px_#f59e0b] sm:dark:shadow-[5px_5px_0px_0px_#f59e0b] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all items-center gap-0 group" title="ดูกิจกรรมล่าสุดจากสภาฯ" aria-label="ดูกิจกรรมล่าสุด">
+        <div class="popart-stripe-top h-1 sm:h-1.5 w-full"></div>
+        <div class="flex items-center gap-1.5 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2.5">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
             </svg>
-            <span class="text-xs md:text-sm font-black tracking-tight hidden sm:inline uppercase">กิจกรรมล่าสุด</span>
+            <span class="text-xs sm:text-sm font-black tracking-tight inline uppercase">กิจกรรมล่าสุด</span>
         </div>
-        <div class="popart-stripe-bot h-1.5 w-full"></div>
+        <div class="popart-stripe-bot h-1 sm:h-1.5 w-full"></div>
     </button>
 
 
@@ -924,25 +1365,25 @@
         // --- News System for Index ---
         const newsData = [
             {
-                id: 54,
-                date: "17 กันยายน 2569",
-                title: "🎉 คณะกรรมการสภานักเรียนขอแสดงความยินดีกับรุ่นพี่สภานักเรียน ในโอกาสเข้ารับประกาศนียบัตร “สภาเด็กและเยาวชนต้นแบบจังหวัดชลบุรี”",
-                shortDesc: "คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ขอแสดงความยินดีกับ นายณรงค์ฤทธิ์ น้อยคงคา ในโอกาสเข้ารับประกาศนียบัตร “สภาเด็กและเยาวชนต้นแบบจังหวัดชลบุรี” เนื่องในวันเยาวชนแห่งชาติ ประจำปี 2569",
-                image: "images/PSC/PSC_SAPA_NEWS_ฉบับที่/31.jpg"
+                id: 62,
+                date: "30 ตุลาคม 2569",
+                title: "✨ สภานักเรียนจัดงาน “ลานน้ำเงิน-ชมพู ปีที่ 4” เปิดพื้นที่สร้างสรรค์และแสดงศักยภาพนักเรียน PSC”",
+                shortDesc: "คณะกรรมการสภานักเรียน ปีการศึกษา 2569 จัดกิจกรรม “ลานน้ำเงิน-ชมพู ปีที่ 4” เปิดเวทีให้นักเรียนแสดงความสามารถ ออกร้านจำหน่ายสินค้า และจัดซุ้มเกมสนุกสนาน",
+                image: "images/PSC/PSC_SAPA_NEWS_ฉบับที่/34.jpg"
             },
             {
-                id: 53,
-                date: "13 กันยายน 2569",
-                title: "🥉 คว้าชัย! สภานักเรียนคว้า รางวัลรองชนะเลิศอันดับ 2 ในการประกวด EEC Low Carbon School รอบ Final Pitching",
-                shortDesc: "สภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ คว้ารางวัลรองชนะเลิศอันดับ 2 โครงการ 'โรงเรียนต้นแบบคาร์บอนต่ำ' (EEC Low Carbon School) ในงาน EEC Sustainability Expo 2026 ณ เซ็นทรัล ระยอง",
-                image: "images/PSC/PSC_SAPA_NEWS_ฉบับที่/30.jpg"
+                id: 61,
+                date: "18 ตุลาคม 2569",
+                title: "🎃👻 ขอเชิญร่วมงาน “ลานน้ำเงิน-ชมพู” บรรยากาศฮาโลวีนสุดน่ารัก พร้อมเกมและร้านค้ามากมาย",
+                shortDesc: "สภานักเรียนชวนทุกคนมาสนุกในงาน 'ลานน้ำเงิน-ชมพู' วันที่ 30 ต.ค. 2569 เวลา 14:40–15:30 น. ณ โดมโรงเรียน",
+                image: "images/PSC/ลานน้ำเงิน-ชมพู-2.jpg"
             },
             {
-                id: 52 ,
-                date: "5 กันยายน 2569",
-                title: "🌿 สภานักเรียนร่วมขับเคลื่อน “โรงเรียนสิ่งแวดล้อม” อนุรักษ์พลังงานและสิ่งแวดล้อม ณ รรร.จุฬาภรณราชวิทยาลัย ชลบุรี",
-                shortDesc: "ตัวแทนสภานักเรียน นำเสนอผลงานประเภท 'โรงเรียนสิ่งแวดล้อม' ในโครงการส่งเสริมการจัดการศึกษาด้านการอนุรักษ์พลังงานและสิ่งแวดล้อม ณ โดมอเนกประสงค์ รรร.จุฬาภรณราชวิทยาลัย ชลบุรี",
-                image: "images/PSC/PSC_SAPA_NEWS_ฉบับที่/29.jpg"
+                id: 60 ,
+                date: "4-5 ตุลาคม 2569",
+                title: "💙 สภานักเรียนร่วมใจทำจิตอาสา ฟื้นฟูโรงเรียนหลังสถานการณ์น้ำท่วม",
+                shortDesc: "คณะกรรมการสภานักเรียนโรงเรียนพานทองสภาชนูปถัมภ์ ร่วมแรงร่วมใจทำความสะอาดและฟื้นฟูพื้นที่ภายในโรงเรียน ระหว่างวันที่ 4–5 ต.ค. 2569 เพื่อเตรียมความพร้อมต้อนรับการเปิดเทอมและการสอบ",
+                image: "images/PSC/PSC_SAPA_NEWS_ฉบับที่/33.jpg"
             },
         ];
 

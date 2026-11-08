@@ -97,9 +97,195 @@
                 justify-content: center;
             }
         }
+
+        .policy-modern {
+            --policy-page: #f5f8ff;
+            --policy-surface: #fff;
+            --policy-pink: #e85d9e;
+        }
+        body.policy-modern { background: var(--policy-page); }
+        .dark .policy-modern {
+            --policy-page: #0b1220;
+            --policy-surface: #111b31;
+        }
+        .dark body.policy-modern { background: var(--policy-page); }
+        .policy-modern :focus-visible {
+            outline: 3px solid var(--policy-pink);
+            outline-offset: 3px;
+        }
+        .policy-modern > nav {
+            border-bottom: 1px solid rgba(30, 58, 138, .12) !important;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, .08) !important;
+        }
+        .policy-modern > nav > div {
+            background: transparent !important;
+        }
+        .policy-modern > nav ul a:not([href="policy.html"]) {
+            border-bottom: 0 !important;
+            border-radius: 999px;
+            padding: .55rem .85rem !important;
+        }
+        .policy-modern > nav ul a:not([href="policy.html"]):hover {
+            background: #eff6ff;
+        }
+        .dark .policy-modern > nav ul a:not([href="policy.html"]):hover {
+            background: rgba(255, 255, 255, .08);
+        }
+        .policy-modern > nav ul a[href="policy.html"] {
+            border-radius: 999px !important;
+            box-shadow: 0 5px 14px rgba(232, 93, 158, .2) !important;
+        }
+        .policy-modern .policy-hero {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 28px;
+            box-shadow: 0 18px 48px rgba(30, 58, 138, .1) !important;
+        }
+        .dark .policy-modern .policy-hero {
+            border-color: rgba(255, 255, 255, .1) !important;
+        }
+        .policy-modern .policy-hero h1 {
+            letter-spacing: -.04em;
+        }
+        .policy-modern .policy-hero > div.relative.z-10 > div:last-child {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 22px;
+            box-shadow: 0 12px 28px rgba(30, 58, 138, .1) !important;
+        }
+        .policy-modern #policy-stats > div {
+            border: 0 !important;
+            border-radius: 15px;
+            box-shadow: 0 6px 16px rgba(30, 58, 138, .12) !important;
+        }
+        .policy-modern main > section:nth-child(2) > div:first-child {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 22px;
+            background: var(--policy-surface) !important;
+            box-shadow: 0 12px 30px rgba(30, 58, 138, .08) !important;
+        }
+        .dark .policy-modern main > section:nth-child(2) > div:first-child {
+            border-color: rgba(255, 255, 255, .1) !important;
+        }
+        .policy-modern #policy-search {
+            border: 1px solid rgba(30, 58, 138, .2);
+            border-radius: 14px;
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+        .policy-modern #policy-search:focus {
+            border-color: var(--policy-pink);
+            box-shadow: 0 0 0 4px rgba(232, 93, 158, .12);
+        }
+        .policy-modern .policy-filter {
+            border-color: rgba(30, 58, 138, .16) !important;
+            border-radius: 999px;
+        }
+        .policy-modern .policy-filter:not(.is-active) {
+            box-shadow: none;
+        }
+        .policy-modern .policy-filter.is-active {
+            border-color: #1e3a8a !important;
+            box-shadow: 0 6px 14px rgba(30, 58, 138, .16) !important;
+        }
+        .dark .policy-modern .policy-filter.is-active {
+            border-color: #facc15 !important;
+            box-shadow: 0 6px 14px rgba(244, 114, 182, .18) !important;
+        }
+        .policy-modern .policy-row {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 22px;
+            background: var(--policy-surface) !important;
+            box-shadow: 0 10px 28px rgba(30, 58, 138, .08) !important;
+            padding: clamp(1rem, 2.5vw, 1.5rem);
+        }
+        .dark .policy-modern .policy-row {
+            border-color: rgba(255, 255, 255, .1) !important;
+        }
+        .policy-modern .policy-row img {
+            border: 0 !important;
+            border-radius: 15px;
+        }
+        .policy-modern .policy-row h2 {
+            letter-spacing: -.02em;
+        }
+        .policy-modern .policy-row [class*="inline-flex mt-3"] {
+            border-radius: 999px;
+        }
+        .policy-modern .policy-stage {
+            border-width: 1px;
+            border-radius: 12px;
+        }
+        .policy-modern .policy-stage.is-current {
+            box-shadow: 0 6px 14px rgba(30, 58, 138, .14);
+        }
+        .policy-modern .policy-row button {
+            border-radius: 999px;
+            box-shadow: 0 6px 14px rgba(30, 58, 138, .14) !important;
+        }
+        .policy-modern .policy-row button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(30, 58, 138, .18) !important;
+        }
+        .policy-modern #policy-empty {
+            border-radius: 20px;
+        }
+        .policy-modern #policy-detail {
+            background: rgba(15, 23, 42, .58);
+            backdrop-filter: blur(8px);
+        }
+        .policy-modern #policy-detail > div {
+            border: 1px solid rgba(255, 255, 255, .6) !important;
+            border-radius: 24px;
+            box-shadow: 0 24px 70px rgba(15, 23, 42, .3) !important;
+        }
+        .policy-modern #policy-detail > div > div:first-child {
+            border-radius: 23px 23px 0 0;
+        }
+        .policy-modern #policy-detail-close {
+            border-radius: 999px;
+            box-shadow: 0 6px 14px rgba(15, 23, 42, .2) !important;
+        }
+        .policy-modern #policy-detail section > div > div {
+            border-width: 1px !important;
+            border-radius: 12px;
+        }
+        .policy-modern > footer {
+            box-shadow: 0 -12px 40px rgba(15, 23, 42, .12) !important;
+        }
+        .policy-modern > footer .font-marker {
+            font-family: 'DancingScript', cursive !important;
+        }
+        .policy-modern > footer a > div {
+            box-shadow: none !important;
+        }
+        @media (max-width: 767px) {
+            .policy-modern .policy-hero {
+                border-radius: 22px;
+            }
+            .policy-modern .policy-row {
+                border-radius: 18px;
+            }
+            .policy-modern #policy-detail {
+                padding: .75rem;
+            }
+            .policy-modern #policy-detail > div {
+                border-radius: 18px;
+            }
+            .policy-modern #policy-detail > div > div:first-child {
+                border-radius: 17px 17px 0 0;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .policy-modern *,
+            .policy-modern *::before,
+            .policy-modern *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
     </style>
 </head>
-<body class="bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden flex flex-col min-h-screen transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
+<body class="policy-modern bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden flex flex-col min-h-screen transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
 
     <!-- Modern Loader -->
     <div id="app-loader">

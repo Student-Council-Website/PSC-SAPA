@@ -58,9 +58,281 @@
         .dark .bg-grid-pattern {
             background-image: linear-gradient(to right, rgba(244, 114, 182, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(244, 114, 182, 0.05) 1px, transparent 1px);
         }
+
+        .committee-modern {
+            --committee-pink: #e85d9e;
+            --committee-page: #f5f8ff;
+            --committee-surface: #fff;
+            background: var(--committee-page);
+        }
+
+        .dark .committee-modern {
+            --committee-page: #0b1220;
+            --committee-surface: #111b31;
+        }
+
+        .committee-modern :focus-visible {
+            outline: 3px solid var(--committee-pink);
+            outline-offset: 3px;
+        }
+
+        .committee-modern > nav {
+            border-bottom: 1px solid rgba(30, 58, 138, .12) !important;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, .08) !important;
+        }
+
+        .committee-modern > nav ul a:not([href="policy.html"]) {
+            border-bottom: 0 !important;
+            border-radius: 999px;
+            padding: .55rem .85rem !important;
+        }
+
+        .committee-modern > nav ul a:not([href="policy.html"]):hover {
+            background: #eff6ff;
+        }
+
+        .dark .committee-modern > nav ul a:not([href="policy.html"]):hover {
+            background: rgba(255, 255, 255, .08);
+        }
+
+        .committee-modern > nav ul a[href="policy.html"] {
+            border-radius: 999px !important;
+            box-shadow: 0 5px 14px rgba(232, 93, 158, .2) !important;
+        }
+
+        .committee-modern .committee-status-bar {
+            background: linear-gradient(115deg, #1e3a8a, #263d75) !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .dark .committee-modern .committee-status-bar {
+            background: linear-gradient(115deg, #111b31, #172554) !important;
+        }
+
+        .committee-modern .committee-status-bar > .container > div > div:last-child {
+            border-radius: 999px;
+        }
+
+        .committee-modern .committee-hero {
+            padding-top: 3.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        .committee-modern .committee-hero > .inline-block > div:last-child {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 22px;
+            box-shadow: 0 14px 36px rgba(30, 58, 138, .1) !important;
+            transform: none !important;
+        }
+
+        .committee-modern .committee-hero h1 {
+            letter-spacing: -.035em;
+        }
+
+        .committee-modern .committee-hero > div:last-child > div {
+            border: 1px solid rgba(30, 58, 138, .1) !important;
+            border-left: 4px solid var(--committee-pink) !important;
+            border-radius: 0 16px 16px 0 !important;
+            box-shadow: 0 8px 24px rgba(30, 58, 138, .06) !important;
+        }
+
+        .committee-modern .committee-advisors {
+            margin-top: 1.5rem !important;
+        }
+
+        .committee-modern .committee-advisors > div:first-child {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 24px !important;
+            background: var(--committee-surface) !important;
+            box-shadow: 0 14px 36px rgba(30, 58, 138, .08) !important;
+            padding: clamp(1rem, 3vw, 2rem) !important;
+        }
+
+        .committee-modern .committee-advisors .grid > div {
+            overflow: hidden;
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 18px !important;
+            background: var(--committee-surface) !important;
+            box-shadow: 0 8px 20px rgba(30, 58, 138, .08) !important;
+        }
+
+        .dark .committee-modern .committee-advisors .grid > div {
+            border-color: rgba(255, 255, 255, .1) !important;
+        }
+
+        .committee-modern .committee-advisors .grid > div > div:first-child {
+            border: 0 !important;
+            border-radius: 14px;
+            margin-bottom: .5rem;
+        }
+
+        .committee-modern .committee-advisors .grid > div > div:last-child {
+            border: 0 !important;
+            border-radius: 0 0 14px 14px !important;
+        }
+
+        .committee-modern .committee-advisors .grid > div p.bg-partyYellow {
+            border: 0 !important;
+            border-radius: 999px;
+            box-shadow: none !important;
+        }
+
+        .committee-modern .committee-search-panel {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 22px !important;
+            background: var(--committee-surface) !important;
+            box-shadow: 0 14px 36px rgba(30, 58, 138, .08) !important;
+            padding: clamp(1rem, 3vw, 1.5rem) !important;
+        }
+
+        .committee-modern .committee-search-panel > .absolute {
+            opacity: .18;
+        }
+
+        .committee-modern .committee-search-control {
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 12px !important;
+            background-color: #f8fafc;
+            box-shadow: none !important;
+        }
+
+        .dark .committee-modern .committee-search-control {
+            border-color: #475569 !important;
+            background-color: #0b1220;
+        }
+
+        .committee-modern .committee-search-control:focus {
+            transform: none !important;
+            border-color: var(--committee-pink) !important;
+            box-shadow: 0 0 0 4px rgba(232, 93, 158, .12) !important;
+        }
+
+        .committee-modern .committee-search-panel button:not(#mobile-menu-btn) {
+            border-radius: 999px !important;
+            box-shadow: none !important;
+        }
+
+        .committee-modern .committee-search-panel button:hover {
+            transform: translateY(-1px);
+        }
+
+        .committee-modern .committee-directory {
+            padding-bottom: 4rem;
+        }
+
+        .committee-modern .committee-group > div:first-child h2 {
+            border: 0 !important;
+            border-radius: 999px !important;
+            background: linear-gradient(100deg, #1e3a8a, #e85d9e) !important;
+            color: #fff !important;
+            box-shadow: 0 8px 20px rgba(30, 58, 138, .15) !important;
+            transform: none !important;
+        }
+
+        .committee-modern .committee-member-card {
+            overflow: visible;
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 20px !important;
+            background: var(--committee-surface) !important;
+            box-shadow: 0 10px 24px rgba(30, 58, 138, .09) !important;
+            transform: none;
+        }
+
+        .committee-modern .committee-member-card:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 16px 32px rgba(30, 58, 138, .16) !important;
+        }
+
+        .dark .committee-modern .committee-member-card {
+            border-color: rgba(255, 255, 255, .1) !important;
+        }
+
+        .committee-modern .committee-member-image {
+            overflow: hidden;
+            border: 0 !important;
+            border-radius: 15px !important;
+        }
+
+        .committee-modern .committee-member-caption {
+            border: 0 !important;
+            border-radius: 0 0 15px 15px !important;
+        }
+
+        .committee-modern .committee-member-role {
+            border-radius: 999px;
+            border: 0 !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .committee-modern .committee-result-card {
+            border: 1px solid rgba(30, 58, 138, .12) !important;
+            border-radius: 14px !important;
+            box-shadow: 0 6px 16px rgba(30, 58, 138, .08) !important;
+        }
+
+        .dark .committee-modern .committee-result-card {
+            border-color: rgba(255, 255, 255, .1) !important;
+        }
+
+        .committee-modern > footer {
+            box-shadow: 0 -12px 40px rgba(15, 23, 42, .12) !important;
+        }
+
+        .committee-modern > footer .font-marker {
+            font-family: 'DancingScript', cursive !important;
+        }
+
+        .committee-modern > footer a > div {
+            box-shadow: none !important;
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .committee-modern .committee-status-bar > .container > div {
+                flex-direction: column;
+                gap: .75rem;
+            }
+
+            .committee-modern .committee-status-bar > .container > div > div:last-child {
+                flex: none;
+                justify-content: center;
+                padding: .5rem 1rem;
+            }
+
+            .committee-modern .committee-status-bar > .container > div > div:last-child span {
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .committee-modern .committee-hero {
+                padding-top: 2rem;
+                padding-bottom: 1rem;
+            }
+
+            .committee-modern .committee-advisors {
+                margin-top: 1rem !important;
+            }
+
+            .committee-modern .committee-directory {
+                padding-bottom: 2.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .committee-modern *,
+            .committee-modern *::before,
+            .committee-modern *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
     </style>
 </head>
-<body class="bg-offWhite dark:bg-darkBg text-gray-900 dark:text-gray-100 overflow-x-hidden relative transition-colors duration-300 bg-grid-pattern selection:bg-partyYellow selection:text-partyBlue">
+<body class="committee-modern bg-offWhite dark:bg-darkBg text-gray-900 dark:text-gray-100 overflow-x-hidden relative transition-colors duration-300 bg-grid-pattern selection:bg-partyYellow selection:text-partyBlue">
 
     <!-- Modern Loader -->
     <div id="app-loader">
@@ -150,7 +422,7 @@
         </div>
     </nav>
 
-    <div class="mt-[68px] md:mt-[76px] bg-gradient-to-r from-partyBlue via-partyDarkBlue to-partyBlue dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-b-4 border-partyYellow py-3 md:py-4 z-40 relative shadow-md transition-colors duration-300 overflow-hidden">
+    <div class="committee-status-bar mt-[68px] md:mt-[76px] bg-gradient-to-r from-partyBlue via-partyDarkBlue to-partyBlue dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-b-4 border-partyYellow py-3 md:py-4 z-40 relative shadow-md transition-colors duration-300 overflow-hidden">
         <div class="absolute inset-0 bg-dot-pattern opacity-10 animate-pulse-slow"></div>
         <div class="container mx-auto px-4 max-w-7xl relative z-10">
             <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
@@ -180,7 +452,7 @@
         </div>
     </div>
 
-    <header class="pt-16 pb-8 text-center container mx-auto px-4 reveal-on-scroll">
+    <header class="committee-hero pt-16 pb-8 text-center container mx-auto px-4 reveal-on-scroll">
         <div class="inline-block relative hover-trigger">
             <div class="absolute -inset-2 border-2 border-partyBlue dark:border-partyYellow rotate-1 opacity-30"></div>
             <div class="absolute -inset-2 border-2 border-partyYellow dark:border-partyBlue -rotate-1 opacity-30"></div>
@@ -203,60 +475,102 @@
                             <span class="md:hidden animate-bounce text-xl">⚠️</span> Work in Progress
                         </h3>
                         <p class="text-gray-700 dark:text-gray-300 text-xs md:text-base leading-relaxed">
-                            <span class="font-bold">หมายเหตุ :</span> สภานักเรียนบ้างรายชื่ออาจไม่มีข้มูลเนื่องจากยังไม่เอาเข้าสู่ระบบหรือยังไม่มีข้อมูล
+                            <span class="font-bold">หมายเหตุ :</span> รายชื่อและข้อมูลสมาชิกสภานักเรียนบางท่านอาจอยู่ระหว่างการปรับปรุงและอัปเดตเข้าสู่ระบบ
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <section class="container mx-auto px-4 mt-8 md:mt-12 reveal-on-scroll">
-        <div class="max-w-6xl mx-auto bg-white/95 dark:bg-gray-900/95 border-4 border-partyPink shadow-[8px_8px_0px_0px_rgba(30,58,138,0.9)] p-5 md:p-8 relative overflow-hidden">
+        <section class="committee-advisors container mx-auto px-4 mt-8 md:mt-12 reveal-on-scroll">
+        <div class="max-w-6xl mx-auto bg-white/95 dark:bg-gray-900/95 border-4 border-partyPink shadow-[8px_8px_0px_0px_rgba(30,58,138,0.9)] p-4 sm:p-6 md:p-8 relative overflow-hidden rounded-sm">
             <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
-            <div class="relative z-10 text-center mb-8">
-                <span class="inline-block bg-partyPink text-white px-3 py-1 text-xs md:text-sm font-black uppercase tracking-widest mb-3 shadow-[2px_2px_0px_0px_rgba(30,58,138,0.45)]">Advisory Board</span>
-                <h2 class="text-2xl md:text-4xl font-black text-partyBlue dark:text-partyYellow">คณะกรรมการที่ปรึกษาสภานักเรียน</h2>
-                <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 font-bold mt-2">รายชื่อและรูปภาพอยู่ระหว่างการจัดเตรียมข้อมูล</p>
+            
+            <div class="relative z-10 text-center mb-6 sm:mb-8 md:mb-10">
+                <span class="inline-block bg-partyPink text-white px-3.5 py-1 text-xs md:text-sm font-black uppercase tracking-widest mb-2.5 shadow-[2px_2px_0px_0px_rgba(30,58,138,0.45)] rounded-xs">
+                    Advisory Board
+                </span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-partyBlue dark:text-partyYellow tracking-tight">
+                    คณะกรรมการที่ปรึกษาสภานักเรียน
+                </h2>
+                <p class="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-300 font-bold mt-1.5">
+                    ผู้บริหารและคณะครูที่ปรึกษา คอยให้คำแนะนำและสนับสนุนการดำเนินงานของสภานักเรียน
+                </p>
             </div>
-            <div class="relative z-10 flex flex-col items-center gap-5">
-                <div class="flex flex-col items-center gap-4 w-full">
-                    <div class="w-full max-w-md bg-partyBlue text-white border-2 border-partyBlue p-4 min-h-40 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_#facc15]">
-                        <div class="text-4xl mb-3" aria-hidden="true">🏫</div>
-                        <h3 class="font-black text-base leading-tight"><br>นางสาวสมพร หิรัญลักษณ์สุต</h3>
-                        <p class="text-partyYellow text-xs font-bold mt-2">ผู้อำนวยการโรงเรียน</p>
+
+            <!-- ผู้อำนวยการและรองผู้อำนวยการ (Executive Advisors) -->
+            <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto mb-6 sm:mb-8">
+                <!-- 45. ผู้อำนวยการโรงเรียน -->
+                <div class="bg-white dark:bg-gray-800 border-2 sm:border-4 border-partyYellow p-2 sm:p-2.5 shadow-[5px_5px_0px_0px_rgba(244,114,182,1)] md:shadow-[6px_6px_0px_0px_rgba(244,114,182,1)] rounded-sm group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div class="aspect-[4/5] bg-gray-200 dark:bg-gray-700 mb-2 border border-black dark:border-gray-600 overflow-hidden relative rounded-xs">
+                        <img src="images/คณะกรรมการที่ปรึกษาสภานักเรียน-มีพื้นหลัง/45.jpg" alt="นางสาวสมพร หิรัญลักษณ์สุต" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="w-full max-w-md bg-partyBlue text-white border-2 border-partyBlue p-4 min-h-40 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_#facc15]">
-                        <div class="text-4xl mb-3" aria-hidden="true">👔</div>
-                        <h3 class="font-black text-base leading-tight"><br>นายรณชัย กิ่งแก้ว</h3>
-                        <p class="text-partyYellow text-xs font-bold mt-2">รองผู้อำนวยการกลุ่มบริหารงานกิจการนักเรียน</p>
+                    <div class="bg-partyBlue dark:bg-gray-950 text-white text-center py-2.5 px-2 border border-black dark:border-gray-600 flex flex-col justify-center items-center rounded-xs min-h-[4.75rem]">
+                        <h3 class="text-sm sm:text-base md:text-lg font-black uppercase tracking-tight leading-snug w-full">นางสาวสมพร หิรัญลักษณ์สุต</h3>
+                        <p class="bg-partyYellow text-partyBlue px-2.5 py-0.5 mt-1 inline-block border border-black font-black text-[11px] sm:text-xs shadow-xs rounded-xs">ผู้อำนวยการโรงเรียน</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 w-full">
-                    <div class="bg-white dark:bg-gray-800 text-partyBlue dark:text-white border-2 border-partyBlue dark:border-partyPink p-4 min-h-40 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_#f472b6]">
-                        <div class="text-4xl mb-3" aria-hidden="true">👩‍🏫</div>
-                        <h3 class="font-black text-base leading-tight"><br>นางสาวธนิษฐา อินทมาตยากูล</h3>
-                        <p class="text-gray-500 dark:text-gray-300 text-xs font-bold mt-2">คณะกรรมการที่ปรึกษา</p>
+
+                <!-- 46. รองผู้อำนวยการ -->
+                <div class="bg-white dark:bg-gray-800 border-2 sm:border-4 border-partyYellow p-2 sm:p-2.5 shadow-[5px_5px_0px_0px_rgba(244,114,182,1)] md:shadow-[6px_6px_0px_0px_rgba(244,114,182,1)] rounded-sm group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div class="aspect-[4/5] bg-gray-200 dark:bg-gray-700 mb-2 border border-black dark:border-gray-600 overflow-hidden relative rounded-xs">
+                        <img src="images/คณะกรรมการที่ปรึกษาสภานักเรียน-มีพื้นหลัง/46.jpg" alt="นายอภิชาติ เบิกประโคน" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="bg-white dark:bg-gray-800 text-partyBlue dark:text-white border-2 border-partyBlue dark:border-partyPink p-4 min-h-40 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_#f472b6]">
-                        <div class="text-4xl mb-3" aria-hidden="true">👩‍🏫</div>
-                        <h3 class="font-black text-base leading-tight"><br>นางสาวประภาพร โยธี</h3>
-                        <p class="text-gray-500 dark:text-gray-300 text-xs font-bold mt-2">คณะกรรมการที่ปรึกษา</p>
+                    <div class="bg-partyBlue dark:bg-gray-950 text-white text-center py-2.5 px-2 border border-black dark:border-gray-600 flex flex-col justify-center items-center rounded-xs min-h-[4.75rem]">
+                        <h3 class="text-sm sm:text-base md:text-lg font-black uppercase tracking-tight leading-snug w-full">นายอภิชาติ เบิกประโคน</h3>
+                        <p class="bg-partyYellow text-partyBlue px-2 py-0.5 mt-1 inline-block border border-black font-black text-[10px] sm:text-[11px] shadow-xs rounded-xs leading-tight">รองผู้อำนวยการกลุ่มบริหารงานกิจการนักเรียน</p>
                     </div>
-                    <div class="bg-white dark:bg-gray-800 text-partyBlue dark:text-white border-2 border-partyBlue dark:border-partyPink p-4 min-h-40 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_#f472b6]">
-                        <div class="text-4xl mb-3" aria-hidden="true">👩‍🏫</div>
-                        <h3 class="font-black text-base leading-tight"><br>นายศราวุฒิ วิจิตร</h3>
-                        <p class="text-gray-500 dark:text-gray-300 text-xs font-bold mt-2">คณะกรรมการที่ปรึกษา</p>
+                </div>
+            </div>
+
+            <!-- คณะครูที่ปรึกษา (Advisory Teachers) -->
+            <div class="relative z-10 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
+                <!-- 47. นางสาวธนิษฐา อินทมาตยากูล -->
+                <div class="bg-white dark:bg-gray-800 border-2 md:border-3 border-partyBlue dark:border-partyPink p-1.5 sm:p-2 shadow-[4px_4px_0px_0px_rgba(30,58,138,1)] dark:shadow-[4px_4px_0px_0px_rgba(244,114,182,0.8)] rounded-sm group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div class="aspect-[4/5] bg-gray-200 dark:bg-gray-700 mb-1.5 border border-black dark:border-gray-600 overflow-hidden relative rounded-xs">
+                        <img src="images/คณะกรรมการที่ปรึกษาสภานักเรียน-มีพื้นหลัง/47.jpg" alt="นางสาวธนิษฐา อินทมาตยากูล" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="bg-white dark:bg-gray-800 text-partyBlue dark:text-white border-2 border-partyBlue dark:border-partyPink p-4 min-h-40 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_#f472b6]">
-                        <div class="text-4xl mb-3" aria-hidden="true">👩‍🏫</div>
-                        <h3 class="font-black text-base leading-tight"><br>นายปริญญา ศิริเตียวศรี</h3>
-                        <p class="text-gray-500 dark:text-gray-300 text-xs font-bold mt-2">คณะกรรมการที่ปรึกษา</p>
+                    <div class="bg-partyBlue dark:bg-gray-900 text-white text-center py-2 px-1 border border-black dark:border-gray-600 flex flex-col justify-center items-center rounded-xs min-h-[4.25rem]">
+                        <h3 class="text-xs sm:text-sm md:text-base font-black uppercase tracking-tight leading-snug w-full">นางสาวธนิษฐา อินทมาตยากูล</h3>
+                        <p class="text-partyYellow dark:text-partyPink text-[10px] sm:text-xs font-bold uppercase mt-0.5 leading-tight">คณะกรรมการที่ปรึกษา</p>
+                    </div>
+                </div>
+
+                <!-- 48. นางสาวประภาพร โยธี -->
+                <div class="bg-white dark:bg-gray-800 border-2 md:border-3 border-partyBlue dark:border-partyPink p-1.5 sm:p-2 shadow-[4px_4px_0px_0px_rgba(30,58,138,1)] dark:shadow-[4px_4px_0px_0px_rgba(244,114,182,0.8)] rounded-sm group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div class="aspect-[4/5] bg-gray-200 dark:bg-gray-700 mb-1.5 border border-black dark:border-gray-600 overflow-hidden relative rounded-xs">
+                        <img src="images/คณะกรรมการที่ปรึกษาสภานักเรียน-มีพื้นหลัง/48.jpg" alt="นางสาวประภาพร โยธี" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="bg-partyBlue dark:bg-gray-900 text-white text-center py-2 px-1 border border-black dark:border-gray-600 flex flex-col justify-center items-center rounded-xs min-h-[4.25rem]">
+                        <h3 class="text-xs sm:text-sm md:text-base font-black uppercase tracking-tight leading-snug w-full">นางสาวประภาพร โยธี</h3>
+                        <p class="text-partyYellow dark:text-partyPink text-[10px] sm:text-xs font-bold uppercase mt-0.5 leading-tight">คณะกรรมการที่ปรึกษา</p>
+                    </div>
+                </div>
+
+                <!-- 49. นายศราวุฒิ วิจิตร -->
+                <div class="bg-white dark:bg-gray-800 border-2 md:border-3 border-partyBlue dark:border-partyPink p-1.5 sm:p-2 shadow-[4px_4px_0px_0px_rgba(30,58,138,1)] dark:shadow-[4px_4px_0px_0px_rgba(244,114,182,0.8)] rounded-sm group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div class="aspect-[4/5] bg-gray-200 dark:bg-gray-700 mb-1.5 border border-black dark:border-gray-600 overflow-hidden relative rounded-xs">
+                        <img src="images/คณะกรรมการที่ปรึกษาสภานักเรียน-มีพื้นหลัง/49.jpg" alt="นายศราวุฒิ วิจิตร" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="bg-partyBlue dark:bg-gray-900 text-white text-center py-2 px-1 border border-black dark:border-gray-600 flex flex-col justify-center items-center rounded-xs min-h-[4.25rem]">
+                        <h3 class="text-xs sm:text-sm md:text-base font-black uppercase tracking-tight leading-snug w-full">นายศราวุฒิ วิจิตร</h3>
+                        <p class="text-partyYellow dark:text-partyPink text-[10px] sm:text-xs font-bold uppercase mt-0.5 leading-tight">คณะกรรมการที่ปรึกษา</p>
+                    </div>
+                </div>
+
+                <!-- 50. นายปริญญา ศิริเตียวศรี -->
+                <div class="bg-white dark:bg-gray-800 border-2 md:border-3 border-partyBlue dark:border-partyPink p-1.5 sm:p-2 shadow-[4px_4px_0px_0px_rgba(30,58,138,1)] dark:shadow-[4px_4px_0px_0px_rgba(244,114,182,0.8)] rounded-sm group hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div class="aspect-[4/5] bg-gray-200 dark:bg-gray-700 mb-1.5 border border-black dark:border-gray-600 overflow-hidden relative rounded-xs">
+                        <img src="images/คณะกรรมการที่ปรึกษาสภานักเรียน-มีพื้นหลัง/50.jpg" alt="นายปริญญา ศิริเตียวศรี" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="bg-partyBlue dark:bg-gray-900 text-white text-center py-2 px-1 border border-black dark:border-gray-600 flex flex-col justify-center items-center rounded-xs min-h-[4.25rem]">
+                        <h3 class="text-xs sm:text-sm md:text-base font-black uppercase tracking-tight leading-snug w-full">นายปริญญา ศิริเตียวศรี</h3>
+                        <p class="text-partyYellow dark:text-partyPink text-[10px] sm:text-xs font-bold uppercase mt-0.5 leading-tight">คณะกรรมการที่ปรึกษา</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="container mx-auto px-4 mt-6 md:mt-10 reveal-on-scroll">
+    </section><section class="container mx-auto px-4 mt-6 md:mt-10 reveal-on-scroll">
         <div class="committee-search-panel max-w-5xl mx-auto bg-white/95 dark:bg-gray-900/95 border-4 border-partyBlue dark:border-partyPink shadow-[8px_8px_0px_0px_rgba(244,114,182,0.9)] p-4 md:p-6 relative overflow-hidden">
             <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
             <div class="relative z-10 flex flex-col lg:flex-row gap-4 lg:items-end">
@@ -275,11 +589,21 @@
                     <datalist id="committee-name-list"></datalist>
                 </div>
             </div>
+                            <div class="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700/60 flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar text-xs">
+                    <span class="text-gray-500 dark:text-gray-400 font-bold flex-shrink-0 text-[11px]">ทางลัด:</span>
+                    <button type="button" onclick="quickNavGroup('executive')" class="flex-shrink-0 bg-yellow-100 hover:bg-yellow-200 dark:bg-yellow-900/40 dark:hover:bg-yellow-900/60 text-partyBlue dark:text-yellow-300 font-black px-2.5 py-1 rounded border border-yellow-300 dark:border-yellow-700 transition-colors">⭐ บริหาร</button>
+                    <button type="button" onclick="quickNavGroup('admin')" class="flex-shrink-0 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/40 dark:hover:bg-blue-900/60 text-partyBlue dark:text-blue-300 font-black px-2.5 py-1 rounded border border-blue-300 dark:border-blue-700 transition-colors">📝 อำนวยการ</button>
+                    <button type="button" onclick="quickNavGroup('discipline')" class="flex-shrink-0 bg-red-100 hover:bg-red-200 dark:bg-red-900/40 dark:hover:bg-red-900/60 text-partyBlue dark:text-red-300 font-black px-2.5 py-1 rounded border border-red-300 dark:border-red-700 transition-colors">🛡️ สารวัตร</button>
+                    <button type="button" onclick="quickNavGroup('academic')" class="flex-shrink-0 bg-green-100 hover:bg-green-200 dark:bg-green-900/40 dark:hover:bg-green-900/60 text-partyBlue dark:text-green-300 font-black px-2.5 py-1 rounded border border-green-300 dark:border-green-700 transition-colors">📚 การเรียน</button>
+                    <button type="button" onclick="quickNavGroup('activity')" class="flex-shrink-0 bg-purple-100 hover:bg-purple-200 dark:bg-purple-900/40 dark:hover:bg-purple-900/60 text-partyBlue dark:text-purple-300 font-black px-2.5 py-1 rounded border border-purple-300 dark:border-purple-700 transition-colors">🎨 กิจกรรม</button>
+                    <button type="button" onclick="quickNavGroup('works')" class="flex-shrink-0 bg-amber-100 hover:bg-amber-200 dark:bg-amber-900/40 dark:hover:bg-amber-900/60 text-partyBlue dark:text-amber-300 font-black px-2.5 py-1 rounded border border-amber-300 dark:border-amber-700 transition-colors">🛠️ การงาน</button>
+                    <button type="button" onclick="quickNavGroup('pr')" class="flex-shrink-0 bg-pink-100 hover:bg-pink-200 dark:bg-pink-900/40 dark:hover:bg-pink-900/60 text-partyBlue dark:text-pink-300 font-black px-2.5 py-1 rounded border border-pink-300 dark:border-pink-700 transition-colors">📢 ประชาสัมพันธ์</button>
+                </div>
             <div id="committee-search-results" class="relative z-10 mt-5 hidden"></div>
         </div>
     </section>
 
-    <section class="container mx-auto px-4 pb-20 mt-10 md:mt-14">
+    <section class="committee-directory container mx-auto px-4 pb-20 mt-10 md:mt-14">
         <div id="directory-container" class="flex flex-col items-center">
             </div>
     </section>
@@ -361,62 +685,50 @@
     <script src="main.js"></script>
     <script>
         const councilData = [
-            // --- ฝ่ายบริหาร (Executive) ---
-            { id: '1', role: 'ประธานสภานักเรียน', name: 'นางสาวพาขวัญ นวลสำลี', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/1.png', group: 'executive' },
-            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/2.png', group: 'executive' },
-            { id: '3', role: 'รองประธานสภานักเรียน', name: 'นางสาวธัญญรัตน์ หมื่นรัตน์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/3.png', group: 'executive' },
-
-            // --- ฝ่ายสนับสนุน (Admin) ---
-            { id: '4', role: 'เลขานุการ', name: 'นางสาวปรียากาญจน์ ใจกล้า', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/4.png', group: 'admin' },
-            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวฐานิดา พลอารีย์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/42.png', group: 'admin' },
-            { id: '6', role: 'พัสดุ', name: 'นางสาวชญานิศ บุญมา', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/6.png', group: 'admin' },
-            { id: '7', role: 'ผู้ช่วยพัสดุ', name: 'นางสาวพิมพ์ลภัส สุขนิธิกุลวงศ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/7.png', group: 'admin' },
-            { id: '8', role: 'เหรัญญิก', name: 'นางสาวธนัญญา ตันประเสริฐ', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/8.png', group: 'admin' },
-            { id: '9', role: 'ผู้ช่วยเหรัญญิก', name: 'นางสาวเขมิกา ศักด์เสรีกุล', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/9.png', group: 'admin' },
-
-            // --- ฝ่ายสารวัตร (Discipline) ---
-            { id: '10', role: 'หัวหน้าฝ่ายสารวัตร', name: 'นายสิทธิ โชค แสงสว่าง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/10.png', group: 'discipline' },
-            { id: '11', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายชัยภัทร นรสาร', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/11.png', group: 'discipline' },
-            { id: '12', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวธัญชนก ธนวุฒิคติวรกุล', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/12.png', group: 'discipline' },
-            { id: '13', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวอุษา ยิ้ม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/13.png', group: 'discipline' },
-            { id: '14', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาววีรดา พูลสมบัติ', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/14.png', group: 'discipline' },
-            { id: '15', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวสุพิชญา กลิ่นเกลี้ยง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/15.png', group: 'discipline' },
-            { id: '16', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'รนายแทนคุณ เบญมาตย์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/16.png', group: 'discipline' },
-
-            // --- ฝ่ายการเรียน (Academic) ---
-            { id: '17', role: 'หัวหน้าฝ่ายการเรียน', name: 'นางสาวฐานิดา รื่นเริง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/17.png', group: 'academic' },
-            { id: '18', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวกัญญารัตน์ แสงสว่าง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/18.png', group: 'academic' },
-            { id: '19', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาววรพัชรา ศรีบุญเรือง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/19.png', group: 'academic' },
-            { id: '20', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวฐิตาภา พวงพิศ', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/20.png', group: 'academic' },
-            { id: '21', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพลอยปภัส นัยวิจารณ์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/21.png', group: 'academic' },
-            { id: '22', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายตรีรัตน์ ปิติไพศาลกุล', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/22.png', group: 'academic' },
-            { id: '23', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพิชามญช์ หาญอาสา', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/23.png', group: 'academic' },
-
-            // --- ฝ่ายกิจกรรม (Activity) ---
-            { id: '24', role: 'หัวหน้าฝ่ายกิจกรรม', name: 'นางสาววาศิณี ปู่ไข่', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/24.png', group: 'activity' },
-            { id: '25', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวอารีรัตน์ บัวทอง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/25.png', group: 'activity' },
-            { id: '26', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวดิรัชญา ขาวผ่อง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/26.png', group: 'activity' },
-            { id: '27', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวภควดี หมื่นพล', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/27.png', group: 'activity' },
-            { id: '28', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายปภังกร ปัญญาใส', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/28.png', group: 'activity' },
-            { id: '29', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายจักรเพ็ชร บุญโสม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/29.png', group: 'activity' },
-            { id: '30', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวชุติกาญจน์ กันยาเนียม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/30.png', group: 'activity' },
-            // --- ฝ่ายการงาน (Works) ---
-            { id: '31', role: 'หัวหน้าฝ่ายการงาน', name: 'นายพชร กาเผือก', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/31.png', group: 'works' },
-            { id: '32', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายพิชญะ วงศรีแก้ว', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/32.png', group: 'works' },
-            { id: '33', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายรัฐภูมิ ลีทอง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/33.png', group: 'works' },
-            { id: '34', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายเจริญชัย ทองแพง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/34.png', group: 'works' },
-            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/35.png', group: 'works' },
-            { id: '36', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพัทธ์ เชื่อเมืองพาน', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/36.png', group: 'works' },
-            { id: '37', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวพณิตา ทองสว่างแจ้ง', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/37.png', group: 'works' },
-
-            // --- ฝ่ายประชาสัมพันธ์ (PR) ---
-            { id: '38', role: 'หัวหน้าฝ่ายประชาสัมพันธ์', name: 'นายธนกฤต สุวรรณาวุธ', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/38.png', group: 'pr' },
-            { id: '39', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนพรัตน์ สารรัตน์', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/39.png', group: 'pr' },
-            { id: '40', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอภิญญาภรณ์ บุญหนา', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/40.png', group: 'pr' },
-            { id: '41', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวศศิธร หงษา', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/41.png', group: 'pr' },
-            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอชิริญา หารภูมิ', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/5.png', group: 'pr' },
-            { id: '43', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนภัสสร ประทุมมา', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/43.png', group: 'pr' },
-            { id: '44', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวกฤตยากร วงค์สงคราม', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/44.png', group: 'pr' }
+            { id: '1', role: 'ประธานสภานักเรียน', name: 'นางสาวพาขวัญ นวลสำลี', nickname: 'นุกนิก', room: 'ม.5/2', dept: 'Executive / ประธานนักเรียน', motto: 'ความเจ็บปวดในวันวาน คือความแข็งแกร่งในวันนี้', ig: '@pxkxn_nkk', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/1.jpg', group: 'executive' },
+            { id: '2', role: 'รองประธานสภานักเรียน', name: 'นายกฤษณะกันท์ ไข่แก้ว', nickname: 'ซีโฟน', room: '5/4', dept: 'Executive / รองประธานนักเรียน', motto: 'อย่ากลัวคนอื่นจะไปไกล กลัวตัวเองไม่ไปไหนดีกว่า', ig: '@z_fornn', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/2.jpg', group: 'executive' },
+            { id: '3', role: 'รองประธานสภานักเรียน', name: 'นางสาวธัญญรัตน์ หมื่นรัตน์', nickname: 'หนิง', room: '5/1', dept: 'Executive / รองประธานนักเรียน', motto: 'หากวันนี้ผิดพรุ่งนี้พร้อมแก้เสมอ', ig: '@thanyaratmunrat', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/3.jpg', group: 'executive' },
+            { id: '4', role: 'เลขานุการ', name: 'นางสาวปรียากาญจน์ ใจกล้า', nickname: 'ไอติม', room: '5/2', dept: 'Admin / บริหารงานทั่วไป', motto: 'พัฒนาตัวเองในทุก ๆ วัน เพื่อเป็นเวอร์ชันที่ดีที่สุดของตัวเอง', ig: '@iisakuerem', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/4.jpg', group: 'admin' },
+            { id: '5', role: 'ผู้ช่วยเลขานุการ', name: 'นางสาวฐานิดา พลอารีย์', nickname: 'แตม', room: '5/1', dept: 'Admin / บริหารงานทั่วไป', motto: 'อย่าเก็บอดีตมาทำร้ายตนเอง แต่จงหัดที่จะเรียนรู้จากมัน', ig: '@t.thanidaa_', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/5.jpg', group: 'admin' },
+            { id: '6', role: 'พัสดุ', name: 'นางสาวชญานิศ บุญมา', nickname: 'แพรวา', room: '5/2', dept: 'Admin / บริหารงานทั่วไป', motto: '-', ig: '@p.praxnwa', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/6.jpg', group: 'admin' },
+            { id: '7', role: 'ผู้ช่วยพัสดุ', name: 'นางสาวพิมพ์ลภัส สุขนิธิกุลวงศ์', nickname: 'มิ้ง', room: '5/2', dept: 'Admin / บริหารงานทั่วไป', motto: '-', ig: '-', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/7.jpg', group: 'admin' },
+            { id: '8', role: 'เหรัญญิก', name: 'นางสาวธนัญญา ตันประเสริฐ', nickname: 'ชมพู่', room: '5/4', dept: 'Admin / บริหารงานทั่วไป', motto: 'อนาคตที่ดี เริ่มจากการตั้งใจทำหน้าที่วันนี้ให้ดีที่สุด', ig: '@than.ks880', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/8.jpg', group: 'admin' },
+            { id: '9', role: 'ผู้ช่วยเหรัญญิก', name: 'นางสาวเขมิกา ศักดิ์เสรีกุล', nickname: 'คิมมิ่', room: '5/2', dept: 'Admin / บริหารงานทั่วไป', motto: 'ทุก ๆ อย่างต้องใช้เวลา', ig: '@Khemika_q', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/9.jpg', group: 'admin' },
+            { id: '10', role: 'หัวหน้าฝ่ายสารวัตร', name: 'นายสิทธิโชค แสงสว่าง', nickname: 'โฟม', room: '5/2', dept: 'Discipline / สารวัตรนักเรียน', motto: 'เราต้องการความถูกต้อง ไม่ใช่ถูกใจ', ig: '@foxm_sx', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/10.jpg', group: 'discipline' },
+            { id: '11', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายชัยภัทร นรสาร', nickname: 'ออโต้', room: '5/3', dept: 'Discipline / สารวัตรนักเรียน', motto: 'อย่าคิดว่าทำไม่ได้ถ้ายังไม่ลงมือทำ', ig: '@chaiyapat.43_', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/11.jpg', group: 'discipline' },
+            { id: '12', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวธัญชนก ธนวุฒิคติวรกุล', nickname: 'มิ้นท์', room: '5/2', dept: 'Discipline / สารวัตรนักเรียน', motto: 'ความสุขอยู่ในสิ่งเล็กๆรอบตัวเรา', ig: '@5mnthxn', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/12.jpg', group: 'discipline' },
+            { id: '13', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวอุษา ยิ้ม', nickname: 'โฟม', room: '5/4', dept: 'Discipline / สารวัตรนักเรียน', motto: 'มุมมองต่อโลกขึ้นอยู่กับตัวเรา', ig: '@fxxm.mmx', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/13.jpg', group: 'discipline' },
+            { id: '14', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาววีรดา พูลสมบัติ', nickname: 'ออกัส', room: '5/2', dept: 'Discipline / สารวัตรนักเรียน', motto: 'อย่ากลัวในสิ่งที่เราสามารถสู้หรือเปลี่ยนแปลงมันได้', ig: '@cqxzy7_y', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/14.jpg', group: 'discipline' },
+            { id: '15', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นางสาวสุพิชญา กลิ่นเกลี้ยง', nickname: '-', room: '-', dept: 'Discipline / สารวัตรนักเรียน', motto: '-', ig: '-', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/15.jpg', group: 'discipline' },
+            { id: '16', role: 'คณะกรรมการฝ่ายสารวัตร', name: 'นายแทนคุณ เบญมาตย์', nickname: 'ตะวัน', room: '5/1', dept: 'Discipline / สารวัตรนักเรียน', motto: 'เอาที่ตัวเองไหว ถ้าเหนื่อยก็พัก ท้อได้แต่ห้ามถอย', ig: '@tx_w_an', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/16.jpg', group: 'discipline' },
+            { id: '17', role: 'หัวหน้าฝ่ายการเรียน', name: 'นางสาวฐานิดา รื่นเริง', nickname: 'ข้าวฟ่าง', room: '5/2', dept: 'Academic / การเรียน', motto: 'Live like what you are', ig: '@thaldaa', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/17.jpg', group: 'academic' },
+            { id: '18', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวกัญญารัตน์ แสงสว่าง', nickname: 'กิ่ง', room: '5/2', dept: 'Academic / การเรียน', motto: 'ไม่ต้องเก่งที่สุด แค่ทำให้ดีที่สุดก็พอ', ig: '-', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/18.jpg', group: 'academic' },
+            { id: '19', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาววรพัชรา ศรีบุญเรือง', nickname: 'เอิร์น', room: '5/2', dept: 'Academic / การเรียน', motto: 'อย่ากลัวความผิดพลาด ถ้ายังไม่ได้ลองทำ', ig: '@3xrnpz._', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/19.jpg', group: 'academic' },
+            { id: '20', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวฐิตาภา พวงพิศ', nickname: 'ไอเดีย', room: '5/1', dept: 'Academic / การเรียน', motto: 'ให้อภัยคนอื่นคือการปลดปล่อยตัวเองจากความโกรธ', ig: '@dearthitapa', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/20.jpg', group: 'academic' },
+            { id: '21', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพลอยปภัส นัยวิจารณ์', nickname: 'แบ๋ม', room: '5/1', dept: 'Academic / การเรียน', motto: 'เรียนรู้ เติบโต และพัฒนาตัวเองเสมอ', ig: '@_12aprill_', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/21.jpg', group: 'academic' },
+            { id: '22', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นายตรีรัตน์ ปิติไพศาลกุล', nickname: 'เพรช', room: '5/1', dept: 'Academic / การเรียน', motto: 'คล้อยตามคือสามัญ ฝืนทวนคือเซียน', ig: '@petchcff_dcs', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/22.jpg', group: 'academic' },
+            { id: '23', role: 'คณะกรรมการฝ่ายการเรียน', name: 'นางสาวพิชามญช์ หาญอาสา', nickname: 'ไอด้า', room: '5/6', dept: 'Academic / การเรียน', motto: 'ไม่จำเป็นต้อง perfect แค่ยอมรับความไม่สมบูรณ์แบบของตัวเอง', ig: '@penessien', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/23.jpg', group: 'academic' },
+            { id: '24', role: 'หัวหน้าฝ่ายกิจกรรม', name: 'นางสาววาศิณี ปู่ไข่', nickname: 'เนย', room: '5/2', dept: 'Activity / กิจกรรม', motto: 'กระทำตัวให้เท่กว่าเมื่อวาน', ig: '@buttermilk_0', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/24.jpg', group: 'activity' },
+            { id: '25', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวอารีรัตน์ บัวทอง', nickname: '-', room: '-', dept: 'Activity / กิจกรรม', motto: '-', ig: '-', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/25.jpg', group: 'activity' },
+            { id: '26', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวดิรัชญา ขาวผ่อง', nickname: 'ดีน', room: '5/2', dept: 'Activity / กิจกรรม', motto: 'มุ่งมั่นแล้วไปต่อ', ig: '@d1_dunier', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/26.jpg', group: 'activity' },
+            { id: '27', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวภควดี หมื่นพล', nickname: 'กำไร', room: '5/2', dept: 'Activity / กิจกรรม', motto: 'เคล็ดลับของความสุขคือทำในสิ่งที่รัก ส่วนเคล็ดลับของความสำเร็จคือรักในสิ่งที่ทำ', ig: '@_klpkwd', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/27.jpg', group: 'activity' },
+            { id: '28', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายปภังกร ปัญญาใส', nickname: 'เป๊ก', room: '5/5', dept: 'Activity / กิจกรรม', motto: 'มีแล้วไม่ใช้ดีกว่าใช้แล้วไม่มี', ig: '@p_xqza', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/28.jpg', group: 'activity' },
+            { id: '29', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นายจักรเพ็ชร บุญโสม', nickname: '-', room: '-', dept: 'Activity / กิจกรรม', motto: '-', ig: '-', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/29.jpg', group: 'activity' },
+            { id: '30', role: 'คณะกรรมการฝ่ายกิจกรรม', name: 'นางสาวชุติกาญจน์ กันยาเนียม', nickname: 'น้ำขิง', room: '5/3', dept: 'Activity / กิจกรรม', motto: 'อย่าพึ่งบอกว่ายาก ถ้ายังไม่ลองทำ', ig: '@n_mkxxngg', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/30.jpg', group: 'activity' },
+            { id: '31', role: 'หัวหน้าฝ่ายการงาน', name: 'นายพชร กาเผือก', nickname: 'ไกด์', room: '5/1', dept: 'Works / การงาน', motto: 'ชีวิตมีครั้งเดียว ต้องใช้ให้คุ้ม', ig: '@gxide_g', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/31.jpg', group: 'works' },
+            { id: '32', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายพิชญะ วงศรีแก้ว', nickname: 'กาฟิวส์', room: '5/1', dept: 'Works / การงาน', motto: 'ไม่พยายาม ก็ไม่โต', ig: '@pichaya._.ss', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/32.jpg', group: 'works' },
+            { id: '33', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายรัฐภูมิ ลีทอง', nickname: 'ภูมิ', room: '5/1', dept: 'Works / การงาน', motto: '-', ig: '@ratthaphumleethong', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/33.jpg', group: 'works' },
+            { id: '34', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายเจริญชัย ทองแพง', nickname: '-', room: '-', dept: 'Works / การงาน', motto: '-', ig: '-', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/34.jpg', group: 'works' },
+            { id: '35', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพงษ์ เชื้อเมืองพาน', nickname: 'เกื้อ', room: '5/4', dept: 'Works / การงาน', motto: 'พอใจเท่าที่มี ยินดีเท่าที่ได้', ig: '@kue_a9', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/35.jpg', group: 'works' },
+            { id: '36', role: 'คณะกรรมการฝ่ายการงาน', name: 'นายกิตติพัทธ์ เชื้อเมืองพาน', nickname: '-', room: '-', dept: 'Works / การงาน', motto: '-', ig: '-', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/36.jpg', group: 'works' },
+            { id: '37', role: 'คณะกรรมการฝ่ายการงาน', name: 'นางสาวพณิตา ทองสว่างแจ้ง', nickname: 'เอม', room: '5/5', dept: 'Works / การงาน', motto: 'ข้างหน้าคือความฝัน ข้างหลัง คือบทเรียน', ig: '@axm_.ore', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/37.jpg', group: 'works' },
+            { id: '38', role: 'หัวหน้าฝ่ายประชาสัมพันธ์', name: 'นายธนกฤต สุวรรณาวุธ', nickname: 'โปเต้', room: '5/2', dept: 'PR / ประชาสัมพันธ์', motto: 'ชีวิตอาจจะพังบ้าง แต่ก็ยังต้องก้าวต่อไปข้างหน้าอยู่ดี', ig: '@mr.potae.potato', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/38.jpg', group: 'pr' },
+            { id: '39', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนพรัตน์ สารรัตน์', nickname: 'แน็ค', room: '5/2', dept: 'PR / ประชาสัมพันธ์', motto: 'Love yourself and be who you want to be.', ig: '@npr.srt', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/39.jpg', group: 'pr' },
+            { id: '40', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอภิญญาภรณ์ บุญหนา', nickname: 'แบม', room: '5/1', dept: 'PR / ประชาสัมพันธ์', motto: 'End of beginning', ig: '@nuldeas', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/40.jpg', group: 'pr' },
+            { id: '41', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวศศิธร หงษา', nickname: 'จอย', room: '5/1', dept: 'PR / ประชาสัมพันธ์', motto: 'ข่าวสารไว ใส่ใจทุกคน', ig: '@ssithrnhgsaa', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/41.jpg', group: 'pr' },
+            { id: '42', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวอชิริญา หารภูมิ', nickname: 'เอเชีย', room: '5/2', dept: 'PR / ประชาสัมพันธ์', motto: 'อยากเป็นพลังงานบวกให้ทุกๆคน', ig: '@snniriiya', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/42.jpg', group: 'pr' },
+            { id: '43', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวนภัสสร ประทุมมา', nickname: 'นุ๊ก', room: '5/3', dept: 'PR / ประชาสัมพันธ์', motto: 'ความสุขอยู่ที่เราคิด ชีวิตอยู่ที่เราสร้าง', ig: '@nongpedkaka', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/43.jpg', group: 'pr' },
+            { id: '44', role: 'คณะกรรมการฝ่ายประชาสัมพันธ์', name: 'นางสาวกฤตยากร วงค์สงคราม', nickname: '-', room: '-', dept: 'PR / ประชาสัมพันธ์', motto: '-', ig: '-', img: 'images/รูปสภานักเรียนแบบมีพื้นหลัง/44.jpg', group: 'pr' }
         ];
 
         const groupsConfig = [
@@ -429,59 +741,65 @@
             { id: 'pr', title: '📢 ฝ่ายประชาสัมพันธ์' }
         ];
 
-        // --- ฟังก์ชันวาดการ์ด (รองรับมือถือ) ---
+                // --- ฟังก์ชันสร้างการ์ดสมาชิกสภาฯ (รองรับจอเล็ก/มือถือ อย่างสมบูรณ์) ---
         function generateCard(member, isPresident = false, isHead = false, isSmall = false, extraClass = "") {
-            const hasImg = member.img !== '';
+            const hasImg = Boolean(member.img && member.img.trim() !== '');
             
-            // ขนาดการ์ดปรับตามหน้าจอ: มือถือให้กะทัดรัด (2 คอลัมน์) คอมพิวเตอร์ใหญ่เต็มตา
-            let cardSizeClass = "w-[calc(50%-0.5rem)] md:w-64"; 
-            let borderClass = "border-partyBlue";
-            let shadowClass = "shadow-[4px_4px_0px_0px_rgba(30,58,138,1)] md:shadow-pop hover:shadow-none";
+            // ขนาดการ์ดปรับตามระดับตำแหน่งและขนาดหน้าจอ
+            let cardSizeClass = "w-[calc(50%-0.5rem)] sm:w-56 md:w-64"; 
+            let borderClass = "border-partyBlue dark:border-partyPink";
+            let shadowClass = "shadow-[4px_4px_0px_0px_rgba(30,58,138,1)] dark:shadow-[4px_4px_0px_0px_rgba(244,114,182,0.8)] hover:shadow-none";
             
             if (isPresident) {
-                cardSizeClass = "w-[85%] max-w-[320px] z-20";
-                borderClass = "border-partyYellow";
-                shadowClass = "shadow-[6px_6px_0px_0px_rgba(244,114,182,1)] md:shadow-[8px_8px_0px_0px_rgba(244,114,182,1)] hover:shadow-none";
+                cardSizeClass = "w-[92%] sm:w-80 md:w-96 max-w-[360px] z-20";
+                borderClass = "border-partyYellow dark:border-partyYellow";
+                shadowClass = "shadow-[6px_6px_0px_0px_rgba(244,114,182,1)] md:shadow-[10px_10px_0px_0px_rgba(244,114,182,1)] dark:shadow-[8px_8px_0px_0px_#facc15] hover:shadow-none";
             } else if (isHead) {
-                cardSizeClass = "w-[75%] max-w-[280px] z-10";
+                cardSizeClass = "w-[85%] sm:w-72 md:w-80 max-w-[320px] z-10";
+                borderClass = "border-partyBlue dark:border-partyYellow";
+                shadowClass = "shadow-[5px_5px_0px_0px_rgba(30,58,138,1)] md:shadow-[7px_7px_0px_0px_rgba(30,58,138,1)] dark:shadow-[6px_6px_0px_0px_#f472b6] hover:shadow-none";
             } else if (isSmall) {
-                // กรรมการ: บังคับ 2 คอลัมน์บนมือถือ
-                cardSizeClass = "w-[calc(50%-0.5rem)] md:w-56";
+                cardSizeClass = "w-[calc(50%-0.45rem)] sm:w-52 md:w-56";
             }
 
             const imgBox = hasImg 
-                ? `<img src="${member.img}" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">`
+                ? `<img src="${member.img}" alt="${member.name}" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">`
                 : `<div class="absolute inset-0 flex flex-col items-center justify-center bg-gray-200 dark:bg-gray-700 p-2 md:p-4 text-center">
-                    <svg class="w-8 h-8 md:w-12 md:h-12 text-gray-400 mb-1 md:mb-2 group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    <span class="font-black text-gray-400 text-[10px] md:text-sm tracking-widest leading-tight group-hover:scale-110 transition-transform">WAITING<br>PHOTO</span>
+                    <svg class="w-8 h-8 md:w-12 md:h-12 text-gray-400 mb-1 md:mb-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span class="font-black text-gray-400 text-[10px] md:text-sm tracking-widest leading-tight">WAITING<br>PHOTO</span>
                    </div>`;
 
-            const crown = isPresident ? `<div class="absolute -top-5 -right-5 md:-top-6 md:-right-6 text-5xl md:text-7xl animate-bounce z-30 filter drop-shadow-md">👑</div>` : '';
-            const star = isHead ? `<div class="absolute -top-3 -right-3 md:-top-4 md:-right-4 text-4xl md:text-5xl animate-pulse z-30 filter drop-shadow-md">⭐</div>` : '';
+            const crown = isPresident ? `<div class="absolute -top-5 -right-5 md:-top-6 md:-right-6 text-4xl sm:text-5xl md:text-6xl animate-bounce z-30 filter drop-shadow-md select-none pointer-events-none">👑</div>` : '';
+            const star = isHead ? `<div class="absolute -top-3 -right-3 md:-top-4 md:-right-4 text-3xl sm:text-4xl md:text-5xl animate-pulse z-30 filter drop-shadow-md select-none pointer-events-none">⭐</div>` : '';
 
             const overlayBtnColor = isPresident ? "bg-partyBlue text-white" : "bg-partyYellow text-partyBlue";
-            const overlayBg = isPresident ? "bg-partyYellow/90" : "bg-partyBlue/80";
+            const overlayBg = isPresident ? "bg-partyYellow/90 dark:bg-gray-950/85" : "bg-partyBlue/80 dark:bg-gray-950/85";
             
-            // ปรับขนาดฟอนต์ให้สมดุลขึ้น เพื่อรับมือกับชื่อที่ยาว
-            const titleSize = isPresident ? "text-lg md:text-2xl" : (isSmall ? "text-xs md:text-sm" : "text-sm md:text-base");
+            const titleSize = isPresident 
+                ? "text-base sm:text-lg md:text-2xl" 
+                : (isHead ? "text-sm sm:text-base md:text-lg" : (isSmall ? "text-xs sm:text-sm" : "text-xs sm:text-base"));
+            
             const roleBadge = isPresident 
-                ? `<div class="bg-partyYellow text-partyBlue px-3 py-1 md:px-6 md:py-1 mt-1 md:mt-2 inline-block transform -rotate-2 border border-black font-black text-xs md:text-base shadow-sm">${member.role}</div>`
-                : `<p class="text-partyYellow text-[9px] md:text-xs font-bold uppercase mt-1 px-1 leading-tight">${member.role}</p>`;
+                ? `<div class="committee-member-role bg-partyYellow text-partyBlue px-3 py-1 md:px-5 md:py-1 mt-1 md:mt-2 inline-block transform -rotate-1 border border-black font-black text-xs md:text-base shadow-sm">${member.role}</div>`
+                : (isHead 
+                    ? `<div class="committee-member-role bg-partyPink text-partyBlue px-2.5 py-0.5 mt-1 inline-block border border-black font-black text-[11px] md:text-xs shadow-sm">${member.role}</div>`
+                    : `<p class="committee-member-role text-partyYellow dark:text-partyPink text-[10px] sm:text-xs font-bold uppercase mt-0.5 px-1 leading-tight">${member.role}</p>`);
 
             return `
-                <div class="${cardSizeClass} ${extraClass} bg-white dark:bg-gray-800 border-2 md:border-4 ${borderClass} p-1.5 md:p-2 ${shadowClass} transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 group relative cursor-pointer hover-trigger" onclick="window.location.href='profile.council-committee.html?id=${member.id}'">
+                <div class="committee-member-card ${cardSizeClass} ${extraClass} bg-white dark:bg-gray-800 border-2 sm:border-3 md:border-4 ${borderClass} p-1.5 sm:p-2 ${shadowClass} transform hover:-translate-y-1.5 hover:scale-[1.02] active:scale-95 transition-all duration-300 group relative cursor-pointer hover-trigger rounded-sm flex flex-col justify-between" onclick="window.location.href='profile.council-committee.html?id=${member.id}'">
                     ${crown}
                     ${star}
-                    <div class="aspect-[4/5] bg-gray-300 mb-1.5 md:mb-2 border md:border-2 border-black overflow-hidden relative">
+                    <div class="committee-member-image aspect-[4/5] bg-gray-200 dark:bg-gray-700 mb-1.5 md:mb-2 border border-black dark:border-gray-600 overflow-hidden relative rounded-xs">
                         ${imgBox}
                         <div class="absolute inset-0 ${overlayBg} flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm z-20">
-                            <span class="${overlayBtnColor} font-black px-4 md:px-6 py-1 md:py-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none group-hover:translate-x-1 group-hover:translate-y-1 transition-all uppercase text-[10px] md:text-sm">
-                                อ่านประวัติ
+                            <span class="${overlayBtnColor} font-black px-3.5 py-1.5 sm:px-5 sm:py-2 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-all uppercase text-[11px] sm:text-xs md:text-sm rounded-xs flex items-center gap-1.5">
+                                <span>ดูข้อมูลโปรไฟล์</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </span>
                         </div>
                     </div>
-                    <div class="bg-partyBlue text-white text-center py-2 md:py-3 border md:border-2 border-black h-auto min-h-[4.5rem] md:min-h-[6.5rem] flex flex-col justify-center items-center">
-                        <h3 class="${titleSize} font-black uppercase tracking-tighter leading-tight w-full break-words px-1 md:px-2">${member.name}</h3>
+                    <div class="committee-member-caption bg-partyBlue dark:bg-gray-900 text-white text-center py-2 sm:py-2.5 px-1 border border-black dark:border-gray-600 min-h-[4.75rem] sm:min-h-[5.5rem] md:min-h-[6rem] flex flex-col justify-center items-center rounded-xs">
+                        <h3 class="${titleSize} font-black uppercase tracking-tight leading-snug w-full break-words px-1">${member.name}</h3>
                         ${roleBadge}
                     </div>
                 </div>
@@ -492,38 +810,56 @@
         window.toggleMembers = function(groupId) {
             const membersDiv = document.getElementById(`members-${groupId}`);
             const icon = document.getElementById(`icon-${groupId}`);
+            const text = document.getElementById(`text-${groupId}`);
+            if (!membersDiv) return;
+
             if (membersDiv.classList.contains('hidden')) {
                 membersDiv.classList.remove('hidden');
                 membersDiv.classList.add('flex');
-                icon.style.transform = 'rotate(180deg)';
+                if (icon) icon.style.transform = 'rotate(180deg)';
+                if (text) text.innerText = 'ย่อรายชื่อ';
             } else {
                 membersDiv.classList.add('hidden');
                 membersDiv.classList.remove('flex');
-                icon.style.transform = 'rotate(0deg)';
+                if (icon) icon.style.transform = 'rotate(0deg)';
+                if (text) text.innerText = 'ดูสมาชิกเพิ่มเติม';
             }
-        }
+        };
 
-                function getGroupTitle(groupId) {
+        function getGroupTitle(groupId) {
             return groupsConfig.find(group => group.id === groupId)?.title || groupId;
         }
 
         function openMembers(groupId) {
             const membersDiv = document.getElementById(`members-${groupId}`);
             const icon = document.getElementById(`icon-${groupId}`);
+            const text = document.getElementById(`text-${groupId}`);
             if (!membersDiv) return;
             membersDiv.classList.remove('hidden');
             membersDiv.classList.add('flex');
             if (icon) icon.style.transform = 'rotate(180deg)';
+            if (text) text.innerText = 'ย่อรายชื่อ';
         }
+
+        function quickNavGroup(groupId) {
+            const target = document.getElementById(`group-${groupId}`);
+            if (!target) return;
+            openMembers(groupId);
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            target.classList.add('committee-group-highlight');
+            window.setTimeout(() => target.classList.remove('committee-group-highlight'), 1200);
+        }
+        window.quickNavGroup = quickNavGroup;
 
         function renderGroupMembers(groupId, members) {
             if (members.length === 0) return '';
             return `
-                <button onclick="toggleMembers('${groupId}')" class="md:hidden bg-white dark:bg-gray-900 text-partyBlue dark:text-partyPink font-black px-6 py-2 border-2 border-partyBlue dark:border-partyPink shadow-[4px_4px_0px_0px_#f472b6] hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-2 mb-6 text-sm hover-trigger rounded-full">
-                    ดูสมาชิกเพิ่มเติม <span class="bg-partyBlue text-white dark:bg-partyPink dark:text-partyBlue rounded-full px-2 py-0.5 text-xs">${members.length}</span>
-                    <span id="icon-${groupId}" class="transition-transform duration-300 inline-block text-lg">🔽</span>
+                <button type="button" onclick="toggleMembers('${groupId}')" class="md:hidden bg-white dark:bg-gray-900 text-partyBlue dark:text-partyPink font-black px-5 py-2.5 border-2 border-partyBlue dark:border-partyPink shadow-[4px_4px_0px_0px_#f472b6] active:translate-y-0.5 active:shadow-none transition-all flex items-center gap-2 mb-6 text-sm hover-trigger rounded-full">
+                    <span id="text-${groupId}">ดูสมาชิกเพิ่มเติม</span> 
+                    <span class="bg-partyBlue text-white dark:bg-partyPink dark:text-partyBlue rounded-full px-2 py-0.5 text-xs font-black">${members.length}</span>
+                    <span id="icon-${groupId}" class="transition-transform duration-300 inline-block text-base">🔽</span>
                 </button>
-                <div id="members-${groupId}" class="hidden md:flex flex-wrap justify-center gap-4 md:gap-8 w-full px-2">
+                <div id="members-${groupId}" class="hidden md:flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 w-full px-1 sm:px-2">
                     ${members.map(m => generateCard(m, false, false, true)).join('')}
                 </div>
             `;
@@ -531,6 +867,7 @@
 
         function renderDirectory() {
             const container = document.getElementById('directory-container');
+            if (!container) return;
             let htmlContent = '';
 
             groupsConfig.forEach(group => {
@@ -538,9 +875,9 @@
                 if (membersInGroup.length === 0) return;
 
                 htmlContent += `
-                    <div id="group-${group.id}" class="committee-group mb-16 md:mb-24 reveal-on-scroll w-full flex flex-col items-center scroll-mt-28">
-                        <div class="text-center mb-8 md:mb-12 relative z-10">
-                            <h2 class="inline-block bg-partyYellow text-partyBlue font-black text-xl md:text-3xl px-6 py-2 md:px-8 md:py-3 border-2 md:border-4 border-partyBlue shadow-pop transform -rotate-1 relative hover-trigger hover:rotate-0 transition-transform">
+                    <div id="group-${group.id}" class="committee-group mb-14 sm:mb-20 md:mb-24 reveal-on-scroll w-full flex flex-col items-center scroll-mt-28">
+                        <div class="text-center mb-6 sm:mb-8 md:mb-12 relative z-10 w-full px-4">
+                            <h2 class="inline-block bg-partyYellow text-partyBlue font-black text-lg sm:text-xl md:text-3xl px-5 py-2 sm:px-8 sm:py-3 border-2 md:border-4 border-partyBlue dark:border-white shadow-pop transform -rotate-1 relative hover-trigger hover:rotate-0 transition-transform">
                                 ${group.title}
                             </h2>
                         </div>
@@ -551,7 +888,7 @@
                     const vicePresidents = membersInGroup.filter(m => m.id !== pres.id);
                     htmlContent += `<div class="flex flex-col items-center w-full max-w-5xl">`;
                     if (pres) {
-                        htmlContent += `<div class="flex justify-center w-full mb-6">`;
+                        htmlContent += `<div class="flex justify-center w-full mb-6 sm:mb-8">`;
                         htmlContent += generateCard(pres, true, false, false);
                         htmlContent += `</div>`;
                     }
@@ -564,7 +901,7 @@
 
                     htmlContent += `<div class="flex flex-col items-center w-full max-w-5xl">`;
                     if (head) {
-                        htmlContent += `<div class="flex justify-center w-full mb-6">`;
+                        htmlContent += `<div class="flex justify-center w-full mb-6 sm:mb-8">`;
                         htmlContent += generateCard(head, false, headIsRealHead, false);
                         htmlContent += `</div>`;
                     }
@@ -620,22 +957,24 @@
                 }
 
                 const matched = councilData.filter(member => {
-                    const haystack = `${member.name} ${member.role} ${getGroupTitle(member.group)}`.toLowerCase();
+                    const haystack = `${member.name} ${member.role} ${member.nickname || ''} ${member.room || ''} ${getGroupTitle(member.group)}`.toLowerCase();
                     return haystack.includes(query);
                 }).slice(0, 8);
 
                 if (matched.length === 0) {
                     results.classList.remove('hidden');
-                    results.innerHTML = `<div class="bg-partyBlue/5 dark:bg-white/5 border-2 border-dashed border-partyBlue/40 dark:border-partyPink/40 text-partyBlue dark:text-partyPink font-black p-4 text-center">ไม่พบรายชื่อที่ตรงกับคำค้น</div>`;
+                    results.innerHTML = `<div class="bg-partyBlue/5 dark:bg-white/5 border-2 border-dashed border-partyBlue/40 dark:border-partyPink/40 text-partyBlue dark:text-partyPink font-black p-4 text-center rounded-sm">ไม่พบรายชื่อที่ตรงกับคำค้นหา</div>`;
                     return;
                 }
 
                 results.classList.remove('hidden');
                 results.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     ${matched.map(member => `
-                        <button type="button" onclick="window.location.href='profile.council-committee.html?id=${member.id}'" class="committee-result-card hover-trigger text-left bg-white dark:bg-gray-800 border-2 border-partyBlue dark:border-partyPink p-3 shadow-[3px_3px_0px_0px_rgba(244,114,182,0.85)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
-                            <span class="block text-xs font-black text-partyPink uppercase tracking-widest mb-1">${getGroupTitle(member.group)}</span>
-                            <span class="block text-partyBlue dark:text-white font-black leading-tight">${member.name}</span>
+                        <button type="button" onclick="window.location.href='profile.council-committee.html?id=${member.id}'" class="committee-result-card hover-trigger text-left bg-white dark:bg-gray-800 border-2 border-partyBlue dark:border-partyPink p-3 shadow-[3px_3px_0px_0px_rgba(244,114,182,0.85)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all rounded-xs">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[10px] font-black text-partyPink uppercase tracking-widest">${getGroupTitle(member.group)}</span>
+                            </div>
+                            <span class="block text-partyBlue dark:text-white font-black leading-tight text-sm">${member.name}</span>
                             <span class="block text-gray-500 dark:text-gray-300 text-xs font-bold mt-1 leading-tight">${member.role}</span>
                         </button>
                     `).join('')}

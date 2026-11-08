@@ -9,7 +9,8 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">    <style>
+    <link rel="stylesheet" href="style.css">
+    <style>
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
         .dark .glass-nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); }
         .psc-hero-bg {
@@ -64,14 +65,183 @@
             color: var(--card-color, #1e3a8a);
         }
         .detail-panel { min-height: 320px; }
+
+        .action-plan-modern {
+            --action-page: #f5f8ff;
+            --action-surface: #fff;
+            --action-pink: #e85d9e;
+        }
+        body.action-plan-modern { background: var(--action-page); }
+        .dark body.action-plan-modern {
+            --action-page: #0b1220;
+            --action-surface: #111b31;
+            background: var(--action-page);
+        }
+        .action-plan-modern :focus-visible {
+            outline: 3px solid var(--action-pink);
+            outline-offset: 3px;
+        }
+        .action-plan-modern > nav {
+            border-bottom: 1px solid rgba(30, 58, 138, .12) !important;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, .08) !important;
+        }
+        .action-plan-modern > nav ul a:not([href="policy.html"]) {
+            border-bottom: 0 !important;
+            border-radius: 999px;
+            padding: .55rem .85rem !important;
+        }
+        .action-plan-modern > nav ul a:not([href="policy.html"]):hover {
+            background: #eff6ff;
+        }
+        .dark .action-plan-modern > nav ul a:not([href="policy.html"]):hover {
+            background: rgba(255, 255, 255, .08);
+        }
+        .action-plan-modern > nav ul a[href="policy.html"] {
+            border-radius: 999px !important;
+            box-shadow: 0 5px 14px rgba(232, 93, 158, .2) !important;
+        }
+        .action-plan-modern main.psc-hero-bg {
+            background:
+                radial-gradient(circle at 8% 10%, rgba(30, 58, 138, .1), transparent 34%),
+                radial-gradient(circle at 92% 78%, rgba(232, 93, 158, .12), transparent 36%),
+                var(--action-page);
+        }
+        .dark .action-plan-modern main.psc-hero-bg {
+            background:
+                radial-gradient(circle at 8% 10%, rgba(30, 58, 138, .32), transparent 36%),
+                radial-gradient(circle at 92% 78%, rgba(232, 93, 158, .13), transparent 38%),
+                var(--action-page);
+        }
+        .action-plan-modern main > .absolute {
+            opacity: .35;
+        }
+        .action-plan-modern .action-plan-intro {
+            max-width: 960px;
+            margin-inline: auto;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            color: #172554;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .96), rgba(255, 246, 251, .92));
+            border: 1px solid rgba(30, 58, 138, .12);
+            border-radius: 28px;
+            box-shadow: 0 18px 48px rgba(30, 58, 138, .1);
+        }
+        .dark .action-plan-modern .action-plan-intro {
+            color: #f1f5f9;
+            background: linear-gradient(135deg, rgba(17, 27, 49, .96), rgba(30, 41, 59, .92));
+            border-color: rgba(255, 255, 255, .1);
+        }
+        .action-plan-modern .action-plan-intro h1 {
+            letter-spacing: -.04em;
+            text-shadow: none;
+        }
+        .action-plan-modern .action-plan-intro p {
+            color: #526179;
+        }
+        .dark .action-plan-modern .action-plan-intro p {
+            color: #cbd5e1;
+        }
+        .action-plan-modern .action-plan-intro > div:first-child {
+            border: 0;
+            border-radius: 999px;
+            box-shadow: 0 6px 16px rgba(30, 58, 138, .12);
+        }
+        .action-plan-modern .psc-model-image-card {
+            max-width: 100%;
+            border: 1px solid rgba(30, 58, 138, .12);
+            border-radius: 24px;
+            background: var(--action-surface);
+            box-shadow: 0 16px 40px rgba(30, 58, 138, .1);
+            backdrop-filter: none;
+        }
+        .action-plan-modern .psc-model-image-card::before {
+            border: 1px dashed rgba(30, 58, 138, .18);
+            border-radius: 16px;
+        }
+        .dark .action-plan-modern .psc-model-image-card {
+            border-color: rgba(255, 255, 255, .12);
+        }
+        .dark .action-plan-modern .psc-model-image-card::before {
+            border-color: rgba(255, 255, 255, .18);
+        }
+        .action-plan-modern .psc-model-image {
+            width: 100%;
+            max-width: 760px;
+            filter: drop-shadow(0 12px 24px rgba(15, 23, 42, .16));
+        }
+        .action-plan-modern .model-action-card {
+            border: 1px solid rgba(30, 58, 138, .12);
+            border-radius: 18px;
+            background: var(--action-surface);
+            color: #1e3a8a;
+            box-shadow: 0 8px 22px rgba(30, 58, 138, .08);
+        }
+        .dark .action-plan-modern .model-action-card {
+            border-color: rgba(255, 255, 255, .1);
+            color: #f1f5f9;
+        }
+        .action-plan-modern .model-action-card:hover,
+        .action-plan-modern .model-action-card.is-active {
+            transform: translateY(-3px);
+            border-color: var(--action-pink);
+            background: #1e3a8a;
+            color: #fff;
+            box-shadow: 0 14px 28px rgba(30, 58, 138, .18);
+        }
+        .dark .action-plan-modern .model-action-card:hover,
+        .dark .action-plan-modern .model-action-card.is-active {
+            background: #172554;
+        }
+        .action-plan-modern .model-action-card .action-badge {
+            border-radius: 14px;
+        }
+        .action-plan-modern .detail-panel {
+            border: 1px solid rgba(30, 58, 138, .12);
+            border-radius: 24px;
+            background: var(--action-surface);
+            box-shadow: 0 14px 36px rgba(30, 58, 138, .1);
+        }
+        .dark .action-plan-modern .detail-panel {
+            border-color: rgba(255, 255, 255, .1);
+        }
+        .action-plan-modern #detail-list li {
+            border-radius: 12px;
+        }
+        .action-plan-modern > footer {
+            box-shadow: 0 -12px 40px rgba(15, 23, 42, .12) !important;
+        }
+        .action-plan-modern > footer .font-marker {
+            font-family: 'DancingScript', cursive !important;
+        }
+        .action-plan-modern > footer a > div {
+            box-shadow: none !important;
+        }
         @media (max-width: 767px) {
-            .psc-model-image-card { box-shadow: 7px 7px 0 rgba(244, 114, 182, 0.75), 0 18px 45px rgba(15, 23, 42, 0.28); }
-            .psc-model-image { width: min(94vw, 430px); max-height: 430px; }
+            .action-plan-modern .psc-model-image-card {
+                padding: .75rem;
+                border-radius: 18px;
+            }
+            .action-plan-modern .psc-model-image-card::before {
+                inset: 7px;
+                border-radius: 12px;
+            }
+            .action-plan-modern .psc-model-image { max-height: 430px; }
+            .action-plan-modern .action-plan-intro { border-radius: 22px; }
+            .action-plan-modern .detail-panel { border-radius: 20px; }
             .detail-panel { min-height: auto; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .action-plan-modern *,
+            .action-plan-modern *::before,
+            .action-plan-modern *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
         }
     </style>
 </head>
-<body class="bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden flex flex-col min-h-screen transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
+<body class="action-plan-modern bg-offWhite dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden flex flex-col min-h-screen transition-colors duration-300 selection:bg-partyYellow selection:text-partyBlue">
 
     <!-- Modern Loader -->
     <div id="app-loader">
@@ -166,7 +336,7 @@
         <div class="absolute -right-24 bottom-24 w-80 h-80 border-[18px] border-partyYellow/20 rounded-full pointer-events-none"></div>
 
         <section class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="text-center text-white mb-10 md:mb-14 reveal-on-scroll">
+            <div class="action-plan-intro text-center text-white mb-10 md:mb-14 reveal-on-scroll">
                 <div class="inline-flex items-center gap-2 bg-white/95 text-partyBlue border-4 border-partyBlue px-4 py-1.5 font-black shadow-[5px_5px_0px_0px_rgba(244,114,182,1)] mb-6">
                     PSC MODEL
                 </div>
